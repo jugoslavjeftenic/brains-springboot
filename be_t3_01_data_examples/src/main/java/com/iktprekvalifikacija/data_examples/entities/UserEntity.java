@@ -3,17 +3,23 @@ package com.iktprekvalifikacija.data_examples.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "EMPLOYEE")
 public class UserEntity {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	private Integer ID;
-	@Column
+	
+	@Column(name = "first_name")
 	private String name;
-	@Column
+	
+	@Column(name = "last_name")
 	private String email;
 
 	public UserEntity(Integer iD, String name, String email) {
