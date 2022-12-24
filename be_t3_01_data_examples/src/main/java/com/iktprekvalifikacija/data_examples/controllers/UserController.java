@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.iktprekvalifikacija.data_examples.entities.AddressEntity;
 import com.iktprekvalifikacija.data_examples.entities.UserEntity;
+import com.iktprekvalifikacija.data_examples.repositories.AddressRepository;
 import com.iktprekvalifikacija.data_examples.repositories.UserRepository;
 
 @RestController
@@ -18,9 +20,11 @@ public class UserController {
 
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private AddressRepository addressRepository;
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public UserEntity setUser(@RequestBody UserEntity newUser) {
+	public UserEntity saveUser(@RequestBody UserEntity newUser) {
 		
 		UserEntity user = new UserEntity();
 		user.setName(newUser.getName());
@@ -43,5 +47,24 @@ public class UserController {
 			retVal = null;
 		}
 		return retVal;
+	}
+	
+	@RequestMapping(method = RequestMethod.PUT, path = "/{userId}/address/{addressId}")
+	public UserEntity addAddressToUser(@PathVariable Integer userId, @PathVariable Integer addressId) {
+		UserEntity user;
+		try {
+			user = userRepository.findById(userId).get();
+		} catch (NoSuchElementException e) {
+			user = null;
+		}
+		AddressEntity address;
+		try {
+			address = addressRepository.findById(addressId).get();
+		} catch (NoSuchElementException e) {
+			address = null;
+		}
+		user.setAddress(address);
+		userRepository.save(user);
+		return user;
 	}
 }

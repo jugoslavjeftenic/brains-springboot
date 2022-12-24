@@ -1,28 +1,40 @@
 package com.iktprekvalifikacija.data_examples.entities;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 //@Table(name = "EMPLOYEE")
 public class UserEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	// https://stackoverflow.com/questions/2595124/how-does-the-jpa-sequencegenerator-annotation-work
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "user_generator")
+	@SequenceGenerator(name="user_generator", sequenceName = "user_sequence", allocationSize=50)
 	private Integer id;
-	
-//	@Column(name = "first_name")
+	@Column(nullable = false)
 	private String name;
-	
+	@Column
 	private String email;
+	
+	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+	@JoinColumn(name = "address")
+	private AddressEntity address;
 
-	public UserEntity(Integer id, String name, String email) {
+	public UserEntity(Integer id, String name, String email, AddressEntity address) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
+		this.address = address;
 	}
 
 	public UserEntity() {
@@ -51,5 +63,13 @@ public class UserEntity {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public AddressEntity getAddress() {
+		return address;
+	}
+
+	public void setAddress(AddressEntity address) {
+		this.address = address;
 	}
 }
