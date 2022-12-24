@@ -1,6 +1,5 @@
 package com.iktprekvalifikacija.data_examples.entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,17 +11,16 @@ public class UserEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer ID;
+	private Integer id;
 	
-	@Column(name = "first_name")
+//	@Column(name = "first_name")
 	private String name;
 	
-	@Column(name = "last_name")
 	private String email;
 
-	public UserEntity(Integer iD, String name, String email) {
+	public UserEntity(Integer id, String name, String email) {
 		super();
-		ID = iD;
+		this.id = id;
 		this.name = name;
 		this.email = email;
 	}
@@ -31,12 +29,12 @@ public class UserEntity {
 		super();
 	}
 
-	public Integer getID() {
-		return ID;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setID(Integer iD) {
-		ID = iD;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getName() {
