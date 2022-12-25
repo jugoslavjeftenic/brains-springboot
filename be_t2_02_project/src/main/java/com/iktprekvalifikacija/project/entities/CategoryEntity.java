@@ -1,19 +1,26 @@
 package com.iktprekvalifikacija.project.entities;
 
 public class CategoryEntity {
-
-	private Integer id;
-	private String catName, catDescription;
 	
-	public CategoryEntity() {
-		super();
-	}
-
+	// 2.1
+	/*
+	 * U paketu com.iktpreobuka.project.entities napraviti klasu CategoryEntity sa sledećim atributima:
+	 * • id, category name i category description
+	 * • svi atributi, sem id-a treba da budu tekstualnog tipa
+	 */
+	private Integer id;
+	private String catName;
+	private String catDescription;
+	
 	public CategoryEntity(Integer id, String catName, String catDescription) {
 		super();
 		this.id = id;
 		this.catName = catName;
 		this.catDescription = catDescription;
+	}
+
+	public CategoryEntity() {
+		super();
 	}
 
 	public Integer getId() {

@@ -15,10 +15,14 @@ import com.iktprekvalifikacija.project.entities.CategoryEntity;
 @RequestMapping(value = "/project/categories")
 public class CategoryController {
 
+	// 2.2
+	/*
+	 * U paketu com.iktpreobuka.project.controllers napraviti klasu CategoryController
+	 * sa metodom getDB() koja vraća listu svih kategorija
+	 */
 	static int cid = 0;
 	List<CategoryEntity> categories = new ArrayList<>();
 
-	// 2.2
 	private List<CategoryEntity> getDB() {
 		if(categories.size() == 0) {
 			cid = 0;
@@ -46,12 +50,21 @@ public class CategoryController {
 	}
 
 	// 2.3
+	/*
+	 * Kreirati REST endpoint koji vraća listu svih kategorija
+	 * • putanja /project/categories
+	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public List<CategoryEntity> getAllCategories() {
 		return getDB();
 	}
 	
 	// 2.4
+	/*
+	 * Kreirati REST endpoint koji omogućava dodavanje nove kategorije
+	 * • putanja /project/categories
+	 * • metoda treba da vrati dodatu kategoriju
+	 */
 	@RequestMapping(method = RequestMethod.POST)
 	public CategoryEntity saveCategory(@RequestBody CategoryEntity newCategory) {
 		getDB();
@@ -61,6 +74,12 @@ public class CategoryController {
 	}
 
 	// 2.5
+	/*
+	 * Kreirati REST endpoint koji omogućava izmenu postojeće kategorije
+	 * • putanja /project/categories/{id}
+	 * • ukoliko je prosleđen ID koji ne pripada nijednoj kategoriji metoda treba da vrati null,
+	 *   a u suprotnom vraća podatke kategorije sa izmenjenim vrednostima
+	 */
 	@RequestMapping(method = RequestMethod.PUT, path = "/{id}")
 	public CategoryEntity updateCategory(@PathVariable Integer id, @RequestBody CategoryEntity updatedCategory) {
 		for (CategoryEntity category : getDB()) {
@@ -78,6 +97,12 @@ public class CategoryController {
 	}
 	
 	// 2.6
+	/*
+	 * Kreirati REST endpoint koji omogućava brisanje postojeće kategorije
+	 * • putanja /project/categories/{id}
+	 * • ukoliko je prosleđen ID koji ne pripada nijednoj kategoriji metoda treba da vrati null,
+	 *   a u suprotnom vraća podatke o kategoriji koja je obrisana
+	 */
 	@RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
 	public CategoryEntity deleteCategory(@PathVariable Integer id) {
 		for (CategoryEntity category : getDB()) {
@@ -90,6 +115,11 @@ public class CategoryController {
 	}
 
 	// 2.7
+	/*
+	 * Kreirati REST endpoint koji vraća kategoriju po vrednosti prosleđenog ID-a
+	 * • putanja /project/categories/{id}
+	 * • u slučaju da ne postoji kategorija sa traženom vrednošću ID-a vratiti null
+	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/{id}")
 	public CategoryEntity getCategoryById(@PathVariable Integer id) {
 		for (CategoryEntity category : getDB()) {

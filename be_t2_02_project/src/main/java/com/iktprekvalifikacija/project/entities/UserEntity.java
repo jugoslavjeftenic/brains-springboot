@@ -2,14 +2,21 @@ package com.iktprekvalifikacija.project.entities;
 
 public class UserEntity {
 
+	// 1.1
+	/*
+	 * U paketu com.iktpreobuka.project.entities napraviti klasu UserEntity sa sledećim atributima:
+	 * • id, first name, last name, username, password, email i user role
+	 * • user role može da ima sledeće vrednosti: ROLE_CUSTOMER, ROLE_ADMIN i ROLE_SELLER
+	 *   (koristiti enumeraciju), dok svi ostali atributi, sem id-a treba da budu tekstualnog tipa
+	 */
 	private Integer userID;
-	private String firstName, lastName, userName, password, email;
+	private String firstName;
+	private String lastName;
+	private String userName;
+	private String password;
+	private String email;
 	private EUserRole userRole;
 	
-	public UserEntity() {
-		super();
-	}
-
 	public UserEntity(Integer userID, String firstName, String lastName, String userName, String password, String email, EUserRole userRole) {
 		super();
 		this.userID = userID;
@@ -19,6 +26,10 @@ public class UserEntity {
 		this.password = password;
 		this.email = email;
 		this.userRole = userRole;
+	}
+
+	public UserEntity() {
+		super();
 	}
 
 	public Integer getUserID() {
