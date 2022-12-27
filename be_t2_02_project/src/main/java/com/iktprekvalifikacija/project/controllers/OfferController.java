@@ -90,6 +90,7 @@ public class OfferController {
 	 * • NAPOMENA: u okviru ove metode ne menjati vrednost atributa offer status
 	 */
 	@RequestMapping(method = RequestMethod.PUT, path = "/{id}")
+	// TODO Da te podsetim da si ovo uradio u dva ujutro a nisi testirao
 	public OfferEntity updateOffer(@PathVariable Integer id, @RequestBody OfferEntity updatedOffer) {
 		for (OfferEntity offers : getDB()) {
 			if (offers.getId().equals(id)) {
@@ -133,6 +134,69 @@ public class OfferController {
 	 * • ukoliko je prosleđen ID koji ne pripada nijednoj ponudi metoda treba da vrati null,
 	 *   a u suprotnom vraća podatke o ponudi koja je obrisana
 	 */
-	
+	@RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
+	public OfferEntity deleteOffer(@PathVariable Integer id) {
+		for (OfferEntity offers : getDB()) {
+			if (offers.getId().equals(id)) {
+				getDB().remove(offers);
+				return offers;
+			}
+		}
+		return null;
+	}
 
+	// 3.7
+	/*
+	 * Kreirati REST endpoint koji vraća ponudu po vrednosti prosleđenog ID-a
+	 * • putanja /project/offers/{id}
+	 * • u slučaju da ne postoji ponuda sa traženom vrednošću ID-a vratiti null
+	 */
+	@RequestMapping(method = RequestMethod.GET, path = "/{id}")
+	public OfferEntity getOfferById(@PathVariable Integer id) {
+		for (OfferEntity offers : getDB()) {
+			if(offers.getId().equals(id))
+				return offers;
+		}
+		return null;
+	}
+	
+	// 3.8
+	/*
+	 * Kreirati REST endpoint koji omogućava promenu vrednosti atributa offer status postojeće ponude
+	 * • putanja /project/offers/changeOffer/{id}/status/{status}
+	 * • ukoliko je prosleđen ID koji ne pripada nijednoj ponudi metoda treba da vrati null,
+	 *   a u suprotnom vraća podatke o ponudi koja je obrisana
+	 */
+	@RequestMapping(method = RequestMethod.PUT, path = "changeOffer/{id}/status/{status}")
+	public OfferEntity updateUserRole(@PathVariable Integer id, @PathVariable EOfferEntity status) {
+		for (OfferEntity offers : getDB()) {
+			if (offers.getId().equals(id)) {
+				if (status != null) {
+					offers.setOfferStatus(status);
+				}
+				return offers;
+			}
+		}
+		return null;
+	}
+	
+	// 3.9
+	/*
+	 * Kreirati REST endpoint koji omogućava pronalazak svih ponuda čija se akcijska cena
+	 * nalazi u odgovarajućem rasponu
+	 * • putanja /project/offers/findByPrice/{lowerPrice}/and/{upperPrice}
+	 */
+	@RequestMapping(method = RequestMethod.GET, path = "findByPrice/{lowerPrice}/and/{upperPrice}")
+	public List<OfferEntity> getOfferByPriceRange(@PathVariable Float lowerPrice, @PathVariable Float upperPrice) {
+		if (lowerPrice <= upperPrice) {
+			List<OfferEntity> retVal = new ArrayList<>();
+			for (OfferEntity offers : getDB()) {
+				if (offers.getActionPrice() >= lowerPrice && offers.getActionPrice() <= upperPrice) {
+					retVal.add(offers);
+				}
+			}
+			return retVal;
+		}
+		return null;
+	}
 }
