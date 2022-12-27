@@ -66,7 +66,7 @@ public class UserController {
 	 * • putanja /project/users
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public List<UserEntity> getAll() {
+	public List<UserEntity> getAllUsers() {
 		return getDB();
 	}
 	

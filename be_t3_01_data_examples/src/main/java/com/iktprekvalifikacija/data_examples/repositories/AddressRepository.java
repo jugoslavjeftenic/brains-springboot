@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.iktprekvalifikacija.data_examples.entities.AddressEntity;
 
-public interface AddressRepository  extends CrudRepository<AddressEntity, Integer>{
+public interface AddressRepository extends CrudRepository<AddressEntity, Integer> {
 
 }
