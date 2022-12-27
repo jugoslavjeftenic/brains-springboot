@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -57,11 +59,80 @@ public class OfferController {
 
 	// 3.3
 	/*
-	 * kreirati REST endpoint koja vraća listu svih ponuda • putanja /project/offers
+	 * Kreirati REST endpoint koja vraća listu svih ponuda
+	 * • putanja /project/offers
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public List<OfferEntity> getAllOffers() {
 		return getDB();
 	}
+
+	// 3.4
+	/*
+	 * kreirati REST endpoint koji omogućava dodavanje nove ponude
+	 * • putanja /project/offers
+	 * • metoda treba da vrati dodatu ponudu
+	 */
+	@RequestMapping(method = RequestMethod.POST)
+	public OfferEntity saveOffer(@RequestBody OfferEntity newOffer) {
+		getDB();
+		newOffer.setId(++oid);
+		offers.add(newOffer);
+		return newOffer;
+	}
+	
+	// 3.5
+	/*
+	 * Kreirati REST endpoint koji omogućava izmenu postojeće ponude
+	 * • putanja /project/offers/{id}
+	 * • ukoliko je prosleđen ID koji ne pripada nijednoj ponudi treba da vrati null,
+	 *   a u suprotnom vraća podatke ponude sa izmenjenim vrednostima
+	 * • NAPOMENA: u okviru ove metode ne menjati vrednost atributa offer status
+	 */
+	@RequestMapping(method = RequestMethod.PUT, path = "/{id}")
+	public OfferEntity updateOffer(@PathVariable Integer id, @RequestBody OfferEntity updatedOffer) {
+		for (OfferEntity offers : getDB()) {
+			if (offers.getId().equals(id)) {
+				if (updatedOffer.getOfferName() != null) {
+					offers.setOfferName(updatedOffer.getOfferName());
+				}
+				if (updatedOffer.getOfferDesc() != null) {
+					offers.setOfferDesc(updatedOffer.getOfferDesc());
+				}
+				if (updatedOffer.getOfferCreated() != null) {
+					offers.setOfferCreated(updatedOffer.getOfferCreated());
+				}
+				if (updatedOffer.getOfferExpires() != null) {
+					offers.setOfferExpires(updatedOffer.getOfferExpires());
+				}
+				if (updatedOffer.getRegularPrice() != null) {
+					offers.setRegularPrice(updatedOffer.getRegularPrice());
+				}
+				if (updatedOffer.getActionPrice() != null) {
+					offers.setActionPrice(updatedOffer.getActionPrice());
+				}
+				if (updatedOffer.getImagePath() != null) {
+					offers.setImagePath(updatedOffer.getImagePath());
+				}
+				if (updatedOffer.getAvailableOffers() != null) {
+					offers.setAvailableOffers(updatedOffer.getAvailableOffers());
+				}
+				if (updatedOffer.getBoughtOffers() != null) {
+					offers.setBoughtOffers(updatedOffer.getBoughtOffers());
+				}
+				return offers;
+			}
+		}
+		return null;
+	}
+	
+	// 3.6
+	/*
+	 * Kreirati REST endpoint koji omogućava brisanje postojeće ponude
+	 * • putanja /project/offers/{id}
+	 * • ukoliko je prosleđen ID koji ne pripada nijednoj ponudi metoda treba da vrati null,
+	 *   a u suprotnom vraća podatke o ponudi koja je obrisana
+	 */
+	
 
 }
