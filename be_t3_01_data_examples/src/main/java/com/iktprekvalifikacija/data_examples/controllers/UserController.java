@@ -1,5 +1,6 @@
 package com.iktprekvalifikacija.data_examples.controllers;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -132,7 +133,15 @@ public class UserController {
 		return userRepository.findByNameIgnoreCaseOrderByEmailAsc(name);
 	}
 	
-	
+	// 2.2
+	/*
+	 * Omogućiti pronalaženje korisnika po datumu rođenja sortiranih u rastućem redosledu imena
+	 * • putanja /by-dob
+	 */
+	@RequestMapping(method = RequestMethod.GET, path = "/by-dob")
+	public List<UserEntity> getByBirthDateAsc(@RequestParam LocalDate dob) {
+		return userRepository.findByBirthDateOrderByBirthDateAsc(dob);
+	}
 	
 	
 	

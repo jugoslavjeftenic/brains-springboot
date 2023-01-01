@@ -1,5 +1,7 @@
 package com.iktprekvalifikacija.data_examples.entities;
 
+import java.time.LocalDate;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,6 +30,24 @@ public class UserEntity {
 	@Column
 	private String email;
 	
+	// 2.1
+	/*
+	 * Unaprediti UserEntity tako da ima sledeća polja
+	 * • datum rođenja,
+	 *   broj telefona,
+	 *   JMBG,
+	 *   broj lične karte
+	 * • odabrati odgovarajuće Hibernate anotacije i njihove parametre za svako od ovih polja
+	 */
+	@Column
+	private LocalDate birthDate;
+	@Column
+	private String phoneNumber;
+	@Column
+	private String jmbg;
+	@Column
+	private String regBrLk;
+	
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
 	@JoinColumn(name = "address")
 	private AddressEntity address;
@@ -36,11 +56,16 @@ public class UserEntity {
 		super();
 	}
 
-	public UserEntity(Integer id, String name, String email, AddressEntity address) {
+	public UserEntity(Integer id, String name, String email, LocalDate birthDate, String phoneNumber, String jmbg,
+			String regBrLk, AddressEntity address) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
+		this.birthDate = birthDate;
+		this.phoneNumber = phoneNumber;
+		this.jmbg = jmbg;
+		this.regBrLk = regBrLk;
 		this.address = address;
 	}
 
@@ -66,6 +91,38 @@ public class UserEntity {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public LocalDate getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(LocalDate birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public String getJmbg() {
+		return jmbg;
+	}
+
+	public void setJmbg(String jmbg) {
+		this.jmbg = jmbg;
+	}
+
+	public String getRegBrLk() {
+		return regBrLk;
+	}
+
+	public void setRegBrLk(String regBrLk) {
+		this.regBrLk = regBrLk;
 	}
 
 	public AddressEntity getAddress() {
