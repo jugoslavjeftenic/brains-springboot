@@ -117,7 +117,8 @@ public class RADE {
 	}
 	
 	public static String generisiUlicu() {
-		String[] ulice = {"Programerska", "Juniorski kraj", "Bulevar Regrutera", "Eklipse", "Palata Seniora"};
+		String[] ulice = {"Programerska", "Bulevar palih juniora", "Regruterski šor", "Eklipse",
+				"Palata Seniorskih Vladara", "Ulica praktikanata", "Učenički kvart"};
 		return ulice[mrRobot(0, ulice.length - 1)];
 	}
 	
