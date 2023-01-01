@@ -13,9 +13,9 @@ import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+//@Table(name = "EMPLOYEE")
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-//@Table(name = "EMPLOYEE")
 public class UserEntity {
 
 	@Id
