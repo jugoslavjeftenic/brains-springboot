@@ -4,20 +4,27 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.iktprekvalifikacija.project.entities.CategoryEntity;
 import com.iktprekvalifikacija.project.entities.EOfferEntity;
 import com.iktprekvalifikacija.project.entities.OfferEntity;
+import com.iktprekvalifikacija.project.repositories.CategoryRepository;
+import com.iktprekvalifikacija.project.repositories.OfferRepository;
 
 import tools.RADE;
 
 @RestController
-@RequestMapping(value = "/project/offers")
+@RequestMapping(value = "/api/v1/project/offers")
 public class OfferController {
+
+	@Autowired
+	private OfferRepository offerRepository;
 
 	// 3.2
 	/*
@@ -63,8 +70,8 @@ public class OfferController {
 	 * • putanja /project/offers
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public List<OfferEntity> getAllOffers() {
-		return getDB();
+	public Iterable<OfferEntity> getAll() {
+		return offerRepository.findAll();
 	}
 
 	// 3.4
@@ -73,13 +80,20 @@ public class OfferController {
 	 * • putanja /project/offers
 	 * • metoda treba da vrati dodatu ponudu
 	 */
-	@RequestMapping(method = RequestMethod.POST)
-	public OfferEntity saveOffer(@RequestBody OfferEntity newOffer) {
-		getDB();
-		newOffer.setId(++oid);
-		offers.add(newOffer);
-		return newOffer;
-	}
+//	@RequestMapping(method = RequestMethod.POST)
+//	public OfferEntity saveOffer(@RequestBody OfferEntity newOffer) {
+//		OfferEntity offer = new OfferEntity();
+//		offer.setOfferName(newOffer.getOfferName());
+//		offer.setCatDescription(offer.getCatDescription());
+//		offerRepository.save(offer);
+//		return offer;
+//	}
+//	public OfferEntity saveOffer(@RequestBody OfferEntity newOffer) {
+//		getDB();
+//		newOffer.setId(++oid);
+//		offers.add(newOffer);
+//		return newOffer;
+//	}
 	
 	// 3.5
 	/*
