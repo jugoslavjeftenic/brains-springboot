@@ -1,5 +1,7 @@
 package com.iktprekvalifikacija.data_examples.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,8 @@ import com.iktprekvalifikacija.data_examples.entities.UserEntity;
 import com.iktprekvalifikacija.data_examples.repositories.AddressRepository;
 import com.iktprekvalifikacija.data_examples.repositories.UserRepository;
 
+import tools.RADE;
+
 @RestController
 @RequestMapping(path = "/api/v1/users")
 public class UserController {
@@ -22,6 +26,22 @@ public class UserController {
 	private UserRepository userRepository;
 	@Autowired
 	private AddressRepository addressRepository;
+	
+	@RequestMapping(method = RequestMethod.POST, path = "populatetable/{count}")
+	public List<UserEntity> populateTable(@PathVariable Integer count) {
+		List<UserEntity> retVal = new ArrayList<>();
+		for (int x = 0; x < count; x++) {
+			UserEntity user = new UserEntity();
+			String name = RADE.generisiIme(0) + " " + RADE.generisiPrezime(); 
+			user.setName(name);
+			user.setEmail(name.substring(0, name.indexOf(' ')).toLowerCase() + "."
+					+ name.substring(name.indexOf(' ') + 1, name.indexOf(' ') + 2).toLowerCase()
+					+ "@iktprekvalifikacija.rs");
+			userRepository.save(user);
+			retVal.add(user);
+		}
+		return retVal;
+	}
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public UserEntity saveUser(@RequestBody UserEntity newUser) {

@@ -21,9 +21,9 @@ public class UserEntity {
 	@Id
 	// https://stackoverflow.com/questions/2595124/how-does-the-jpa-sequencegenerator-annotation-work
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "user_generator")
-	@SequenceGenerator(name="user_generator", sequenceName = "user_sequence", allocationSize=50)
+	@SequenceGenerator(name="user_generator", sequenceName = "user_sequence", allocationSize=1)
 	private Integer id;
-	@Column(nullable = false)
+	@Column
 	private String name;
 	@Column
 	private String email;
@@ -32,16 +32,16 @@ public class UserEntity {
 	@JoinColumn(name = "address")
 	private AddressEntity address;
 
+	public UserEntity() {
+		super();
+	}
+
 	public UserEntity(Integer id, String name, String email, AddressEntity address) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.address = address;
-	}
-
-	public UserEntity() {
-		super();
 	}
 
 	public Integer getId() {
