@@ -1,17 +1,45 @@
 package tools;
 
-
 import java.time.LocalDate;
 import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.temporal.ChronoField;
 
 public class RADE {
 
 	/*
 	 * R.A.D.E (Random Allocation Data Enhancer)
-	 * by pvtBomba
+	 * by Jugoslav Jeftenic
 	 */
 	
-	private RADE() {}
+	public static LocalDate generisiDatumRodjenja() {
+		return generisiDatumRodjenja(10, 100);
+	}
+
+	public static LocalDate generisiDatumRodjenja(String kategorija) {
+		int minGodina = 12;
+		int maxGodina = 99;
+		switch (kategorija) {
+			case "dete":
+				minGodina = 3;
+				maxGodina = 12;
+				break;
+			case "student":
+				minGodina = 17;
+				maxGodina = 30;
+				break;
+			case "zaposlen":
+				minGodina = 16;
+				maxGodina = 65;
+				break;
+			case "penzioner":
+				minGodina = 65;
+				maxGodina = 111;
+				break;
+		}
+		return generisiDatumRodjenja(minGodina, maxGodina);
+	}
 	
 	public static LocalDate generisiDatumRodjenja(int minGodina, int maxGodina) {
 		int godina = LocalDate.now().minusYears((long) mrRobot(minGodina, maxGodina)).getYear();
@@ -21,63 +49,119 @@ public class RADE {
 		return datumRodjenja;
 	}
 	
-
 	public static String generisiJMBG() {
-		String JMBG = "";
-		switch (mrRobot(1, 12)) {
-		case 1:
-			JMBG += String.format("%2s", mrRobot(1, 31)).replace(" ", "0") + "01";
-			break;
-		case 2:
-			JMBG += String.format("%2s", mrRobot(1, 28)).replace(" ", "0") + "02";
-			break;
-		case 3:
-			JMBG += String.format("%2s", mrRobot(1, 31)).replace(" ", "0") + "03";
-			break;
-		case 4:
-			JMBG += String.format("%2s", mrRobot(1, 30)).replace(" ", "0") + "04";
-			break;
-		case 5:
-			JMBG += String.format("%2s", mrRobot(1, 31)).replace(" ", "0") + "05";
-			break;
-		case 6:
-			JMBG += String.format("%2s", mrRobot(1, 30)).replace(" ", "0") + "06";
-			break;
-		case 7:
-			JMBG += String.format("%2s", mrRobot(1, 31)).replace(" ", "0") + "07";
-			break;
-		case 8:
-			JMBG += String.format("%2s", mrRobot(1, 31)).replace(" ", "0") + "08";
-			break;
-		case 9:
-			JMBG += String.format("%2s", mrRobot(1, 30)).replace(" ", "0") + "09";
-			break;
-		case 10:
-			JMBG += String.format("%2s", mrRobot(1, 31)).replace(" ", "0") + "10";
-			break;
-		case 11:
-			JMBG += String.format("%2s", mrRobot(1, 30)).replace(" ", "0") + "11";
-			break;
-		case 12:
-			JMBG += String.format("%2s", mrRobot(1, 31)).replace(" ", "0") + "12";
-			break;
-		}
-		JMBG += String.valueOf(mrRobot(LocalDate.now().getYear() - 80, LocalDate.now().getYear() - 16)).substring(1);
+		return generisiJMBG(generisiDatumRodjenja());
+	}
+	
+	public static String generisiJMBG(String kategorija) {
+		return generisiJMBG(generisiDatumRodjenja(kategorija));
+	}
+	
+	public static String generisiJMBG(int minGodina, int maxGodina) {
+		return generisiJMBG(generisiDatumRodjenja(minGodina, maxGodina));
+	}
+	
+	public static String generisiJMBG(LocalDate dob) {
+		String jmbg = "";
+		LocalDate datumRodjenja = dob;
+		// https://www.baeldung.com/java-datetimeformatter
+		// https://stackoverflow.com/questions/33238082/last-digit-of-year-with-datetimeformatter
+		DateTimeFormatter jmbgDateFormat = new DateTimeFormatterBuilder()
+				.appendPattern("ddMM")
+				.appendValueReduced(ChronoField.YEAR, 3, 3, 0)
+				.toFormatter();
+		jmbg  = datumRodjenja.format(jmbgDateFormat);
 		// https://www.telegraf.rs/vesti/1096931-otkrivamo-misteriju-evo-sta-jmbg-i-6-njegovih-brojeva-govore-o-vama
 		// https://bug.rs/2013/05/korisne-javascript-biblioteke-za-poslovni-software-u-nas-srba/
 		// https://www.elitesecurity.org/t483659-algoritam-za-proveru-JMBG-ili-Java-source
-		JMBG += String.format("%2s", mrRobot(1, 99)).replace(" ", "0");
-		JMBG += String.format("%3s", mrRobot(0, 999)).replace(" ", "0");
-		int modul11 = 11 -
-				(((7 * (Character.getNumericValue(JMBG.charAt(0)) + Character.getNumericValue(JMBG.charAt(6)))) +
-				(6 * (Character.getNumericValue(JMBG.charAt(1)) + Character.getNumericValue(JMBG.charAt(7)))) +
-				(5 * (Character.getNumericValue(JMBG.charAt(2)) + Character.getNumericValue(JMBG.charAt(8)))) +
-				(4 * (Character.getNumericValue(JMBG.charAt(3)) + Character.getNumericValue(JMBG.charAt(9)))) +
-				(3 * (Character.getNumericValue(JMBG.charAt(4)) + Character.getNumericValue(JMBG.charAt(10)))) +
-				(2 * (Character.getNumericValue(JMBG.charAt(5)) + Character.getNumericValue(JMBG.charAt(11))))) % 11);
-		JMBG += (modul11 > 9) ? "0" : modul11;
-		return JMBG;
+		jmbg += generisiPolitickuRegiju();
+		jmbg += generisiJedinstveniBroj();
+		jmbg += modul11(jmbg);
+		return jmbg;
 	}
+	
+	private static String generisiPolitickuRegiju() {
+		int regija = mrRobot(10, 99);
+		if (regija > 59 && regija < 70) {
+			// https://www.w3schools.com/java/java_recursion.asp
+			return generisiPolitickuRegiju();
+		}
+		return String.format("%2s", regija).replace(" ", "0");
+	}
+	
+	private static String generisiJedinstveniBroj() {
+		int jb = mrRobot(0, 999);
+		return String.format("%3s", jb).replace(" ", "0");
+	}
+	
+	private static String modul11(String jmbg) {
+		Integer modul11 = 11 -((
+				(7 * (Character.getNumericValue(jmbg.charAt(0)) + Character.getNumericValue(jmbg.charAt( 6)))) +
+				(6 * (Character.getNumericValue(jmbg.charAt(1)) + Character.getNumericValue(jmbg.charAt( 7)))) +
+				(5 * (Character.getNumericValue(jmbg.charAt(2)) + Character.getNumericValue(jmbg.charAt( 8)))) +
+				(4 * (Character.getNumericValue(jmbg.charAt(3)) + Character.getNumericValue(jmbg.charAt( 9)))) +
+				(3 * (Character.getNumericValue(jmbg.charAt(4)) + Character.getNumericValue(jmbg.charAt(10)))) +
+				(2 * (Character.getNumericValue(jmbg.charAt(5)) + Character.getNumericValue(jmbg.charAt(11))))
+				) % 11);
+		return (modul11 > 9) ? "0" : modul11.toString();
+	}
+	
+//	public static String generisiJMBG() {
+//		String JMBG = "";
+//		switch (mrRobot(1, 12)) {
+//		case 1:
+//			JMBG += String.format("%2s", mrRobot(1, 31)).replace(" ", "0") + "01";
+//			break;
+//		case 2:
+//			JMBG += String.format("%2s", mrRobot(1, 28)).replace(" ", "0") + "02";
+//			break;
+//		case 3:
+//			JMBG += String.format("%2s", mrRobot(1, 31)).replace(" ", "0") + "03";
+//			break;
+//		case 4:
+//			JMBG += String.format("%2s", mrRobot(1, 30)).replace(" ", "0") + "04";
+//			break;
+//		case 5:
+//			JMBG += String.format("%2s", mrRobot(1, 31)).replace(" ", "0") + "05";
+//			break;
+//		case 6:
+//			JMBG += String.format("%2s", mrRobot(1, 30)).replace(" ", "0") + "06";
+//			break;
+//		case 7:
+//			JMBG += String.format("%2s", mrRobot(1, 31)).replace(" ", "0") + "07";
+//			break;
+//		case 8:
+//			JMBG += String.format("%2s", mrRobot(1, 31)).replace(" ", "0") + "08";
+//			break;
+//		case 9:
+//			JMBG += String.format("%2s", mrRobot(1, 30)).replace(" ", "0") + "09";
+//			break;
+//		case 10:
+//			JMBG += String.format("%2s", mrRobot(1, 31)).replace(" ", "0") + "10";
+//			break;
+//		case 11:
+//			JMBG += String.format("%2s", mrRobot(1, 30)).replace(" ", "0") + "11";
+//			break;
+//		case 12:
+//			JMBG += String.format("%2s", mrRobot(1, 31)).replace(" ", "0") + "12";
+//			break;
+//		}
+//		JMBG += String.valueOf(mrRobot(LocalDate.now().getYear() - 80, LocalDate.now().getYear() - 16)).substring(1);
+//		// https://www.telegraf.rs/vesti/1096931-otkrivamo-misteriju-evo-sta-jmbg-i-6-njegovih-brojeva-govore-o-vama
+//		// https://bug.rs/2013/05/korisne-javascript-biblioteke-za-poslovni-software-u-nas-srba/
+//		// https://www.elitesecurity.org/t483659-algoritam-za-proveru-JMBG-ili-Java-source
+//		JMBG += String.format("%2s", mrRobot(1, 99)).replace(" ", "0");
+//		JMBG += String.format("%3s", mrRobot(0, 999)).replace(" ", "0");
+//		int modul11 = 11 -
+//				(((7 * (Character.getNumericValue(JMBG.charAt(0)) + Character.getNumericValue(JMBG.charAt(6)))) +
+//						(6 * (Character.getNumericValue(JMBG.charAt(1)) + Character.getNumericValue(JMBG.charAt(7)))) +
+//						(5 * (Character.getNumericValue(JMBG.charAt(2)) + Character.getNumericValue(JMBG.charAt(8)))) +
+//						(4 * (Character.getNumericValue(JMBG.charAt(3)) + Character.getNumericValue(JMBG.charAt(9)))) +
+//						(3 * (Character.getNumericValue(JMBG.charAt(4)) + Character.getNumericValue(JMBG.charAt(10)))) +
+//						(2 * (Character.getNumericValue(JMBG.charAt(5)) + Character.getNumericValue(JMBG.charAt(11))))) % 11);
+//		JMBG += (modul11 > 9) ? "0" : modul11;
+//		return JMBG;
+//	}
 	
 	/** @param rod 1-zensko 2-musko */
 	public static String generisiIme(int rod) {
@@ -117,8 +201,8 @@ public class RADE {
 	}
 	
 	public static String generisiUlicu() {
-		String[] ulice = {"Programerska", "Bulevar palih juniora", "Regruterski šor", "Eklipse",
-				"Palata Seniorskih Vladara", "Ulica praktikanata", "Učenički kvart"};
+		String[] ulice = {"Programerska", "Bulevar palih juniora", "Regruterski kvart", "Eklipse",
+				"Palata Seniorskih Vladara", "Ulica praktikanata", "Učenički šor"};
 		return ulice[mrRobot(0, ulice.length - 1)];
 	}
 	
