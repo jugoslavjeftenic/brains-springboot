@@ -62,6 +62,7 @@ public class RADE {
 	}
 	
 	public static String generisiJMBG(LocalDate dob) {
+		// https://www.telegraf.rs/vesti/1096931-otkrivamo-misteriju-evo-sta-jmbg-i-6-njegovih-brojeva-govore-o-vama
 		String jmbg = "";
 		LocalDate datumRodjenja = dob;
 		// https://www.baeldung.com/java-datetimeformatter
@@ -71,9 +72,6 @@ public class RADE {
 				.appendValueReduced(ChronoField.YEAR, 3, 3, 0)
 				.toFormatter();
 		jmbg  = datumRodjenja.format(jmbgDateFormat);
-		// https://www.telegraf.rs/vesti/1096931-otkrivamo-misteriju-evo-sta-jmbg-i-6-njegovih-brojeva-govore-o-vama
-		// https://bug.rs/2013/05/korisne-javascript-biblioteke-za-poslovni-software-u-nas-srba/
-		// https://www.elitesecurity.org/t483659-algoritam-za-proveru-JMBG-ili-Java-source
 		jmbg += generisiPolitickuRegiju();
 		jmbg += generisiJedinstveniBroj();
 		jmbg += modul11(jmbg);
@@ -95,6 +93,8 @@ public class RADE {
 	}
 	
 	private static String modul11(String jmbg) {
+		// https://bug.rs/2013/05/korisne-javascript-biblioteke-za-poslovni-software-u-nas-srba/
+		// https://www.elitesecurity.org/t483659-algoritam-za-proveru-JMBG-ili-Java-source
 		Integer modul11 = 11 -((
 				(7 * (Character.getNumericValue(jmbg.charAt(0)) + Character.getNumericValue(jmbg.charAt( 6)))) +
 				(6 * (Character.getNumericValue(jmbg.charAt(1)) + Character.getNumericValue(jmbg.charAt( 7)))) +
