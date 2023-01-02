@@ -1,6 +1,7 @@
 package com.iktprekvalifikacija.data_examples.controllers;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -58,6 +59,17 @@ public class UserController {
 			user.setEmail(name.substring(0, name.indexOf(' ')).toLowerCase() + "."
 					+ name.substring(name.indexOf(' ') + 1, name.indexOf(' ') + 2).toLowerCase()
 					+ "@iktprekvalifikacija.rs");
+			user.setJmbg(RADE.generisiJMBG());
+			user.setBirthDate(LocalDate.parse(
+					((Integer.parseInt(user.getJmbg().substring(4, 7)) > 900) ? "1" : "0") +
+							user.getJmbg().substring(4, 7) +
+							user.getJmbg().substring(2, 4) +
+							user.getJmbg().substring(0, 2),
+					DateTimeFormatter.BASIC_ISO_DATE));
+			user.setPhoneNumber(String.format("%3s", RADE.mrRobot(10, 37)).replace(" ", "0") + "/" +
+					String.format("%3s", RADE.mrRobot(0, 999)).replace(" ", "0") + "-" +
+					String.format("%3s", RADE.mrRobot(0, 9999)).replace(" ", "0"));
+			user.setRegBrLk(String.format("%9s", RADE.mrRobot(1, 999999999)).replace(" ", "0"));
 			userRepository.save(user);
 			users.add(user);
 		}
