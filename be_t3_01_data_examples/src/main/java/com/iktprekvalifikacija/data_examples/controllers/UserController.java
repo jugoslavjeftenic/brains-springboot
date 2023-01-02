@@ -61,7 +61,7 @@ public class UserController {
 					+ "@iktprekvalifikacija.rs");
 			user.setJmbg(RADE.generisiJMBG());
 			user.setBirthDate(LocalDate.parse(
-					((Integer.parseInt(user.getJmbg().substring(4, 7)) > 900) ? "1" : "0") +
+					((Integer.parseInt(user.getJmbg().substring(4, 7)) > 900) ? "1" : "2") +
 							user.getJmbg().substring(4, 7) +
 							user.getJmbg().substring(2, 4) +
 							user.getJmbg().substring(0, 2),
@@ -131,7 +131,7 @@ public class UserController {
 	// https://www.baeldung.com/spring-data-jpa-query
 	@RequestMapping(method = RequestMethod.GET, path = "/by-email")
 	public List<UserEntity> getByEmail(@RequestParam String email) {
-		return userRepository.findByEmailIgnoreCase(email);
+		return userRepository.findByEmail(email);
 	}
 	
 	// 1.4
@@ -142,7 +142,7 @@ public class UserController {
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/by-name")
 	public List<UserEntity> getByNameSortByEmail(@RequestParam String name) {
-		return userRepository.findByNameIgnoreCaseOrderByEmailAsc(name);
+		return userRepository.findByNameOrderByEmailAsc(name);
 	}
 	
 	// 2.2
@@ -151,9 +151,20 @@ public class UserController {
 	 * • putanja /by-dob
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/by-dob")
-	public List<UserEntity> getByBirthDateAsc(@RequestParam LocalDate dob) {
-		return userRepository.findByBirthDateOrderByBirthDateAsc(dob);
+	public List<UserEntity> getByBirthDateAsc(@RequestParam String dob) {
+		return userRepository.findByBirthDateOrderByBirthDateAsc(LocalDate.parse(dob));
 	}
+	
+	// 2.3
+	/*
+	 * Omogućiti pronalaženje različitih imena korisnika po prvom slovu imena
+	 * • putanja /by-name-first-letter
+	 */
+	@RequestMapping(method = RequestMethod.GET, path = "/by-name-first-letter")
+	public List<UserEntity> getNameByFirtLetter(@RequestParam String first_letter) {
+		return userRepository.findByNameStartsWith(first_letter);
+	}
+	
 	
 	
 	
