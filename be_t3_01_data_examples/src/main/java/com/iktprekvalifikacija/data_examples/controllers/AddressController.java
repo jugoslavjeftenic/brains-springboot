@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iktprekvalifikacija.data_examples.entities.AddressEntity;
+import com.iktprekvalifikacija.data_examples.entities.UserEntity;
 import com.iktprekvalifikacija.data_examples.repositories.AddressRepository;
+import com.iktprekvalifikacija.data_examples.repositories.UserRepository;
 
 import tools.RADE;
 
@@ -23,6 +25,8 @@ public class AddressController {
 
 	@Autowired
 	private AddressRepository addressRepository;
+	@Autowired
+	private UserRepository userRepository;
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public AddressEntity saveAddres(@RequestBody AddressEntity newAddress) {
@@ -31,8 +35,7 @@ public class AddressController {
 		address.setStreet(newAddress.getStreet());
 		address.setCity(newAddress.getCity());
 		address.setCountry(newAddress.getCountry());
-		addressRepository.save(address);
-		return address;
+		return addressRepository.save(address);
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
@@ -52,8 +55,7 @@ public class AddressController {
 			address.setStreet(RADE.generisiUlicu() + " " + RADE.generisiBrojUlice());
 			address.setCity(RADE.generisiGrad());
 			address.setCountry("Srbija");
-			addressRepository.save(address);
-			addresses.add(address);
+			addresses.add(addressRepository.save(address));
 		}
 		return addresses;
 	}
@@ -89,8 +91,7 @@ public class AddressController {
 			if (updatedAddress.getCountry() != null) {
 				address.setCountry(updatedAddress.getCountry());
 			}
-			addressRepository.save(address);
-			return address;
+			return addressRepository.save(address);
 		} catch (Exception e) {
 			return null;
 		}
@@ -113,12 +114,8 @@ public class AddressController {
 	 * • putanja /by-city
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/by-city")
-	public Iterable<AddressEntity> getByCity(@RequestParam String city) {
-		try {
-			return addressRepository.findByCity(city);
-		} catch (Exception e) {
-			return null;
-		}
+	public List<AddressEntity> getByCity(@RequestParam String city) {
+		return addressRepository.findByCity(city);
 	}
 	
 	// 1.4
@@ -128,8 +125,65 @@ public class AddressController {
 	 * • putanja /by-country
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/by-country")
-	public Iterable<AddressEntity> getByCountrySortAsc(@RequestParam String country) {
+	public List<AddressEntity> getByCountrySortAsc(@RequestParam String country) {
 		return addressRepository.findByCountryOrderByCountryAsc(country);
 	}
 	
+	// 2.2
+	/*
+	 * U AddressController dodati REST endpoint-e za dodavanje i brisanje korisnika u adresama
+	 */
+	@RequestMapping(method = RequestMethod.PUT, path = "/{id}/add-users")
+	public List<UserEntity> addUsersToAddress(@PathVariable Integer id, @RequestParam List<Integer> userid) {
+		if (addressRepository.existsById(id)) {
+			AddressEntity address = addressRepository.findById(id).get();
+			List<UserEntity> users = (List<UserEntity>) userRepository.findAllById(userid);
+			for (UserEntity user : users) {
+				user.setAddress(address);
+			}
+			addressRepository.save(address);
+			return address.getUsers();
+		}
+		return null;
+	}
+	
+	// TODO nije zavrseno
+//	@RequestMapping(method = RequestMethod.PUT, path = "/{id}/remove-users/{userid}")
+//	public UserEntity removeUserFromAddress(@PathVariable Integer id, @PathVariable Integer userid) {
+//		try {
+//			UserEntity user = userRepository.findById(userid).get();
+//			if (user.getAddress().)
+//			user.setAddress(null);
+//			return userRepository.save(user);
+//		} catch (Exception e) {
+//			return null;
+//		}
+//	}
+	
+	@RequestMapping(method = RequestMethod.PUT, path = "/{id}/remove-users")
+	public List<UserEntity> removeUsersFromAddress(@PathVariable Integer id, @RequestParam List<Integer> userid) {
+		if (addressRepository.existsById(id)) {
+			AddressEntity address = addressRepository.findById(id).get();
+			List<UserEntity> users = (List<UserEntity>) userRepository.findAllById(userid);
+			for (UserEntity user : users) {
+				user.setAddress(null);
+			}
+			addressRepository.save(address);
+			return users;
+		}
+		return null;
+	}
+	
+	@RequestMapping(method = RequestMethod.PUT, path = "/{id}/remove-all-users")
+	public List<UserEntity> removeAllUsersFromAddress(@PathVariable Integer id) {
+		if (addressRepository.existsById(id)) {
+			AddressEntity address = addressRepository.findById(id).get();
+			List<UserEntity> users = address.getUsers();
+			// https://www.baeldung.com/foreach-java
+			users.forEach(user -> user.setAddress(null));
+			addressRepository.save(address);
+			return users;
+		}
+		return null;
+	}
 }

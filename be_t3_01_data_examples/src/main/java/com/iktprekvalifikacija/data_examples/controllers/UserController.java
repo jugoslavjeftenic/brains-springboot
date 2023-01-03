@@ -36,8 +36,7 @@ public class UserController {
 		UserEntity user = new UserEntity();
 		user.setName(newUser.getName());
 		user.setEmail(newUser.getEmail());
-		userRepository.save(user);
-		return user;
+		return userRepository.save(user);
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
@@ -70,8 +69,9 @@ public class UserController {
 					String.format("%3s", RADE.mrRobot(0, 999)).replace(" ", "0") + "-" +
 					String.format("%3s", RADE.mrRobot(0, 9999)).replace(" ", "0"));
 			user.setRegBrLk(String.format("%9s", RADE.mrRobot(1, 999999999)).replace(" ", "0"));
-			userRepository.save(user);
-			users.add(user);
+//			userRepository.save(user);
+//			users.add(user);
+			users.add(userRepository.save(user));
 		}
 		return users;
 	}
@@ -170,8 +170,7 @@ public class UserController {
 		AddressEntity adr = addressRepository.findById(address).get();
 		UserEntity user = userRepository.findById(id).get();
 		user.setAddress(adr);
-		userRepository.save(user);
-		return user;
+		return userRepository.save(user);
 	}
 	
 	// 2.1
@@ -179,5 +178,10 @@ public class UserController {
 	 * Dodati REST endpoint u UserController koji omogućava uklanjanje adrese iz
 	 * entiteta korisnika
 	 */
-
+	@RequestMapping(method = RequestMethod.PUT, path = "/{id}/address-remove")
+	public UserEntity removeAddresFromUser(@PathVariable Integer id) {
+		UserEntity user = userRepository.findById(id).get();
+		user.setAddress(null);
+		return userRepository.save(user);
+	}
 }
