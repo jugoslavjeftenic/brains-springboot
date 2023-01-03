@@ -20,6 +20,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class UserEntity {
 
+	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+	@JoinColumn(name = "address")
+	private AddressEntity address;
+
 	@Id
 	// https://stackoverflow.com/questions/2595124/how-does-the-jpa-sequencegenerator-annotation-work
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "user_generator")
@@ -48,10 +52,6 @@ public class UserEntity {
 	@Column
 	private String regBrLk;
 	
-	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-	@JoinColumn(name = "address")
-	private AddressEntity address;
-
 	public UserEntity() {
 		super();
 	}

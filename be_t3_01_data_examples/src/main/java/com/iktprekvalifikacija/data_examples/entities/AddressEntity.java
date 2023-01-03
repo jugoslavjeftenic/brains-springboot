@@ -21,9 +21,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class AddressEntity {
 
+	@JsonIgnore
+	@OneToMany(mappedBy = "address", fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
+	private List<UserEntity> users = new ArrayList<UserEntity>();
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "address_generator")
-	@SequenceGenerator(name="address_generator", sequenceName = "address_sequence", allocationSize=50)
+	@SequenceGenerator(name="address_generator", sequenceName = "address_sequence", allocationSize=1)
 	private Integer id;
 	@Column(nullable = false)
 	private String street;
@@ -34,9 +38,9 @@ public class AddressEntity {
 	@Version
 	private Integer version;
 	
-	@JsonIgnore
-	@OneToMany(mappedBy = "address", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-	private List<UserEntity> users = new ArrayList<UserEntity>();
+	public AddressEntity() {
+		super();
+	}
 	
 	public AddressEntity(Integer id, String street, String city, String country, Integer version,
 			List<UserEntity> users) {
@@ -49,10 +53,6 @@ public class AddressEntity {
 		this.users = users;
 	}
 
-	public AddressEntity() {
-		super();
-	}
-	
 	public Integer getId() {
 		return id;
 	}

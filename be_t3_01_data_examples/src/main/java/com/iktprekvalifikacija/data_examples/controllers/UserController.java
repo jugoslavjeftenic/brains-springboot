@@ -50,7 +50,7 @@ public class UserController {
 	 * Popuniti bazu podataka sa podacima o deset osoba
 	 */
 	@RequestMapping(method = RequestMethod.POST, path = "populatetable/{count}")
-	public List<UserEntity> populateTable(@PathVariable Integer count) {
+	public Iterable<UserEntity> populateTable(@PathVariable Integer count) {
 		List<UserEntity> users = new ArrayList<>();
 		for (int x = 0; x < count; x++) {
 			UserEntity user = new UserEntity();
@@ -130,7 +130,7 @@ public class UserController {
 	// https://www.baeldung.com/spring-data-derived-queries
 	// https://www.baeldung.com/spring-data-jpa-query
 	@RequestMapping(method = RequestMethod.GET, path = "/by-email")
-	public List<UserEntity> getByEmail(@RequestParam String email) {
+	public Iterable<UserEntity> getByEmail(@RequestParam String email) {
 		return userRepository.findByEmail(email);
 	}
 	
@@ -141,7 +141,7 @@ public class UserController {
 	 * • putanja /by-name
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/by-name")
-	public List<UserEntity> getByNameSortByEmail(@RequestParam String name) {
+	public Iterable<UserEntity> getByNameSortByEmail(@RequestParam String name) {
 		return userRepository.findByNameOrderByEmailAsc(name);
 	}
 	
@@ -151,7 +151,7 @@ public class UserController {
 	 * • putanja /by-dob
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/by-dob")
-	public List<UserEntity> getByBirthDateAsc(@RequestParam String dob) {
+	public Iterable<UserEntity> getByBirthDateAsc(@RequestParam String dob) {
 		return userRepository.findByBirthDateOrderByBirthDateAsc(LocalDate.parse(dob));
 	}
 	
@@ -161,31 +161,23 @@ public class UserController {
 	 * • putanja /by-name-first-letter
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/by-name-first-letter")
-	public List<UserEntity> getNameByFirtLetter(@RequestParam String first_letter) {
+	public Iterable<UserEntity> getNameByFirtLetter(@RequestParam String first_letter) {
 		return userRepository.findByNameStartsWith(first_letter);
 	}
 	
-	
-	
-	
-	
-	
-	@RequestMapping(method = RequestMethod.PUT, path = "/{userId}/address/{addressId}")
-	public UserEntity addAddressToUser(@PathVariable Integer userId, @PathVariable Integer addressId) {
-		UserEntity user;
-		try {
-			user = userRepository.findById(userId).get();
-		} catch (NoSuchElementException e) {
-			user = null;
-		}
-		AddressEntity address;
-		try {
-			address = addressRepository.findById(addressId).get();
-		} catch (NoSuchElementException e) {
-			address = null;
-		}
-		user.setAddress(address);
+	@RequestMapping(method = RequestMethod.PUT, path = "/{id}/address")
+	public UserEntity addAddresToUser(@PathVariable Integer id, @RequestParam Integer address) {
+		AddressEntity adr = addressRepository.findById(address).get();
+		UserEntity user = userRepository.findById(id).get();
+		user.setAddress(adr);
 		userRepository.save(user);
 		return user;
 	}
+	
+	// 2.1
+	/*
+	 * Dodati REST endpoint u UserController koji omogućava uklanjanje adrese iz
+	 * entiteta korisnika
+	 */
+
 }
