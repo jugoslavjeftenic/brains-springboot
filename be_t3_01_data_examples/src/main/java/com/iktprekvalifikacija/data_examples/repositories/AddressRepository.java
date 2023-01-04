@@ -9,4 +9,5 @@ import com.iktprekvalifikacija.data_examples.entities.AddressEntity;
 public interface AddressRepository extends CrudRepository<AddressEntity, Integer> {
 	List<AddressEntity> findByCity(String city);
 	List<AddressEntity> findByCountryOrderByCountryAsc(String country);
+	List<AddressEntity> findByStreetAndCityAndCountry(String street, String city, String country);
 }

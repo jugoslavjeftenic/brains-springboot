@@ -31,8 +31,7 @@ public class UserController {
 	private AddressRepository addressRepository;
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public UserEntity saveUser(@RequestBody UserEntity newUser) {
-		
+	public UserEntity addUser(@RequestBody UserEntity newUser) {
 		UserEntity user = new UserEntity();
 		user.setName(newUser.getName());
 		user.setEmail(newUser.getEmail());
@@ -57,7 +56,7 @@ public class UserController {
 			user.setName(name);
 			user.setEmail(name.substring(0, name.indexOf(' ')).toLowerCase() + "."
 					+ name.substring(name.indexOf(' ') + 1, name.indexOf(' ') + 2).toLowerCase()
-					+ "@iktprekvalifikacija.rs");
+					+ "@ikt.rs");
 			user.setJmbg(RADE.generisiJMBG());
 			user.setBirthDate(LocalDate.parse(
 					((Integer.parseInt(user.getJmbg().substring(4, 7)) > 900) ? "1" : "2") +
@@ -141,7 +140,7 @@ public class UserController {
 	 * • putanja /by-name
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/by-name")
-	public Iterable<UserEntity> getByNameSortByEmail(@RequestParam String name) {
+	public Iterable<UserEntity> getByNameSortByEmailAsc(@RequestParam String name) {
 		return userRepository.findByNameOrderByEmailAsc(name);
 	}
 	
@@ -161,12 +160,12 @@ public class UserController {
 	 * • putanja /by-name-first-letter
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/by-name-first-letter")
-	public Iterable<UserEntity> getNameByFirtLetter(@RequestParam String first_letter) {
+	public Iterable<UserEntity> getNameByFirstLetter(@RequestParam String first_letter) {
 		return userRepository.findByNameStartsWith(first_letter);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, path = "/{id}/address")
-	public UserEntity addAddresToUser(@PathVariable Integer id, @RequestParam Integer address) {
+	public UserEntity addAddressToUser(@PathVariable Integer id, @RequestParam Integer address) {
 		AddressEntity adr = addressRepository.findById(address).get();
 		UserEntity user = userRepository.findById(id).get();
 		user.setAddress(adr);
@@ -179,9 +178,55 @@ public class UserController {
 	 * entiteta korisnika
 	 */
 	@RequestMapping(method = RequestMethod.PUT, path = "/{id}/address-remove")
-	public UserEntity removeAddresFromUser(@PathVariable Integer id) {
+	public UserEntity removeAddressFromUser(@PathVariable Integer id) {
 		UserEntity user = userRepository.findById(id).get();
 		user.setAddress(null);
+		return userRepository.save(user);
+	}
+	
+	// 2.3
+	/*
+	 * Dodati REST endpoint u UserController koji omogućava prosleđivanje parametara za
+	 * kreiranje korisnika i adrese
+	 * • kreira korisnika
+	 * • proverava postojanje adrese
+	 * • ukoliko adresa postoji u bazi podataka dodaje je korisniku
+	 * • ukoliko adresa ne postoji, kreira adresu i dodaje je korisniku
+	 */
+	@RequestMapping(method = RequestMethod.POST, path = "add-user-and-address")
+	// https://www.baeldung.com/spring-request-param
+	public UserEntity addUserAndAddress(@RequestParam(required = false) String name,
+			@RequestParam(required = false) String email, @RequestParam(required = false) String phone,
+			@RequestParam(required = false) String jmbg, @RequestParam(required = false) String brlk,
+			@RequestParam String street, @RequestParam String city, @RequestParam String country) {
+		UserEntity user = new UserEntity();
+		user.setName(name);
+		user.setEmail(email);
+		user.setPhoneNumber(phone);
+		user.setJmbg(jmbg);
+		try {
+			user.setBirthDate(LocalDate.parse(
+					((Integer.parseInt(user.getJmbg().substring(4, 7)) > 900) ? "1" : "2") +
+							user.getJmbg().substring(4, 7) +
+							user.getJmbg().substring(2, 4) +
+							user.getJmbg().substring(0, 2),
+					DateTimeFormatter.BASIC_ISO_DATE));
+		} catch (Exception e) {
+			user.setBirthDate(null);
+		}
+		user.setRegBrLk(brlk);
+		AddressEntity address = new AddressEntity();
+		address.setStreet(street);
+		address.setCity(city);
+		address.setCountry(country);
+		List<AddressEntity> returnedAddresses = addressRepository.findByStreetAndCityAndCountry(street, city, country);
+		if (returnedAddresses.size() > 0) {
+			user.setAddress(returnedAddresses.get(0));
+		}
+		else {
+			addressRepository.save(address);
+			user.setAddress(addressRepository.findByStreetAndCityAndCountry(street, city, country).get(0));
+		}
 		return userRepository.save(user);
 	}
 }
