@@ -29,8 +29,7 @@ public class AddressController {
 	private UserRepository userRepository;
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public AddressEntity saveAddres(@RequestBody AddressEntity newAddress) {
-		
+	public AddressEntity addAddress(@RequestBody AddressEntity newAddress) {
 		AddressEntity address = new AddressEntity();
 		address.setStreet(newAddress.getStreet());
 		address.setCity(newAddress.getCity());
@@ -98,7 +97,7 @@ public class AddressController {
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
-	public AddressEntity deleteAddres(@PathVariable Integer id) {
+	public AddressEntity deleteAddress(@PathVariable Integer id) {
 		try {
 			AddressEntity address = addressRepository.findById(id).get();
 			addressRepository.delete(address);
