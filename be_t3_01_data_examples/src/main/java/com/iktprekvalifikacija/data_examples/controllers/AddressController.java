@@ -135,55 +135,58 @@ public class AddressController {
 	 */
 	@RequestMapping(method = RequestMethod.PUT, path = "/{id}/add-users")
 	public List<UserEntity> addUsersToAddress(@PathVariable Integer id, @RequestParam List<Integer> userid) {
-		if (addressRepository.existsById(id)) {
+		try {
 			AddressEntity address = addressRepository.findById(id).get();
 			List<UserEntity> users = (List<UserEntity>) userRepository.findAllById(userid);
-			for (UserEntity user : users) {
-				user.setAddress(address);
-			}
+//			for (UserEntity user : users) {
+//				user.setAddress(address);
+//			}
+			// https://www.baeldung.com/foreach-java
+			users.forEach(user -> user.setAddress(address));
 			addressRepository.save(address);
 			return address.getUsers();
+		} catch (Exception e) {
+			return null;
 		}
-		return null;
 	}
 	
-	// TODO nije zavrseno
-//	@RequestMapping(method = RequestMethod.PUT, path = "/{id}/remove-users/{userid}")
-//	public UserEntity removeUserFromAddress(@PathVariable Integer id, @PathVariable Integer userid) {
-//		try {
-//			UserEntity user = userRepository.findById(userid).get();
-//			if (user.getAddress().)
-//			user.setAddress(null);
-//			return userRepository.save(user);
-//		} catch (Exception e) {
-//			return null;
-//		}
-//	}
+	@RequestMapping(method = RequestMethod.PUT, path = "/{id}/remove-user/{userid}")
+	public UserEntity removeUserFromAddress(@PathVariable Integer id, @PathVariable Integer userid) {
+		try {
+			UserEntity user = userRepository.findById(userid).get();
+			if (user.getAddress().equals(addressRepository.findById(id).get())) {
+				user.setAddress(null);
+				return userRepository.save(user);
+			}
+			return null;
+		} catch (Exception e) {
+			return null;
+		}
+	}
 	
 	@RequestMapping(method = RequestMethod.PUT, path = "/{id}/remove-users")
 	public List<UserEntity> removeUsersFromAddress(@PathVariable Integer id, @RequestParam List<Integer> userid) {
-		if (addressRepository.existsById(id)) {
+		try {
 			AddressEntity address = addressRepository.findById(id).get();
 			List<UserEntity> users = (List<UserEntity>) userRepository.findAllById(userid);
-			for (UserEntity user : users) {
-				user.setAddress(null);
-			}
+			users.forEach(user -> user.setAddress(null));
 			addressRepository.save(address);
 			return users;
+		} catch (Exception e) {
+			return null;
 		}
-		return null;
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, path = "/{id}/remove-all-users")
 	public List<UserEntity> removeAllUsersFromAddress(@PathVariable Integer id) {
-		if (addressRepository.existsById(id)) {
+		try {
 			AddressEntity address = addressRepository.findById(id).get();
 			List<UserEntity> users = address.getUsers();
-			// https://www.baeldung.com/foreach-java
 			users.forEach(user -> user.setAddress(null));
 			addressRepository.save(address);
 			return users;
+		} catch (Exception e) {
+			return null;
 		}
-		return null;
 	}
 }
