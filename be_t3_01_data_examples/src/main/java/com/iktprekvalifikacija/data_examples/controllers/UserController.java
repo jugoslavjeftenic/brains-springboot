@@ -217,16 +217,16 @@ public class UserController {
 		user.setRegBrLk(brlk);
 		AddressEntity address = new AddressEntity();
 		address.setStreet(street);
-		address.setCity(city);
-		address.setCountry(country);
-		List<AddressEntity> returnedAddresses = addressRepository.findByStreetAndCityAndCountry(street, city, country);
-		if (returnedAddresses.size() > 0) {
-			user.setAddress(returnedAddresses.get(0));
-		}
-		else {
-			addressRepository.save(address);
-			user.setAddress(addressRepository.findByStreetAndCityAndCountry(street, city, country).get(0));
-		}
+//		address.setCity(city);
+//		address.setCountry(country);
+//		List<AddressEntity> returnedAddresses = addressRepository.findByStreetAndCityAndCountry(street, city, country);
+//		if (returnedAddresses.size() > 0) {
+//			user.setAddress(returnedAddresses.get(0));
+//		}
+//		else {
+//			addressRepository.save(address);
+//			user.setAddress(addressRepository.findByStreetAndCityAndCountry(street, city, country).get(0));
+//		}
 		return userRepository.save(user);
 	}
 }

@@ -33,7 +33,7 @@ public class AddressController {
 		AddressEntity address = new AddressEntity();
 		address.setStreet(newAddress.getStreet());
 		address.setCity(newAddress.getCity());
-		address.setCountry(newAddress.getCountry());
+//		address.setCountry(newAddress.getCountry());
 		return addressRepository.save(address);
 	}
 	
@@ -52,8 +52,8 @@ public class AddressController {
 		for (int x = 0; x < count; x++) {
 			AddressEntity address = new AddressEntity();
 			address.setStreet(RADE.generisiUlicu() + " " + RADE.generisiBrojUlice());
-			address.setCity(RADE.generisiGrad());
-			address.setCountry("Srbija");
+//			address.setCity(RADE.generisiGrad());
+//			address.setCountry("Srbija");
 			addresses.add(addressRepository.save(address));
 		}
 		return addresses;
@@ -87,9 +87,9 @@ public class AddressController {
 			if (updatedAddress.getCity() != null) {
 				address.setCity(updatedAddress.getCity());
 			}
-			if (updatedAddress.getCountry() != null) {
-				address.setCountry(updatedAddress.getCountry());
-			}
+//			if (updatedAddress.getCountry() != null) {
+//				address.setCountry(updatedAddress.getCountry());
+//			}
 			return addressRepository.save(address);
 		} catch (Exception e) {
 			return null;
@@ -123,10 +123,10 @@ public class AddressController {
 	 * • vraćanje adresa sortiranih po rastućoj vrednosti države
 	 * • putanja /by-country
 	 */
-	@RequestMapping(method = RequestMethod.GET, path = "/by-country")
-	public List<AddressEntity> getByCountrySortAsc(@RequestParam String country) {
-		return addressRepository.findByCountryOrderByCountryAsc(country);
-	}
+//	@RequestMapping(method = RequestMethod.GET, path = "/by-country")
+//	public List<AddressEntity> getByCountrySortAsc(@RequestParam String country) {
+//		return addressRepository.findByCountryOrderByCountryAsc(country);
+//	}
 	
 	// 2.2
 	/*

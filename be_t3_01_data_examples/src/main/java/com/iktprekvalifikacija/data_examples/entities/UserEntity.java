@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Version;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -51,13 +52,15 @@ public class UserEntity {
 	private String jmbg;
 	@Column
 	private String regBrLk;
+	@Version
+	private Integer version;
 	
 	public UserEntity() {
 		super();
 	}
 
 	public UserEntity(Integer id, String name, String email, LocalDate birthDate, String phoneNumber, String jmbg,
-			String regBrLk, AddressEntity address) {
+			String regBrLk, AddressEntity address, Integer version) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -67,8 +70,17 @@ public class UserEntity {
 		this.jmbg = jmbg;
 		this.regBrLk = regBrLk;
 		this.address = address;
+		this.version = version;
 	}
 
+	public AddressEntity getAddress() {
+		return address;
+	}
+
+	public void setAddress(AddressEntity address) {
+		this.address = address;
+	}
+	
 	public Integer getId() {
 		return id;
 	}
@@ -125,11 +137,11 @@ public class UserEntity {
 		this.regBrLk = regBrLk;
 	}
 
-	public AddressEntity getAddress() {
-		return address;
+	public Integer getVersion() {
+		return version;
 	}
-
-	public void setAddress(AddressEntity address) {
-		this.address = address;
+	
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 }
