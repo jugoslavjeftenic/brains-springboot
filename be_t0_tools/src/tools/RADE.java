@@ -12,6 +12,24 @@ public class RADE {
 	 * R.A.D.E (Random Allocation Data Enhancer)
 	 * by Jugoslav Jeftenic
 	 */
+	public static Zemlja generisiZemlju() {
+		String[][] zemlje = {
+				{"70", "BA", "BIH", "Bosna i Hercegovina", "Evropa"},
+				{"191", "HR", "HRV", "Hrvatska", "Evropa"},
+				{"499", "ME", "MNE", "Crna Gora", "Evropa"},
+				{"688", "RS", "SRB", "Srbija", "Evropa"},
+				{"705", "SI", "SVN", "Slovenija", "Evropa"},
+				{"807", "MK", "MKD", "Republika Makedonija", "Evropa"}
+		};
+		Zemlja zemlja = new Zemlja();
+		int i = mrRobot(0, zemlje.length);
+		zemlja.setSifra(Integer.parseInt(zemlje[i][0]));
+		zemlja.setAlfa(zemlje[i][1]);
+		zemlja.setOznaka(zemlje[i][2]);
+		zemlja.setNaziv(zemlje[i][3]);
+		zemlja.setKontinent(zemlje[i][4]);
+		return zemlja;
+	}
 	
 	public static LocalDate generisiDatumRodjenja() {
 		return generisiDatumRodjenja(10, 100);
