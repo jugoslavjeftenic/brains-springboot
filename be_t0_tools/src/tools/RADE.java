@@ -5,24 +5,30 @@ import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
+import java.util.ArrayList;
+import java.util.List;
 
-public class RADE {
+public class RADE extends DataHolder {
 
 	/*
 	 * R.A.D.E (Random Allocation Data Enhancer)
 	 * by Jugoslav Jeftenic
 	 */
+	
+	public static List<Zemlja> listajSveZemlje() {
+		List<Zemlja> listaZemalja = new ArrayList<>();
+		for (int i = 0; i < zemlje.length; i++) {
+			listaZemalja.add(generisiZemlju(i));
+		}
+		return listaZemalja;
+	}
+	
 	public static Zemlja generisiZemlju() {
-		String[][] zemlje = {
-				{"70", "BA", "BIH", "Bosna i Hercegovina", "Evropa"},
-				{"191", "HR", "HRV", "Hrvatska", "Evropa"},
-				{"499", "ME", "MNE", "Crna Gora", "Evropa"},
-				{"688", "RS", "SRB", "Srbija", "Evropa"},
-				{"705", "SI", "SVN", "Slovenija", "Evropa"},
-				{"807", "MK", "MKD", "Republika Makedonija", "Evropa"}
-		};
+		return generisiZemlju(mrRobot(0, zemlje.length));
+	}
+
+	private static Zemlja generisiZemlju(int i) {
 		Zemlja zemlja = new Zemlja();
-		int i = mrRobot(0, zemlje.length);
 		zemlja.setSifra(Integer.parseInt(zemlje[i][0]));
 		zemlja.setAlfa(zemlje[i][1]);
 		zemlja.setOznaka(zemlje[i][2]);
@@ -32,7 +38,7 @@ public class RADE {
 	}
 	
 	public static LocalDate generisiDatumRodjenja() {
-		return generisiDatumRodjenja(10, 100);
+		return generisiDatumRodjenja("");
 	}
 
 	public static LocalDate generisiDatumRodjenja(String kategorija) {
