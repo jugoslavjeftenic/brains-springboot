@@ -74,7 +74,7 @@ public class CountryController {
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
-	public CountryEntity deleteAddress(@PathVariable Integer id) {
+	public CountryEntity deleteCountry(@PathVariable Integer id) {
 		try {
 			CountryEntity country = countryRepository.findById(id).get();
 			countryRepository.delete(country);
