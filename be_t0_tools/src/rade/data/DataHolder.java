@@ -11,7 +11,9 @@ public class DataHolder {
 			{"533", "AW", "ABW", "Aruba", "South America"},
 			{"688", "RS", "SRB", "Srbija", "Evropa"},
 			{"705", "SI", "SVN", "Slovenija", "Evropa"},
-			{"807", "MK", "MKD", "Republika Makedonija", "Evropa"}
+			{"807", "MK", "MKD", "Republika Makedonija", "Evropa"},
+			{"", "", "", "Uraatnia", ""},
+			{"", "", "", "Azdrad", ""}
 	};
 	
 	// https://poslovne.com/postanski-broj-2/?fbclid=IwAR0ui9u0VRkUon9XVyrXlsrTAju8StMVtX6QM9Lo1I3RNmQdfoxpduiS6O8
@@ -40,6 +42,9 @@ public class DataHolder {
 			{"", "Zagreb", "", "191"},	
 			{"", "Podgorica", "", "499"},	
 			{"", "Ljubljana", "", "705"},	
-			{"", "Skopje", "", "807"}	
+			{"", "Skopje", "", "807"},	
+			{"", "Oranjestad", "", "533"},	
+			{"", "Uraatos", "", ""},	
+			{"", "Nassau", "", ""}	
 	};
 }
