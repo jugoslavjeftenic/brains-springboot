@@ -17,7 +17,7 @@ import com.iktprekvalifikacija.project.entities.OfferEntity;
 import com.iktprekvalifikacija.project.repositories.CategoryRepository;
 import com.iktprekvalifikacija.project.repositories.OfferRepository;
 
-import tools.RADE;
+import rade.RADE;
 
 @RestController
 @RequestMapping(value = "/api/v1/project/offers")

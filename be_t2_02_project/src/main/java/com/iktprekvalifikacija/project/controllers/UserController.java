@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.iktprekvalifikacija.project.entities.EUserRole;
 import com.iktprekvalifikacija.project.entities.UserEntity;
 
-import tools.RADE;
+import rade.RADE;
 
 @RestController
 @RequestMapping(value = "/project/users")

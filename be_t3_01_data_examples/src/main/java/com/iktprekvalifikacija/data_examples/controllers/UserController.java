@@ -19,7 +19,7 @@ import com.iktprekvalifikacija.data_examples.entities.UserEntity;
 import com.iktprekvalifikacija.data_examples.repositories.AddressRepository;
 import com.iktprekvalifikacija.data_examples.repositories.UserRepository;
 
-import tools.RADE;
+import rade.RADE;
 
 @RestController
 @RequestMapping(path = "/api/v1/users")

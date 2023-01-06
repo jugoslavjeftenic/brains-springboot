@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.iktprekvalifikacija.project.entities.EOfferEntity;
 import com.iktprekvalifikacija.project.entities.OfferEntity;
 
-import tools.RADE;
+import rade.RADE;
 
 @RestController
 @RequestMapping(value = "/project/offers")

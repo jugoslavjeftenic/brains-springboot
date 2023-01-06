@@ -1,6 +1,6 @@
-package tools;
+package rade.entities;
 
-public class Zemlja {
+public class DrzavaEntity {
 
 	private Integer sifra;
 	private String alfa;
@@ -8,11 +8,11 @@ public class Zemlja {
 	private String naziv;
 	private String kontinent;
 	
-	public Zemlja() {
+	public DrzavaEntity() {
 		super();
 	}
 
-	public Zemlja(Integer sifra, String alfa, String oznaka, String naziv, String kontinent) {
+	public DrzavaEntity(Integer sifra, String alfa, String oznaka, String naziv, String kontinent) {
 		super();
 		this.sifra = sifra;
 		this.alfa = alfa;

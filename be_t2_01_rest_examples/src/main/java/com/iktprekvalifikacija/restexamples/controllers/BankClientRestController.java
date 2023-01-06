@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.iktprekvalifikacija.restexamples.entities.BankClientEntity;
 import com.iktprekvalifikacija.restexamples.entities.BankClientsEntityNames;
 
-import tools.*;
+import rade.*;
 
 @RestController
 @RequestMapping("/bankclients")

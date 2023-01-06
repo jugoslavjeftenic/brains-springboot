@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.iktprekvalifikacija.data_examples.entities.CountryEntity;
 import com.iktprekvalifikacija.data_examples.repositories.CountryRepository;
 
-import tools.RADE;
+import rade.RADE;
 
 @RestController
 @RequestMapping(path = "/api/v1/countries")
@@ -40,10 +40,10 @@ public class CountryController {
 	@RequestMapping(method = RequestMethod.POST, path = "/populatetable")
 	public Iterable<CountryEntity> populateTable() {
 		List<CountryEntity> countries = new ArrayList<>();
-		for (int i = 0; i < RADE.listajSveZemlje().size(); i++) {
-			if (countryRepository.findByCountry(RADE.listajSveZemlje().get(i).getNaziv()).size() < 1) {
+		for (int i = 0; i < RADE.listajSveDrzave().size(); i++) {
+			if (countryRepository.findByCountry(RADE.listajSveDrzave().get(i).getNaziv()).size() < 1) {
 				CountryEntity country = new CountryEntity();
-				country.setCountry(RADE.listajSveZemlje().get(i).getNaziv());
+				country.setCountry(RADE.listajSveDrzave().get(i).getNaziv());
 				countries.add(country);
 			}
 		}
