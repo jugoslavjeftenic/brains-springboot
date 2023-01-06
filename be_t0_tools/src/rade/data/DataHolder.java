@@ -12,8 +12,8 @@ public class DataHolder {
 			{"688", "RS", "SRB", "Srbija", "Evropa"},
 			{"705", "SI", "SVN", "Slovenija", "Evropa"},
 			{"807", "MK", "MKD", "Republika Makedonija", "Evropa"},
-			{"", "", "", "Uraatnia", ""},
-			{"", "", "", "Azdrad", ""}
+			{"1000", "", "", "Uraatnia", ""},
+			{"1001", "", "", "Azdrad", ""}
 	};
 	
 	// https://poslovne.com/postanski-broj-2/?fbclid=IwAR0ui9u0VRkUon9XVyrXlsrTAju8StMVtX6QM9Lo1I3RNmQdfoxpduiS6O8

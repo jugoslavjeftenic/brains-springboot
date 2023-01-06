@@ -33,11 +33,19 @@ public class RADE extends DataHolder {
 
 	public static OpstinaEntity generisiOpstinu(int i) {
 		OpstinaEntity opstina = new OpstinaEntity();
-		opstina.setSifra(Integer.parseInt(opstine[i][0]));
+		try {
+			opstina.setSifra(Integer.parseInt(opstine[i][0]));
+		} catch (Exception e) {
+			opstina.setSifra(null);
+		}
 		opstina.setNaziv(opstine[i][1]);
 		opstina.setPosta(opstine[i][2]);
-		opstina.setDrzava(Integer.parseInt(opstine[i][3]));
-		return null;
+		try {
+			opstina.setDrzava(Integer.parseInt(opstine[i][3]));
+		} catch (Exception e) {
+			opstina.setDrzava(null);
+		}
+		return opstina;
 	}
 	
 	public static List<DrzavaEntity> listajSveDrzave() {
@@ -54,7 +62,11 @@ public class RADE extends DataHolder {
 
 	public static DrzavaEntity generisiDrzavu(int i) {
 		DrzavaEntity drzava = new DrzavaEntity();
-		drzava.setSifra(Integer.parseInt(drzave[i][0]));
+		try {
+			drzava.setSifra(Integer.parseInt(drzave[i][0]));
+		} catch (Exception e) {
+			drzava.setSifra(null);
+		}
 		drzava.setAlfa(drzave[i][1]);
 		drzava.setOznaka(drzave[i][2]);
 		drzava.setNaziv(drzave[i][3]);
