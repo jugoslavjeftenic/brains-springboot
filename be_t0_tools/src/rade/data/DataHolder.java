@@ -27,7 +27,6 @@ public class DataHolder {
 			{"80284", "Novi Sad", "", "688"},	
 			{"71323", "Niš - Palilula", "", "688"},	
 			{"71307", "Niš - Pantele", "", "688"},	
-			{"90263", "Priština", "", "688"},	
 			{"70645", "Kragujevac", "", "688"},	
 			{"80438", "Subotica", "", "688"},	
 			{"70726", "Leskovac", "", "688"},	

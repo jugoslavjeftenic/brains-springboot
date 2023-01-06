@@ -21,7 +21,7 @@ public class RADE extends DataHolder {
 	
 	public static List<OpstinaEntity> listajSveOpstine() {
 		List<OpstinaEntity> listaOpstina = new ArrayList<>();
-		for (int i = 0; i < drzave.length; i++) {
+		for (int i = 0; i < opstine.length; i++) {
 			listaOpstina.add(generisiOpstinu(i));
 		}
 		return listaOpstina;
