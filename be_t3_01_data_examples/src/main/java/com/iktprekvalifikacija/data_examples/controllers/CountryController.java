@@ -43,6 +43,7 @@ public class CountryController {
 		for (int i = 0; i < RADE.listajSveDrzave().size(); i++) {
 			if (countryRepository.findByCountry(RADE.listajSveDrzave().get(i).getNaziv()).size() < 1) {
 				CountryEntity country = new CountryEntity();
+				country.setId(RADE.listajSveDrzave().get(i).getSifra());
 				country.setCountry(RADE.listajSveDrzave().get(i).getNaziv());
 				countries.add(country);
 			}
@@ -52,8 +53,9 @@ public class CountryController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public CountryEntity addCountry(@RequestParam String country) {
+	public CountryEntity addCountry(@RequestParam Integer id, @RequestParam String country) {
 		CountryEntity newCountry = new CountryEntity();
+		newCountry.setId(id);
 		newCountry.setCountry(country);
 		return countryRepository.save(newCountry);
 	}
