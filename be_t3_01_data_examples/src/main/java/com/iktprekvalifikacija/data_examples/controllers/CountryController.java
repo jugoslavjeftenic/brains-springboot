@@ -61,7 +61,7 @@ public class CountryController {
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, path = "/{id}")
-	public CountryEntity updateCountry(@PathVariable Integer id, @RequestParam String country) {
+	public CountryEntity updateCountry(@PathVariable Integer id, @RequestParam(required = false) String country) {
 		try {
 			CountryEntity updatedCountry = countryRepository.findById(id).get();
 			if (country != null) {

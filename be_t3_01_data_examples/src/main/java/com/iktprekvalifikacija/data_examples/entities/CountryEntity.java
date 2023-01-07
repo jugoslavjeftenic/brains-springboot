@@ -18,34 +18,25 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class CountryEntity {
 
-	@JsonIgnore
-	@OneToMany(mappedBy = "country", fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
-	private List<CityEntity> cities = new ArrayList<CityEntity>();
-
 	@Id
 	private Integer id;
 	@Column(nullable = false)
 	private String country;
 	@Version
 	private Integer version;
+	@JsonIgnore
+	@OneToMany(mappedBy = "country", fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
+	private List<CityEntity> cities = new ArrayList<CityEntity>();
 	
 	public CountryEntity() {
 		super();
 	}
 
-	public CountryEntity(List<CityEntity> cities, Integer id, String country, Integer version) {
+	public CountryEntity(Integer id, String country, Integer version, List<CityEntity> cities) {
 		super();
-		this.cities = cities;
 		this.id = id;
 		this.country = country;
 		this.version = version;
-	}
-
-	public List<CityEntity> getCities() {
-		return cities;
-	}
-
-	public void setCities(List<CityEntity> cities) {
 		this.cities = cities;
 	}
 
@@ -71,5 +62,13 @@ public class CountryEntity {
 
 	public void setVersion(Integer version) {
 		this.version = version;
+	}
+
+	public List<CityEntity> getCities() {
+		return cities;
+	}
+
+	public void setCities(List<CityEntity> cities) {
+		this.cities = cities;
 	}
 }

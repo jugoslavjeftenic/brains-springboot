@@ -23,14 +23,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class CityEntity {
 	
-	@JsonIgnore
-	@OneToMany(mappedBy = "city", fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
-	private List<AddressEntity> addresses = new ArrayList<AddressEntity>();
-
-	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-	@JoinColumn(name = "country")
-	private CountryEntity country;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "city_generator")
 	@SequenceGenerator(name="city_generator", sequenceName = "city_sequence", allocationSize=1)
@@ -39,34 +31,25 @@ public class CityEntity {
 	private String city;
 	@Version
 	private Integer version;
+	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+	@JoinColumn(name = "country")
+	private CountryEntity country;
+	@JsonIgnore
+	@OneToMany(mappedBy = "city", fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
+	private List<AddressEntity> addresses = new ArrayList<AddressEntity>();
 
 	public CityEntity() {
 		super();
 	}
 
-	public CityEntity(List<AddressEntity> addresses, CountryEntity country, Integer id, String city, Integer version) {
+	public CityEntity(Integer id, String city, Integer version, CountryEntity country,
+			List<AddressEntity> addresses) {
 		super();
-		this.addresses = addresses;
-		this.country = country;
 		this.id = id;
 		this.city = city;
 		this.version = version;
-	}
-
-	public List<AddressEntity> getAddresses() {
-		return addresses;
-	}
-
-	public void setAddresses(List<AddressEntity> addresses) {
-		this.addresses = addresses;
-	}
-
-	public CountryEntity getCountry() {
-		return country;
-	}
-
-	public void setCountry(CountryEntity country) {
 		this.country = country;
+		this.addresses = addresses;
 	}
 
 	public Integer getId() {
@@ -91,5 +74,21 @@ public class CityEntity {
 
 	public void setVersion(Integer version) {
 		this.version = version;
+	}
+
+	public CountryEntity getCountry() {
+		return country;
+	}
+
+	public void setCountry(CountryEntity country) {
+		this.country = country;
+	}
+
+	public List<AddressEntity> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(List<AddressEntity> addresses) {
+		this.addresses = addresses;
 	}
 }

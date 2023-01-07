@@ -70,8 +70,8 @@ public class CityController {
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, path = "/{id}")
-	public CityEntity updateCountry(@PathVariable Integer id, @RequestParam String city,
-			@RequestParam(required = false) Integer country) {
+	public CityEntity updateCountry(@PathVariable Integer id,
+			@RequestParam(required = false) String city, @RequestParam(required = false) Integer country) {
 		try {
 			CityEntity updatedCity = cityRepository.findById(id).get();
 			updatedCity.setCity(city);

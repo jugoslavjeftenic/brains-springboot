@@ -6,7 +6,6 @@ import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,9 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.iktprekvalifikacija.data_examples.entities.AddressEntity;
 import com.iktprekvalifikacija.data_examples.entities.UserEntity;
 import com.iktprekvalifikacija.data_examples.repositories.AddressRepository;
+import com.iktprekvalifikacija.data_examples.repositories.CityRepository;
 import com.iktprekvalifikacija.data_examples.repositories.UserRepository;
 
 import rade.RADE;
+import rade.entities.AdresaEntity;
 
 @RestController
 @RequestMapping(path = "/api/v1/addresses")
@@ -26,36 +27,52 @@ public class AddressController {
 	@Autowired
 	private AddressRepository addressRepository;
 	@Autowired
+	private CityRepository cityRepository;
+	@Autowired
 	private UserRepository userRepository;
 	
-	@RequestMapping(method = RequestMethod.POST)
-	public AddressEntity addAddress(@RequestBody AddressEntity newAddress) {
-		AddressEntity address = new AddressEntity();
-		address.setStreet(newAddress.getStreet());
-		address.setCity(newAddress.getCity());
-//		address.setCountry(newAddress.getCountry());
-		return addressRepository.save(address);
-	}
+	// 3.2
+	/*
+	 * Za svaki od entiteta napraviti REST kontrolere
+	 * • koji podržavaju standardne CRUD operacije
+	 */
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public Iterable<AddressEntity> getAll() {
 		return addressRepository.findAll();
 	}
 	
+	@RequestMapping(method = RequestMethod.POST)
+	public AddressEntity addAddress(@RequestParam String street, @RequestParam(required = false) String city) {
+		AddressEntity address = new AddressEntity();
+		address.setStreet(street);
+		try {
+			address.setCity(cityRepository.findByCity(city).get(0));
+		} catch (Exception e) {
+			address.setCity(null);
+		}
+		return addressRepository.save(address);
+	}
+	
 	// 1.1
 	/*
 	 * Popuniti bazu podataka sa podacima o deset adresa
 	 */
-	@RequestMapping(method = RequestMethod.POST, path = "populatetable/{count}")
+	@RequestMapping(method = RequestMethod.POST, path = "/populatetable/{count}")
 	public Iterable<AddressEntity> populateTable(@PathVariable Integer count) {
 		List<AddressEntity> addresses = new ArrayList<>();
 		for (int x = 0; x < count; x++) {
+			AdresaEntity RADEsAddress = RADE.generisiAdresu();
 			AddressEntity address = new AddressEntity();
-			address.setStreet(RADE.generisiUlicu() + " " + RADE.generisiBrojUlice());
-//			address.setCity(RADE.generisiGrad());
-//			address.setCountry("Srbija");
-			addresses.add(addressRepository.save(address));
+			address.setStreet(RADEsAddress.getUlica());
+			try {
+				address.setCity(cityRepository.findByCity(RADEsAddress.getOpstina().getNaziv()).get(0));
+			} catch (Exception e) {
+				address.setCity(null);
+			}
+			addresses.add(address);
 		}
+		addressRepository.saveAll(addresses);
 		return addresses;
 	}
 	
@@ -78,18 +95,20 @@ public class AddressController {
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, path = "/{id}")
-	public AddressEntity updateAddress(@PathVariable Integer id, @RequestBody AddressEntity updatedAddress) {
+	public AddressEntity updateAddress(@PathVariable Integer id,
+			@RequestParam(required = false) String street, @RequestParam(required = false) String city) {
 		try {
 			AddressEntity address = addressRepository.findById(id).get();
-			if (updatedAddress.getStreet() != null) {
-				address.setStreet(updatedAddress.getStreet());
+			if (street != null) {
+				address.setStreet(street);
 			}
-			if (updatedAddress.getCity() != null) {
-				address.setCity(updatedAddress.getCity());
+			if (city != null) {
+				try {
+					address.setCity(cityRepository.findByCity(city).get(0));
+				} catch (Exception e) {
+					address.setCity(null);
+				}
 			}
-//			if (updatedAddress.getCountry() != null) {
-//				address.setCountry(updatedAddress.getCountry());
-//			}
 			return addressRepository.save(address);
 		} catch (Exception e) {
 			return null;

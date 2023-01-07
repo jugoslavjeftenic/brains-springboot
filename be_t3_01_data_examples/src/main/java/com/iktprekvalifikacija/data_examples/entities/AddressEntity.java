@@ -22,14 +22,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class AddressEntity {
-
-	@JsonIgnore
-	@OneToMany(mappedBy = "address", fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
-	private List<UserEntity> users = new ArrayList<UserEntity>();
 	
-	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-	@JoinColumn(name = "city")
-	private CityEntity city;
+	// 3.1
+	/*
+	 * Državu i grad izdvojiti kao posebne entitete i povezati sa adresom
+	 * • jedna adresa pripada tačno jednom gradu
+	 * • jedan grad može imati više adresa
+	 * • jedan grad pripada tačno jednoj državi
+	 * • jedna država može imati više gradova
+	 */
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "address_generator")
@@ -37,12 +38,18 @@ public class AddressEntity {
 	private Integer id;
 	@Column(nullable = false)
 	private String street;
+	@Version
+	private Integer version;
 //	@Column(nullable = false)
 //	private String city;
 //	@Column(nullable = false)
 //	private String country;
-	@Version
-	private Integer version;
+	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+	@JoinColumn(name = "city")
+	private CityEntity city;
+	@JsonIgnore
+	@OneToMany(mappedBy = "address", fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
+	private List<UserEntity> users = new ArrayList<UserEntity>();
 	
 	public AddressEntity() {
 		super();
@@ -50,23 +57,15 @@ public class AddressEntity {
 	
 //	public AddressEntity(Integer id, String street, String city, String country, Integer version,
 //			List<UserEntity> users) {
-	public AddressEntity(Integer id, String street, Integer version, List<UserEntity> users, CityEntity city) {
-		super();
-		this.id = id;
-		this.street = street;
-		this.version = version;
-		this.users = users;
-		this.city = city;
-//		this.country = country;
-	}
-
-	public List<UserEntity> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<UserEntity> users) {
-		this.users = users;
-	}
+	public AddressEntity(Integer id, String street, Integer version, CityEntity city, List<UserEntity> users) {
+	super();
+	this.id = id;
+	this.street = street;
+	this.version = version;
+	this.city = city;
+//	this.country = country;
+	this.users = users;
+}
 
 	public Integer getId() {
 		return id;
@@ -83,14 +82,14 @@ public class AddressEntity {
 	public void setStreet(String street) {
 		this.street = street;
 	}
+
+	public Integer getVersion() {
+		return version;
+	}
 	
-//	public String getCountry() {
-//		return country;
-//	}
-//	
-//	public void setCountry(String country) {
-//		this.country = country;
-//	}
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
 	
 	public CityEntity getCity() {
 		return city;
@@ -99,12 +98,20 @@ public class AddressEntity {
 	public void setCity(CityEntity city) {
 		this.city = city;
 	}
-
-	public Integer getVersion() {
-		return version;
-	}
 	
-	public void setVersion(Integer version) {
-		this.version = version;
+//	public String getCountry() {
+//		return country;
+//	}
+//	
+//	public void setCountry(String country) {
+//		this.country = country;
+//	}
+
+	public List<UserEntity> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<UserEntity> users) {
+		this.users = users;
 	}
 }
