@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iktprekvalifikacija.data_examples.entities.AddressEntity;
+import com.iktprekvalifikacija.data_examples.entities.CityEntity;
 import com.iktprekvalifikacija.data_examples.entities.UserEntity;
 import com.iktprekvalifikacija.data_examples.repositories.AddressRepository;
 import com.iktprekvalifikacija.data_examples.repositories.CityRepository;
+import com.iktprekvalifikacija.data_examples.repositories.CountryRepository;
 import com.iktprekvalifikacija.data_examples.repositories.UserRepository;
 
 import rade.RADE;
@@ -28,6 +30,8 @@ public class AddressController {
 	private AddressRepository addressRepository;
 	@Autowired
 	private CityRepository cityRepository;
+	@Autowired
+	private CountryRepository countryRepository;
 	@Autowired
 	private UserRepository userRepository;
 	
@@ -132,8 +136,13 @@ public class AddressController {
 	 * • putanja /by-city
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/by-city")
-	public List<AddressEntity> getByCity(@RequestParam String city) {
-		return addressRepository.findByCity(city);
+	public List<AddressEntity> getAllByCity(@RequestParam(required = false) String city) {
+		try {
+			CityEntity cityEntity = cityRepository.findByCity(city).get(0);
+			return addressRepository.findByCity(cityEntity);
+		} catch (Exception e) {
+			return null;
+		}
 	}
 	
 	// 1.4
@@ -142,10 +151,14 @@ public class AddressController {
 	 * • vraćanje adresa sortiranih po rastućoj vrednosti države
 	 * • putanja /by-country
 	 */
-//	@RequestMapping(method = RequestMethod.GET, path = "/by-country")
-//	public List<AddressEntity> getByCountrySortAsc(@RequestParam String country) {
-//		return addressRepository.findByCountryOrderByCountryAsc(country);
-//	}
+	@RequestMapping(method = RequestMethod.GET, path = "/by-country")
+	public List<AddressEntity> getAllByCountriesSortAsc(@RequestParam(required = false) List<String> country) {
+		try {
+			return addressRepository.findByCityIn(cityRepository.findByCountryIn(countryRepository.findByCountryInOrderByCountryAsc(country)));
+		} catch (Exception e) {
+			return null;
+		}
+	}
 	
 	// 2.2
 	/*

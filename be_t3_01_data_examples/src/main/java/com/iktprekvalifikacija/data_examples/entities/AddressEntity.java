@@ -40,10 +40,6 @@ public class AddressEntity {
 	private String street;
 	@Version
 	private Integer version;
-//	@Column(nullable = false)
-//	private String city;
-//	@Column(nullable = false)
-//	private String country;
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
 	@JoinColumn(name = "city")
 	private CityEntity city;
@@ -55,17 +51,14 @@ public class AddressEntity {
 		super();
 	}
 	
-//	public AddressEntity(Integer id, String street, String city, String country, Integer version,
-//			List<UserEntity> users) {
 	public AddressEntity(Integer id, String street, Integer version, CityEntity city, List<UserEntity> users) {
-	super();
-	this.id = id;
-	this.street = street;
-	this.version = version;
-	this.city = city;
-//	this.country = country;
-	this.users = users;
-}
+		super();
+		this.id = id;
+		this.street = street;
+		this.version = version;
+		this.city = city;
+		this.users = users;
+	}
 
 	public Integer getId() {
 		return id;
@@ -99,14 +92,6 @@ public class AddressEntity {
 		this.city = city;
 	}
 	
-//	public String getCountry() {
-//		return country;
-//	}
-//	
-//	public void setCountry(String country) {
-//		this.country = country;
-//	}
-
 	public List<UserEntity> getUsers() {
 		return users;
 	}

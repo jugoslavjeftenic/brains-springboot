@@ -8,4 +8,5 @@ import com.iktprekvalifikacija.data_examples.entities.CountryEntity;
 
 public interface CountryRepository extends CrudRepository<CountryEntity, Integer> {
 	List<CountryEntity> findByCountry(String country);
+	List<CountryEntity> findByCountryInOrderByCountryAsc(List<String> countries);
 }
