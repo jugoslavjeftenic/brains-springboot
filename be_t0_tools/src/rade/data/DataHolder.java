@@ -2,7 +2,8 @@ package rade.data;
 
 public class DataHolder {
 	// TODO Podatke cuvati u #mapama?
-
+	// TODO Adrese prilagoditi podacima sa linka https://data.gov.rs/sr/datasets/
+	
 	// http://www.devizni.gov.rs/PDF/PR10%20-%20Sifarnik%20zemalja%20-%20lat.pdf
 	protected static String[][] drzave = {
 			{"70", "BA", "BIH", "Bosna i Hercegovina", "Evropa"},
@@ -24,11 +25,11 @@ public class DataHolder {
 			{"70149", "Beograd - Zvezdara", "", "688"},	
 			{"70181", "Beograd - Novi Beograd", "", "688"},	
 			{"70220", "Beograd - Savski venac", "", "688"},	
-			{"80284", "Novi Sad", "", "688"},	
+			{"80284", "Novi Sad", "21000", "688"},	
 			{"71323", "Niš - Palilula", "", "688"},	
 			{"71307", "Niš - Pantele", "", "688"},	
 			{"70645", "Kragujevac", "", "688"},	
-			{"80438", "Subotica", "", "688"},	
+			{"80438", "Subotica", "24000", "688"},	
 			{"70726", "Leskovac", "", "688"},	
 			{"70670", "Kruševac", "", "688"},	
 			{"70653", "Kraljevo", "", "688"},	
@@ -46,4 +47,39 @@ public class DataHolder {
 			{"", "Uraatos", "", ""},	
 			{"", "Nassau", "", ""}	
 	};
+
+	// https://data.gov.rs/sr/datasets/adresni-registar-shifarnik/
+	// https://forum.openstreetmap.org/viewtopic.php?id=73217
+	protected static String[] ulice = {
+			"Programerska",
+			"Eklipse",
+			"Učenički šor",
+			"Praktikantska",
+			"Bulevar palih juniora",
+			"Palata Seniorskih Vladara",
+			"Regruterski kvart",
+			"Bulevar Oslobođenja",
+			"Kneza Miloša",
+			"Kralja Petra",
+			"Kralja Aleksandra",
+			"Kralja Milana",
+			"Narodnog fronta",
+			"Nemanjina",
+			"Maršala Tolbuhina",
+			"Vojvode Stepe",
+			"Jevrejska",
+			"Strahinjića Bana",
+			"Nikole Pašića",
+			"Slobodana Jovanovića",
+			"Žarka Zrenjanina",
+			"Veljka Vlahovića",
+			"Dušana Radovića",
+			"Mihajla Pupina",
+			"Dečanska",
+			"Braće Jerković",
+			"Makenzijeva",
+			"Sarajevska",
+			"Maršala Tita",
+			"Grabovačka",
+			"Zadnja"};
 }

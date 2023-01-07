@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rade.data.DataHolder;
+import rade.entities.AdresaEntity;
 import rade.entities.DrzavaEntity;
 import rade.entities.OpstinaEntity;
 
@@ -19,6 +20,32 @@ public class RADE extends DataHolder {
 	 * by Jugoslav Jeftenic
 	 */
 	
+	public static AdresaEntity generisiAdresu() {
+		AdresaEntity adresa = new AdresaEntity();
+		adresa.setUlica(generisiUlicu());
+		adresa.setBroj(generisiBrojUlice());
+		adresa.setOpstina(generisiOpstinu());
+		try {
+			adresa.setDrzava(generisiDrzavu(adresa.getOpstina().getDrzava()));
+		} catch (Exception e) {
+			adresa.setDrzava(generisiDrzavu());
+		}
+		return adresa;
+	}
+	
+	public static String generisiUlicu() {
+		return generisiUlicu(mrRobot(0, ulice.length - 1));
+	}
+	
+	public static String generisiUlicu(int i) {
+		return ulice[i];
+	}
+	
+	public static String generisiBrojUlice() {
+		String[] brojUlice = {"bb.", String.valueOf(mrRobot(1, 200)), String.valueOf(mrRobot(1, 100)) + Character.toString((char) (mrRobot(97, 103)))};
+		return brojUlice[mrRobot(0, brojUlice.length - 1)];
+	}
+	
 	public static List<OpstinaEntity> listajSveOpstine() {
 		List<OpstinaEntity> listaOpstina = new ArrayList<>();
 		for (int i = 0; i < opstine.length; i++) {
@@ -28,7 +55,7 @@ public class RADE extends DataHolder {
 	}
 	
 	public static OpstinaEntity generisiOpstinu() {
-		return generisiOpstinu(mrRobot(0, opstine.length));
+		return generisiOpstinu(mrRobot(0, opstine.length - 1));
 	}
 
 	public static OpstinaEntity generisiOpstinu(int i) {
@@ -57,7 +84,7 @@ public class RADE extends DataHolder {
 	}
 	
 	public static DrzavaEntity generisiDrzavu() {
-		return generisiDrzavu(mrRobot(0, drzave.length));
+		return generisiDrzavu(mrRobot(0, drzave.length - 1));
 	}
 
 	public static DrzavaEntity generisiDrzavu(int i) {
@@ -256,21 +283,12 @@ public class RADE extends DataHolder {
 		return prezimena[mrRobot(0, prezimena.length - 1)];
 	}
 	
+	@Deprecated
+	// Koristiti generisiOpstinu()
 	public static String generisiGrad() {
 		String[] gradovi = {"Beograd", "Novi Sad", "Nis", "Pristina", "Kragujevac", "Subotica",
 				"Leskovac", "Krusevac", "Kraljevo", "Zrenjanin", "Pancevo", "Cacak", "Sabac", "Novi Pazar"};
 		return gradovi[mrRobot(0, gradovi.length - 1)];
-	}
-	
-	public static String generisiUlicu() {
-		String[] ulice = {"Programerska", "Bulevar palih juniora", "Regruterski kvart", "Eklipse",
-				"Palata Seniorskih Vladara", "Ulica praktikanata", "Učenički šor"};
-		return ulice[mrRobot(0, ulice.length - 1)];
-	}
-	
-	public static String generisiBrojUlice() {
-		String[] brojUlice = {"bb.", String.valueOf(mrRobot(1, 200)), String.valueOf(mrRobot(1, 100)) + Character.toString((char) (mrRobot(97, 103)))};
-		return brojUlice[mrRobot(0, brojUlice.length - 1)];
 	}
 	
 	/** @param zanimanje 1-akademska karijera */

@@ -2,6 +2,8 @@ package rade;
 
 import java.time.LocalDate;
 
+import rade.entities.AdresaEntity;
+
 public class Osoba {
 
 	private String ime;
@@ -9,8 +11,8 @@ public class Osoba {
 	private Integer pol;
 	private LocalDate datumRodjenja;
 	private String jmbg;
-	private Adresa adresaRodjenja;
-	private Adresa adresaStanovanja;
+	private AdresaEntity adresaRodjenja;
+	private AdresaEntity adresaStanovanja;
 	private String telefonFiksni;
 	private String telefonMobilni;
 	private String zanimanje;
