@@ -21,20 +21,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class UserEntity {
 
-	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-	@JoinColumn(name = "address")
-	private AddressEntity address;
-
-	@Id
-	// https://stackoverflow.com/questions/2595124/how-does-the-jpa-sequencegenerator-annotation-work
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "user_generator")
-	@SequenceGenerator(name="user_generator", sequenceName = "user_sequence", allocationSize=1)
-	private Integer id;
-	@Column
-	private String name;
-	@Column
-	private String email;
-	
 	// 2.1
 	/*
 	 * Unaprediti UserEntity tako da ima sledeća polja
@@ -44,6 +30,15 @@ public class UserEntity {
 	 *   broj lične karte
 	 * • odabrati odgovarajuće Hibernate anotacije i njihove parametre za svako od ovih polja
 	 */
+	@Id
+	// https://stackoverflow.com/questions/2595124/how-does-the-jpa-sequencegenerator-annotation-work
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "user_generator")
+	@SequenceGenerator(name="user_generator", sequenceName = "user_sequence", allocationSize=1)
+	private Integer id;
+	@Column
+	private String name;
+	@Column
+	private String email;
 	@Column
 	private LocalDate birthDate;
 	@Column
@@ -54,13 +49,16 @@ public class UserEntity {
 	private String regBrLk;
 	@Version
 	private Integer version;
+	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+	@JoinColumn(name = "address")
+	private AddressEntity address;
 	
 	public UserEntity() {
 		super();
 	}
 
 	public UserEntity(Integer id, String name, String email, LocalDate birthDate, String phoneNumber, String jmbg,
-			String regBrLk, AddressEntity address, Integer version) {
+			String regBrLk, Integer version, AddressEntity address) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -69,15 +67,7 @@ public class UserEntity {
 		this.phoneNumber = phoneNumber;
 		this.jmbg = jmbg;
 		this.regBrLk = regBrLk;
-		this.address = address;
 		this.version = version;
-	}
-
-	public AddressEntity getAddress() {
-		return address;
-	}
-
-	public void setAddress(AddressEntity address) {
 		this.address = address;
 	}
 	
@@ -143,5 +133,13 @@ public class UserEntity {
 	
 	public void setVersion(Integer version) {
 		this.version = version;
+	}
+
+	public AddressEntity getAddress() {
+		return address;
+	}
+
+	public void setAddress(AddressEntity address) {
+		this.address = address;
 	}
 }

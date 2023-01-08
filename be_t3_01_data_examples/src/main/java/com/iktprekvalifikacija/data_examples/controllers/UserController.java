@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,8 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iktprekvalifikacija.data_examples.entities.AddressEntity;
+import com.iktprekvalifikacija.data_examples.entities.CityEntity;
+import com.iktprekvalifikacija.data_examples.entities.CountryEntity;
 import com.iktprekvalifikacija.data_examples.entities.UserEntity;
 import com.iktprekvalifikacija.data_examples.repositories.AddressRepository;
+import com.iktprekvalifikacija.data_examples.repositories.CityRepository;
+import com.iktprekvalifikacija.data_examples.repositories.CountryRepository;
 import com.iktprekvalifikacija.data_examples.repositories.UserRepository;
 
 import rade.RADE;
@@ -29,25 +32,33 @@ public class UserController {
 	private UserRepository userRepository;
 	@Autowired
 	private AddressRepository addressRepository;
-	
-	@RequestMapping(method = RequestMethod.POST)
-	public UserEntity addUser(@RequestBody UserEntity newUser) {
-		UserEntity user = new UserEntity();
-		user.setName(newUser.getName());
-		user.setEmail(newUser.getEmail());
-		return userRepository.save(user);
-	}
+	@Autowired
+	private CityRepository cityRepository;
+	@Autowired
+	private CountryRepository countryRepository;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public Iterable<UserEntity> getAll() {
 		return userRepository.findAll();
 	}
 
+	@RequestMapping(method = RequestMethod.POST)
+	public UserEntity addUser(@RequestBody UserEntity newUser) {
+		UserEntity user = new UserEntity();
+		user.setName(newUser.getName());
+		user.setEmail(newUser.getEmail());
+		user.setBirthDate(newUser.getBirthDate());
+		user.setPhoneNumber(newUser.getPhoneNumber());
+		user.setJmbg(newUser.getJmbg());
+		user.setRegBrLk(newUser.getRegBrLk());
+		return userRepository.save(user);
+	}
+
 	// 1.1
 	/*
 	 * Popuniti bazu podataka sa podacima o deset osoba
 	 */
-	@RequestMapping(method = RequestMethod.POST, path = "populatetable/{count}")
+	@RequestMapping(method = RequestMethod.POST, path = "/populatetable/{count}")
 	public Iterable<UserEntity> populateTable(@PathVariable Integer count) {
 		List<UserEntity> users = new ArrayList<>();
 		for (int x = 0; x < count; x++) {
@@ -68,11 +79,9 @@ public class UserController {
 					String.format("%3s", RADE.mrRobot(0, 999)).replace(" ", "0") + "-" +
 					String.format("%3s", RADE.mrRobot(0, 9999)).replace(" ", "0"));
 			user.setRegBrLk(String.format("%9s", RADE.mrRobot(1, 999999999)).replace(" ", "0"));
-//			userRepository.save(user);
-//			users.add(user);
-			users.add(userRepository.save(user));
+			users.add(user);
 		}
-		return users;
+		return userRepository.saveAll(users);
 	}
 	
 	// 1.2
@@ -87,7 +96,7 @@ public class UserController {
 		UserEntity user;
 		try {
 			user = userRepository.findById(id).get();
-		} catch (NoSuchElementException e) {
+		} catch (Exception e) {
 			user = null;
 		}
 		return user;
@@ -102,6 +111,18 @@ public class UserController {
 			}
 			if (updatedUser.getEmail() != null) {
 				user.setEmail(updatedUser.getEmail());
+			}
+			if (updatedUser.getBirthDate() != null) {
+				user.setBirthDate(updatedUser.getBirthDate());
+			}
+			if (updatedUser.getPhoneNumber() != null) {
+				user.setPhoneNumber(updatedUser.getPhoneNumber());
+			}
+			if (updatedUser.getJmbg() != null) {
+				user.setJmbg(updatedUser.getJmbg());
+			}
+			if (updatedUser.getRegBrLk() != null) {
+				user.setRegBrLk(updatedUser.getRegBrLk());
 			}
 			userRepository.save(user);
 			return user;
@@ -164,14 +185,6 @@ public class UserController {
 		return userRepository.findByNameStartsWith(first_letter);
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT, path = "/{id}/address")
-	public UserEntity addAddressToUser(@PathVariable Integer id, @RequestParam Integer address) {
-		AddressEntity adr = addressRepository.findById(address).get();
-		UserEntity user = userRepository.findById(id).get();
-		user.setAddress(adr);
-		return userRepository.save(user);
-	}
-	
 	// 2.1
 	/*
 	 * Dodati REST endpoint u UserController koji omogućava uklanjanje adrese iz
@@ -179,11 +192,27 @@ public class UserController {
 	 */
 	@RequestMapping(method = RequestMethod.PUT, path = "/{id}/address-remove")
 	public UserEntity removeAddressFromUser(@PathVariable Integer id) {
-		UserEntity user = userRepository.findById(id).get();
-		user.setAddress(null);
-		return userRepository.save(user);
+		try {
+			UserEntity user = userRepository.findById(id).get();
+			user.setAddress(null);
+			return userRepository.save(user);
+		} catch (Exception e) {
+			return null;
+		}
 	}
 	
+	@RequestMapping(method = RequestMethod.PUT, path = "/{id}/address/{addressid}")
+	public UserEntity addAddressToUser(@PathVariable Integer id, @PathVariable Integer addressid) {
+		try {
+			AddressEntity address = addressRepository.findById(addressid).get();
+			UserEntity user = userRepository.findById(id).get();
+			user.setAddress(address);
+			return userRepository.save(user);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
 	// 2.3
 	/*
 	 * Dodati REST endpoint u UserController koji omogućava prosleđivanje parametara za
@@ -195,10 +224,32 @@ public class UserController {
 	 */
 	@RequestMapping(method = RequestMethod.POST, path = "add-user-and-address")
 	// https://www.baeldung.com/spring-request-param
-	public UserEntity addUserAndAddress(@RequestParam(required = false) String name,
+	public UserEntity addUserAndAddress(@RequestParam String name,
 			@RequestParam(required = false) String email, @RequestParam(required = false) String phone,
 			@RequestParam(required = false) String jmbg, @RequestParam(required = false) String brlk,
 			@RequestParam String street, @RequestParam String city, @RequestParam String country) {
+		try {
+			CityEntity cityEntity = cityRepository.findByCity(city).get(0);
+		} catch (Exception e) {
+			CityEntity cityEntity = new CityEntity();
+			cityEntity.setCity(city);
+			try {
+				cityEntity.setCountry(countryRepository.findByCountry(country).get(0));
+			} catch (Exception e1) {
+				cityEntity.setCountry(null);
+			}
+		}
+//		} finally {
+//			// TODO: handle finally clause
+//		}
+		try {
+			AddressEntity address = addressRepository.findByStreet(street).get(0);
+			if (address.getCity())
+		} catch (Exception e) {
+			AddressEntity address = new AddressEntity();
+		}
+		
+		
 		UserEntity user = new UserEntity();
 		user.setName(name);
 		user.setEmail(email);
@@ -215,7 +266,6 @@ public class UserController {
 			user.setBirthDate(null);
 		}
 		user.setRegBrLk(brlk);
-		AddressEntity address = new AddressEntity();
 		address.setStreet(street);
 //		address.setCity(city);
 //		address.setCountry(country);

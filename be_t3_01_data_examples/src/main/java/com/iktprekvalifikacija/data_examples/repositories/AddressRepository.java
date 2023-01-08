@@ -8,9 +8,8 @@ import com.iktprekvalifikacija.data_examples.entities.AddressEntity;
 import com.iktprekvalifikacija.data_examples.entities.CityEntity;
 
 public interface AddressRepository extends CrudRepository<AddressEntity, Integer> {
+	List<AddressEntity> findByStreet(String street);
 	List<AddressEntity> findByCity(CityEntity city);
 	// https://bushansirgur.in/spring-data-jpa-query-methods-in-with-examples/
 	List<AddressEntity> findByCityIn(List<CityEntity> cities);
-//	List<AddressEntity> findByCountryOrderByCountryAsc(String country);
-//	List<AddressEntity> findByStreetAndCityAndCountry(String street, String city, String country);
 }
