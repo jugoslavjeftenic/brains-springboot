@@ -10,4 +10,5 @@ import com.iktprekvalifikacija.data_examples.entities.CountryEntity;
 public interface CityRepository extends CrudRepository<CityEntity, Integer> {
 	List<CityEntity> findByCity(String city);
 	List<CityEntity> findByCountryIn(List<CountryEntity> countries);
+	List<CityEntity> findByCityAndCountry(String city, CountryEntity country);
 }

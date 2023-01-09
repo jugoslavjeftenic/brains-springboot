@@ -13,5 +13,4 @@ public interface UserRepository extends CrudRepository<UserEntity, Integer> {
 	List<UserEntity> findByBirthDateOrderByBirthDateAsc(LocalDate date);
 	// https://www.baeldung.com/spring-jpa-like-queries
 	List<UserEntity> findByNameStartsWith(String firstLetter);
-	List<UserEntity> findByAddress(Integer id);
 }

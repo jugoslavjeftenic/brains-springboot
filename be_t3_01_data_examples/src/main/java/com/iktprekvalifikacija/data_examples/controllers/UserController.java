@@ -222,61 +222,61 @@ public class UserController {
 	 * • ukoliko adresa postoji u bazi podataka dodaje je korisniku
 	 * • ukoliko adresa ne postoji, kreira adresu i dodaje je korisniku
 	 */
-	@RequestMapping(method = RequestMethod.POST, path = "add-user-and-address")
+	@RequestMapping(method = RequestMethod.POST, path = "/add-user-and-address")
 	// https://www.baeldung.com/spring-request-param
 	public UserEntity addUserAndAddress(@RequestParam String name,
 			@RequestParam(required = false) String email, @RequestParam(required = false) String phone,
 			@RequestParam(required = false) String jmbg, @RequestParam(required = false) String brlk,
 			@RequestParam String street, @RequestParam String city, @RequestParam String country) {
+		CountryEntity countryEntity;
 		try {
-			CityEntity cityEntity = cityRepository.findByCity(city).get(0);
+			countryEntity = countryRepository.findByCountry(country).get(0);
 		} catch (Exception e) {
-			CityEntity cityEntity = new CityEntity();
+			countryEntity = null;
+		}
+		CityEntity cityEntity;
+		try {
+			cityEntity = cityRepository.findByCityAndCountry(city, countryEntity).get(0);
+		} catch (Exception e) {
+			cityEntity = new CityEntity();
 			cityEntity.setCity(city);
-			try {
-				cityEntity.setCountry(countryRepository.findByCountry(country).get(0));
-			} catch (Exception e1) {
-				cityEntity.setCountry(null);
-			}
+			cityEntity.setCountry(countryEntity);
+			cityEntity.setId(cityRepository.save(cityEntity).getId());
 		}
-//		} finally {
-//			// TODO: handle finally clause
-//		}
+		AddressEntity addressEntity;
 		try {
-			AddressEntity address = addressRepository.findByStreet(street).get(0);
-			if (address.getCity())
+			addressEntity = addressRepository.findByStreetAndCity(street, cityEntity).get(0);
 		} catch (Exception e) {
-			AddressEntity address = new AddressEntity();
+			addressEntity = new AddressEntity();
+			addressEntity.setStreet(street);
+			addressEntity.setCity(cityEntity);
+			addressEntity.setId(addressRepository.save(addressEntity).getId());
 		}
-		
-		
-		UserEntity user = new UserEntity();
-		user.setName(name);
-		user.setEmail(email);
-		user.setPhoneNumber(phone);
-		user.setJmbg(jmbg);
+		UserEntity userEntity = new UserEntity();
+		userEntity.setName(name);
+		if (email != null) {
+			userEntity.setEmail(email);
+		}
+		if (phone != null) {
+			userEntity.setPhoneNumber(phone);
+		}
+		if (jmbg != null) {
+			userEntity.setJmbg(jmbg);
+		}
+		if (brlk != null) {
+			userEntity.setRegBrLk(brlk);
+		}
 		try {
-			user.setBirthDate(LocalDate.parse(
-					((Integer.parseInt(user.getJmbg().substring(4, 7)) > 900) ? "1" : "2") +
-							user.getJmbg().substring(4, 7) +
-							user.getJmbg().substring(2, 4) +
-							user.getJmbg().substring(0, 2),
+			userEntity.setBirthDate(LocalDate.parse(
+					((Integer.parseInt(userEntity.getJmbg().substring(4, 7)) > 900) ? "1" : "2") +
+					userEntity.getJmbg().substring(4, 7) +
+					userEntity.getJmbg().substring(2, 4) +
+					userEntity.getJmbg().substring(0, 2),
 					DateTimeFormatter.BASIC_ISO_DATE));
 		} catch (Exception e) {
-			user.setBirthDate(null);
+			userEntity.setBirthDate(null);
 		}
-		user.setRegBrLk(brlk);
-		address.setStreet(street);
-//		address.setCity(city);
-//		address.setCountry(country);
-//		List<AddressEntity> returnedAddresses = addressRepository.findByStreetAndCityAndCountry(street, city, country);
-//		if (returnedAddresses.size() > 0) {
-//			user.setAddress(returnedAddresses.get(0));
-//		}
-//		else {
-//			addressRepository.save(address);
-//			user.setAddress(addressRepository.findByStreetAndCityAndCountry(street, city, country).get(0));
-//		}
-		return userRepository.save(user);
+		userEntity.setAddress(addressEntity);
+		return userRepository.save(userEntity);
 	}
 }

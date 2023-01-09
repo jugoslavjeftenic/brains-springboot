@@ -12,4 +12,5 @@ public interface AddressRepository extends CrudRepository<AddressEntity, Integer
 	List<AddressEntity> findByCity(CityEntity city);
 	// https://bushansirgur.in/spring-data-jpa-query-methods-in-with-examples/
 	List<AddressEntity> findByCityIn(List<CityEntity> cities);
+	List<AddressEntity> findByStreetAndCity(String street, CityEntity city);
 }
