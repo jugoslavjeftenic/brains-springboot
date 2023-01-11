@@ -11,8 +11,9 @@
 	<artifactId>be_t3_02_project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>be_t3_02_project</name>
-	<description>Rest kontroleri - zadaci</description>
+	<description>Data layer - project</description>
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
