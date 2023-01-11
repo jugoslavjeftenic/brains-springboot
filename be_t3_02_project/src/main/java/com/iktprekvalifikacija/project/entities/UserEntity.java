@@ -6,20 +6,27 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Version;
 
 @Entity
 public class UserEntity {
 
-	// 1.1
+	// T2 1.1
 	/*
 	 * U paketu com.iktpreobuka.project.entities napraviti klasu UserEntity sa sledećim atributima:
 	 * • id, first name, last name, username, password, email i user role
 	 * • user role može da ima sledeće vrednosti: ROLE_CUSTOMER, ROLE_ADMIN i ROLE_SELLER
 	 *   (koristiti enumeraciju), dok svi ostali atributi, sem id-a treba da budu tekstualnog tipa
 	 */
+	
+	// T3 1.1
+	/*
+	 * U paketu com.iktpreobuka.project.entities u klasama kreiranim na prethodnim časovima ubaciti
+	 * odgovarajuće Hibernate anotacije i njihove parametre za svako od polja
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "user_generator")
-	@SequenceGenerator(name="user_generator", sequenceName = "user_sequence", allocationSize=50)
+	@SequenceGenerator(name="user_generator", sequenceName = "user_sequence", allocationSize=1)
 	private Integer userID;
 	@Column
 	private String firstName;
@@ -33,8 +40,15 @@ public class UserEntity {
 	private String email;
 	@Column
 	private EUserRole userRole;
+	@Version
+	private Integer version;
 	
-	public UserEntity(Integer userID, String firstName, String lastName, String userName, String password, String email, EUserRole userRole) {
+	public UserEntity() {
+		super();
+	}
+
+	public UserEntity(Integer userID, String firstName, String lastName, String userName, String password, String email,
+			EUserRole userRole, Integer version) {
 		super();
 		this.userID = userID;
 		this.firstName = firstName;
@@ -43,10 +57,7 @@ public class UserEntity {
 		this.password = password;
 		this.email = email;
 		this.userRole = userRole;
-	}
-
-	public UserEntity() {
-		super();
+		this.version = version;
 	}
 
 	public Integer getUserID() {
@@ -103,5 +114,13 @@ public class UserEntity {
 
 	public void setUserRole(EUserRole userRole) {
 		this.userRole = userRole;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 }

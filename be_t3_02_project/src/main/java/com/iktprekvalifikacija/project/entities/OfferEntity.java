@@ -8,11 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Version;
 
 @Entity
 public class OfferEntity {
 	
-	// 3.1
+	// T2 3.1
 	/*
 	 * U paketu com.iktpreobuka.project.entities napraviti klasu OfferEntity sa sledećim atributima:
 	 * • id, offer name, offer description, offer created, offer expires, regular price, action price,
@@ -24,9 +25,15 @@ public class OfferEntity {
 	 * • offer status može da ima sledeće vrednosti:
 	 *   WAIT_FOR_APPROVING, APPROVED, DECLINED i EXPIRED (koristiti enumeraciju)
 	 */
+	
+	// T3 1.1
+	/*
+	 * U paketu com.iktpreobuka.project.entities u klasama kreiranim na prethodnim časovima ubaciti
+	 * odgovarajuće Hibernate anotacije i njihove parametre za svako od polja
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "offer_generator")
-	@SequenceGenerator(name="offer_generator", sequenceName = "offer_sequence", allocationSize=50)
+	@SequenceGenerator(name="offer_generator", sequenceName = "offer_sequence", allocationSize=1)
 	private Integer id;
 	@Column(nullable = false)
 	private String offerName;
@@ -49,10 +56,16 @@ public class OfferEntity {
 	private Integer boughtOffers;
 	@Column
 	private EOfferEntity offerStatus;
+	@Version
+	private Integer version;
 	
+	public OfferEntity() {
+		super();
+	}
+
 	public OfferEntity(Integer id, String offerName, String offerDesc, LocalDateTime offerCreated,
 			LocalDateTime offerExpires, Float regularPrice, Float actionPrice, String imagePath,
-			Integer availableOffers, Integer boughtOffers, EOfferEntity offerStatus) {
+			Integer availableOffers, Integer boughtOffers, EOfferEntity offerStatus, Integer version) {
 		super();
 		this.id = id;
 		this.offerName = offerName;
@@ -65,10 +78,7 @@ public class OfferEntity {
 		this.availableOffers = availableOffers;
 		this.boughtOffers = boughtOffers;
 		this.offerStatus = offerStatus;
-	}
-
-	public OfferEntity() {
-		super();
+		this.version = version;
 	}
 
 	public Integer getId() {
@@ -157,5 +167,13 @@ public class OfferEntity {
 
 	public void setOfferStatus(EOfferEntity offerStatus) {
 		this.offerStatus = offerStatus;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 }
