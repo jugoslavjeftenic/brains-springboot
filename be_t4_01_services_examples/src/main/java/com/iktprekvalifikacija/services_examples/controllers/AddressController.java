@@ -18,6 +18,7 @@ import com.iktprekvalifikacija.services_examples.repositories.AddressRepository;
 import com.iktprekvalifikacija.services_examples.repositories.CityRepository;
 import com.iktprekvalifikacija.services_examples.repositories.CountryRepository;
 import com.iktprekvalifikacija.services_examples.repositories.UserRepository;
+import com.iktprekvalifikacija.services_examples.services.AddressDAOService;
 
 import rade.RADE;
 import rade.entities.AdresaEntity;
@@ -34,6 +35,8 @@ public class AddressController {
 	private CountryRepository countryRepository;
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private AddressDAOService addressService;
 	
 	// 3.2
 	/*
@@ -226,11 +229,15 @@ public class AddressController {
 	 * Kreirati REST endpoint koji vraća listu adresa na osnovu prosleđenog imena korisnika
 	 * • putanja /api/v1/addresses/user/{name}
 	 */
-	@RequestMapping(method = RequestMethod.GET, path = "/user/{name}")
-	public List<AddressEntity> getAllAddressesByUserName(@PathVariable String name) {
+	@RequestMapping(method = RequestMethod.GET, path = "/user1/{name}")
+	public List<AddressEntity> getAddressesByUserNameThruRepository(@PathVariable String name) {
 		List<UserEntity> users = userRepository.findByNameStartsWith(name);
-		List<AddressEntity> addresses = addressRepository.findByUsersIn(users);
+		List<AddressEntity> addresses = addressRepository.findDistinctByUsersIn(users);
 		return addresses;
 	}
 
+	@RequestMapping(method = RequestMethod.GET, path = "/user2/{name}")
+	public Iterable<AddressEntity> getAddressesByUserNameThruServices(@PathVariable String name) {
+		return addressService.findAddressesByUserName(name);
+	}
 }
