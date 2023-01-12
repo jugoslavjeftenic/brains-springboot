@@ -6,6 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.iktprekvalifikacija.services_examples.entities.AddressEntity;
 import com.iktprekvalifikacija.services_examples.entities.CityEntity;
+import com.iktprekvalifikacija.services_examples.entities.UserEntity;
 
 public interface AddressRepository extends CrudRepository<AddressEntity, Integer> {
 	List<AddressEntity> findByStreet(String street);
@@ -13,4 +14,5 @@ public interface AddressRepository extends CrudRepository<AddressEntity, Integer
 	// https://bushansirgur.in/spring-data-jpa-query-methods-in-with-examples/
 	List<AddressEntity> findByCityIn(List<CityEntity> cities);
 	List<AddressEntity> findByStreetAndCity(String street, CityEntity city);
+	List<AddressEntity> findByUsersIn(List<UserEntity> users);
 }

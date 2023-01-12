@@ -220,4 +220,17 @@ public class AddressController {
 			return null;
 		}
 	}
+	
+	// T4
+	/*
+	 * Kreirati REST endpoint koji vraća listu adresa na osnovu prosleđenog imena korisnika
+	 * • putanja /api/v1/addresses/user/{name}
+	 */
+	@RequestMapping(method = RequestMethod.GET, path = "/user/{name}")
+	public List<AddressEntity> getAllAddressesByUserName(@PathVariable String name) {
+		List<UserEntity> users = userRepository.findByNameStartsWith(name);
+		List<AddressEntity> addresses = addressRepository.findByUsersIn(users);
+		return addresses;
+	}
+
 }
