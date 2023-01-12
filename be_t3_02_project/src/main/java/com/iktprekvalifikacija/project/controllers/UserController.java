@@ -1,9 +1,5 @@
 package com.iktprekvalifikacija.project.controllers;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,8 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.iktprekvalifikacija.project.entities.EUserRole;
 import com.iktprekvalifikacija.project.entities.UserEntity;
 import com.iktprekvalifikacija.project.repositories.UserRepository;
-
-import rade.RADE;
 
 @RestController
 @RequestMapping(value = "/api/v1/users")
@@ -106,31 +100,31 @@ public class UserController {
 	}
 
 	// TODO zavrsiti
-	@RequestMapping(method = RequestMethod.POST, path = "/populatetable/{count}")
-	public Iterable<UserEntity> populateTable(@PathVariable Integer count) {
-		List<UserEntity> users = new ArrayList<>();
-		for (int x = 0; x < count; x++) {
-			UserEntity user = new UserEntity();
-			String name = RADE.generisiIme(0) + " " + RADE.generisiPrezime(); 
-			user.setName(name);
-			user.setEmail(name.substring(0, name.indexOf(' ')).toLowerCase() + "."
-					+ name.substring(name.indexOf(' ') + 1, name.indexOf(' ') + 2).toLowerCase()
-					+ "@ikt.rs");
-			user.setJmbg(RADE.generisiJMBG());
-			user.setBirthDate(LocalDate.parse(
-					((Integer.parseInt(user.getJmbg().substring(4, 7)) > 900) ? "1" : "2") +
-							user.getJmbg().substring(4, 7) +
-							user.getJmbg().substring(2, 4) +
-							user.getJmbg().substring(0, 2),
-					DateTimeFormatter.BASIC_ISO_DATE));
-			user.setPhoneNumber(String.format("%3s", RADE.mrRobot(10, 37)).replace(" ", "0") + "/" +
-					String.format("%3s", RADE.mrRobot(0, 999)).replace(" ", "0") + "-" +
-					String.format("%3s", RADE.mrRobot(0, 9999)).replace(" ", "0"));
-			user.setRegBrLk(String.format("%9s", RADE.mrRobot(1, 999999999)).replace(" ", "0"));
-			users.add(user);
-		}
-		return userRepository.saveAll(users);
-	}
+//	@RequestMapping(method = RequestMethod.POST, path = "/populatetable/{count}")
+//	public Iterable<UserEntity> populateTable(@PathVariable Integer count) {
+//		List<UserEntity> users = new ArrayList<>();
+//		for (int x = 0; x < count; x++) {
+//			UserEntity user = new UserEntity();
+//			String name = RADE.generisiIme(0) + " " + RADE.generisiPrezime(); 
+//			user.setName(name);
+//			user.setEmail(name.substring(0, name.indexOf(' ')).toLowerCase() + "."
+//					+ name.substring(name.indexOf(' ') + 1, name.indexOf(' ') + 2).toLowerCase()
+//					+ "@ikt.rs");
+//			user.setJmbg(RADE.generisiJMBG());
+//			user.setBirthDate(LocalDate.parse(
+//					((Integer.parseInt(user.getJmbg().substring(4, 7)) > 900) ? "1" : "2") +
+//							user.getJmbg().substring(4, 7) +
+//							user.getJmbg().substring(2, 4) +
+//							user.getJmbg().substring(0, 2),
+//					DateTimeFormatter.BASIC_ISO_DATE));
+//			user.setPhoneNumber(String.format("%3s", RADE.mrRobot(10, 37)).replace(" ", "0") + "/" +
+//					String.format("%3s", RADE.mrRobot(0, 999)).replace(" ", "0") + "-" +
+//					String.format("%3s", RADE.mrRobot(0, 9999)).replace(" ", "0"));
+//			user.setRegBrLk(String.format("%9s", RADE.mrRobot(1, 999999999)).replace(" ", "0"));
+//			users.add(user);
+//		}
+//		return userRepository.saveAll(users);
+//	}
 
 	
 	// T2 1.6
