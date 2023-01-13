@@ -20,11 +20,35 @@ public class RADE extends DataHolder {
 	 * by Jugoslav Jeftenic
 	 */
 	
-	public static String generisiPrezime() {
-		return generisiPrezime(mrRobot(0, prezimena.length - 1));
+	public static String generisiIme() {
+		int rod = mrRobot(1, 2);
+		if (rod == 1) {
+			return generisiZenskoIme();
+		}
+		return generisiMuskoIme();
 	}
 	
-	public static String generisiPrezime(int i) {
+	public static String generisiZenskoIme() {
+		return dobaviZenskoIme(mrRobot(0, imenaZ.length - 1));
+	}
+	
+	public static String generisiMuskoIme() {
+		return dobaviMuskoIme(mrRobot(0, imenaM.length - 1));
+	}
+	
+	public static String dobaviZenskoIme(int i) {
+		return imenaZ[i];
+	}
+
+	public static String dobaviMuskoIme(int i) {
+		return imenaM[i];
+	}
+
+	public static String generisiPrezime() {
+		return dobaviPrezime(mrRobot(0, prezimena.length - 1));
+	}
+	
+	public static String dobaviPrezime(int i) {
 		return prezimena[i];
 	}
 	
@@ -203,6 +227,14 @@ public class RADE extends DataHolder {
 		return (modul11 > 9) ? "0" : modul11.toString();
 	}
 	
+	@Deprecated  // Koristiti generisiOpstinu()
+	public static String generisiGrad() {
+		String[] gradovi = {"Beograd", "Novi Sad", "Nis", "Pristina", "Kragujevac", "Subotica",
+				"Leskovac", "Krusevac", "Kraljevo", "Zrenjanin", "Pancevo", "Cacak", "Sabac", "Novi Pazar"};
+		return gradovi[mrRobot(0, gradovi.length - 1)];
+	}
+	
+	@Deprecated  // Koristiti generisiIme()
 	/** @param rod 1-zensko 2-musko */
 	public static String generisiIme(int rod) {
 		String[] imenaZenska = {"Mia", "Tea", "Lea", "Mila", "Una"};
@@ -228,14 +260,8 @@ public class RADE extends DataHolder {
 			return imena[mrRobot(0, imena.length - 1)];
 		}
 	}
-
-	@Deprecated  // Koristiti generisiOpstinu()
-	public static String generisiGrad() {
-		String[] gradovi = {"Beograd", "Novi Sad", "Nis", "Pristina", "Kragujevac", "Subotica",
-				"Leskovac", "Krusevac", "Kraljevo", "Zrenjanin", "Pancevo", "Cacak", "Sabac", "Novi Pazar"};
-		return gradovi[mrRobot(0, gradovi.length - 1)];
-	}
 	
+	// TODO Prepraviti sve generatore ispod ove linije
 	/** @param zanimanje 1-akademska karijera */
 	/** @param zanimanje 9-neakademska zanimanja */
 	public static String generisiZanimanje(int karijera) {

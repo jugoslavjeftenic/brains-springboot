@@ -137,5 +137,59 @@ public class DataHolder {
 		    "Radosavljević"
 	};
 
+	protected static String[] imenaM = {
+		    "Marko",
+		    "Nikola",
+		    "Miloš",
+		    "Vladimir",
+		    "Srđan",
+		    "Bojan",
+		    "Dušan",
+		    "Dejan",
+		    "Goran",
+		    "Zoran",
+		    "Dragan",
+		    "Nenad",
+		    "Branislav",
+		    "Milan",
+		    "Slobodan",
+		    "Dražen",
+		    "Predrag",
+		    "Željko",
+		    "Miroslav",
+		    "Aleksandar",
+		    "Ivan",
+		    "Luka",
+		    "Petar",
+		    "Dario"
+	};
+
+	protected static String[] imenaZ = {
+		    "Maja",
+		    "Jelena",
+		    "Ana",
+		    "Ivana",
+		    "Sanja",
+		    "Tatjana",
+		    "Marija",
+		    "Milena",
+		    "Nataša",
+		    "Biljana",
+		    "Jasna",
+		    "Olga",
+		    "Ljiljana",
+		    "Marina",
+		    "Snežana",
+		    "Mirjana",
+		    "Danijela",
+		    "Dragana",
+		    "Vesna",
+		    "Nada",
+		    "Dubravka",
+		    "Ljubica",
+		    "Jelisaveta",
+		    "Branka",
+		    "Jadranka"
+	};
 }
 
