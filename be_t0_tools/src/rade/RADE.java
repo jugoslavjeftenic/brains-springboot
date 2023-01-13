@@ -19,9 +19,15 @@ public class RADE extends DataHolder {
 	 * R.A.D.E (Random Allocation Data Enhancer)
 	 * by Jugoslav Jeftenic
 	 */
-	
+
 	public static String generisiIme() {
-		int pol = mrRobot(1, 2);
+		if (generisiPol() == 1) {
+			return generisiZenskoIme();
+		}
+		return generisiMuskoIme();
+	}
+	
+	public static String generisiIme(int pol) {
 		if (pol == 1) {
 			return generisiZenskoIme();
 		}
@@ -187,19 +193,27 @@ public class RADE extends DataHolder {
 		return datumRodjenja;
 	}
 	
+	public static int generisiPol() {
+		return mrRobot(1, 2);
+	}
+	
 	public static String generisiJMBG() {
-		return generisiJMBG(generisiDatumRodjenja());
+		return generisiJMBG(generisiDatumRodjenja(), generisiPol());
 	}
 	
-	public static String generisiJMBG(String kategorija) {
-		return generisiJMBG(generisiDatumRodjenja(kategorija));
+	public static String generisiJMBG(int pol) {
+		return generisiJMBG(generisiDatumRodjenja(), pol);
 	}
 	
-	public static String generisiJMBG(int minGodina, int maxGodina) {
-		return generisiJMBG(generisiDatumRodjenja(minGodina, maxGodina));
+	public static String generisiJMBG(String kategorija, int pol) {
+		return generisiJMBG(generisiDatumRodjenja(kategorija), pol);
 	}
 	
-	public static String generisiJMBG(LocalDate dob) {
+	public static String generisiJMBG(int minGodina, int maxGodina, int pol) {
+		return generisiJMBG(generisiDatumRodjenja(minGodina, maxGodina), pol);
+	}
+	
+	public static String generisiJMBG(LocalDate dob, int pol) {
 		// https://www.telegraf.rs/vesti/1096931-otkrivamo-misteriju-evo-sta-jmbg-i-6-njegovih-brojeva-govore-o-vama
 		String jmbg = "";
 		LocalDate datumRodjenja = dob;
@@ -211,7 +225,7 @@ public class RADE extends DataHolder {
 				.toFormatter();
 		jmbg  = datumRodjenja.format(jmbgDateFormat);
 		jmbg += generisiPolitickuRegiju();
-		jmbg += generisiJedinstveniBroj();
+		jmbg += generisiJedinstveniBroj(pol);
 		jmbg += modul11(jmbg);
 		return jmbg;
 	}
@@ -226,8 +240,11 @@ public class RADE extends DataHolder {
 		return String.format("%2s", regija).replace(" ", "0");
 	}
 	
-	private static String generisiJedinstveniBroj() {
-		int jb = mrRobot(0, 999);
+	private static String generisiJedinstveniBroj(int pol) {
+		int jb = mrRobot(0, 499);;
+		if (pol == 1) {
+			jb = mrRobot(500, 999);
+		}
 		return String.format("%3s", jb).replace(" ", "0");
 	}
 	
@@ -250,33 +267,6 @@ public class RADE extends DataHolder {
 		String[] gradovi = {"Beograd", "Novi Sad", "Nis", "Pristina", "Kragujevac", "Subotica",
 				"Leskovac", "Krusevac", "Kraljevo", "Zrenjanin", "Pancevo", "Cacak", "Sabac", "Novi Pazar"};
 		return gradovi[mrRobot(0, gradovi.length - 1)];
-	}
-	
-	@Deprecated  // Koristiti generisiIme()
-	/** @param rod 1-zensko 2-musko */
-	public static String generisiIme(int rod) {
-		String[] imenaZenska = {"Mia", "Tea", "Lea", "Mila", "Una"};
-		String[] imenaMuska = {"Marko", "Petar", "Ivan", "Sreten", "Neven"};
-
-		switch (rod) {
-		case 1:
-			return imenaZenska[mrRobot(0, imenaZenska.length - 1)];
-		case 2:
-			return imenaMuska[mrRobot(0, imenaMuska.length - 1)];
-		default:
-			String[] imena = new String[imenaZenska.length + imenaMuska.length];
-			int i = 0, j = 0;
-			while (i < imenaZenska.length) {
-				imena[i] = imenaZenska[i];
-				i++;
-			}
-			while (i < imenaZenska.length + imenaMuska.length) {
-				imena[i] = imenaMuska[j];
-				i++;
-				j++;
-			}
-			return imena[mrRobot(0, imena.length - 1)];
-		}
 	}
 	
 	// TODO Prepraviti sve generatore ispod ove linije
