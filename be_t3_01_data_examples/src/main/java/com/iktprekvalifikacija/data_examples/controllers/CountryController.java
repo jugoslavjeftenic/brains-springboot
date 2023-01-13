@@ -40,11 +40,11 @@ public class CountryController {
 	@RequestMapping(method = RequestMethod.POST, path = "/populatetable")
 	public Iterable<CountryEntity> populateTable() {
 		List<CountryEntity> countries = new ArrayList<>();
-		for (int i = 0; i < RADE.listajSveDrzave().size(); i++) {
-			if (countryRepository.findByCountry(RADE.listajSveDrzave().get(i).getNaziv()).size() < 1) {
+		for (int i = 0; i < RADE.dobaviSveDrzave().size(); i++) {
+			if (countryRepository.findByCountry(RADE.dobaviSveDrzave().get(i).getNaziv()).size() < 1) {
 				CountryEntity country = new CountryEntity();
-				country.setId(RADE.listajSveDrzave().get(i).getSifra());
-				country.setCountry(RADE.listajSveDrzave().get(i).getNaziv());
+				country.setId(RADE.dobaviSveDrzave().get(i).getSifra());
+				country.setCountry(RADE.dobaviSveDrzave().get(i).getNaziv());
 				countries.add(country);
 			}
 		}

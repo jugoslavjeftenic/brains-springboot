@@ -43,12 +43,12 @@ public class CityController {
 	@RequestMapping(method = RequestMethod.POST, path = "/populatetable")
 	public Iterable<CityEntity> populateTable() {
 		List<CityEntity> cities = new ArrayList<>();
-		for (int i = 0; i < RADE.listajSveOpstine().size(); i++) {
-			if (cityRepository.findByCity(RADE.listajSveOpstine().get(i).getNaziv()).size() < 1) {
+		for (int i = 0; i < RADE.dobaviSveOpstine().size(); i++) {
+			if (cityRepository.findByCity(RADE.dobaviSveOpstine().get(i).getNaziv()).size() < 1) {
 				CityEntity city = new CityEntity();
-				city.setCity(RADE.listajSveOpstine().get(i).getNaziv());
-				if (RADE.listajSveOpstine().get(i).getDrzava() != null) {
-					city.setCountry(countryRepository.findById(RADE.listajSveOpstine().get(i).getDrzava()).get());
+				city.setCity(RADE.dobaviSveOpstine().get(i).getNaziv());
+				if (RADE.dobaviSveOpstine().get(i).getDrzava() != null) {
+					city.setCountry(countryRepository.findById(RADE.dobaviSveOpstine().get(i).getDrzava()).get());
 				}
 				cities.add(city);
 			}
