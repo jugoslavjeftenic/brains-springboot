@@ -20,6 +20,14 @@ public class RADE extends DataHolder {
 	 * by Jugoslav Jeftenic
 	 */
 	
+	public static String generisiPrezime() {
+		return generisiPrezime(mrRobot(0, prezimena.length - 1));
+	}
+	
+	public static String generisiPrezime(int i) {
+		return prezimena[i];
+	}
+	
 	public static AdresaEntity generisiAdresu() {
 		AdresaEntity adresa = new AdresaEntity();
 		adresa.setUlica(generisiUlicu());
@@ -195,63 +203,6 @@ public class RADE extends DataHolder {
 		return (modul11 > 9) ? "0" : modul11.toString();
 	}
 	
-//	public static String generisiJMBG() {
-//		String JMBG = "";
-//		switch (mrRobot(1, 12)) {
-//		case 1:
-//			JMBG += String.format("%2s", mrRobot(1, 31)).replace(" ", "0") + "01";
-//			break;
-//		case 2:
-//			JMBG += String.format("%2s", mrRobot(1, 28)).replace(" ", "0") + "02";
-//			break;
-//		case 3:
-//			JMBG += String.format("%2s", mrRobot(1, 31)).replace(" ", "0") + "03";
-//			break;
-//		case 4:
-//			JMBG += String.format("%2s", mrRobot(1, 30)).replace(" ", "0") + "04";
-//			break;
-//		case 5:
-//			JMBG += String.format("%2s", mrRobot(1, 31)).replace(" ", "0") + "05";
-//			break;
-//		case 6:
-//			JMBG += String.format("%2s", mrRobot(1, 30)).replace(" ", "0") + "06";
-//			break;
-//		case 7:
-//			JMBG += String.format("%2s", mrRobot(1, 31)).replace(" ", "0") + "07";
-//			break;
-//		case 8:
-//			JMBG += String.format("%2s", mrRobot(1, 31)).replace(" ", "0") + "08";
-//			break;
-//		case 9:
-//			JMBG += String.format("%2s", mrRobot(1, 30)).replace(" ", "0") + "09";
-//			break;
-//		case 10:
-//			JMBG += String.format("%2s", mrRobot(1, 31)).replace(" ", "0") + "10";
-//			break;
-//		case 11:
-//			JMBG += String.format("%2s", mrRobot(1, 30)).replace(" ", "0") + "11";
-//			break;
-//		case 12:
-//			JMBG += String.format("%2s", mrRobot(1, 31)).replace(" ", "0") + "12";
-//			break;
-//		}
-//		JMBG += String.valueOf(mrRobot(LocalDate.now().getYear() - 80, LocalDate.now().getYear() - 16)).substring(1);
-//		// https://www.telegraf.rs/vesti/1096931-otkrivamo-misteriju-evo-sta-jmbg-i-6-njegovih-brojeva-govore-o-vama
-//		// https://bug.rs/2013/05/korisne-javascript-biblioteke-za-poslovni-software-u-nas-srba/
-//		// https://www.elitesecurity.org/t483659-algoritam-za-proveru-JMBG-ili-Java-source
-//		JMBG += String.format("%2s", mrRobot(1, 99)).replace(" ", "0");
-//		JMBG += String.format("%3s", mrRobot(0, 999)).replace(" ", "0");
-//		int modul11 = 11 -
-//				(((7 * (Character.getNumericValue(JMBG.charAt(0)) + Character.getNumericValue(JMBG.charAt(6)))) +
-//						(6 * (Character.getNumericValue(JMBG.charAt(1)) + Character.getNumericValue(JMBG.charAt(7)))) +
-//						(5 * (Character.getNumericValue(JMBG.charAt(2)) + Character.getNumericValue(JMBG.charAt(8)))) +
-//						(4 * (Character.getNumericValue(JMBG.charAt(3)) + Character.getNumericValue(JMBG.charAt(9)))) +
-//						(3 * (Character.getNumericValue(JMBG.charAt(4)) + Character.getNumericValue(JMBG.charAt(10)))) +
-//						(2 * (Character.getNumericValue(JMBG.charAt(5)) + Character.getNumericValue(JMBG.charAt(11))))) % 11);
-//		JMBG += (modul11 > 9) ? "0" : modul11;
-//		return JMBG;
-//	}
-	
 	/** @param rod 1-zensko 2-musko */
 	public static String generisiIme(int rod) {
 		String[] imenaZenska = {"Mia", "Tea", "Lea", "Mila", "Una"};
@@ -278,13 +229,7 @@ public class RADE extends DataHolder {
 		}
 	}
 
-	public static String generisiPrezime() {
-		String[] prezimena = {"Markovic", "Kraljevic", "Petrovic", "Ivanovic", "Sretenovic", "Jovanovic", "Djordjevic", "Nikolic", "Popadic", "Stojanovic"};
-		return prezimena[mrRobot(0, prezimena.length - 1)];
-	}
-	
-	@Deprecated
-	// Koristiti generisiOpstinu()
+	@Deprecated  // Koristiti generisiOpstinu()
 	public static String generisiGrad() {
 		String[] gradovi = {"Beograd", "Novi Sad", "Nis", "Pristina", "Kragujevac", "Subotica",
 				"Leskovac", "Krusevac", "Kraljevo", "Zrenjanin", "Pancevo", "Cacak", "Sabac", "Novi Pazar"};
