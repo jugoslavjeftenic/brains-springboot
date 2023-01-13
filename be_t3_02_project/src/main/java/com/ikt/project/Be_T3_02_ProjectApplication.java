@@ -1,4 +1,4 @@
-package com.iktprekvalifikacija.project;
+package com.ikt.project;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

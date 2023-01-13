@@ -1,8 +1,8 @@
-package com.iktprekvalifikacija.project.repositories;
+package com.ikt.project.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.iktprekvalifikacija.project.entities.CategoryEntity;
+import com.ikt.project.entities.CategoryEntity;
 
 public interface CategoryRepository extends CrudRepository<CategoryEntity, Integer> {
 

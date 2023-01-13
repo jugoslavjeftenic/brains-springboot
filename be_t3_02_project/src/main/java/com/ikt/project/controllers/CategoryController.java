@@ -1,4 +1,4 @@
-package com.iktprekvalifikacija.project.controllers;
+package com.ikt.project.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.iktprekvalifikacija.project.entities.CategoryEntity;
-import com.iktprekvalifikacija.project.repositories.CategoryRepository;
+import com.ikt.project.entities.CategoryEntity;
+import com.ikt.project.repositories.CategoryRepository;
 
 @RestController
 @RequestMapping(value = "/api/v1/project/categories")

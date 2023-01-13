@@ -1,4 +1,4 @@
-package com.iktprekvalifikacija.project.controllers;
+package com.ikt.project.controllers;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.iktprekvalifikacija.project.entities.CategoryEntity;
-import com.iktprekvalifikacija.project.entities.EOfferEntity;
-import com.iktprekvalifikacija.project.entities.OfferEntity;
-import com.iktprekvalifikacija.project.repositories.CategoryRepository;
-import com.iktprekvalifikacija.project.repositories.OfferRepository;
+import com.ikt.project.entities.CategoryEntity;
+import com.ikt.project.entities.EOfferEntity;
+import com.ikt.project.entities.OfferEntity;
+import com.ikt.project.repositories.CategoryRepository;
+import com.ikt.project.repositories.OfferRepository;
 
 import rade.RADE;
 

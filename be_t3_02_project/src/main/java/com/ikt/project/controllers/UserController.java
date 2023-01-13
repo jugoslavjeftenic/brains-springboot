@@ -1,4 +1,4 @@
-package com.iktprekvalifikacija.project.controllers;
+package com.ikt.project.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.iktprekvalifikacija.project.entities.EUserRole;
-import com.iktprekvalifikacija.project.entities.UserEntity;
-import com.iktprekvalifikacija.project.repositories.UserRepository;
+import com.ikt.project.entities.EUserRole;
+import com.ikt.project.entities.UserEntity;
+import com.ikt.project.repositories.UserRepository;
 
 @RestController
 @RequestMapping(value = "/api/v1/users")
