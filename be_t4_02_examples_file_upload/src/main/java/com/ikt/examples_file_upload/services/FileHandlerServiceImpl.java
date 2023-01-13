@@ -5,6 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -13,9 +15,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class FileHandlerServiceImpl implements FileHandlerService {
 
 	private static String UPLOAD_DIRECTORY = "e:\\Downloads\\";
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@Override
 	public String singleFileUpload(MultipartFile file, RedirectAttributes redirectAttributes) {
+		logger.info("SingleFileUpload method invoked" + file.getOriginalFilename());
 		if (file.isEmpty()) {
 			redirectAttributes.addFlashAttribute("message", "Please select file to upload!");
 			return "redirect:uploadStatus";
