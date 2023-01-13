@@ -12,6 +12,7 @@ import rade.data.DataHolder;
 import rade.entities.AdresaEntity;
 import rade.entities.DrzavaEntity;
 import rade.entities.OpstinaEntity;
+import rade.entities.OsobaEntity;
 
 public class RADE extends DataHolder {
 
@@ -19,7 +20,35 @@ public class RADE extends DataHolder {
 	 * R.A.D.E (Random Allocation Data Enhancer)
 	 * by Jugoslav Jeftenic
 	 */
+	
+	public static OsobaEntity generisiOsobu() {
+		return generisiOsobu(generisiDatumRodjenja(), generisiPol());
+	}
+	
+	public static OsobaEntity generisiOsobu(int pol) {
+		return generisiOsobu(generisiDatumRodjenja(), pol);
+	}
+	
+	public static OsobaEntity generisiOsobu(String kategorija, int pol) {
+		return generisiOsobu(generisiDatumRodjenja(kategorija), pol);
+	}
 
+	public static OsobaEntity generisiOsobu(int minGodina, int maxGodina, int pol) {
+		return generisiOsobu(generisiDatumRodjenja(minGodina, maxGodina), pol);
+	}
+
+	public static OsobaEntity generisiOsobu(LocalDate dob, int pol) {
+		OsobaEntity osoba = new OsobaEntity();
+		osoba.setPol(pol);
+		osoba.setDatumRodjenja(dob);
+		osoba.setIme(generisiIme(osoba.getPol()));
+		osoba.setPrezime(generisiPrezime());
+		osoba.setJmbg(generisiJMBG(osoba.getDatumRodjenja(), osoba.getPol()));
+		osoba.setAdresaRodjenja(generisiAdresu());
+		osoba.setAdresaStanovanja(generisiAdresu());
+		return osoba;
+	}
+	
 	public static String generisiIme() {
 		if (generisiPol() == 1) {
 			return generisiZenskoIme();
