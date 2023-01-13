@@ -21,34 +21,43 @@ public class RADE extends DataHolder {
 	 */
 	
 	public static String generisiIme() {
-		int rod = mrRobot(1, 2);
-		if (rod == 1) {
+		int pol = mrRobot(1, 2);
+		if (pol == 1) {
 			return generisiZenskoIme();
 		}
 		return generisiMuskoIme();
 	}
 	
 	public static String generisiZenskoIme() {
-		return dobaviZenskoIme(mrRobot(0, imenaZ.length - 1));
-	}
-	
-	public static String generisiMuskoIme() {
-		return dobaviMuskoIme(mrRobot(0, imenaM.length - 1));
+		return dobaviZenskoIme(mrRobot(1, imenaZ.length - 1));
 	}
 	
 	public static String dobaviZenskoIme(int i) {
+		if (i < 1 || i > imenaZ.length - 1) {
+			i = 0;
+		}
 		return imenaZ[i];
+	}
+	
+	public static String generisiMuskoIme() {
+		return dobaviMuskoIme(mrRobot(1, imenaM.length - 1));
 	}
 
 	public static String dobaviMuskoIme(int i) {
+		if (i < 1 || i > imenaM.length - 1) {
+			i = 0;
+		}
 		return imenaM[i];
 	}
 
 	public static String generisiPrezime() {
-		return dobaviPrezime(mrRobot(0, prezimena.length - 1));
+		return dobaviPrezime(mrRobot(1, prezimena.length - 1));
 	}
 	
 	public static String dobaviPrezime(int i) {
+		if (i < 1 || i > prezimena.length - 1) {
+			i = 0;
+		}
 		return prezimena[i];
 	}
 	
@@ -58,7 +67,7 @@ public class RADE extends DataHolder {
 		adresa.setBroj(generisiBrojUlice());
 		adresa.setOpstina(generisiOpstinu());
 		try {
-			adresa.setDrzava(generisiDrzavu(adresa.getOpstina().getDrzava()));
+			adresa.setDrzava(dobaviDrzavu(adresa.getOpstina().getDrzava()));
 		} catch (Exception e) {
 			adresa.setDrzava(generisiDrzavu());
 		}
@@ -66,10 +75,13 @@ public class RADE extends DataHolder {
 	}
 	
 	public static String generisiUlicu() {
-		return generisiUlicu(mrRobot(0, ulice.length - 1));
+		return dobaviUlicu(mrRobot(1, ulice.length - 1));
 	}
 	
-	public static String generisiUlicu(int i) {
+	public static String dobaviUlicu(int i) {
+		if (i < 1 || i > ulice.length - 1) {
+			i = 0;
+		}
 		return ulice[i];
 	}
 	
@@ -78,58 +90,64 @@ public class RADE extends DataHolder {
 		return brojUlice[mrRobot(0, brojUlice.length - 1)];
 	}
 	
-	public static List<OpstinaEntity> listajSveOpstine() {
+	public static OpstinaEntity generisiOpstinu() {
+		return dobaviOpstinu(mrRobot(1, opstine.length - 1));
+	}
+
+	public static List<OpstinaEntity> dobaviSveOpstine() {
 		List<OpstinaEntity> listaOpstina = new ArrayList<>();
-		for (int i = 0; i < opstine.length; i++) {
-			listaOpstina.add(generisiOpstinu(i));
+		for (int i = 1; i < opstine.length; i++) {
+			listaOpstina.add(dobaviOpstinu(i));
 		}
 		return listaOpstina;
 	}
 	
-	public static OpstinaEntity generisiOpstinu() {
-		return generisiOpstinu(mrRobot(0, opstine.length - 1));
-	}
-
-	public static OpstinaEntity generisiOpstinu(int i) {
+	public static OpstinaEntity dobaviOpstinu(int i) {
+		if (i < 1 || i > opstine.length - 1) {
+			i = 0;
+		}
 		OpstinaEntity opstina = new OpstinaEntity();
 		try {
 			opstina.setSifra(Integer.parseInt(opstine[i][0]));
 		} catch (Exception e) {
-			opstina.setSifra(null);
+			opstina.setSifra(0);
 		}
-		opstina.setNaziv(opstine[i][1]);
-		opstina.setPosta(opstine[i][2]);
+		opstina.setNaziv(opstine[opstina.getSifra()][1]);
+		opstina.setPosta(opstine[opstina.getSifra()][2]);
 		try {
-			opstina.setDrzava(Integer.parseInt(opstine[i][3]));
+			opstina.setDrzava(Integer.parseInt(opstine[opstina.getSifra()][3]));
 		} catch (Exception e) {
-			opstina.setDrzava(null);
+			opstina.setDrzava(0);
 		}
 		return opstina;
 	}
 	
-	public static List<DrzavaEntity> listajSveDrzave() {
+	public static DrzavaEntity generisiDrzavu() {
+		return dobaviDrzavu(mrRobot(1, drzave.length - 1));
+	}
+	
+	public static List<DrzavaEntity> dobaviSveDrzave() {
 		List<DrzavaEntity> listaZemalja = new ArrayList<>();
-		for (int i = 0; i < drzave.length; i++) {
-			listaZemalja.add(generisiDrzavu(i));
+		for (int i = 1; i < drzave.length; i++) {
+			listaZemalja.add(dobaviDrzavu(i));
 		}
 		return listaZemalja;
 	}
-	
-	public static DrzavaEntity generisiDrzavu() {
-		return generisiDrzavu(mrRobot(0, drzave.length - 1));
-	}
 
-	public static DrzavaEntity generisiDrzavu(int i) {
+	public static DrzavaEntity dobaviDrzavu(int i) {
+		if (i < 1 || i > drzave.length - 1) {
+			i = 0;
+		}
 		DrzavaEntity drzava = new DrzavaEntity();
 		try {
 			drzava.setSifra(Integer.parseInt(drzave[i][0]));
 		} catch (Exception e) {
-			drzava.setSifra(null);
+			drzava.setSifra(0);
 		}
-		drzava.setAlfa(drzave[i][1]);
-		drzava.setOznaka(drzave[i][2]);
-		drzava.setNaziv(drzave[i][3]);
-		drzava.setKontinent(drzave[i][4]);
+		drzava.setAlfa(drzave[drzava.getSifra()][1]);
+		drzava.setOznaka(drzave[drzava.getSifra()][2]);
+		drzava.setNaziv(drzave[drzava.getSifra()][3]);
+		drzava.setKontinent(drzave[drzava.getSifra()][4]);
 		return drzava;
 	}
 	
