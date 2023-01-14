@@ -121,7 +121,10 @@ public class RADE extends DataHolder {
 	}
 	
 	public static String generisiBrojUlice() {
-		String[] brojUlice = {"bb.", String.valueOf(mrRobot(1, 200)), String.valueOf(mrRobot(1, 100)) + Character.toString((char) (mrRobot(97, 103)))};
+		String[] brojUlice = {"bb.",
+				String.valueOf(mrRobot(1, 200)),
+				String.valueOf(mrRobot(1, 100)) + Character.toString((char) (mrRobot(97, 103)))
+		};
 		return brojUlice[mrRobot(0, brojUlice.length - 1)];
 	}
 	
@@ -147,10 +150,10 @@ public class RADE extends DataHolder {
 		} catch (Exception e) {
 			opstina.setSifra(0);
 		}
-		opstina.setNaziv(opstine[opstina.getSifra()][1]);
-		opstina.setPosta(opstine[opstina.getSifra()][2]);
+		opstina.setNaziv(opstine[i][1]);
+		opstina.setPosta(opstine[i][2]);
 		try {
-			opstina.setDrzava(Integer.parseInt(opstine[opstina.getSifra()][3]));
+			opstina.setDrzava(Integer.parseInt(opstine[i][3]));
 		} catch (Exception e) {
 			opstina.setDrzava(0);
 		}
@@ -179,10 +182,10 @@ public class RADE extends DataHolder {
 		} catch (Exception e) {
 			drzava.setSifra(0);
 		}
-		drzava.setAlfa(drzave[drzava.getSifra()][1]);
-		drzava.setOznaka(drzave[drzava.getSifra()][2]);
-		drzava.setNaziv(drzave[drzava.getSifra()][3]);
-		drzava.setKontinent(drzave[drzava.getSifra()][4]);
+		drzava.setAlfa(drzave[i][1]);
+		drzava.setOznaka(drzave[i][2]);
+		drzava.setNaziv(drzave[i][3]);
+		drzava.setKontinent(drzave[i][4]);
 		return drzava;
 	}
 	
