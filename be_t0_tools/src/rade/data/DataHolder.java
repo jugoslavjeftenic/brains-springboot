@@ -118,7 +118,7 @@ public class DataHolder {
 		    "Savić",
 		    "Tadić",
 		    "Vuletić",
-		    "Andjelić",
+		    "Anđelić",
 		    "Cvetković",
 		    "Gajić",
 		    "Janković",

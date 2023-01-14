@@ -1,5 +1,6 @@
 package rade;
 
+import java.text.Normalizer;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
@@ -46,6 +47,8 @@ public class RADE extends DataHolder {
 		osoba.setJmbg(generisiJMBG(osoba.getDatumRodjenja(), osoba.getPol()));
 		osoba.setAdresaRodjenja(generisiAdresu());
 		osoba.setAdresaStanovanja(generisiAdresu());
+		osoba.setUsername(replaceYULatinWithUS(osoba.getIme() + osoba.getPrezime().substring(0, 3)).toLowerCase());
+		osoba.setEmail(osoba.getUsername() + "@ikt.rs");
 		return osoba;
 	}
 	
@@ -64,33 +67,33 @@ public class RADE extends DataHolder {
 	}
 	
 	public static String generisiZenskoIme() {
-		return dobaviZenskoIme(mrRobot(1, imenaZ.length - 1));
+		return dobaviZenskoIme(mrRobot(1, imenaZ.length));
 	}
 	
 	public static String dobaviZenskoIme(int i) {
-		if (i < 1 || i > imenaZ.length - 1) {
+		if (i < 1 || i > imenaZ.length) {
 			i = 0;
 		}
 		return imenaZ[i];
 	}
 	
 	public static String generisiMuskoIme() {
-		return dobaviMuskoIme(mrRobot(1, imenaM.length - 1));
+		return dobaviMuskoIme(mrRobot(1, imenaM.length));
 	}
 
 	public static String dobaviMuskoIme(int i) {
-		if (i < 1 || i > imenaM.length - 1) {
+		if (i < 1 || i > imenaM.length) {
 			i = 0;
 		}
 		return imenaM[i];
 	}
 
 	public static String generisiPrezime() {
-		return dobaviPrezime(mrRobot(1, prezimena.length - 1));
+		return dobaviPrezime(mrRobot(1, prezimena.length));
 	}
 	
 	public static String dobaviPrezime(int i) {
-		if (i < 1 || i > prezimena.length - 1) {
+		if (i < 1 || i > prezimena.length) {
 			i = 0;
 		}
 		return prezimena[i];
@@ -110,11 +113,11 @@ public class RADE extends DataHolder {
 	}
 	
 	public static String generisiUlicu() {
-		return dobaviUlicu(mrRobot(1, ulice.length - 1));
+		return dobaviUlicu(mrRobot(1, ulice.length));
 	}
 	
 	public static String dobaviUlicu(int i) {
-		if (i < 1 || i > ulice.length - 1) {
+		if (i < 1 || i > ulice.length) {
 			i = 0;
 		}
 		return ulice[i];
@@ -125,23 +128,23 @@ public class RADE extends DataHolder {
 				String.valueOf(mrRobot(1, 200)),
 				String.valueOf(mrRobot(1, 100)) + Character.toString((char) (mrRobot(97, 103)))
 		};
-		return brojUlice[mrRobot(0, brojUlice.length - 1)];
+		return brojUlice[mrRobot(0, brojUlice.length)];
 	}
 	
 	public static OpstinaEntity generisiOpstinu() {
-		return dobaviOpstinu(mrRobot(1, opstine.length - 1));
+		return dobaviOpstinu(mrRobot(1, opstine.length));
 	}
 
 	public static List<OpstinaEntity> dobaviSveOpstine() {
 		List<OpstinaEntity> listaOpstina = new ArrayList<>();
-		for (int i = 1; i < opstine.length; i++) {
+		for (int i = 1; i < opstine.length + 1; i++) {
 			listaOpstina.add(dobaviOpstinu(i));
 		}
 		return listaOpstina;
 	}
 	
 	public static OpstinaEntity dobaviOpstinu(int i) {
-		if (i < 1 || i > opstine.length - 1) {
+		if (i < 1 || i > opstine.length) {
 			i = 0;
 		}
 		OpstinaEntity opstina = new OpstinaEntity();
@@ -161,19 +164,19 @@ public class RADE extends DataHolder {
 	}
 	
 	public static DrzavaEntity generisiDrzavu() {
-		return dobaviDrzavu(mrRobot(1, drzave.length - 1));
+		return dobaviDrzavu(mrRobot(1, drzave.length));
 	}
 	
 	public static List<DrzavaEntity> dobaviSveDrzave() {
 		List<DrzavaEntity> listaZemalja = new ArrayList<>();
-		for (int i = 1; i < drzave.length; i++) {
+		for (int i = 1; i < drzave.length + 1; i++) {
 			listaZemalja.add(dobaviDrzavu(i));
 		}
 		return listaZemalja;
 	}
 
 	public static DrzavaEntity dobaviDrzavu(int i) {
-		if (i < 1 || i > drzave.length - 1) {
+		if (i < 1 || i > drzave.length) {
 			i = 0;
 		}
 		DrzavaEntity drzava = new DrzavaEntity();
@@ -226,7 +229,7 @@ public class RADE extends DataHolder {
 	}
 	
 	public static int generisiPol() {
-		return mrRobot(1, 2);
+		return mrRobot(1, 3);
 	}
 	
 	public static String generisiJMBG() {
@@ -349,4 +352,14 @@ public class RADE extends DataHolder {
 		return min + Math.random() * (max - min);
 //		return ((Math.random() * (max - min + 1)) + min);
 	}
+
+	public static String replaceYULatinWithUS(String string) {
+		// https://stackoverflow.com/questions/3322152/is-there-a-way-to-get-rid-of-accents-and-convert-a-whole-string-to-regular-lette
+		// TODO Uff?
+		string = string.replaceAll("đ", "dj");
+		string = string.replaceAll("Đ", "Dj");
+//		string = Normalizer.normalize(string, Normalizer.Form.NFKD).replaceAll("[^\\p{ASCII}]", "");
+		string = Normalizer.normalize(string, Normalizer.Form.NFKD).replaceAll("\\p{M}", "");
+        return string;
+    }
 }
