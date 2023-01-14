@@ -1,5 +1,7 @@
 package com.ikt.project.repositories;
 
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 
 import com.ikt.project.entities.UserEntity;
@@ -12,4 +14,5 @@ public interface UserRepository extends CrudRepository<UserEntity, Integer> {
 	 * • za svaku od kreiranih klasa napraviti odgovarajuće interfejse
 	 * • UserRepository, CategoryRepository i OfferRepository
 	 */
+	List<UserEntity> findByUserName(String userName);
 }
