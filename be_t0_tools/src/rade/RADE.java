@@ -297,14 +297,38 @@ public class RADE extends DataHolder {
 		return (modul11 > 9) ? "0" : modul11.toString();
 	}
 	
+	public static int mrRobot(int min, int max) {
+		return (int) (min + Math.random() * (max - min));
+	}
+	
+	public static double mrRobot(double min, double max) {
+		return min + Math.random() * (max - min);
+	}
+
+	public static String replaceYULatinWithUS(String string) {
+		// https://stackoverflow.com/questions/3322152/is-there-a-way-to-get-rid-of-accents-and-convert-a-whole-string-to-regular-lette
+		// TODO Uff?
+		string = string.replaceAll("đ", "dj");
+		string = string.replaceAll("Đ", "Dj");
+//		string = Normalizer.normalize(string, Normalizer.Form.NFKD).replaceAll("[^\\p{ASCII}]", "");
+		string = Normalizer.normalize(string, Normalizer.Form.NFKD).replaceAll("\\p{M}", "");
+        return string;
+    }
+
+	public static double zaokruziNa99(double value) {
+	    return Math.round(value) + 0.99;
+	}
+
 	@Deprecated  // Koristiti generisiOpstinu()
 	public static String generisiGrad() {
 		String[] gradovi = {"Beograd", "Novi Sad", "Nis", "Pristina", "Kragujevac", "Subotica",
 				"Leskovac", "Krusevac", "Kraljevo", "Zrenjanin", "Pancevo", "Cacak", "Sabac", "Novi Pazar"};
 		return gradovi[mrRobot(0, gradovi.length - 1)];
 	}
-	
+
 	// TODO Prepraviti sve generatore ispod ove linije
+	// --------------------------------------------------------------------------------------
+
 	/** @param zanimanje 1-akademska karijera */
 	/** @param zanimanje 9-neakademska zanimanja */
 	public static String generisiZanimanje(int karijera) {
@@ -342,24 +366,4 @@ public class RADE extends DataHolder {
 		String[] tim = {"Sokoli", "Orlovi", "Vrabci", "Tigrovi", "Vukovi", "Gavrani", "Pobednici", "Bednici", "Lavovi", "Alkoholicari", "Nindze"};
 		return tim[mrRobot(0, tim.length - 1)];
 	}
-	
-	public static int mrRobot(int min, int max) {
-		return (int) (min + Math.random() * (max - min));
-//		return (int) ((Math.random() * (max - min + 1)) + min);
-	}
-	
-	public static double mrRobot(double min, double max) {
-		return min + Math.random() * (max - min);
-//		return ((Math.random() * (max - min + 1)) + min);
-	}
-
-	public static String replaceYULatinWithUS(String string) {
-		// https://stackoverflow.com/questions/3322152/is-there-a-way-to-get-rid-of-accents-and-convert-a-whole-string-to-regular-lette
-		// TODO Uff?
-		string = string.replaceAll("đ", "dj");
-		string = string.replaceAll("Đ", "Dj");
-//		string = Normalizer.normalize(string, Normalizer.Form.NFKD).replaceAll("[^\\p{ASCII}]", "");
-		string = Normalizer.normalize(string, Normalizer.Form.NFKD).replaceAll("\\p{M}", "");
-        return string;
-    }
 }
