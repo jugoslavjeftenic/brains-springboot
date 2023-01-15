@@ -45,9 +45,9 @@ public class OfferEntity {
 	@Column
 	private LocalDateTime offerExpires;
 	@Column
-	private Float regularPrice;
+	private Double regularPrice;
 	@Column
-	private Float actionPrice;
+	private Double actionPrice;
 	@Column
 	private String imagePath;
 	@Column
@@ -64,7 +64,7 @@ public class OfferEntity {
 	}
 
 	public OfferEntity(Integer id, String offerName, String offerDesc, LocalDateTime offerCreated,
-			LocalDateTime offerExpires, Float regularPrice, Float actionPrice, String imagePath,
+			LocalDateTime offerExpires, Double regularPrice, Double actionPrice, String imagePath,
 			Integer availableOffers, Integer boughtOffers, EOfferEntity offerStatus, Integer version) {
 		super();
 		this.id = id;
@@ -121,19 +121,19 @@ public class OfferEntity {
 		this.offerExpires = offerExpires;
 	}
 
-	public Float getRegularPrice() {
+	public Double getRegularPrice() {
 		return regularPrice;
 	}
 
-	public void setRegularPrice(Float regularPrice) {
+	public void setRegularPrice(Double regularPrice) {
 		this.regularPrice = regularPrice;
 	}
 
-	public Float getActionPrice() {
+	public Double getActionPrice() {
 		return actionPrice;
 	}
 
-	public void setActionPrice(Float actionPrice) {
+	public void setActionPrice(Double actionPrice) {
 		this.actionPrice = actionPrice;
 	}
 

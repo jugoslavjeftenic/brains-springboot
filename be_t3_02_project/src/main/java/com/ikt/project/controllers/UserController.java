@@ -97,9 +97,8 @@ public class UserController {
 	 */
 	@RequestMapping(method = RequestMethod.PUT, path = "/{id}")
 	public UserEntity updateUser(@PathVariable Integer id, @RequestBody UserEntity updatedUser) {
-		UserEntity user;
 		try {
-			user = userRepository.findById(id).get();
+			UserEntity user = userRepository.findById(id).get();
 			if (updatedUser.getFirstName() != null) {
 				user.setFirstName(updatedUser.getFirstName());
 			}

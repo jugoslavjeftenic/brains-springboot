@@ -111,9 +111,8 @@ public class CategoryController {
 	 */
 	@RequestMapping(method = RequestMethod.PUT, path = "/{id}")
 	public CategoryEntity updateCategory(@PathVariable Integer id, @RequestBody CategoryEntity updatedCategory) {
-		CategoryEntity category;
 		try {
-			category = categoryRepository.findById(id).get();
+			CategoryEntity category = categoryRepository.findById(id).get();
 			if (updatedCategory.getCategoryName() != null) {
 				category.setCategoryName(updatedCategory.getCategoryName());
 			}

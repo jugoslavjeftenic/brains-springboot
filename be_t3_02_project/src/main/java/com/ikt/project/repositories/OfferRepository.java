@@ -1,5 +1,7 @@
 package com.ikt.project.repositories;
 
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 
 import com.ikt.project.entities.OfferEntity;
@@ -12,4 +14,7 @@ public interface OfferRepository extends CrudRepository<OfferEntity, Integer> {
 	 * • za svaku od kreiranih klasa napraviti odgovarajuće interfejse
 	 * • UserRepository, CategoryRepository i OfferRepository
 	 */
+	// https://www.baeldung.com/spring-data-derived-queries
+	List<OfferEntity> findByOfferName(String offerName);
+	List<OfferEntity> findByActionPriceBetween(Double start, Double end);
 }

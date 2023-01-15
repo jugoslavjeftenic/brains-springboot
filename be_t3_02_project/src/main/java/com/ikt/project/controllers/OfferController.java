@@ -11,17 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ikt.project.entities.CategoryEntity;
 import com.ikt.project.entities.EOfferEntity;
-import com.ikt.project.entities.EUserRole;
 import com.ikt.project.entities.OfferEntity;
-import com.ikt.project.repositories.CategoryRepository;
 import com.ikt.project.repositories.OfferRepository;
 
 import rade.RADE;
 
 @RestController
-@RequestMapping(value = "/api/v1/project/offers")
+@RequestMapping(value = "/api/v1/offers")
 public class OfferController {
 
 	// T3 1.3
@@ -66,17 +63,19 @@ public class OfferController {
 	 */
 	@RequestMapping(method = RequestMethod.POST)
 	public OfferEntity addOffer(@RequestBody OfferEntity newOffer) {
+		// https://www.baeldung.com/java-comparing-dates
+		if (!newOffer.getOfferExpires().isAfter(newOffer.getOfferCreated())) {
+			newOffer.setOfferExpires(newOffer.getOfferCreated().plusDays(7));
+		}
 		return offerRepository.save(newOffer);
 	}
 	
-	// TODO Zavrsiti
-	@RequestMapping(method = RequestMethod.POST, path = "/populatetable")
-	public Iterable<OfferEntity> populateTable() {
+	@RequestMapping(method = RequestMethod.POST, path = "/populatetable/{count}")
+	public Iterable<OfferEntity> populateTable(@PathVariable(required = false) Integer count) {
 		List<OfferEntity> offers = new ArrayList<>();
-		EOfferEntity[] offerStatus = EOfferEntity.values();
 		String[][] offersData = {
 				{"Stemovanje zidova", "Najbolji način da iznervirate komsije.", "500.00", "3000.00"},
-				{"Sporski tipovi", "100% pogoci, analitička firma Zeleni i Kum.", "2000", "100000"},
+				{"Sporski tipovi", "100% pogoci, analitična firma Zeleni i Kum.", "2000", "100000"},
 				{"Kupon+ aplikacija", "Uštedite kupujući stvari koje vam nikada neće zatrebati.", "500", "1000"},
 				{"Magazin Zdravo telo u zdravoj fotelji", "Zamenite vežbanje gledanjem slika. Uz svaki primerak magazina dobijate poster fotelje.", "500", "500"},
 				{"Sredstvo za odmagljivanje", "Naučnici su dokazali da je naš prozvod 12% bolji od drugih proizvoda.", "2000", "3000"},
@@ -91,7 +90,7 @@ public class OfferController {
 				{"Beskorisni saveti", "Nudimo savetodavne usluge.", "1000", "5000"},
 				{"Ti to možeš", "Kupite naše novo online predavanje o uspehu - i još više se osećajte kao neuspešni", "1000", "10000"},
 				{"Kako se obogatiti", "Saveti o bogatstvu - po ceni koja će vas ostaviti bez para.", "100000", "500000"},
-				{"Otvaram novo poglavlje", "Kupite našu novu knjigu o kreativnom pisanju - i otkrijte da ste i dalje bez ideja.", "10000", "15000"},
+				{"Moje novo poglavlje", "Kupite našu novu knjigu o kreativnom pisanju - i otkrijte da ste i dalje bez ideja.", "10000", "15000"},
 				{"I feel you", "Učlanite se u online zajednicu članova koji vas neće razumeti.", "500", "1000"},
 				{"Iluzija sreće", "Privatni časovi po ceni koja će vas ostaviti razočaranim.", "2000", "3000"},
 				{"Još samo minut", "Kupite našu novu aplikaciju za organizaciju vremena - i još više se osećajte pod stresom.", "1000", "5000"},
@@ -99,31 +98,46 @@ public class OfferController {
 				{"Ostani isti", "Kupite našu novu knjigu o razvoju ličnosti - i saznajte da ste i dalje isti.", "3000", "5000"},
 				{"Nesporazum", "Kurs poboljšanja komunikacije", "500", "1500"},
 				{"Ha?", "Kurs pravopisa", "1000", "5000"},
-				{"Odbijenica.su", "Oglasite se na najboljem sajtu za pronalaženje posla!", "1000", "5000"},
+				{"Odbijenica.SU", "Oglasite se na najboljem sajtu za pronalaženje posla!", "1000", "10000"}
 		};
-		for (int i = 0; i < offersData.length; i++) {
-			OfferEntity offer = new OfferEntity();
-			offer.setOfferName(offersData[i][0]);
-			offer.setOfferDesc(offersData[i][1]);
-			offer.setOfferCreated(LocalDateTime.now().minusHours(RADE.mrRobot(0, 24)));
-			offer.setOfferExpires(offer.getOfferCreated().plusDays(RADE.mrRobot(7, 30)));
-			Float rndPrice;
-			try {
-				rndPrice = (float) RADE.mrRobot(Float.parseFloat(offersData[i][2]), Float.parseFloat(offersData[i][3]));
-			} catch (Exception e) {
-				rndPrice = 1F;
+		if (count == null) {
+//		if (count == null || count < 1) {
+			count = offersData.length;
+			for (int i = 0; i < count; i++) {
+				offers.add(createOffer(offersData[i]));
 			}
-			offer.setRegularPrice(rndPrice);
-			offer.setActionPrice((float) (rndPrice - (Math.round((rndPrice * RADE.mrRobot(0.05, 0.5))))));
-			offer.setImagePath("");
-			offer.setAvailableOffers(RADE.mrRobot(10, 1000));
-			offer.setBoughtOffers(RADE.mrRobot(10, 1000));
-			offer.setOfferStatus(offerStatus[RADE.mrRobot(0, offerStatus.length)]);
+		}
+		else {
+			for (int i = 0; i < count; i++) {
+				offers.add(createOffer(offersData[RADE.mrRobot(0, offersData.length)]));
+			}
 		}
 		return offerRepository.saveAll(offers);
 	}
+	
+	private OfferEntity createOffer(String[] offerData) {
+		EOfferEntity[] offerStatus = EOfferEntity.values();
+		OfferEntity offer = new OfferEntity();
+		offer.setOfferName(offerData[0]);
+		offer.setOfferDesc(offerData[1]);
+		offer.setOfferCreated(LocalDateTime.now().minusHours(RADE.mrRobot(0, 24)));
+		offer.setOfferExpires(offer.getOfferCreated().plusDays(RADE.mrRobot(7, 30)));
+		Double rndPrice;
+		try {
+			rndPrice = RADE.mrRobot(Double.parseDouble(offerData[2]), Double.parseDouble(offerData[3]));
+		} catch (Exception e) {
+			rndPrice = 0.99;
+		}
+		offer.setRegularPrice(rndPrice);
+		offer.setActionPrice(RADE.zaokruziNa99(rndPrice - (Math.round((rndPrice * RADE.mrRobot(0.05, 0.5))))));
+		offer.setImagePath("");
+		offer.setAvailableOffers(RADE.mrRobot(10, 1000));
+		offer.setBoughtOffers(RADE.mrRobot(10, 1000));
+		offer.setOfferStatus(offerStatus[RADE.mrRobot(0, offerStatus.length)]);
+		return offer;
+	}
 
-	// 3.5
+	// T2 3.5
 	/*
 	 * Kreirati REST endpoint koji omogućava izmenu postojeće ponude
 	 * • putanja /project/offers/{id}
@@ -132,62 +146,43 @@ public class OfferController {
 	 * • NAPOMENA: u okviru ove metode ne menjati vrednost atributa offer status
 	 */
 	@RequestMapping(method = RequestMethod.PUT, path = "/{id}")
-	// TODO Da te podsetim da si ovo uradio u dva ujutro a nisi testirao
 	public OfferEntity updateOffer(@PathVariable Integer id, @RequestBody OfferEntity updatedOffer) {
-		for (OfferEntity offers : getDB()) {
-			if (offers.getId().equals(id)) {
-				if (updatedOffer.getOfferName() != null) {
-					offers.setOfferName(updatedOffer.getOfferName());
-				}
-				if (updatedOffer.getOfferDesc() != null) {
-					offers.setOfferDesc(updatedOffer.getOfferDesc());
-				}
-				if (updatedOffer.getOfferCreated() != null) {
-					offers.setOfferCreated(updatedOffer.getOfferCreated());
-				}
-				if (updatedOffer.getOfferExpires() != null) {
-					offers.setOfferExpires(updatedOffer.getOfferExpires());
-				}
-				if (updatedOffer.getRegularPrice() != null) {
-					offers.setRegularPrice(updatedOffer.getRegularPrice());
-				}
-				if (updatedOffer.getActionPrice() != null) {
-					offers.setActionPrice(updatedOffer.getActionPrice());
-				}
-				if (updatedOffer.getImagePath() != null) {
-					offers.setImagePath(updatedOffer.getImagePath());
-				}
-				if (updatedOffer.getAvailableOffers() != null) {
-					offers.setAvailableOffers(updatedOffer.getAvailableOffers());
-				}
-				if (updatedOffer.getBoughtOffers() != null) {
-					offers.setBoughtOffers(updatedOffer.getBoughtOffers());
-				}
-				return offers;
+		try {
+			OfferEntity offer = offerRepository.findById(id).get();
+			if (updatedOffer.getOfferName() != null) {
+				offer.setOfferName(updatedOffer.getOfferName());
 			}
+			if (updatedOffer.getOfferDesc() != null) {
+				offer.setOfferDesc(updatedOffer.getOfferDesc());
+			}
+			if (updatedOffer.getOfferCreated() != null) {
+				offer.setOfferCreated(updatedOffer.getOfferCreated());
+			}
+			if (updatedOffer.getOfferExpires() != null && updatedOffer.getOfferExpires().isAfter(offer.getOfferCreated())) {
+				offer.setOfferExpires(updatedOffer.getOfferExpires());
+			}
+			if (updatedOffer.getRegularPrice() != null) {
+				offer.setRegularPrice(updatedOffer.getRegularPrice());
+			}
+			if (updatedOffer.getActionPrice() != null) {
+				offer.setActionPrice(updatedOffer.getActionPrice());
+			}
+			if (updatedOffer.getImagePath() != null) {
+				offer.setImagePath(updatedOffer.getImagePath());
+			}
+			if (updatedOffer.getAvailableOffers() != null) {
+				offer.setAvailableOffers(updatedOffer.getAvailableOffers());
+			}
+			if (updatedOffer.getBoughtOffers() != null) {
+				offer.setBoughtOffers(updatedOffer.getBoughtOffers());
+			}
+			return offerRepository.save(offer);
+		} catch (Exception e) {
+			return null;
 		}
-		return null;
 	}
 	
-	// 3.6
-	/*
-	 * Kreirati REST endpoint koji omogućava brisanje postojeće ponude
-	 * • putanja /project/offers/{id}
-	 * • ukoliko je prosleđen ID koji ne pripada nijednoj ponudi metoda treba da vrati null,
-	 *   a u suprotnom vraća podatke o ponudi koja je obrisana
-	 */
-	@RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
-	public OfferEntity deleteOffer(@PathVariable Integer id) {
-		for (OfferEntity offers : getDB()) {
-			if (offers.getId().equals(id)) {
-				getDB().remove(offers);
-				return offers;
-			}
-		}
-		return null;
-	}
-	
-	// 3.8
+	// T2 3.8
 	/*
 	 * Kreirati REST endpoint koji omogućava promenu vrednosti atributa offer status postojeće ponude
 	 * • putanja /project/offers/changeOffer/{id}/status/{status}
@@ -196,33 +191,43 @@ public class OfferController {
 	 */
 	@RequestMapping(method = RequestMethod.PUT, path = "changeOffer/{id}/status/{status}")
 	public OfferEntity updateUserRole(@PathVariable Integer id, @PathVariable EOfferEntity status) {
-		for (OfferEntity offers : getDB()) {
-			if (offers.getId().equals(id)) {
-				if (status != null) {
-					offers.setOfferStatus(status);
-				}
-				return offers;
-			}
+		try {
+			OfferEntity offer = offerRepository.findById(id).get();
+			offer.setOfferStatus(status);
+			return offerRepository.save(offer);
+		} catch (Exception e) {
+			return null;
 		}
-		return null;
 	}
 	
-	// 3.9
+	// T2 3.6
+	/*
+	 * Kreirati REST endpoint koji omogućava brisanje postojeće ponude
+	 * • putanja /project/offers/{id}
+	 * • ukoliko je prosleđen ID koji ne pripada nijednoj ponudi metoda treba da vrati null,
+	 *   a u suprotnom vraća podatke o ponudi koja je obrisana
+	 */
+	@RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
+	public OfferEntity deleteOffer(@PathVariable Integer id) {
+		try {
+			OfferEntity offer = offerRepository.findById(id).get();
+			offerRepository.delete(offer);
+			return offer;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	// T2 3.9
 	/*
 	 * Kreirati REST endpoint koji omogućava pronalazak svih ponuda čija se akcijska cena
 	 * nalazi u odgovarajućem rasponu
 	 * • putanja /project/offers/findByPrice/{lowerPrice}/and/{upperPrice}
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "findByPrice/{lowerPrice}/and/{upperPrice}")
-	public List<OfferEntity> getOfferByPriceRange(@PathVariable Float lowerPrice, @PathVariable Float upperPrice) {
+	public List<OfferEntity> getOfferByPriceRange(@PathVariable Double lowerPrice, @PathVariable Double upperPrice) {
 		if (lowerPrice <= upperPrice) {
-			List<OfferEntity> retVal = new ArrayList<>();
-			for (OfferEntity offers : getDB()) {
-				if (offers.getActionPrice() >= lowerPrice && offers.getActionPrice() <= upperPrice) {
-					retVal.add(offers);
-				}
-			}
-			return retVal;
+			return offerRepository.findByActionPriceBetween(lowerPrice, upperPrice);
 		}
 		return null;
 	}
