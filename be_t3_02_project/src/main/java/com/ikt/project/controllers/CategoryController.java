@@ -59,31 +59,33 @@ public class CategoryController {
 	 */
 	@RequestMapping(method = RequestMethod.POST)
 	public CategoryEntity addCategory(@RequestBody CategoryEntity newCategory) {
-		CategoryEntity category = new CategoryEntity();
-		category.setCategoryName(newCategory.getCategoryName());
-		category.setCategoryDescription(newCategory.getCategoryDescription());
-		categoryRepository.save(category);
-		return category;
+		try {
+			if (!(categoryRepository.findByCategoryName(newCategory.getCategoryName()).size() > 0)) {
+				return categoryRepository.save(newCategory);
+			}
+		} catch (Exception e) {
+			System.out.println("Kategorija vec postoji u bazi.");
+		}
+		return null;
 	}
 
 	@RequestMapping(method = RequestMethod.POST, path = "/populatetable")
 	public Iterable<CategoryEntity> populateTable() {
 		List<CategoryEntity> categories = new ArrayList<>();
 		String[][] categoriesData = {
-				{"Majstori", "Da li Vam se nekad desi nezgoda u stanu ili kući, a da ne znate kome da se obratite? Na našem sajtu možete da pronađete majstora baš po svojoj meri."},
-				{"Privatni casovi", "Matematika, fizika, hemija… Individualni časovi mogu da ti pomognu da savladaš najteže zadatke. Lako naruči profesora iz oblasti koje želiš."},
-				{"Digitalni marketing", "U kategoriji možete pronaći sledeće usluge: Grafički dizajn, Izrada animiranih reklama, Izrada aplikacija, Izrada Web sajtova, Pisanje tekstova za blog, SEO optimizacija, Vođenje društvenih mreža."},
-				{"Zabava", "U ovoj kategoriji možete da pronađete sve pružaoce usluga koji će učiniti da Vaše venčanje, proslava ili bilo koji svečani događaj protekne savršeno."},
-				{"Sport", "U ovoj kategoriji možete pronaći pružaoce usluga iz oblasni sporta i zdravlja. Iskusni fitnes treneri, koji će Vam pomoći da trenirate na pravi način."},
-				{"Malisani", "Ovde možete pronaći profesionalce koji pružaju sledeće usluge: logoped, animatori, organizacija proslave rođendana, dadilja."},
-				{"Uredjenje doma", "U kategoriji uređenje doma možete da pronađete profesionalce koji pružaju sleće usluge:  Geodetske usluge, Izrada etno objekata, Izrada fontana, Ugradnja prirodnog kamena, Unutrašnji dizajn, Arhitekta."},
-				{"Lepota i zdravlje", "U ovoj kategoriji možete da pronađete pružaoca usluga: manikira, pedikira, profesionalnog sminkanja, tetoviranja, medicinskog pedikira, masaže i druge."},
-				{"Dekoracija", "Sve što Vam je potrebno da Vašu proslavu, rođendan, venčanje dekorišete baš kao što ste zamislili, možete pronaći u ovoj kategoriji."},
-				{"Poslovne usluge", "U kategoriji poslovne usluge možete da pronađete pružaoce sledećih usluga: Advokat, Imovinsko pravne usluge, Računovodstvene usluge, Sređivanje, čuvanje i upravljanje dokumentacijom, Unos podataka u Excel."},
-				{"Bezbednost", "U kategoriji bezbednost možete da pronađete pružaoce usluga preventivnih mera bezbednosti."},
-				{"Kucni ljubimci", "Naši krzneni ljubimci su najverniji prijatelji i zaslužuju takav tretman. Pronađite pružaoce usluga koji će se za to i pobrinuti: Dresura pasa, Izrada kućice za pse, Šetanje pasa, Šišanje pasa i Veterinarske usluge."},
-				{"Ostale usluge", "U ovoj kategoriji možete da pronađete sledeće usluge: Čišćenje snega i leda i Pogrebne usluge."},
-				{"Automobili", "Brednirajte Vaš službeni automobil ili pronađite agencije koje se bave iznajmljivanjem vozila."}
+				{"Majstori", "Pronađite majstora za sve što niste sposobni da uradite sami."},
+				{"Privatni casovi", "Sve što ste hteli da znate o matematici, fizici, hemiji… a nije imao ko da Vam objasni."},
+				{"eMarketing", "Najbolji način da upropastite svoj brend."},
+			    {"Pametni uređaji", "Pametni uređaji koji će vas ostaviti bez ideja šta da radite sa njima."},
+			    {"Računarski softver i hardver", "Berza tehnološki najnovijih uređaja koji će zastareti pre nego što stignu do Vas."},
+			    {"Samopomoćne knjige i proizvodi", "Knjige, audio kursevi, aplikacije i druge proizvode koji će Vas učiniti još nezadovoljnijim sa vašim životom."},
+			    {"Zaštita podataka i bezbednost", "usluge i tehnologije koje će vas učiniti sigurnim - dok vaši podaci cirkulišu po internetu."},
+			    {"Usluge korisničke podrške", "usluge koje će vas ostaviti još više izgubljenim i bespomoćnim."},
+			    {"Gubitak težine i fitnes", "proizvodi, programi i usluge od kojih će te biti još manje zadovoljni vašim telom."},
+			    {"Razvoj karijere i profesionalnog razvoja", "Knjige, kursevi, mentorski programi i druge usluge od kojih će te biti još manje uspešni na poslu."},
+			    {"Lični rast i razvoj", "Knjige, kursevi, radionice, i druge proizvode i usluge koje će vas učiniti još nesigurnijim u sebe."},
+			    {"Zabava i online upoznavanje", "Aplikacije, sajtovi, i druge usluge koje će vas učiniti još usamljenijim."},
+				{"Automobili", "Dajte drugima carstvo za metalnog ljubimca."}
 		};
 		for (int i = 0; i < categoriesData.length; i++) {
 			CategoryEntity category = new CategoryEntity();

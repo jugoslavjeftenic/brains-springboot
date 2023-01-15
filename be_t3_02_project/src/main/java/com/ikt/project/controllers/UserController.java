@@ -65,14 +65,8 @@ public class UserController {
 	 */
 	@RequestMapping(method = RequestMethod.POST)
 	public UserEntity addUser(@RequestBody UserEntity newUser) {
-		UserEntity user = new UserEntity();
-		user.setFirstName(newUser.getFirstName());
-		user.setLastName(newUser.getLastName());
-		user.setUserName(newUser.getUserName());
-		user.setPassword(newUser.getPassword());
-		user.setEmail(newUser.getEmail());
-		user.setUserRole(EUserRole.ROLE_CUSTOMER);
-		return userRepository.save(user);
+		newUser.setUserRole(EUserRole.ROLE_CUSTOMER);
+		return userRepository.save(newUser);
 	}
 
 	@RequestMapping(method = RequestMethod.POST, path = "/populatetable/{count}")

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ikt.project.entities.CategoryEntity;
 import com.ikt.project.entities.EOfferEntity;
+import com.ikt.project.entities.EUserRole;
 import com.ikt.project.entities.OfferEntity;
 import com.ikt.project.repositories.CategoryRepository;
 import com.ikt.project.repositories.OfferRepository;
@@ -23,48 +24,14 @@ import rade.RADE;
 @RequestMapping(value = "/api/v1/project/offers")
 public class OfferController {
 
+	// T3 1.3
+	/*
+	 * Izmeniti kontrolere kreirane na prethodnim časovima, tako da rade sa bazom
+	 */
 	@Autowired
 	private OfferRepository offerRepository;
 
-	// 3.2
-	/*
-	 * U paketu com.iktpreobuka.project.controllers napraviti klasu OfferController
-	 * sa metodom get DB() koja vraća listu svih ponuda
-	 */
-	static int oid = 0;
-	List<OfferEntity> offers = new ArrayList<>();
-
-	private List<OfferEntity> getDB() {
-		if(offers.size() == 0) {
-			oid = 0;
-			// TODO Umesto string matrice napraviti listu objekata
-			String[][] offProperties = {
-					{"Stemovanje zidova", "Najbolji način da iznervirate komsije.", "500.00", "3000.00"},
-					{"Sportski tipovi", "100% pogoci, analitička firma Zeleni i Kum.", "2000", "100000"},
-					{"Kupon+ aplikacija", "Uštedite sada kupujući stvari koje će vam jednog dana sigurno zatrebati.", "999.99", "999.99"},
-					{"Magazin Zdravo telo u zdravoj fotelji", "Zamenite vežbanje gledanjem slika. Uz svaki primerak magazina dobijate poster fotelje.", "500", "500"},
-					{"Sredstvo za odmagljivanje", "Naučnici su dokazali da je naš prozvod 12% bolji od nekih drugih proizvoda.", "2599.99", "2599.99"},
-					{"Jučerašnji hleb", "Akcijski proizvodi pekare SZR Bred i Pita.", "50", "50"}
-			};
-			for (int i = 0; i < offProperties.length; i++) {
-				LocalDateTime rndOfferStart = LocalDateTime.now().minusHours(RADE.mrRobot(0, 24));
-				Float rndPrice;
-				try {
-					rndPrice = (float) RADE.mrRobot(Float.parseFloat(offProperties[i][2]), Float.parseFloat(offProperties[i][3]));
-				} catch (Exception e) {
-					rndPrice = 1F;
-				}
-				EOfferEntity offerStatus = EOfferEntity.values()[RADE.mrRobot(0, EOfferEntity.values().length - 1)];
-				offers.add(new OfferEntity(++oid, offProperties[i][0], offProperties[i][1],
-						rndOfferStart, rndOfferStart.plusDays(RADE.mrRobot(7, 30)),
-						rndPrice, (float) (rndPrice - (Math.round((rndPrice * RADE.mrRobot(0.05, 0.5))))),
-						"", RADE.mrRobot(10, 1000), RADE.mrRobot(10, 1000), offerStatus));
-			}
-		}
-		return offers;
-	}
-
-	// 3.3
+	// T2 3.3
 	/*
 	 * Kreirati REST endpoint koja vraća listu svih ponuda
 	 * • putanja /project/offers
@@ -74,27 +41,88 @@ public class OfferController {
 		return offerRepository.findAll();
 	}
 
-	// 3.4
+	// T2 3.7
+	/*
+	 * Kreirati REST endpoint koji vraća ponudu po vrednosti prosleđenog ID-a
+	 * • putanja /project/offers/{id}
+	 * • u slučaju da ne postoji ponuda sa traženom vrednošću ID-a vratiti null
+	 */
+	@RequestMapping(method = RequestMethod.GET, path = "/{id}")
+	public OfferEntity getById(@PathVariable Integer id) {
+		OfferEntity offer;
+		try {
+			offer = offerRepository.findById(id).get();
+			return offer;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	// T2 3.4
 	/*
 	 * kreirati REST endpoint koji omogućava dodavanje nove ponude
 	 * • putanja /project/offers
 	 * • metoda treba da vrati dodatu ponudu
 	 */
-//	@RequestMapping(method = RequestMethod.POST)
-//	public OfferEntity saveOffer(@RequestBody OfferEntity newOffer) {
-//		OfferEntity offer = new OfferEntity();
-//		offer.setOfferName(newOffer.getOfferName());
-//		offer.setCatDescription(offer.getCatDescription());
-//		offerRepository.save(offer);
-//		return offer;
-//	}
-//	public OfferEntity saveOffer(@RequestBody OfferEntity newOffer) {
-//		getDB();
-//		newOffer.setId(++oid);
-//		offers.add(newOffer);
-//		return newOffer;
-//	}
+	@RequestMapping(method = RequestMethod.POST)
+	public OfferEntity addOffer(@RequestBody OfferEntity newOffer) {
+		return offerRepository.save(newOffer);
+	}
 	
+	// TODO Zavrsiti
+	@RequestMapping(method = RequestMethod.POST, path = "/populatetable")
+	public Iterable<OfferEntity> populateTable() {
+		List<OfferEntity> offers = new ArrayList<>();
+		EOfferEntity[] offerStatus = EOfferEntity.values();
+		String[][] offersData = {
+				{"Stemovanje zidova", "Najbolji način da iznervirate komsije.", "500.00", "3000.00"},
+				{"Sporski tipovi", "100% pogoci, analitička firma Zeleni i Kum.", "2000", "100000"},
+				{"Kupon+ aplikacija", "Uštedite kupujući stvari koje vam nikada neće zatrebati.", "500", "1000"},
+				{"Magazin Zdravo telo u zdravoj fotelji", "Zamenite vežbanje gledanjem slika. Uz svaki primerak magazina dobijate poster fotelje.", "500", "500"},
+				{"Sredstvo za odmagljivanje", "Naučnici su dokazali da je naš prozvod 12% bolji od drugih proizvoda.", "2000", "3000"},
+				{"Jučerašnji hleb", "Akcijski proizvodi pekare SZR Bred i Pita.", "40", "50"},
+				{"Neželjena pošta", "Obradujte svoje najmilije neograničenom količinom reklama.", "500", "2000"},
+				{"Smart toster", "sada sa još više funkcija koje nikada nećete koristiti!", "2000", "5000"},
+				{"Antivirusni softver", "Uz svaki paket dobijate 10 besplatnih virusa!", "5000", "8000"},
+				{"Lični podaci", "Prodajemo vaše podatke po povoljnoj ceni!", "100", "1000"},
+				{"Živeti bez stresa", "Kupite našu novu knjigu o tome kako da se oslobodite stresa - i učinite se još više nervoznim!", "1000", "2000"},
+				{"Čekanje u redu", "Povoljno čekamo u redu umesto Vas", "500", "5000"},
+				{"Mršavko", "Kupite našu novu aplikaciju za mršavljenje - i još više se otežajte!", "500", "1000"},
+				{"Beskorisni saveti", "Nudimo savetodavne usluge.", "1000", "5000"},
+				{"Ti to možeš", "Kupite naše novo online predavanje o uspehu - i još više se osećajte kao neuspešni", "1000", "10000"},
+				{"Kako se obogatiti", "Saveti o bogatstvu - po ceni koja će vas ostaviti bez para.", "100000", "500000"},
+				{"Otvaram novo poglavlje", "Kupite našu novu knjigu o kreativnom pisanju - i otkrijte da ste i dalje bez ideja.", "10000", "15000"},
+				{"I feel you", "Učlanite se u online zajednicu članova koji vas neće razumeti.", "500", "1000"},
+				{"Iluzija sreće", "Privatni časovi po ceni koja će vas ostaviti razočaranim.", "2000", "3000"},
+				{"Još samo minut", "Kupite našu novu aplikaciju za organizaciju vremena - i još više se osećajte pod stresom.", "1000", "5000"},
+				{"U tvojoj blizini", "Usluga pronalaženja ljubavi - koja će vas ostaviti još više samima.", "5000", "10000"},
+				{"Ostani isti", "Kupite našu novu knjigu o razvoju ličnosti - i saznajte da ste i dalje isti.", "3000", "5000"},
+				{"Nesporazum", "Kurs poboljšanja komunikacije", "500", "1500"},
+				{"Ha?", "Kurs pravopisa", "1000", "5000"},
+				{"Odbijenica.su", "Oglasite se na najboljem sajtu za pronalaženje posla!", "1000", "5000"},
+		};
+		for (int i = 0; i < offersData.length; i++) {
+			OfferEntity offer = new OfferEntity();
+			offer.setOfferName(offersData[i][0]);
+			offer.setOfferDesc(offersData[i][1]);
+			offer.setOfferCreated(LocalDateTime.now().minusHours(RADE.mrRobot(0, 24)));
+			offer.setOfferExpires(offer.getOfferCreated().plusDays(RADE.mrRobot(7, 30)));
+			Float rndPrice;
+			try {
+				rndPrice = (float) RADE.mrRobot(Float.parseFloat(offersData[i][2]), Float.parseFloat(offersData[i][3]));
+			} catch (Exception e) {
+				rndPrice = 1F;
+			}
+			offer.setRegularPrice(rndPrice);
+			offer.setActionPrice((float) (rndPrice - (Math.round((rndPrice * RADE.mrRobot(0.05, 0.5))))));
+			offer.setImagePath("");
+			offer.setAvailableOffers(RADE.mrRobot(10, 1000));
+			offer.setBoughtOffers(RADE.mrRobot(10, 1000));
+			offer.setOfferStatus(offerStatus[RADE.mrRobot(0, offerStatus.length)]);
+		}
+		return offerRepository.saveAll(offers);
+	}
+
 	// 3.5
 	/*
 	 * Kreirati REST endpoint koji omogućava izmenu postojeće ponude
@@ -155,21 +183,6 @@ public class OfferController {
 				getDB().remove(offers);
 				return offers;
 			}
-		}
-		return null;
-	}
-
-	// 3.7
-	/*
-	 * Kreirati REST endpoint koji vraća ponudu po vrednosti prosleđenog ID-a
-	 * • putanja /project/offers/{id}
-	 * • u slučaju da ne postoji ponuda sa traženom vrednošću ID-a vratiti null
-	 */
-	@RequestMapping(method = RequestMethod.GET, path = "/{id}")
-	public OfferEntity getOfferById(@PathVariable Integer id) {
-		for (OfferEntity offers : getDB()) {
-			if(offers.getId().equals(id))
-				return offers;
 		}
 		return null;
 	}
