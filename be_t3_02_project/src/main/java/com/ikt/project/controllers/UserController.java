@@ -79,7 +79,7 @@ public class UserController {
 	public Iterable<UserEntity> populateTable(@PathVariable Integer count) {
 		List<UserEntity> users = new ArrayList<>();
 		EUserRole[] roles = EUserRole.values();
-		for (int x = 0; x < count; x++) {
+		for (int i = 0; i < count; i++) {
 			OsobaEntity osoba = RADE.generisiOsobu();
 			UserEntity user = new UserEntity();
 			user.setFirstName(osoba.getIme());
@@ -194,7 +194,7 @@ public class UserController {
 	 * • u slučaju da ne postoji korisnik sa traženim username-om vratiti null
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/by-username/{username}")
-	public List<UserEntity> getClientByUserName(@PathVariable String username) {
+	public List<UserEntity> getByUserName(@PathVariable String username) {
 		return userRepository.findByUserName(username);
 	}
 }
