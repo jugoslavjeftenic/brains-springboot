@@ -2,15 +2,22 @@ package com.ikt.project.entities;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class OfferEntity {
 	
 	// T2 3.1
@@ -58,6 +65,22 @@ public class OfferEntity {
 	private EOfferEntity offerStatus;
 	@Version
 	private Integer version;
+	// T3 2.1
+	/*
+	 * Povezati ponudu i kategoriju
+	 * • jedna ponuda pripada tačno jednoj kategoriju, dok jedna kategorija ima više ponuda koje joj pripadaju
+	 */
+	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+	@JoinColumn(name = "category")
+	private CategoryEntity category;
+	// T3 2.2
+	/*
+	 * Povezati korisnika i ponudu
+	 * • korisnik može da kreira više ponuda, a jednu ponudu kreira tačno jedan korisnik
+	 */
+	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+	@JoinColumn(name = "user")
+	private UserEntity user;
 	
 	public OfferEntity() {
 		super();
@@ -65,7 +88,8 @@ public class OfferEntity {
 
 	public OfferEntity(Integer id, String offerName, String offerDesc, LocalDateTime offerCreated,
 			LocalDateTime offerExpires, Double regularPrice, Double actionPrice, String imagePath,
-			Integer availableOffers, Integer boughtOffers, EOfferEntity offerStatus, Integer version) {
+			Integer availableOffers, Integer boughtOffers, EOfferEntity offerStatus, Integer version,
+			CategoryEntity category, UserEntity user) {
 		super();
 		this.id = id;
 		this.offerName = offerName;
@@ -79,6 +103,8 @@ public class OfferEntity {
 		this.boughtOffers = boughtOffers;
 		this.offerStatus = offerStatus;
 		this.version = version;
+		this.category = category;
+		this.user = user;
 	}
 
 	public Integer getId() {
@@ -175,5 +201,21 @@ public class OfferEntity {
 
 	public void setVersion(Integer version) {
 		this.version = version;
+	}
+
+	public CategoryEntity getCategory() {
+		return category;
+	}
+
+	public void setCategory(CategoryEntity category) {
+		this.category = category;
+	}
+
+	public UserEntity getUser() {
+		return user;
+	}
+
+	public void setUser(UserEntity user) {
+		this.user = user;
 	}
 }

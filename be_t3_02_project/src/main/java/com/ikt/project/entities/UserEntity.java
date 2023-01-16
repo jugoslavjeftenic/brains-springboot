@@ -1,12 +1,20 @@
 package com.ikt.project.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Version;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class UserEntity {
@@ -42,13 +50,21 @@ public class UserEntity {
 	private EUserRole userRole;
 	@Version
 	private Integer version;
+	// T3 2.2
+	/*
+	 * Povezati korisnika i ponudu
+	 * • korisnik može da kreira više ponuda, a jednu ponudu kreira tačno jedan korisnik
+	 */
+	@JsonIgnore
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
+	private List<OfferEntity> offers = new ArrayList<OfferEntity>();
 	
 	public UserEntity() {
 		super();
 	}
 
 	public UserEntity(Integer id, String firstName, String lastName, String userName, String password, String email,
-			EUserRole userRole, Integer version) {
+			EUserRole userRole, Integer version, List<OfferEntity> offers) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -58,14 +74,15 @@ public class UserEntity {
 		this.email = email;
 		this.userRole = userRole;
 		this.version = version;
+		this.offers = offers;
 	}
 
 	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Integer userID) {
-		this.id = userID;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -122,5 +139,13 @@ public class UserEntity {
 
 	public void setVersion(Integer version) {
 		this.version = version;
+	}
+
+	public List<OfferEntity> getOffers() {
+		return offers;
+	}
+
+	public void setOffers(List<OfferEntity> offers) {
+		this.offers = offers;
 	}
 }

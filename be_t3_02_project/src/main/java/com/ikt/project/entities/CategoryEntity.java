@@ -1,14 +1,24 @@
 package com.ikt.project.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class CategoryEntity {
 	
 	// T2 2.1
@@ -33,17 +43,27 @@ public class CategoryEntity {
 	private String categoryDescription;
 	@Version
 	private Integer version;
+	// T3 2.1
+	/*
+	 * Povezati ponudu i kategoriju
+	 * • jedna ponuda pripada tačno jednoj kategoriju, dok jedna kategorija ima više ponuda koje joj pripadaju
+	 */
+	@JsonIgnore
+	@OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
+	private List<OfferEntity> offers = new ArrayList<OfferEntity>();
 
 	public CategoryEntity() {
 		super();
 	}
 
-	public CategoryEntity(Integer id, String categoryName, String categoryDescription, Integer version) {
+	public CategoryEntity(Integer id, String categoryName, String categoryDescription, Integer version,
+			List<OfferEntity> offers) {
 		super();
 		this.id = id;
 		this.categoryName = categoryName;
 		this.categoryDescription = categoryDescription;
 		this.version = version;
+		this.offers = offers;
 	}
 
 	public Integer getId() {
@@ -76,5 +96,13 @@ public class CategoryEntity {
 
 	public void setVersion(Integer version) {
 		this.version = version;
+	}
+
+	public List<OfferEntity> getOffers() {
+		return offers;
+	}
+
+	public void setOffers(List<OfferEntity> offers) {
+		this.offers = offers;
 	}
 }
