@@ -11,9 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ikt.project.entities.CategoryEntity;
 import com.ikt.project.entities.EOfferEntity;
+import com.ikt.project.entities.EUserRole;
 import com.ikt.project.entities.OfferEntity;
+import com.ikt.project.entities.UserEntity;
+import com.ikt.project.repositories.CategoryRepository;
 import com.ikt.project.repositories.OfferRepository;
+import com.ikt.project.repositories.UserRepository;
 
 import rade.RADE;
 
@@ -27,6 +32,12 @@ public class OfferController {
 	 */
 	@Autowired
 	private OfferRepository offerRepository;
+
+	@Autowired
+	private CategoryRepository categoryRepository;
+
+	@Autowired
+	private UserRepository userRepository;
 
 	// T2 3.3
 	/*
@@ -61,13 +72,36 @@ public class OfferController {
 	 * • putanja /project/offers
 	 * • metoda treba da vrati dodatu ponudu
 	 */
-	@RequestMapping(method = RequestMethod.POST)
-	public OfferEntity addOffer(@RequestBody OfferEntity newOffer) {
-		// https://www.baeldung.com/java-comparing-dates
-		if (!newOffer.getOfferExpires().isAfter(newOffer.getOfferCreated())) {
-			newOffer.setOfferExpires(newOffer.getOfferCreated().plusDays(7));
+	// T3 2.3
+	/*
+	 * Omogućiti dodavanje kategorije i korisnika koji je kreirao ponudu
+	 * • izmeniti prethodnu putanju za dodavanje ponude
+	 * • putanja /project/offers/{categoryId}/seller/{sellerId}
+	 * • NAPOMENA: samo korisnik sa ulogom ROLE_SELLER ima pravo da bude postavljen kao onaj ko je
+	 *   kreirao/napravio ponudu (u suprotnom ne dozvoliti kreiranje ponude);
+	 *   Kao datum kreiranja ponude postaviti trenutni datum i ponuda ističe za 10 dana od dana kreiranja
+	 */
+	@RequestMapping(method = RequestMethod.POST, path = "/{categoryId}/seller/{sellerId}")
+	public OfferEntity addOffer(@PathVariable Integer categoryId, @PathVariable Integer sellerId,
+			@RequestBody OfferEntity newOffer) {
+		try {
+			CategoryEntity category = categoryRepository.findById(categoryId).get();
+			try {
+				UserEntity user = userRepository.findById(sellerId).get();
+				if (!(user.getUserRole() == EUserRole.ROLE_CUSTOMER)) {
+					return null;
+				}
+				newOffer.setOfferCreated(LocalDateTime.now().minusHours(RADE.mrRobot(0, 24)));
+				newOffer.setOfferExpires(newOffer.getOfferCreated().plusDays(10));
+				newOffer.setCategory(category);
+				newOffer.setUser(user);
+				return offerRepository.save(newOffer);
+			} catch (Exception e) {
+				return null;
+			}
+		} catch (Exception e) {
+			return null;
 		}
-		return offerRepository.save(newOffer);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/populatetable/{count}")
@@ -100,8 +134,7 @@ public class OfferController {
 				{"Ha?", "Kurs pravopisa", "1000", "5000"},
 				{"Odbijenica.SU", "Oglasite se na najboljem sajtu za pronalaženje posla!", "1000", "10000"}
 		};
-		if (count == null) {
-//		if (count == null || count < 1) {
+		if (count == null || count < 1) {
 			count = offersData.length;
 			for (int i = 0; i < count; i++) {
 				offers.add(createOffer(offersData[i]));
@@ -121,7 +154,7 @@ public class OfferController {
 		offer.setOfferName(offerData[0]);
 		offer.setOfferDesc(offerData[1]);
 		offer.setOfferCreated(LocalDateTime.now().minusHours(RADE.mrRobot(0, 24)));
-		offer.setOfferExpires(offer.getOfferCreated().plusDays(RADE.mrRobot(7, 30)));
+		offer.setOfferExpires(offer.getOfferCreated().plusDays(10));
 		Double rndPrice;
 		try {
 			rndPrice = RADE.mrRobot(Double.parseDouble(offerData[2]), Double.parseDouble(offerData[3]));
@@ -145,38 +178,53 @@ public class OfferController {
 	 *   a u suprotnom vraća podatke ponude sa izmenjenim vrednostima
 	 * • NAPOMENA: u okviru ove metode ne menjati vrednost atributa offer status
 	 */
-	@RequestMapping(method = RequestMethod.PUT, path = "/{id}")
-	public OfferEntity updateOffer(@PathVariable Integer id, @RequestBody OfferEntity updatedOffer) {
+	// T3 2.4
+	/*
+	 * Omogućiti izmenu kategorije ponude
+	 * • izmeniti prethodnu putanju za izmenu ponude
+	 * • putanja /project/offers/{id}/category/{categoryId}
+	 */
+	@RequestMapping(method = RequestMethod.PUT, path = "/{id}/category/{categoryId}")
+	public OfferEntity updateOffer(@PathVariable Integer id, @PathVariable Integer categoryId, 
+			@RequestBody OfferEntity updatedOffer) {
 		try {
-			OfferEntity offer = offerRepository.findById(id).get();
-			if (updatedOffer.getOfferName() != null) {
-				offer.setOfferName(updatedOffer.getOfferName());
+			try {
+				CategoryEntity category = categoryRepository.findById(categoryId).get();
+				OfferEntity offer = offerRepository.findById(id).get();
+				if (updatedOffer.getOfferName() != null) {
+					offer.setOfferName(updatedOffer.getOfferName());
+				}
+				if (updatedOffer.getOfferDesc() != null) {
+					offer.setOfferDesc(updatedOffer.getOfferDesc());
+				}
+				if (updatedOffer.getOfferCreated() != null) {
+					offer.setOfferCreated(updatedOffer.getOfferCreated());
+				}
+//				// https://www.baeldung.com/java-comparing-dates
+				if (updatedOffer.getOfferExpires() != null &&
+						updatedOffer.getOfferExpires().isAfter(offer.getOfferCreated())) {
+					offer.setOfferExpires(updatedOffer.getOfferExpires());
+				}
+				if (updatedOffer.getRegularPrice() != null) {
+					offer.setRegularPrice(updatedOffer.getRegularPrice());
+				}
+				if (updatedOffer.getActionPrice() != null) {
+					offer.setActionPrice(updatedOffer.getActionPrice());
+				}
+				if (updatedOffer.getImagePath() != null) {
+					offer.setImagePath(updatedOffer.getImagePath());
+				}
+				if (updatedOffer.getAvailableOffers() != null) {
+					offer.setAvailableOffers(updatedOffer.getAvailableOffers());
+				}
+				if (updatedOffer.getBoughtOffers() != null) {
+					offer.setBoughtOffers(updatedOffer.getBoughtOffers());
+				}
+				offer.setCategory(category);
+				return offerRepository.save(offer);
+			} catch (Exception e) {
+				return null;
 			}
-			if (updatedOffer.getOfferDesc() != null) {
-				offer.setOfferDesc(updatedOffer.getOfferDesc());
-			}
-			if (updatedOffer.getOfferCreated() != null) {
-				offer.setOfferCreated(updatedOffer.getOfferCreated());
-			}
-			if (updatedOffer.getOfferExpires() != null && updatedOffer.getOfferExpires().isAfter(offer.getOfferCreated())) {
-				offer.setOfferExpires(updatedOffer.getOfferExpires());
-			}
-			if (updatedOffer.getRegularPrice() != null) {
-				offer.setRegularPrice(updatedOffer.getRegularPrice());
-			}
-			if (updatedOffer.getActionPrice() != null) {
-				offer.setActionPrice(updatedOffer.getActionPrice());
-			}
-			if (updatedOffer.getImagePath() != null) {
-				offer.setImagePath(updatedOffer.getImagePath());
-			}
-			if (updatedOffer.getAvailableOffers() != null) {
-				offer.setAvailableOffers(updatedOffer.getAvailableOffers());
-			}
-			if (updatedOffer.getBoughtOffers() != null) {
-				offer.setBoughtOffers(updatedOffer.getBoughtOffers());
-			}
-			return offerRepository.save(offer);
 		} catch (Exception e) {
 			return null;
 		}
