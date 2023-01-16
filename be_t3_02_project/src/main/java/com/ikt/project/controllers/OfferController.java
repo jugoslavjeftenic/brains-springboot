@@ -86,19 +86,15 @@ public class OfferController {
 			@RequestBody OfferEntity newOffer) {
 		try {
 			CategoryEntity category = categoryRepository.findById(categoryId).get();
-			try {
-				UserEntity user = userRepository.findById(sellerId).get();
-				if (!(user.getUserRole() == EUserRole.ROLE_CUSTOMER)) {
-					return null;
-				}
-				newOffer.setOfferCreated(LocalDateTime.now().minusHours(RADE.mrRobot(0, 24)));
-				newOffer.setOfferExpires(newOffer.getOfferCreated().plusDays(10));
-				newOffer.setCategory(category);
-				newOffer.setUser(user);
-				return offerRepository.save(newOffer);
-			} catch (Exception e) {
-				return null;
-			}
+			UserEntity user = userRepository.findByIdAndUserRole(sellerId, EUserRole.ROLE_SELLER);
+//			if (!(user.getUserRole() == EUserRole.ROLE_SELLER)) {
+//				return null;
+//			}
+			newOffer.setOfferCreated(LocalDateTime.now().minusHours(RADE.mrRobot(0, 24)));
+			newOffer.setOfferExpires(newOffer.getOfferCreated().plusDays(10));
+			newOffer.setCategory(category);
+			newOffer.setUser(user);
+			return offerRepository.save(newOffer);
 		} catch (Exception e) {
 			return null;
 		}
@@ -188,43 +184,39 @@ public class OfferController {
 	public OfferEntity updateOffer(@PathVariable Integer id, @PathVariable Integer categoryId, 
 			@RequestBody OfferEntity updatedOffer) {
 		try {
-			try {
-				CategoryEntity category = categoryRepository.findById(categoryId).get();
-				OfferEntity offer = offerRepository.findById(id).get();
-				if (updatedOffer.getOfferName() != null) {
-					offer.setOfferName(updatedOffer.getOfferName());
-				}
-				if (updatedOffer.getOfferDesc() != null) {
-					offer.setOfferDesc(updatedOffer.getOfferDesc());
-				}
-				if (updatedOffer.getOfferCreated() != null) {
-					offer.setOfferCreated(updatedOffer.getOfferCreated());
-				}
-//				// https://www.baeldung.com/java-comparing-dates
-				if (updatedOffer.getOfferExpires() != null &&
-						updatedOffer.getOfferExpires().isAfter(offer.getOfferCreated())) {
-					offer.setOfferExpires(updatedOffer.getOfferExpires());
-				}
-				if (updatedOffer.getRegularPrice() != null) {
-					offer.setRegularPrice(updatedOffer.getRegularPrice());
-				}
-				if (updatedOffer.getActionPrice() != null) {
-					offer.setActionPrice(updatedOffer.getActionPrice());
-				}
-				if (updatedOffer.getImagePath() != null) {
-					offer.setImagePath(updatedOffer.getImagePath());
-				}
-				if (updatedOffer.getAvailableOffers() != null) {
-					offer.setAvailableOffers(updatedOffer.getAvailableOffers());
-				}
-				if (updatedOffer.getBoughtOffers() != null) {
-					offer.setBoughtOffers(updatedOffer.getBoughtOffers());
-				}
-				offer.setCategory(category);
-				return offerRepository.save(offer);
-			} catch (Exception e) {
-				return null;
+			CategoryEntity category = categoryRepository.findById(categoryId).get();
+			OfferEntity offer = offerRepository.findById(id).get();
+			if (updatedOffer.getOfferName() != null) {
+				offer.setOfferName(updatedOffer.getOfferName());
 			}
+			if (updatedOffer.getOfferDesc() != null) {
+				offer.setOfferDesc(updatedOffer.getOfferDesc());
+			}
+			if (updatedOffer.getOfferCreated() != null) {
+				offer.setOfferCreated(updatedOffer.getOfferCreated());
+			}
+//			// https://www.baeldung.com/java-comparing-dates
+			if (updatedOffer.getOfferExpires() != null &&
+					updatedOffer.getOfferExpires().isAfter(offer.getOfferCreated())) {
+				offer.setOfferExpires(updatedOffer.getOfferExpires());
+			}
+			if (updatedOffer.getRegularPrice() != null) {
+				offer.setRegularPrice(updatedOffer.getRegularPrice());
+			}
+			if (updatedOffer.getActionPrice() != null) {
+				offer.setActionPrice(updatedOffer.getActionPrice());
+			}
+			if (updatedOffer.getImagePath() != null) {
+				offer.setImagePath(updatedOffer.getImagePath());
+			}
+			if (updatedOffer.getAvailableOffers() != null) {
+				offer.setAvailableOffers(updatedOffer.getAvailableOffers());
+			}
+			if (updatedOffer.getBoughtOffers() != null) {
+				offer.setBoughtOffers(updatedOffer.getBoughtOffers());
+			}
+			offer.setCategory(category);
+			return offerRepository.save(offer);
 		} catch (Exception e) {
 			return null;
 		}
