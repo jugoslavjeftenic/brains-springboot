@@ -1,6 +1,8 @@
 package com.ikt.project.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,9 +13,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -81,6 +85,15 @@ public class OfferEntity {
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
 	@JoinColumn(name = "user")
 	private UserEntity user;
+    // T3 3.4
+	/*
+	 * Povezati ponudu i račun
+	 * • račun predstavlja kupovinu jedne ponude
+	 * • jedna ponuda se može nalaziti na više računa
+	 */
+	@JsonIgnore
+	@OneToMany(mappedBy = "offer", fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
+	private List<BillEntity> bills = new ArrayList<BillEntity>();
 	
 	public OfferEntity() {
 		super();
@@ -89,7 +102,7 @@ public class OfferEntity {
 	public OfferEntity(Integer id, String offerName, String offerDesc, LocalDateTime offerCreated,
 			LocalDateTime offerExpires, Double regularPrice, Double actionPrice, String imagePath,
 			Integer availableOffers, Integer boughtOffers, EOfferEntity offerStatus, Integer version,
-			CategoryEntity category, UserEntity user) {
+			CategoryEntity category, UserEntity user, List<BillEntity> bills) {
 		super();
 		this.id = id;
 		this.offerName = offerName;
@@ -105,6 +118,7 @@ public class OfferEntity {
 		this.version = version;
 		this.category = category;
 		this.user = user;
+		this.bills = bills;
 	}
 
 	public Integer getId() {
@@ -217,5 +231,13 @@ public class OfferEntity {
 
 	public void setUser(UserEntity user) {
 		this.user = user;
+	}
+
+	public List<BillEntity> getBills() {
+		return bills;
+	}
+
+	public void setBills(List<BillEntity> bills) {
+		this.bills = bills;
 	}
 }
