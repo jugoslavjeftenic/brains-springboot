@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ikt.project.entities.BillEntity;
+import com.ikt.project.entities.CategoryEntity;
+import com.ikt.project.entities.OfferEntity;
 import com.ikt.project.repositories.BillRepository;
+import com.ikt.project.repositories.CategoryRepository;
 import com.ikt.project.repositories.OfferRepository;
 import com.ikt.project.repositories.UserRepository;
 
@@ -38,6 +41,9 @@ public class BillController {
 	@Autowired
 	private UserRepository userRepository;
 
+	@Autowired
+	private CategoryRepository categoryRepository;
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public Iterable<BillEntity> getAll() {
 		return billRepository.findAll();
@@ -102,19 +108,95 @@ public class BillController {
 		return billRepository.saveAll(bills);
 	}
 	
-	// TODO ovde sam stao
 	@RequestMapping(method = RequestMethod.PUT, path = "/{id}")
 	public BillEntity updateBill(@PathVariable Integer id, @RequestBody BillEntity updatedBill) {
-		if (!offerRepository.existsById(id)) {
+		try {
+			BillEntity bill = billRepository.findById(id).get();
+			if (updatedBill.getPaymentMade() != null) {
+				bill.setPaymentMade(updatedBill.getPaymentMade());
+			}
+			if (updatedBill.getPaymentCanceled() != null) {
+				bill.setPaymentCanceled(updatedBill.getPaymentCanceled());
+			}
+			if (updatedBill.getBillCreated() != null) {
+				bill.setBillCreated(updatedBill.getBillCreated());
+			}
+			if (updatedBill.getOffer() != null) {
+				try {
+					bill.setOffer(offerRepository.findById(updatedBill.getOffer().getId()).get());
+				} catch (Exception e) {
+					bill.setOffer(null);
+				}
+			}
+			if (updatedBill.getUser() != null) {
+				try {
+					bill.setUser(userRepository.findById(updatedBill.getUser().getId()).get());
+				} catch (Exception e) {
+					bill.setUser(null);
+				}
+			}
+			return billRepository.save(updatedBill);
+		} catch (Exception e) {
 			return null;
 		}
-		if (!offerRepository.existsById(updatedBill.getOffer().getId())) {
+	}
+
+	@RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
+	public BillEntity deleteBill(@PathVariable Integer id) {
+		try {
+			BillEntity bill = billRepository.findById(id).get();
+			billRepository.delete(bill);
+			return bill;
+		} catch (Exception e) {
 			return null;
 		}
-		if (!userRepository.existsById(updatedBill.getUser().getId())) {
+	}
+	
+	// T3 3.7
+	/*
+	 * Kreirati REST endpoint za pronalazak svih računa određenog kupca
+	 * • putanja /project/bills/findByBuyer/{buyerId}
+	 */
+	@RequestMapping(method = RequestMethod.GET, path = "/findByBuyer/{buyerId}")
+	private Iterable<BillEntity> getBillsByUser(@PathVariable Integer buyerId) {
+		try {
+			return billRepository.findByUser(userRepository.findById(buyerId).get());
+		} catch (Exception e) {
 			return null;
 		}
-		
-		return billRepository.save(updatedBill);
+	}
+	
+	// T3 3.8
+	/*
+	 * Kreirati REST endpoint za pronalazak svih računa određene kategorije
+	 * • putanja /project/bills/findByCategory/{categoryId}
+	 */	
+	@RequestMapping(method = RequestMethod.GET, path = "/findByCategory/{categoryId}")
+	private Iterable<BillEntity> getBillsByCategory(@PathVariable Integer categoryId) {
+		CategoryEntity category;
+		try {
+			category = categoryRepository.findById(categoryId).get();
+		} catch (Exception e) {
+			return null;
+		}
+		List<OfferEntity> offers = offerRepository.findByCategory(category);
+		List<BillEntity> bills = billRepository.findByOfferIn(offers);
+		return bills;
+	}
+	
+	// T3 3.9
+	/*
+	 * Kreirati REST endpoint za pronalazak svih računa koji su kreirani u odgovarajućem vremenskom periodu
+	 * • putanja /project/bills/findByDate/{startDate}/and/{endDate}
+	 */
+	// TODO nastaviti ovde
+	@RequestMapping(method = RequestMethod.GET, path = "/findByDate/{startDate}/and/{endDate}")
+	private Iterable<BillEntity> getBillsByDate(@PathVariable LocalDateTime startDate,
+			@PathVariable LocalDateTime endDate) {
+		try {
+			return billRepository.findByBillCreatedBetween(startDate, endDate);
+		} catch (Exception e) {
+			return null;
+		}
 	}
 }

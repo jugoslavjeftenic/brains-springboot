@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
+import com.ikt.project.entities.CategoryEntity;
 import com.ikt.project.entities.OfferEntity;
 
 public interface OfferRepository extends CrudRepository<OfferEntity, Integer> {
@@ -17,4 +18,6 @@ public interface OfferRepository extends CrudRepository<OfferEntity, Integer> {
 	// https://www.baeldung.com/spring-data-derived-queries
 	List<OfferEntity> findByOfferName(String offerName);
 	List<OfferEntity> findByActionPriceBetween(Double start, Double end);
+	List<OfferEntity> findByCategory(CategoryEntity category);
+//	List<OfferEntity> findByCategoryIsNotNull(CategoryEntity category);
 }

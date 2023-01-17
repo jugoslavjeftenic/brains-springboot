@@ -130,21 +130,23 @@ public class OfferController {
 				{"Ha?", "Kurs pravopisa", "1000", "5000"},
 				{"Odbijenica.SU", "Oglasite se na najboljem sajtu za pronalaženje posla!", "1000", "10000"}
 		};
+		int categoryCount = (int) categoryRepository.count();
+		int userCount = (int) userRepository.count();
 		if (count < 1) {
 			count = offersData.length;
 			for (int i = 0; i < count; i++) {
-				offers.add(createOffer(offersData[i]));
+				offers.add(createOffer(offersData[i], categoryCount, userCount));
 			}
 		}
 		else {
 			for (int i = 0; i < count; i++) {
-				offers.add(createOffer(offersData[RADE.mrRobot(0, offersData.length)]));
+				offers.add(createOffer(offersData[RADE.mrRobot(0, offersData.length)], categoryCount, userCount));
 			}
 		}
 		return offerRepository.saveAll(offers);
 	}
 	
-	private OfferEntity createOffer(String[] offerData) {
+	private OfferEntity createOffer(String[] offerData, int categoryCount, int userCount) {
 		EOfferEntity[] offerStatus = EOfferEntity.values();
 		OfferEntity offer = new OfferEntity();
 		offer.setOfferName(offerData[0]);
@@ -163,6 +165,16 @@ public class OfferController {
 		offer.setAvailableOffers(RADE.mrRobot(10, 1000));
 		offer.setBoughtOffers(RADE.mrRobot(10, 1000));
 		offer.setOfferStatus(offerStatus[RADE.mrRobot(0, offerStatus.length)]);
+		try {
+			offer.setCategory(categoryRepository.findById(RADE.mrRobot(0, categoryCount)).get());
+		} catch (Exception e) {
+			offer.setCategory(null);
+		}
+		try {
+			offer.setUser(userRepository.findById(RADE.mrRobot(0, userCount)).get());
+		} catch (Exception e) {
+			offer.setUser(null);
+		}
 		return offer;
 	}
 
