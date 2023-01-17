@@ -101,7 +101,7 @@ public class OfferController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/populatetable/{count}")
-	public Iterable<OfferEntity> populateTable(@PathVariable(required = false) Integer count) {
+	public Iterable<OfferEntity> populateTable(@PathVariable Integer count) {
 		List<OfferEntity> offers = new ArrayList<>();
 		String[][] offersData = {
 				{"Stemovanje zidova", "Najbolji način da iznervirate komsije.", "500.00", "3000.00"},
@@ -130,7 +130,7 @@ public class OfferController {
 				{"Ha?", "Kurs pravopisa", "1000", "5000"},
 				{"Odbijenica.SU", "Oglasite se na najboljem sajtu za pronalaženje posla!", "1000", "10000"}
 		};
-		if (count == null || count < 1) {
+		if (count < 1) {
 			count = offersData.length;
 			for (int i = 0; i < count; i++) {
 				offers.add(createOffer(offersData[i]));
