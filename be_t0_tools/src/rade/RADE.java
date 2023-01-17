@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import rade.data.DataHolder;
 import rade.entities.AdresaEntity;
@@ -298,13 +299,18 @@ public class RADE extends DataHolder {
 	}
 	
 	public static int mrRobot(int min, int max) {
-		return (int) (min + Math.random() * (max - min));
+		return (int) ((Math.random() * (max - min)) + min);
 	}
 	
 	public static double mrRobot(double min, double max) {
-		return min + Math.random() * (max - min);
+		return ((Math.random() * (max - min)) + min);
 	}
 
+	public static boolean mrRobot() {
+		// https://www.baeldung.com/java-generating-random-numbers
+		return ThreadLocalRandom.current().nextBoolean();
+	}
+	
 	public static String replaceYULatinWithUS(String string) {
 		// https://stackoverflow.com/questions/3322152/is-there-a-way-to-get-rid-of-accents-and-convert-a-whole-string-to-regular-lette
 		// TODO Uff?
