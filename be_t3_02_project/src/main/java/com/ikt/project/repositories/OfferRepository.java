@@ -19,5 +19,4 @@ public interface OfferRepository extends CrudRepository<OfferEntity, Integer> {
 	List<OfferEntity> findByOfferName(String offerName);
 	List<OfferEntity> findByActionPriceBetween(Double start, Double end);
 	List<OfferEntity> findByCategory(CategoryEntity category);
-//	List<OfferEntity> findByCategoryIsNotNull(CategoryEntity category);
 }
