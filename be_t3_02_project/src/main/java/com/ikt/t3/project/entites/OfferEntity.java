@@ -94,6 +94,16 @@ public class OfferEntity {
 	@JsonIgnore
 	@OneToMany(mappedBy = "offer", fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
 	private List<BillEntity> bills = new ArrayList<BillEntity>();
+    // T3 4.4
+	/*
+	 * Povezati ponudu i vaučer
+	 * • vaučer predstavlja račun na kome je uplata novca izvršena, pa poput računa,
+	 *   vaučer se odnosi na kupovinu jedne ponude
+	 * • jedna ponuda se može nalaziti na više vaučera
+	 */
+	@JsonIgnore
+	@OneToMany(mappedBy = "offer", fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
+	private List<VoucherEntity> vouchers = new ArrayList<VoucherEntity>();
 	
 	public OfferEntity() {
 		super();
@@ -102,7 +112,7 @@ public class OfferEntity {
 	public OfferEntity(Integer id, String offerName, String offerDesc, LocalDateTime offerCreated,
 			LocalDateTime offerExpires, Double regularPrice, Double actionPrice, String imagePath,
 			Integer availableOffers, Integer boughtOffers, EOfferEntity offerStatus, Integer version,
-			CategoryEntity category, UserEntity user, List<BillEntity> bills) {
+			CategoryEntity category, UserEntity user, List<BillEntity> bills, List<VoucherEntity> vouchers) {
 		super();
 		this.id = id;
 		this.offerName = offerName;
@@ -119,6 +129,7 @@ public class OfferEntity {
 		this.category = category;
 		this.user = user;
 		this.bills = bills;
+		this.vouchers = vouchers;
 	}
 
 	public Integer getId() {
@@ -239,5 +250,13 @@ public class OfferEntity {
 
 	public void setBills(List<BillEntity> bills) {
 		this.bills = bills;
+	}
+
+	public List<VoucherEntity> getVouchers() {
+		return vouchers;
+	}
+
+	public void setVouchers(List<VoucherEntity> vouchers) {
+		this.vouchers = vouchers;
 	}
 }

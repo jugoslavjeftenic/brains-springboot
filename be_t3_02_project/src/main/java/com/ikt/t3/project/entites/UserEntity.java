@@ -69,13 +69,23 @@ public class UserEntity {
 	@JsonIgnore
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
 	private List<BillEntity> bills = new ArrayList<BillEntity>();
+    // T3 4.5
+	/*
+	 * Povezati korisnika i vaučer
+	 * • vaučer se odnosi na kupovinu jedne ponude od strane jednog korisnika
+	 * • jedan korisnik može imati više vaučera
+	 */
+	@JsonIgnore
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
+	private List<VoucherEntity> vouchers = new ArrayList<VoucherEntity>();
 	
 	public UserEntity() {
 		super();
 	}
 
 	public UserEntity(Integer id, String firstName, String lastName, String userName, String password, String email,
-			EUserRole userRole, Integer version, List<OfferEntity> offers, List<BillEntity> bills) {
+			EUserRole userRole, Integer version, List<OfferEntity> offers, List<BillEntity> bills,
+			List<VoucherEntity> vouchers) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -87,6 +97,7 @@ public class UserEntity {
 		this.version = version;
 		this.offers = offers;
 		this.bills = bills;
+		this.vouchers = vouchers;
 	}
 
 	public Integer getId() {
@@ -167,5 +178,13 @@ public class UserEntity {
 
 	public void setBills(List<BillEntity> bills) {
 		this.bills = bills;
+	}
+
+	public List<VoucherEntity> getVouchers() {
+		return vouchers;
+	}
+
+	public void setVouchers(List<VoucherEntity> vouchers) {
+		this.vouchers = vouchers;
 	}
 }

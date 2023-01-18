@@ -2,11 +2,15 @@ package com.ikt.t3.project.entites;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Version;
 
@@ -34,17 +38,39 @@ public class VoucherEntity {
     private Boolean isUsed;
     @Version
     private Integer version;
+    // T3 4.4
+	/*
+	 * Povezati ponudu i vaučer
+	 * • vaučer predstavlja račun na kome je uplata novca izvršena, pa poput računa,
+	 *   vaučer se odnosi na kupovinu jedne ponude
+	 * • jedna ponuda se može nalaziti na više vaučera
+	 */
+	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+	@JoinColumn(name = "offer")
+	private OfferEntity offer;
+    // T3 4.5
+	/*
+	 * Povezati korisnika i vaučer
+	 * • vaučer se odnosi na kupovinu jedne ponude od strane jednog korisnika
+	 * • jedan korisnik može imati više vaučera
+	 */
+	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+	@JoinColumn(name = "user")
+	private UserEntity user;
 
-    public VoucherEntity() {
+	public VoucherEntity() {
 		super();
 	}
 
-	public VoucherEntity(Integer id, LocalDateTime expirationDate, Boolean isUsed, Integer version) {
+	public VoucherEntity(Integer id, LocalDateTime expirationDate, Boolean isUsed, Integer version, OfferEntity offer,
+			UserEntity user) {
 		super();
 		this.id = id;
 		this.expirationDate = expirationDate;
 		this.isUsed = isUsed;
 		this.version = version;
+		this.offer = offer;
+		this.user = user;
 	}
 
 	public Integer getId() {
@@ -77,5 +103,21 @@ public class VoucherEntity {
 
 	public void setVersion(Integer version) {
 		this.version = version;
+	}
+
+	public OfferEntity getOffer() {
+		return offer;
+	}
+
+	public void setOffer(OfferEntity offer) {
+		this.offer = offer;
+	}
+
+	public UserEntity getUser() {
+		return user;
+	}
+
+	public void setUser(UserEntity user) {
+		this.user = user;
 	}
 }

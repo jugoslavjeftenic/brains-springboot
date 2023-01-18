@@ -25,4 +25,15 @@ public class VoucherController {
 	public Iterable<VoucherEntity> getAll() {
 		return voucherRepository.findAll();
 	}
+	
+	// T3 4.6
+	/*
+	 * Kreirati REST endpoint-ove za dodavanje, izmenu i brisanje vaučera
+	 * • putanja /project/vouchers/{offerId}/buyer/{buyerId}
+	 * • NAPOMENA: samo korisnik sa ulogom ROLE_CUSTOMER se može naći kao kupac na vaučeru
+	 *   (u suprotnom ne dozvoliti kreiranje vaučera)
+	 * • putanja /project/vouchers/{id} (izmena)
+	 * • putanja /project/vouchers/{id} (brisanje)
+	 */
+	
 }
