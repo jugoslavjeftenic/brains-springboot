@@ -1,4 +1,4 @@
-package com.ikt.project.controllers;
+package com.ikt.t3.project.controllers;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ikt.project.entities.CategoryEntity;
-import com.ikt.project.entities.EOfferEntity;
-import com.ikt.project.entities.EUserRole;
-import com.ikt.project.entities.OfferEntity;
-import com.ikt.project.entities.UserEntity;
-import com.ikt.project.repositories.CategoryRepository;
-import com.ikt.project.repositories.OfferRepository;
-import com.ikt.project.repositories.UserRepository;
+import com.ikt.t3.project.entites.CategoryEntity;
+import com.ikt.t3.project.entites.EOfferEntity;
+import com.ikt.t3.project.entites.EUserRole;
+import com.ikt.t3.project.entites.OfferEntity;
+import com.ikt.t3.project.entites.UserEntity;
+import com.ikt.t3.project.repositories.CategoryRepository;
+import com.ikt.t3.project.repositories.OfferRepository;
+import com.ikt.t3.project.repositories.UserRepository;
 
 import rade.RADE;
 

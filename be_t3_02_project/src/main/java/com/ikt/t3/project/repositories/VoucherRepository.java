@@ -1,8 +1,8 @@
-package com.ikt.project.repositories;
+package com.ikt.t3.project.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.ikt.project.entities.VoucherEntity;
+import com.ikt.t3.project.entites.VoucherEntity;
 
 public interface VoucherRepository extends CrudRepository<VoucherEntity, Integer> {
 

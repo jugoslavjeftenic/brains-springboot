@@ -1,11 +1,11 @@
-package com.ikt.project.repositories;
+package com.ikt.t3.project.repositories;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.ikt.project.entities.CategoryEntity;
-import com.ikt.project.entities.OfferEntity;
+import com.ikt.t3.project.entites.CategoryEntity;
+import com.ikt.t3.project.entites.OfferEntity;
 
 public interface OfferRepository extends CrudRepository<OfferEntity, Integer> {
 

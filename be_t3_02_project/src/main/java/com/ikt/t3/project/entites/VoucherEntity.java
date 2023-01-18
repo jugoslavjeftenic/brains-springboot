@@ -1,4 +1,4 @@
-package com.ikt.project.entities;
+package com.ikt.t3.project.entites;
 
 import java.time.LocalDateTime;
 

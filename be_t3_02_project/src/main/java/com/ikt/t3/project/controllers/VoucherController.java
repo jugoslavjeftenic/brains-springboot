@@ -1,12 +1,12 @@
-package com.ikt.project.controllers;
+package com.ikt.t3.project.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ikt.project.entities.VoucherEntity;
-import com.ikt.project.repositories.VoucherRepository;
+import com.ikt.t3.project.entites.VoucherEntity;
+import com.ikt.t3.project.repositories.VoucherRepository;
 
 @RestController
 @RequestMapping(value = "/api/v1/vouchers")

@@ -1,4 +1,4 @@
-package com.ikt.project.controllers;
+package com.ikt.t3.project.controllers;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ikt.project.entities.BillEntity;
-import com.ikt.project.entities.CategoryEntity;
-import com.ikt.project.entities.OfferEntity;
-import com.ikt.project.repositories.BillRepository;
-import com.ikt.project.repositories.CategoryRepository;
-import com.ikt.project.repositories.OfferRepository;
-import com.ikt.project.repositories.UserRepository;
+import com.ikt.t3.project.entites.BillEntity;
+import com.ikt.t3.project.entites.CategoryEntity;
+import com.ikt.t3.project.entites.OfferEntity;
+import com.ikt.t3.project.repositories.BillRepository;
+import com.ikt.t3.project.repositories.CategoryRepository;
+import com.ikt.t3.project.repositories.OfferRepository;
+import com.ikt.t3.project.repositories.UserRepository;
 
 import rade.RADE;
 
@@ -202,15 +202,12 @@ public class BillController {
 		try {
 			sDate = LocalDate.parse(startDate, formatter);
 			eDate = LocalDate.parse(endDate, formatter);
-			System.out.println(sDate + "-:-" + eDate);
 		} catch (Exception e) {
 			try {
 				formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 				sDate = LocalDate.parse(startDate, formatter);
 				eDate = LocalDate.parse(endDate, formatter);
-				System.out.println("tu sam");
 			} catch (Exception e2) {
-				System.out.println(startDate + "-:null:-" + endDate);
 				return null;
 			}
 		}

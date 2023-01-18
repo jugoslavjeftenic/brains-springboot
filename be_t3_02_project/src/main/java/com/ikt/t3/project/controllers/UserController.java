@@ -1,4 +1,4 @@
-package com.ikt.project.controllers;
+package com.ikt.t3.project.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ikt.project.entities.EUserRole;
-import com.ikt.project.entities.UserEntity;
-import com.ikt.project.repositories.UserRepository;
+import com.ikt.t3.project.entites.EUserRole;
+import com.ikt.t3.project.entites.UserEntity;
+import com.ikt.t3.project.repositories.UserRepository;
 
 import rade.RADE;
 import rade.entities.OsobaEntity;

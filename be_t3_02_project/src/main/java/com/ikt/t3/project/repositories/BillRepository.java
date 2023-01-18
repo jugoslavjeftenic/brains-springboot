@@ -1,13 +1,13 @@
-package com.ikt.project.repositories;
+package com.ikt.t3.project.repositories;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.ikt.project.entities.BillEntity;
-import com.ikt.project.entities.OfferEntity;
-import com.ikt.project.entities.UserEntity;
+import com.ikt.t3.project.entites.BillEntity;
+import com.ikt.t3.project.entites.OfferEntity;
+import com.ikt.t3.project.entites.UserEntity;
 
 public interface BillRepository extends CrudRepository<BillEntity, Integer> {
 

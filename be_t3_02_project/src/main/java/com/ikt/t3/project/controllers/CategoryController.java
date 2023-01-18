@@ -1,4 +1,4 @@
-package com.ikt.project.controllers;
+package com.ikt.t3.project.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ikt.project.entities.CategoryEntity;
-import com.ikt.project.repositories.CategoryRepository;
+import com.ikt.t3.project.entites.CategoryEntity;
+import com.ikt.t3.project.repositories.CategoryRepository;
 
 @RestController
 @RequestMapping(value = "/api/v1/categories")
