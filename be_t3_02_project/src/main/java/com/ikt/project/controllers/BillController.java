@@ -1,6 +1,8 @@
 package com.ikt.project.controllers;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -189,12 +191,31 @@ public class BillController {
 	 * Kreirati REST endpoint za pronalazak svih računa koji su kreirani u odgovarajućem vremenskom periodu
 	 * • putanja /project/bills/findByDate/{startDate}/and/{endDate}
 	 */
-	// TODO nastaviti ovde
 	@RequestMapping(method = RequestMethod.GET, path = "/findByDate/{startDate}/and/{endDate}")
-	private Iterable<BillEntity> getBillsByDate(@PathVariable LocalDateTime startDate,
-			@PathVariable LocalDateTime endDate) {
+	private Iterable<BillEntity> getBillsByDate(@PathVariable String startDate,	@PathVariable String endDate) {
+		// https://www.geeksforgeeks.org/localdatetime-parse-method-in-java-with-examples/
+		// https://www.baeldung.com/java-datetimeformatter
+		// TODO Smandrljano. Napraviti bolju logiku za parsiranje datuma.
+		DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
+		LocalDate sDate;
+		LocalDate eDate;
 		try {
-			return billRepository.findByBillCreatedBetween(startDate, endDate);
+			sDate = LocalDate.parse(startDate, formatter);
+			eDate = LocalDate.parse(endDate, formatter);
+			System.out.println(sDate + "-:-" + eDate);
+		} catch (Exception e) {
+			try {
+				formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+				sDate = LocalDate.parse(startDate, formatter);
+				eDate = LocalDate.parse(endDate, formatter);
+				System.out.println("tu sam");
+			} catch (Exception e2) {
+				System.out.println(startDate + "-:null:-" + endDate);
+				return null;
+			}
+		}
+		try {
+			return billRepository.findByBillCreatedBetween(sDate.atStartOfDay(), eDate.atStartOfDay().plusDays(1));
 		} catch (Exception e) {
 			return null;
 		}
