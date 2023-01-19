@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ikt.t3.project.entites.EUserRole;
 import com.ikt.t3.project.entites.VoucherEntity;
 import com.ikt.t3.project.repositories.OfferRepository;
 import com.ikt.t3.project.repositories.UserRepository;
@@ -82,7 +83,7 @@ public class VoucherController {
 			newVoucher.setExpirationDate(exDate);
 			newVoucher.setIsUsed(isUsed);
 			newVoucher.setOffer(offerRepository.findById(offerId).get());
-			newVoucher.setUser(userRepository.findById(buyerId).get());
+			newVoucher.setUser(userRepository.findByIdAndUserRole(buyerId, EUserRole.ROLE_CUSTOMER));
 			return voucherRepository.save(newVoucher);
 		} catch (Exception e) {
 			return null;
@@ -93,7 +94,7 @@ public class VoucherController {
 	public Iterable<VoucherEntity> populateTable(@PathVariable Integer count) {
 		// TODO Treba napraviti da vraca ID-ove rekorda a ne count.
 		int offersCount = (int) offerRepository.count();
-		int usersCount = (int) userRepository.count();
+		List<Integer> userIds = userRepository.findAllIdsByUserRole(EUserRole.ROLE_CUSTOMER);
 		List<VoucherEntity> vouchers = new ArrayList<>();
 		for (int i = 0; i < count; i++) {
 			VoucherEntity voucher = new VoucherEntity();
@@ -105,7 +106,7 @@ public class VoucherController {
 			}
 			voucher.setIsUsed(RADE.mrRobot());
 			try {
-				voucher.setUser(userRepository.findById(RADE.mrRobot(1, usersCount)).get());
+				voucher.setUser(userRepository.findById(userIds.get(RADE.mrRobot(1, userIds.size()))).get());
 			} catch (Exception e) {
 				voucher.setUser(null);
 			}

@@ -2,6 +2,7 @@ package com.ikt.t3.project.repositories;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import com.ikt.t3.project.entites.EUserRole;
@@ -16,5 +17,9 @@ public interface UserRepository extends CrudRepository<UserEntity, Integer> {
 	 * • UserRepository, CategoryRepository i OfferRepository
 	 */
 	List<UserEntity> findByUserName(String userName);
+	List<UserEntity> findByUserRole(EUserRole userRole);
 	UserEntity findByIdAndUserRole(Integer id, EUserRole userRole);
+	// https://springframework.guru/spring-data-jpa-query/
+	@Query("SELECT u.id FROM UserEntity u WHERE u.userRole = ?1")
+	List<Integer> findAllIdsByUserRole(EUserRole userRole);
 }
