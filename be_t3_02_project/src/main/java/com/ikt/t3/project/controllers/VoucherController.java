@@ -2,6 +2,8 @@ package com.ikt.t3.project.controllers;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +16,8 @@ import com.ikt.t3.project.entites.VoucherEntity;
 import com.ikt.t3.project.repositories.OfferRepository;
 import com.ikt.t3.project.repositories.UserRepository;
 import com.ikt.t3.project.repositories.VoucherRepository;
+
+import rade.RADE;
 
 @RestController
 @RequestMapping(value = "/api/v1/vouchers")
@@ -59,8 +63,6 @@ public class VoucherController {
 	 * • putanja /project/vouchers/{id} (izmena)
 	 * • putanja /project/vouchers/{id} (brisanje)
 	 */
-
-	// TODO testirati
 	@RequestMapping(method = RequestMethod.POST, path = "/{offerId}/buyer/{buyerId}")
 	public VoucherEntity addVoucher(@PathVariable Integer offerId, @PathVariable Integer buyerId,
 			@RequestParam String expirationDate, @RequestParam Boolean isUsed) {
@@ -70,8 +72,7 @@ public class VoucherController {
 			exDate = LocalDateTime.parse(expirationDate, formatter);
 		} catch (Exception e) {
 			try {
-				exDate = LocalDateTime.parse(expirationDate + "T00:00:00", formatter);
-				exDate = exDate.plusDays(1);
+				exDate = LocalDateTime.parse(expirationDate + "T00:00:00", formatter).plusDays(1);
 			} catch (Exception e2) {
 				return null;
 			}
@@ -83,6 +84,87 @@ public class VoucherController {
 			newVoucher.setOffer(offerRepository.findById(offerId).get());
 			newVoucher.setUser(userRepository.findById(buyerId).get());
 			return voucherRepository.save(newVoucher);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	@RequestMapping(method = RequestMethod.POST, path = "/populatetable/{count}")
+	public Iterable<VoucherEntity> populateTable(@PathVariable Integer count) {
+		// TODO Treba napraviti da vraca ID-ove rekorda a ne count.
+		int offersCount = (int) offerRepository.count();
+		int usersCount = (int) userRepository.count();
+		List<VoucherEntity> vouchers = new ArrayList<>();
+		for (int i = 0; i < count; i++) {
+			VoucherEntity voucher = new VoucherEntity();
+			voucher.setExpirationDate(LocalDateTime.now().plusDays(RADE.mrRobot(1, 10)));
+			try {
+				voucher.setOffer(offerRepository.findById(RADE.mrRobot(1, offersCount)).get());
+			} catch (Exception e) {
+				voucher.setOffer(null);
+			}
+			voucher.setIsUsed(RADE.mrRobot());
+			try {
+				voucher.setUser(userRepository.findById(RADE.mrRobot(1, usersCount)).get());
+			} catch (Exception e) {
+				voucher.setUser(null);
+			}
+			vouchers.add(voucher);
+		}
+		return voucherRepository.saveAll(vouchers);
+	}
+	
+	@RequestMapping(method = RequestMethod.PUT, path = "/{id}")
+	public VoucherEntity updateVoucher(@PathVariable Integer id,
+			@RequestParam(required = false) String expirationDate, @RequestParam(required = false) Boolean isUsed,
+			@RequestParam(required = false) Integer offer, @RequestParam(required = false) Integer user) {
+		LocalDateTime exDate = null;
+		if (expirationDate != null) {
+			DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+			try {
+				exDate = LocalDateTime.parse(expirationDate, formatter);
+			} catch (Exception e) {
+				try {
+					exDate = LocalDateTime.parse(expirationDate + "T00:00:00", formatter).plusDays(1);
+				} catch (Exception e2) {
+					exDate = null;
+				}
+			}
+		}
+		try {
+			VoucherEntity voucher = voucherRepository.findById(id).get();
+			if (exDate != null) {
+				voucher.setExpirationDate(exDate);
+			}
+			if (isUsed != null) {
+				voucher.setIsUsed(isUsed);
+			}
+			if (offer != null) {
+				try {
+					voucher.setOffer(offerRepository.findById(offer).get());
+				} catch (Exception e) {
+					return null;
+				}
+			}
+			if (user != null) {
+				try {
+					voucher.setUser(userRepository.findById(user).get());
+				} catch (Exception e) {
+					return null;
+				}
+			}
+			return voucherRepository.save(voucher);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	@RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
+	public VoucherEntity deleteVoucher(@PathVariable Integer id) {
+		try {
+			VoucherEntity voucher = voucherRepository.findById(id).get();
+			voucherRepository.delete(voucher);
+			return voucher;
 		} catch (Exception e) {
 			return null;
 		}

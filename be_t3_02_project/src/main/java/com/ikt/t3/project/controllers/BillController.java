@@ -86,7 +86,7 @@ public class BillController {
 
 	@RequestMapping(method = RequestMethod.POST, path = "/populatetable/{count}")
 	public Iterable<BillEntity> populateTable(@PathVariable Integer count) {
-		// TODO Treba prepraviti da vraca ID-ove rekorda a ne count.
+		// TODO Treba napraviti da vraca ID-ove rekorda a ne count.
 		int offersCount = (int) offerRepository.count();
 		int usersCount = (int) userRepository.count();
 		List<BillEntity> bills = new ArrayList<>();
