@@ -16,6 +16,7 @@ public interface BillRepository extends CrudRepository<BillEntity, Integer> {
 	 * U paketu com.iktpreobuka.project.repositories napraviti interfejs BillRepository
 	 */
 	List<BillEntity> findByUser(UserEntity user);
+	List<BillEntity> findByOffer(OfferEntity offer);
 	List<BillEntity> findByOfferIn(List<OfferEntity> offers);
 	List<BillEntity> findByBillCreatedBetween(LocalDateTime start, LocalDateTime end);
 }

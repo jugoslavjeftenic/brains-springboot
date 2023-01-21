@@ -11,14 +11,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ikt.t3.project.entites.BillEntity;
 import com.ikt.t3.project.entites.CategoryEntity;
 import com.ikt.t3.project.entites.EOfferEntity;
 import com.ikt.t3.project.entites.EUserRole;
 import com.ikt.t3.project.entites.OfferEntity;
 import com.ikt.t3.project.entites.UserEntity;
+import com.ikt.t3.project.entites.VoucherEntity;
+import com.ikt.t3.project.repositories.BillRepository;
 import com.ikt.t3.project.repositories.CategoryRepository;
 import com.ikt.t3.project.repositories.OfferRepository;
 import com.ikt.t3.project.repositories.UserRepository;
+import com.ikt.t3.project.repositories.VoucherRepository;
 
 import rade.RADE;
 
@@ -38,6 +42,12 @@ public class OfferController {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private BillRepository billRepository;
+
+	@Autowired
+	private VoucherRepository voucherRepository;
 
 	// T2 3.3
 	/*
@@ -261,13 +271,18 @@ public class OfferController {
 	 */
 	@RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
 	public OfferEntity deleteOffer(@PathVariable Integer id) {
+		OfferEntity offer;
 		try {
-			OfferEntity offer = offerRepository.findById(id).get();
-			offerRepository.delete(offer);
-			return offer;
+			offer = offerRepository.findById(id).get();
 		} catch (Exception e) {
 			return null;
 		}
+		List<BillEntity> bills = billRepository.findByOffer(offer);
+		bills.forEach(bill -> bill.setOffer(null));
+		List<VoucherEntity> vouchers = voucherRepository.findByOffer(offer);
+		vouchers.forEach(voucher -> voucher.setOffer(null));
+		offerRepository.delete(offer);
+		return offer;
 	}
 	
 	// T2 3.9

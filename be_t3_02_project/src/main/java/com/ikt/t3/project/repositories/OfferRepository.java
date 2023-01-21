@@ -6,6 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.ikt.t3.project.entites.CategoryEntity;
 import com.ikt.t3.project.entites.OfferEntity;
+import com.ikt.t3.project.entites.UserEntity;
 
 public interface OfferRepository extends CrudRepository<OfferEntity, Integer> {
 
@@ -18,5 +19,6 @@ public interface OfferRepository extends CrudRepository<OfferEntity, Integer> {
 	// https://www.baeldung.com/spring-data-derived-queries
 	List<OfferEntity> findByOfferName(String offerName);
 	List<OfferEntity> findByActionPriceBetween(Double start, Double end);
+	List<OfferEntity> findByUser(UserEntity user);
 	List<OfferEntity> findByCategory(CategoryEntity category);
 }

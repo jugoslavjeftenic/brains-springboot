@@ -11,9 +11,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ikt.t3.project.entites.BillEntity;
 import com.ikt.t3.project.entites.EUserRole;
+import com.ikt.t3.project.entites.OfferEntity;
 import com.ikt.t3.project.entites.UserEntity;
+import com.ikt.t3.project.entites.VoucherEntity;
+import com.ikt.t3.project.repositories.BillRepository;
+import com.ikt.t3.project.repositories.OfferRepository;
 import com.ikt.t3.project.repositories.UserRepository;
+import com.ikt.t3.project.repositories.VoucherRepository;
 
 import rade.RADE;
 import rade.entities.OsobaEntity;
@@ -28,6 +34,15 @@ public class UserController {
 	 */
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private OfferRepository offerRepository;
+
+	@Autowired
+	private BillRepository billRepository;
+
+	@Autowired
+	private VoucherRepository voucherRepository;
 
 	// T2 1.3
 	/*
@@ -173,11 +188,17 @@ public class UserController {
 		UserEntity user;
 		try {
 			user = userRepository.findById(id).get();
-			userRepository.delete(user);
-			return user;
 		} catch (Exception e) {
 			return null;
 		}
+		List<OfferEntity> offers = offerRepository.findByUser(user);
+		offers.forEach(offer -> offer.setUser(null));
+		List<BillEntity> bills = billRepository.findByUser(user);
+		bills.forEach(bill -> bill.setOffer(null));
+		List<VoucherEntity> vouchers = voucherRepository.findByUser(user);
+		vouchers.forEach(voucher -> voucher.setOffer(null));
+		userRepository.delete(user);
+		return user;
 	}
 	
 	// T2 1.10
