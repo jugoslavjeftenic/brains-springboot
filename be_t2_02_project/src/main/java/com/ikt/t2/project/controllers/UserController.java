@@ -1,4 +1,4 @@
-package com.iktprekvalifikacija.project.controllers;
+package com.ikt.t2.project.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.iktprekvalifikacija.project.entities.EUserRole;
-import com.iktprekvalifikacija.project.entities.UserEntity;
+import com.ikt.t2.project.entities.EUserRole;
+import com.ikt.t2.project.entities.UserEntity;
 
 import rade.RADE;
 

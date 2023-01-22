@@ -1,4 +1,4 @@
-package com.iktprekvalifikacija.project.controllers;
+package com.ikt.t2.project.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.iktprekvalifikacija.project.entities.CategoryEntity;
+import com.ikt.t2.project.entities.CategoryEntity;
 
 @RestController
 @RequestMapping(value = "/project/categories")

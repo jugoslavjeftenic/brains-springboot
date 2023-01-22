@@ -1,4 +1,4 @@
-package com.iktprekvalifikacija.project.entities;
+package com.ikt.t2.project.entities;
 
 import java.time.LocalDateTime;
 
