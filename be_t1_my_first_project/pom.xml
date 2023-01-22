@@ -8,10 +8,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ikt.t1</groupId>
-	<artifactId>t1_my_first_project</artifactId>
+	<artifactId>be_t1_my_first_project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>t1_my_first_project</name>
+	<name>be_t1_my_first_project</name>
 	<description>My first project as part of the Spring learning project</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
