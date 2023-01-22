@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BE_T3_01_DataExamplesApplication {
+public class BeT301ExampleDataLayerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BE_T3_01_DataExamplesApplication.class, args);
+		SpringApplication.run(BeT301ExampleDataLayerApplication.class, args);
 	}
 
 }
