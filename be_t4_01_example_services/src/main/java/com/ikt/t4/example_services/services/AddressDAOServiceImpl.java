@@ -17,9 +17,13 @@ public class AddressDAOServiceImpl implements AddressDAOService {
 	@SuppressWarnings("unchecked")
 	@Override
 	public Iterable<AddressEntity> findAddressesByUserName(String name) {
+		// 1. Write a query
 		String hql = "SELECT a FROM AddressEntity a LEFT JOIN FETCH a.users u WHERE u.name LIKE :name";
 		Query query = em.createQuery(hql);
+		// 2. Provide parameter values to the query
 		query.setParameter("name", name + "%");
+		// Execute query
+		// Return results
 		return query.getResultList();
 	}
 }
