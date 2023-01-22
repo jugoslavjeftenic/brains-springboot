@@ -1,6 +1,6 @@
-package com.ikt.examples_email.services;
+package com.ikt.t4.example_email.services;
 
-import com.ikt.examples_email.dto.EmailDTO;
+import com.ikt.t4.example_email.dto.EmailDTO;
 
 public interface EmailService {
 
