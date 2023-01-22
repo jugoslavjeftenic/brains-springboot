@@ -8,10 +8,10 @@ import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactor
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class BE_T4_01_ServicesExamplesApplication {
+public class BeT401ExampleServicesApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BE_T4_01_ServicesExamplesApplication.class, args);
+		SpringApplication.run(BeT401ExampleServicesApplication.class, args);
 	}
 
 	@Bean
