@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ikt.t3.project.entites.EUserRole;
+import com.ikt.t3.project.entites.OfferEntity;
+import com.ikt.t3.project.entites.UserEntity;
 import com.ikt.t3.project.entites.VoucherEntity;
 import com.ikt.t3.project.repositories.OfferRepository;
 import com.ikt.t3.project.repositories.UserRepository;
@@ -169,5 +171,47 @@ public class VoucherController {
 		} catch (Exception e) {
 			return null;
 		}
+	}
+	
+	// T3 4.7
+	/*
+	 * Kreirati REST endpoint za pronalazak svih vaučera određenog kupca
+	 * • putanja /project/vouchers/findByBuyer/{buyerId}
+	 */
+	@RequestMapping(method = RequestMethod.GET, path = "/findByBuyer/{buyerId}")
+	public Iterable<VoucherEntity> getByUser(@PathVariable Integer buyerId) {
+		UserEntity user;
+		try {
+			user = userRepository.findById(buyerId).get();
+		} catch (Exception e) {
+			return null;
+		}
+		return voucherRepository.findByUser(user);
+	}
+	
+	// T3 4.8
+	/*
+	 * Kreirati REST endpoint za pronalazak svih vaučera određene ponude
+	 * • putanja /project/vouchers/findByOffer/{offerId}
+	 */
+	@RequestMapping(method = RequestMethod.GET, path = "/findByOffer/{offerId}")
+	public Iterable<VoucherEntity> getByOffer(@PathVariable Integer offerId) {
+		OfferEntity offer;
+		try {
+			offer = offerRepository.findById(offerId).get();
+		} catch (Exception e) {
+			return null;
+		}
+		return voucherRepository.findByOffer(offer);
+	}
+	
+	// T3 4.9
+	/*
+	 * Kreirati REST endpoint za pronalazak svih vaučera koji nisu istekli
+	 * • putanja /project/vouchers/findNonExpiredVoucher
+	 */
+	@RequestMapping(method = RequestMethod.GET, path = "/findNonExpiredVoucher")
+	public Iterable<VoucherEntity> getByExpirationDate() {
+		return voucherRepository.findByExpirationDateGreaterThan(LocalDateTime.now());
 	}
 }

@@ -1,5 +1,6 @@
 package com.ikt.t3.project.repositories;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
@@ -16,4 +17,5 @@ public interface VoucherRepository extends CrudRepository<VoucherEntity, Integer
 	 */
 	List<VoucherEntity> findByUser(UserEntity user);
 	List<VoucherEntity> findByOffer(OfferEntity offer);
+	List<VoucherEntity> findByExpirationDateGreaterThan(LocalDateTime date);
 }

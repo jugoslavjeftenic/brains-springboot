@@ -67,21 +67,41 @@ public class BillController {
 	 * • putanja /project/bills/{offerId}/buyer/{buyerId} (dodavanje)
 	 * • putanja /project/bills/{id} (izmena i brisanje)
 	 */
-
+	// T3 5.1
+	/*
+	 * Proširiti metodu za dodavanje računa tako da se smanji broj dostupnih ponuda ponude sa računa,
+	 * odnosno poveća broj kupljenih
+	 */
 	@RequestMapping(method = RequestMethod.POST, path = "/{offerId}/buyer/{buyerId}")
 	public BillEntity addBill(@PathVariable Integer offerId, @PathVariable Integer buyerId,
 			@RequestParam Boolean paymentMade, @RequestParam Boolean paymentCanceled) {
+		if (paymentMade == false || paymentCanceled == true) {
+			return null;
+		}
+		BillEntity newBill = new BillEntity();
+		newBill.setPaymentMade(paymentMade);
+		newBill.setPaymentCanceled(paymentCanceled);
+		newBill.setBillCreated(LocalDateTime.now());
+		OfferEntity offer;
 		try {
-			BillEntity newBill = new BillEntity();
-			newBill.setPaymentMade(paymentMade);
-			newBill.setPaymentCanceled(paymentCanceled);
-			newBill.setBillCreated(LocalDateTime.now());
-			newBill.setOffer(offerRepository.findById(offerId).get());
-			newBill.setUser(userRepository.findById(buyerId).get());
-			return billRepository.save(newBill);
+			offer = offerRepository.findById(offerId).get();
 		} catch (Exception e) {
 			return null;
 		}
+		if (offer.getAvailableOffers() > 0) {
+			offer.setAvailableOffers(offer.getAvailableOffers() - 1);
+			offer.setBoughtOffers(offer.getBoughtOffers() + 1);
+		}
+		else {
+			return null;
+		}
+		newBill.setOffer(offer);
+		try {
+			newBill.setUser(userRepository.findById(buyerId).get());
+		} catch (Exception e) {
+			return null;
+		}
+		return billRepository.save(newBill);
 	}
 
 	@RequestMapping(method = RequestMethod.POST, path = "/populatetable/{count}")
@@ -110,10 +130,35 @@ public class BillController {
 		return billRepository.saveAll(bills);
 	}
 	
+	// T3 5.2
+	/*
+	 * Proširiti metodu za izmenu računa tako da ukoliko se račun proglašava otkazanim tada treba
+	 * povećati broj dostupnih ponuda ponude sa računa, odnosno smanjiti broj kupljenih
+	 */
 	@RequestMapping(method = RequestMethod.PUT, path = "/{id}")
 	public BillEntity updateBill(@PathVariable Integer id, @RequestBody BillEntity updatedBill) {
+		BillEntity bill;
 		try {
-			BillEntity bill = billRepository.findById(id).get();
+			bill = billRepository.findById(id).get();
+		} catch (Exception e) {
+			return null;
+		}
+		OfferEntity offer;
+		if (updatedBill.getPaymentCanceled()) {
+			try {
+				if (updatedBill.getOffer() != null) {
+					offer = offerRepository.findById(updatedBill.getOffer().getId()).get();
+				}
+				else {
+					offer = offerRepository.findById(bill.getOffer().getId()).get();
+				}
+				offer.setAvailableOffers(offer.getAvailableOffers() + 1);
+				offer.setBoughtOffers(offer.getBoughtOffers() - 1);
+			} catch (Exception e) {
+				return null;
+			}
+		}
+		try {
 			if (updatedBill.getPaymentMade() != null) {
 				bill.setPaymentMade(updatedBill.getPaymentMade());
 			}
