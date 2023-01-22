@@ -1,11 +1,11 @@
-package com.iktprekvalifikacija.data_examples.repositories;
+package com.ikt.t3.example_data_layer.repositories;
 
 import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.iktprekvalifikacija.data_examples.entities.UserEntity;
+import com.ikt.t3.example_data_layer.entities.UserEntity;
 
 public interface UserRepository extends CrudRepository<UserEntity, Integer> {
 	List<UserEntity> findByEmail(String email);

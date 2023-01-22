@@ -1,4 +1,4 @@
-package com.iktprekvalifikacija.data_examples.entities;
+package com.ikt.t3.example_data_layer.entities;
 
 import java.time.LocalDate;
 

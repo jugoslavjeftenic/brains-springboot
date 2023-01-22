@@ -1,4 +1,4 @@
-package com.iktprekvalifikacija.data_examples;
+package com.ikt.t3.example_data_layer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,10 +1,10 @@
-package com.iktprekvalifikacija.data_examples.repositories;
+package com.ikt.t3.example_data_layer.repositories;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.iktprekvalifikacija.data_examples.entities.CountryEntity;
+import com.ikt.t3.example_data_layer.entities.CountryEntity;
 
 public interface CountryRepository extends CrudRepository<CountryEntity, Integer> {
 	List<CountryEntity> findByCountry(String country);
