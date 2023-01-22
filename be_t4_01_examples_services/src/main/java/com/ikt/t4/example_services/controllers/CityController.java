@@ -1,4 +1,4 @@
-package com.iktprekvalifikacija.services_examples.controllers;
+package com.ikt.t4.example_services.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.iktprekvalifikacija.services_examples.entities.CityEntity;
-import com.iktprekvalifikacija.services_examples.repositories.CityRepository;
-import com.iktprekvalifikacija.services_examples.repositories.CountryRepository;
+import com.ikt.t4.example_services.entities.CityEntity;
+import com.ikt.t4.example_services.repositories.CityRepository;
+import com.ikt.t4.example_services.repositories.CountryRepository;
 
 import rade.RADE;
 

@@ -1,11 +1,11 @@
-package com.iktprekvalifikacija.services_examples.repositories;
+package com.ikt.t4.example_services.repositories;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.iktprekvalifikacija.services_examples.entities.CityEntity;
-import com.iktprekvalifikacija.services_examples.entities.CountryEntity;
+import com.ikt.t4.example_services.entities.CityEntity;
+import com.ikt.t4.example_services.entities.CountryEntity;
 
 public interface CityRepository extends CrudRepository<CityEntity, Integer> {
 	List<CityEntity> findByCity(String city);

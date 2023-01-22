@@ -1,12 +1,12 @@
-package com.iktprekvalifikacija.services_examples.repositories;
+package com.ikt.t4.example_services.repositories;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.iktprekvalifikacija.services_examples.entities.AddressEntity;
-import com.iktprekvalifikacija.services_examples.entities.CityEntity;
-import com.iktprekvalifikacija.services_examples.entities.UserEntity;
+import com.ikt.t4.example_services.entities.AddressEntity;
+import com.ikt.t4.example_services.entities.CityEntity;
+import com.ikt.t4.example_services.entities.UserEntity;
 
 public interface AddressRepository extends CrudRepository<AddressEntity, Integer> {
 	List<AddressEntity> findByStreet(String street);

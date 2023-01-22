@@ -1,4 +1,4 @@
-package com.iktprekvalifikacija.services_examples.controllers;
+package com.ikt.t4.example_services.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.iktprekvalifikacija.services_examples.entities.AddressEntity;
-import com.iktprekvalifikacija.services_examples.entities.CityEntity;
-import com.iktprekvalifikacija.services_examples.entities.UserEntity;
-import com.iktprekvalifikacija.services_examples.repositories.AddressRepository;
-import com.iktprekvalifikacija.services_examples.repositories.CityRepository;
-import com.iktprekvalifikacija.services_examples.repositories.CountryRepository;
-import com.iktprekvalifikacija.services_examples.repositories.UserRepository;
-import com.iktprekvalifikacija.services_examples.services.AddressDAOService;
+import com.ikt.t4.example_services.entities.AddressEntity;
+import com.ikt.t4.example_services.entities.CityEntity;
+import com.ikt.t4.example_services.entities.UserEntity;
+import com.ikt.t4.example_services.repositories.AddressRepository;
+import com.ikt.t4.example_services.repositories.CityRepository;
+import com.ikt.t4.example_services.repositories.CountryRepository;
+import com.ikt.t4.example_services.repositories.UserRepository;
+import com.ikt.t4.example_services.services.AddressDAOService;
 
 import rade.RADE;
 import rade.entities.AdresaEntity;

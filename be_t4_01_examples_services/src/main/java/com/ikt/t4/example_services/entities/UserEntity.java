@@ -1,4 +1,4 @@
-package com.iktprekvalifikacija.services_examples.entities;
+package com.ikt.t4.example_services.entities;
 
 import java.time.LocalDate;
 

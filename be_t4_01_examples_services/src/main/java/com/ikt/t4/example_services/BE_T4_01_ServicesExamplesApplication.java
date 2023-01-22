@@ -1,4 +1,4 @@
-package com.iktprekvalifikacija.services_examples;
+package com.ikt.t4.example_services;
 
 import org.apache.coyote.http11.AbstractHttp11Protocol;
 import org.springframework.boot.SpringApplication;
