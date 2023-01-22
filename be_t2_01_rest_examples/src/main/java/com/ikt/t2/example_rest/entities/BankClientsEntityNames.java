@@ -1,4 +1,4 @@
-package com.iktprekvalifikacija.restexamples.entities;
+package com.ikt.t2.example_rest.entities;
 
 public class BankClientsEntityNames {
 

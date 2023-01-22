@@ -1,4 +1,4 @@
-package com.iktprekvalifikacija.restexamples;
+package com.ikt.t2.example_rest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

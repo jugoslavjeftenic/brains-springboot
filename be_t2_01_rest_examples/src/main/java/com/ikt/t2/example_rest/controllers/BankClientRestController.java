@@ -1,4 +1,4 @@
-package com.iktprekvalifikacija.restexamples.controllers;
+package com.ikt.t2.example_rest.controllers;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.iktprekvalifikacija.restexamples.entities.BankClientEntity;
-import com.iktprekvalifikacija.restexamples.entities.BankClientsEntityNames;
+import com.ikt.t2.example_rest.entities.BankClientEntity;
+import com.ikt.t2.example_rest.entities.BankClientsEntityNames;
 
 import rade.*;
 
@@ -49,7 +49,7 @@ public class BankClientRestController {
 		String lastName = RADE.generisiPrezime();
 		BankClientEntity client = new BankClientEntity(++id, firstName, lastName,
 				firstName.toLowerCase() + "." + lastName.substring(0, 1).toLowerCase() + "@bomba.net",
-				RADE.generisiGrad(), RADE.generisiDatumRodjenja(16, 100));
+				RADE.generisiOpstinu().getNaziv(), RADE.generisiDatumRodjenja(16, 100));
 		return client;
 		
 	}
