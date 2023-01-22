@@ -1,4 +1,4 @@
-package com.iktprekvalifikacija.myfirstproject.controllers;
+package com.ikt.t1.controllers;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.iktprekvalifikacija.myfirstproject.entities.MinMax;
+import com.ikt.t1.entities.MinMax;
 
 @RestController
 public class MyFirstController {

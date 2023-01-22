@@ -1,4 +1,4 @@
-package com.iktprekvalifikacija.myfirstproject.entities;
+package com.ikt.t1.entities;
 
 public class MinMax {
 
