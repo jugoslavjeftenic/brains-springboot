@@ -1,4 +1,4 @@
-package com.ikt.examples_file_upload.services;
+package com.ikt.example_file_upload.services;
 
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;

@@ -1,4 +1,4 @@
-package com.ikt.examples_file_upload.services;
+package com.ikt.example_file_upload.services;
 
 import java.io.IOException;
 import java.nio.file.Files;
