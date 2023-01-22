@@ -325,13 +325,6 @@ public class RADE extends DataHolder {
 	    return Math.round(value) + 0.99;
 	}
 
-	@Deprecated  // Koristiti generisiOpstinu()
-	public static String generisiGrad() {
-		String[] gradovi = {"Beograd", "Novi Sad", "Nis", "Pristina", "Kragujevac", "Subotica",
-				"Leskovac", "Krusevac", "Kraljevo", "Zrenjanin", "Pancevo", "Cacak", "Sabac", "Novi Pazar"};
-		return gradovi[mrRobot(0, gradovi.length - 1)];
-	}
-
 	// TODO Prepraviti sve generatore ispod ove linije
 	// --------------------------------------------------------------------------------------
 
