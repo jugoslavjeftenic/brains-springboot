@@ -29,7 +29,7 @@ public class UserEntity {
     private String firstName;
 	@Column(nullable=false, length=64)
     private String lastName;
-	@Column(nullable=false, length=64)
+	@Column(nullable=false, unique = true, length=64)
     private String username;
 	@Column(nullable=false, length=64)
     private String password;
