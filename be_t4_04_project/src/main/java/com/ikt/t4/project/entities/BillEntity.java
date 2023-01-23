@@ -43,4 +43,85 @@ public class BillEntity {
     @OneToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
 	@JoinColumn(name = "voucher")
     private VoucherEntity voucher;
+
+    public BillEntity() {
+		super();
+	}
+
+	public BillEntity(Long id, Boolean paymentMade, Boolean paymentCanceled, LocalDateTime billCreated, Integer version,
+			OfferEntity offer, UserEntity user, VoucherEntity voucher) {
+		super();
+		this.id = id;
+		this.paymentMade = paymentMade;
+		this.paymentCanceled = paymentCanceled;
+		this.billCreated = billCreated;
+		this.version = version;
+		this.offer = offer;
+		this.user = user;
+		this.voucher = voucher;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Boolean getPaymentMade() {
+		return paymentMade;
+	}
+
+	public void setPaymentMade(Boolean paymentMade) {
+		this.paymentMade = paymentMade;
+	}
+
+	public Boolean getPaymentCanceled() {
+		return paymentCanceled;
+	}
+
+	public void setPaymentCanceled(Boolean paymentCanceled) {
+		this.paymentCanceled = paymentCanceled;
+	}
+
+	public LocalDateTime getBillCreated() {
+		return billCreated;
+	}
+
+	public void setBillCreated(LocalDateTime billCreated) {
+		this.billCreated = billCreated;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
+
+	public OfferEntity getOffer() {
+		return offer;
+	}
+
+	public void setOffer(OfferEntity offer) {
+		this.offer = offer;
+	}
+
+	public UserEntity getUser() {
+		return user;
+	}
+
+	public void setUser(UserEntity user) {
+		this.user = user;
+	}
+
+	public VoucherEntity getVoucher() {
+		return voucher;
+	}
+
+	public void setVoucher(VoucherEntity voucher) {
+		this.voucher = voucher;
+	}
 }

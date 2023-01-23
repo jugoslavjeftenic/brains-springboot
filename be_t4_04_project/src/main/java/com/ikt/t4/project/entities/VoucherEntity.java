@@ -34,4 +34,57 @@ public class VoucherEntity {
 	@JsonIgnore
 	@OneToOne(mappedBy = "voucher", fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
     private BillEntity bill;
+
+	public VoucherEntity() {
+		super();
+	}
+
+	public VoucherEntity(Long id, LocalDateTime expirationDate, Boolean isUsed, Integer version, BillEntity bill) {
+		super();
+		this.id = id;
+		this.expirationDate = expirationDate;
+		this.isUsed = isUsed;
+		this.version = version;
+		this.bill = bill;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public LocalDateTime getExpirationDate() {
+		return expirationDate;
+	}
+
+	public void setExpirationDate(LocalDateTime expirationDate) {
+		this.expirationDate = expirationDate;
+	}
+
+	public Boolean getIsUsed() {
+		return isUsed;
+	}
+
+	public void setIsUsed(Boolean isUsed) {
+		this.isUsed = isUsed;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
+
+	public BillEntity getBill() {
+		return bill;
+	}
+
+	public void setBill(BillEntity bill) {
+		this.bill = bill;
+	}
 }

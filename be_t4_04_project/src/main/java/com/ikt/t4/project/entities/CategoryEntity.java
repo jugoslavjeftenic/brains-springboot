@@ -35,4 +35,58 @@ public class CategoryEntity {
 	@JsonIgnore
 	@OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
 	private List<OfferEntity> offers = new ArrayList<OfferEntity>();
+
+	public CategoryEntity() {
+		super();
+	}
+
+	public CategoryEntity(Long id, String categoryName, String categoryDescription, Integer version,
+			List<OfferEntity> offers) {
+		super();
+		this.id = id;
+		this.categoryName = categoryName;
+		this.categoryDescription = categoryDescription;
+		this.version = version;
+		this.offers = offers;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
+	public String getCategoryDescription() {
+		return categoryDescription;
+	}
+
+	public void setCategoryDescription(String categoryDescription) {
+		this.categoryDescription = categoryDescription;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
+
+	public List<OfferEntity> getOffers() {
+		return offers;
+	}
+
+	public void setOffers(List<OfferEntity> offers) {
+		this.offers = offers;
+	}
 }
