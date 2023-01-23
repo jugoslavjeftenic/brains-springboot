@@ -40,7 +40,6 @@ public class BillEntity {
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
 	@JoinColumn(name = "user")
 	private UserEntity user;
-	
     @OneToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
 	@JoinColumn(name = "voucher")
     private VoucherEntity voucher;
