@@ -28,23 +28,25 @@ public class UserDAOServiceImpl implements UserDAOService {
 			UserEntity user = new UserEntity();
 			user.setFirstName(osoba.getIme());
 			user.setLastName(osoba.getPrezime());
-			user.setUsername(setUsername(osoba.getUsername(), 0));
+			user.setUsername(osoba.getUsername());
+			if (userRepository.existsByUsername(user.getUsername())) {
+				user.setUsername(changeUsername(user.getUsername()));
+			}
 			user.setPassword("1234");
 			user.setEmail(user.getUsername() + "@ikt.rs");
 			user.setUserRole(roles[RADE.mrRobot(0, roles.length)]);
-			user.setUsername(osoba.getUsername());
 			userRepository.save(user);
 			users.add(user);
 		}
 		return users;
 	}
 	
-	// TODO Ovo nije dobro
-	private String setUsername(String userName, int counter) {
-		if (userRepository.existsByUsername(userName)) {
-			counter++;
-			userName = userName + counter;
-			setUsername(userName, counter);
+	private String changeUsername(String user) {
+		int i = 1;
+		String userName = user + i;
+		while (userRepository.existsByUsername(userName)) {
+			i++;
+			userName = user + i;
 		}
 		return userName;
 	}

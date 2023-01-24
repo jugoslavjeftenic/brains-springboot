@@ -19,7 +19,7 @@ public class UserController {
 	@Autowired
 	private UserDAOService userService;
 
-	@RequestMapping(method = RequestMethod.POST, path = "/populatetable/{count}")
+	@RequestMapping(method = RequestMethod.POST, path = "/admin/populatetable/{count}")
 	public Iterable<UserEntity> populateTable(@PathVariable Integer count) {
 		return userRepository.saveAll(userService.generateRandomUsers(count));
 	}
