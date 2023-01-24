@@ -45,7 +45,7 @@ public class UserController {
 	// https://docs.jboss.org/hibernate/orm/6.2/javadocs/org/hibernate/annotations/SQLDelete.html#annotation.type.element.detail
 	// https://stackoverflow.com/questions/22477167/hibernate-softdelete-column-index-out-of-range-exception-while-soft-delete
 	@RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
-	public UserEntity delete(@PathVariable Long id) {
+	public UserEntity deleteSoft(@PathVariable Long id) {
 		UserEntity userToSoftDelete = userRepository.findById(id).get();
 		// TODO Vratiti odgovarajucu gresku ako nema usera sa id-om (NoSuchElementException)
 	    userRepository.deleteById(id);

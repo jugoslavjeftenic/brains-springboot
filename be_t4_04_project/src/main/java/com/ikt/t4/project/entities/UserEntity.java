@@ -45,6 +45,7 @@ public class UserEntity {
     private EUserRole userRole;
 	@Version
 	private Integer version;
+	@Column(nullable=false)
 	private boolean deleted = Boolean.FALSE;
 
 	@JsonIgnore
