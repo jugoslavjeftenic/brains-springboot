@@ -37,6 +37,8 @@ public class UserDAOServiceImpl implements UserDAOService {
 			user.setUserRole(roles[RADE.mrRobot(0, roles.length)]);
 			userRepository.save(user);
 			users.add(user);
+
+			System.out.println("row:" + i + ", " + user.getUsername());
 		}
 		return users;
 	}
@@ -84,19 +86,5 @@ public class UserDAOServiceImpl implements UserDAOService {
 			userName = user + i;
 		}
 		return userName;
-	}
-
-	@Override
-	public UserEntity prepareToDelete(UserEntity user) {
-		UserEntity userToDelete = new UserEntity();
-		try {
-			userToDelete = userRepository.findById(user.getId()).get();
-		} catch (Exception e) {
-			// TODO Vratiti gresku da nema korisnika u bazi.
-			return null;
-		}
-		// TODO Pretraziti ponude i nulirati korisnika
-		// TODO Pretraziti racune i nulirati korisnika
-		return null;
 	}
 }

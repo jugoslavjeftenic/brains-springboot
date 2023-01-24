@@ -3,6 +3,10 @@ package com.ikt.t4.project.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.annotations.ResultCheckStyle;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -19,12 +23,14 @@ import jakarta.persistence.Version;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@SQLDelete(sql = "UPDATE user_entity SET deleted = true WHERE id = ? AND version = ?", check = ResultCheckStyle.COUNT)
+@Where(clause = "deleted = false")
 public class UserEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "user_generator")
 	@SequenceGenerator(name="user_generator", sequenceName = "user_sequence", allocationSize=1)
-    private Integer id;
+    private Long id;
 	@Column(nullable=false, length=64)
     private String firstName;
 	@Column(nullable=false, length=64)
@@ -39,6 +45,7 @@ public class UserEntity {
     private EUserRole userRole;
 	@Version
 	private Integer version;
+	private boolean deleted = Boolean.FALSE;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
@@ -51,8 +58,8 @@ public class UserEntity {
 		super();
 	}
 
-	public UserEntity(Integer id, String firstName, String lastName, String username, String password, String email,
-			EUserRole userRole, Integer version, List<OfferEntity> offers, List<BillEntity> bills) {
+	public UserEntity(Long id, String firstName, String lastName, String username, String password, String email,
+			EUserRole userRole, Integer version, boolean deleted, List<OfferEntity> offers, List<BillEntity> bills) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -62,15 +69,16 @@ public class UserEntity {
 		this.email = email;
 		this.userRole = userRole;
 		this.version = version;
+		this.deleted = deleted;
 		this.offers = offers;
 		this.bills = bills;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -128,6 +136,14 @@ public class UserEntity {
 
 	public void setVersion(Integer version) {
 		this.version = version;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 
 	public List<OfferEntity> getOffers() {

@@ -28,22 +28,29 @@ public class UserController {
 
 	// Read
 	@RequestMapping(method = RequestMethod.GET, path = "/{id}")
-	public UserEntity read(@PathVariable Integer id) {
+	public UserEntity read(@PathVariable Long id) {
 	    return userRepository.findById(id).orElse(null);
 	}
 
 	// Update
 	@RequestMapping(method = RequestMethod.PUT, path = "/{id}")
-	public UserEntity update(@PathVariable Integer id, @RequestBody UserEntity user) {
+	public UserEntity update(@PathVariable Long id, @RequestBody UserEntity user) {
 	    user.setId(id);
 		// TODO Vratiti odgovarajucu gresku kada id-a nema u bazi.
 	    return userRepository.save(userService.checkAndChangeUserData(user));
 	}
 
-	// Delete
+	// Soft Delete
+	// https://thorben-janssen.com/implement-soft-delete-hibernate/
+	// https://docs.jboss.org/hibernate/orm/6.2/javadocs/org/hibernate/annotations/SQLDelete.html#annotation.type.element.detail
+	// https://stackoverflow.com/questions/22477167/hibernate-softdelete-column-index-out-of-range-exception-while-soft-delete
 	@RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
-	public void delete(@PathVariable Integer id) {
+	public UserEntity delete(@PathVariable Long id) {
+		UserEntity userToSoftDelete = userRepository.findById(id).get();
+		// TODO Vratiti odgovarajucu gresku ako nema usera sa id-om (NoSuchElementException)
 	    userRepository.deleteById(id);
+	    userToSoftDelete.setDeleted(true); // TODO Da li je ovo OK da se stavi ovde ili treba u servis?
+	    return userToSoftDelete;
 	}
 
 	// List all
