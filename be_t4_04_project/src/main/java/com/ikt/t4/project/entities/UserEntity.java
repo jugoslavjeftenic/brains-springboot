@@ -24,7 +24,7 @@ public class UserEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "user_generator")
 	@SequenceGenerator(name="user_generator", sequenceName = "user_sequence", allocationSize=1)
-    private Long id;
+    private Integer id;
 	@Column(nullable=false, length=64)
     private String firstName;
 	@Column(nullable=false, length=64)
@@ -51,7 +51,7 @@ public class UserEntity {
 		super();
 	}
 
-	public UserEntity(Long id, String firstName, String lastName, String username, String password, String email,
+	public UserEntity(Integer id, String firstName, String lastName, String username, String password, String email,
 			EUserRole userRole, Integer version, List<OfferEntity> offers, List<BillEntity> bills) {
 		super();
 		this.id = id;
@@ -66,11 +66,11 @@ public class UserEntity {
 		this.bills = bills;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

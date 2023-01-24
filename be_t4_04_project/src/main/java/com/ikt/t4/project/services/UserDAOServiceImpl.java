@@ -20,7 +20,7 @@ public class UserDAOServiceImpl implements UserDAOService {
 	private UserRepository userRepository;
 
 	@Override
-	public Iterable<UserEntity> generateRandomUsers(Integer count) {
+	public Iterable<UserEntity> generateListOfUsers(Integer count) {
 		List<UserEntity> users = new ArrayList<>();
 		EUserRole[] roles = EUserRole.values();
 		for (int i = 0; i < count; i++) {
@@ -30,7 +30,7 @@ public class UserDAOServiceImpl implements UserDAOService {
 			user.setLastName(osoba.getPrezime());
 			user.setUsername(osoba.getUsername());
 			if (userRepository.existsByUsername(user.getUsername())) {
-				user.setUsername(changeUsername(user.getUsername()));
+				user.setUsername(checkAndChangeUsername(user.getUsername()));
 			}
 			user.setPassword("1234");
 			user.setEmail(user.getUsername() + "@ikt.rs");
@@ -40,8 +40,43 @@ public class UserDAOServiceImpl implements UserDAOService {
 		}
 		return users;
 	}
+
+	@Override
+	public UserEntity checkAndChangeUserData(UserEntity userToCheck) {
+		UserEntity userToReturn = new UserEntity();
+		if (userToCheck.getId() != null) {
+			try {
+				userToReturn = userRepository.findById(userToCheck.getId()).get();
+			} catch (Exception e) {
+				// TODO Vratiti gresku da nema korisnika u bazi.
+				return null;
+			}
+		}
+		if (userToCheck.getFirstName() != null) {
+			userToReturn.setFirstName(userToCheck.getFirstName());
+		}
+		if (userToCheck.getLastName() != null) {
+			userToReturn.setLastName(userToCheck.getLastName());
+		}
+		if (userToCheck.getUsername() != null) {
+			userToReturn.setUsername(userToCheck.getUsername());
+			if (userRepository.existsByUsername(userToReturn.getUsername())) {
+				userToReturn.setUsername(checkAndChangeUsername(userToReturn.getUsername()));
+			}
+		}
+		if (userToCheck.getPassword() != null) {
+			userToReturn.setPassword(userToCheck.getPassword());
+		}
+		if (userToCheck.getEmail() != null) {
+			userToReturn.setEmail(userToCheck.getEmail());
+		}
+		if (userToCheck.getUserRole() != null) {
+			userToReturn.setUserRole(userToCheck.getUserRole());
+		}
+		return userToReturn;
+	}
 	
-	private String changeUsername(String user) {
+	private String checkAndChangeUsername(String user) {
 		int i = 1;
 		String userName = user + i;
 		while (userRepository.existsByUsername(userName)) {
@@ -49,5 +84,19 @@ public class UserDAOServiceImpl implements UserDAOService {
 			userName = user + i;
 		}
 		return userName;
+	}
+
+	@Override
+	public UserEntity prepareToDelete(UserEntity user) {
+		UserEntity userToDelete = new UserEntity();
+		try {
+			userToDelete = userRepository.findById(user.getId()).get();
+		} catch (Exception e) {
+			// TODO Vratiti gresku da nema korisnika u bazi.
+			return null;
+		}
+		// TODO Pretraziti ponude i nulirati korisnika
+		// TODO Pretraziti racune i nulirati korisnika
+		return null;
 	}
 }
