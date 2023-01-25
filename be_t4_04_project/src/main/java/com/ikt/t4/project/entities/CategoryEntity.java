@@ -3,6 +3,10 @@ package com.ikt.t4.project.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.annotations.ResultCheckStyle;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -19,6 +23,8 @@ import jakarta.persistence.Version;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@SQLDelete(sql = "UPDATE category_entity SET deleted = true WHERE id = ? AND version = ?", check = ResultCheckStyle.COUNT)
+@Where(clause = "deleted = false")
 public class CategoryEntity {
 
 	@Id
@@ -31,6 +37,8 @@ public class CategoryEntity {
     private String categoryDescription;
 	@Version
 	private Integer version;
+	@Column(nullable=false)
+	private boolean deleted = Boolean.FALSE;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
@@ -40,13 +48,14 @@ public class CategoryEntity {
 		super();
 	}
 
-	public CategoryEntity(Long id, String categoryName, String categoryDescription, Integer version,
+	public CategoryEntity(Long id, String categoryName, String categoryDescription, Integer version, boolean deleted,
 			List<OfferEntity> offers) {
 		super();
 		this.id = id;
 		this.categoryName = categoryName;
 		this.categoryDescription = categoryDescription;
 		this.version = version;
+		this.deleted = deleted;
 		this.offers = offers;
 	}
 
@@ -80,6 +89,14 @@ public class CategoryEntity {
 
 	public void setVersion(Integer version) {
 		this.version = version;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 
 	public List<OfferEntity> getOffers() {
