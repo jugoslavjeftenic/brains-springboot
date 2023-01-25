@@ -46,7 +46,7 @@ public class CategoryDAOServiceImpl implements CategoryDAOService {
 	}
 
 	@Override
-	public CategoryEntity checkAndChangeUserData(CategoryEntity categoryToCheck) {
+	public CategoryEntity checkAndChangeCategoryData(CategoryEntity categoryToCheck) {
 		CategoryEntity categoryToReturn = new CategoryEntity();
 		if (categoryToCheck.getId() != null) {
 			try {

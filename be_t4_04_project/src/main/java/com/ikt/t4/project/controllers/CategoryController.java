@@ -24,7 +24,7 @@ public class CategoryController {
 	@RequestMapping(method = RequestMethod.POST, path = "/admin")
 	public CategoryEntity create(@RequestBody CategoryEntity category) {
 		if (!categoryRepository.existsByCategoryName(category.getCategoryName())) {
-			return categoryRepository.save(categoryService.checkAndChangeUserData(category));
+			return categoryRepository.save(categoryService.checkAndChangeCategoryData(category));
 		}
 	    return null;
 	}
@@ -40,7 +40,7 @@ public class CategoryController {
 	public CategoryEntity update(@PathVariable Long id, @RequestBody CategoryEntity category) {
 		category.setId(id);
 		// TODO Vratiti odgovarajucu gresku kada id-a nema u bazi.
-	    return categoryRepository.save(categoryService.checkAndChangeUserData(category));
+	    return categoryRepository.save(categoryService.checkAndChangeCategoryData(category));
 	}
 
 	// Soft Delete

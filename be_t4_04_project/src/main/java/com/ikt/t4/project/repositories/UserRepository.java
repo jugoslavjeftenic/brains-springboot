@@ -6,4 +6,5 @@ import com.ikt.t4.project.entities.UserEntity;
 
 public interface UserRepository extends CrudRepository<UserEntity, Long> {
 	Boolean existsByUserName(String userName);
+//	UserEntity findByIdAndUserRole(Long id, EUserRole userRole);
 }
