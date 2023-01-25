@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.ikt.t4.project.entities.OfferEntity;
 
-public interface OfferRepository extends CrudRepository<OfferEntity, Integer> {
+public interface OfferRepository extends CrudRepository<OfferEntity, Long> {
 
 }

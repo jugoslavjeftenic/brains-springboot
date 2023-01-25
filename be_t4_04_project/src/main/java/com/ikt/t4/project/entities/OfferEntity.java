@@ -4,6 +4,10 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.annotations.ResultCheckStyle;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -22,6 +26,8 @@ import jakarta.persistence.Version;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@SQLDelete(sql = "UPDATE offer_entity SET deleted = true WHERE id = ? AND version = ?", check = ResultCheckStyle.COUNT)
+@Where(clause = "deleted = false")
 public class OfferEntity {
 
 	@Id
@@ -50,6 +56,8 @@ public class OfferEntity {
 	private EOfferEntity offerStatus;
 	@Version
 	private Integer version;
+	@Column(nullable=false)
+	private boolean deleted = Boolean.FALSE;
 
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
 	@JoinColumn(name = "category")
@@ -67,7 +75,7 @@ public class OfferEntity {
 
 	public OfferEntity(Long id, String offerName, String offerDesc, LocalDateTime offerCreated,
 			LocalDateTime offerExpires, Double regularPrice, Double actionPrice, String imagePath,
-			Integer availableOffers, Integer boughtOffers, EOfferEntity offerStatus, Integer version,
+			Integer availableOffers, Integer boughtOffers, EOfferEntity offerStatus, Integer version, boolean deleted,
 			CategoryEntity category, UserEntity user, List<BillEntity> bills) {
 		super();
 		this.id = id;
@@ -82,6 +90,7 @@ public class OfferEntity {
 		this.boughtOffers = boughtOffers;
 		this.offerStatus = offerStatus;
 		this.version = version;
+		this.deleted = deleted;
 		this.category = category;
 		this.user = user;
 		this.bills = bills;
@@ -181,6 +190,14 @@ public class OfferEntity {
 
 	public void setVersion(Integer version) {
 		this.version = version;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 
 	public CategoryEntity getCategory() {

@@ -48,8 +48,8 @@ public class RADE extends DataHolder {
 		osoba.setJmbg(generisiJMBG(osoba.getDatumRodjenja(), osoba.getPol()));
 		osoba.setAdresaRodjenja(generisiAdresu());
 		osoba.setAdresaStanovanja(generisiAdresu());
-		osoba.setUsername(replaceYULatinWithUS(osoba.getIme() + osoba.getPrezime().substring(0, 3)).toLowerCase());
-		osoba.setEmail(osoba.getUsername() + "@ikt.rs");
+		osoba.setUserName(replaceYULatinWithUS(osoba.getIme() + osoba.getPrezime().substring(0, 3)).toLowerCase());
+		osoba.setEmail(osoba.getUserName() + "@ikt.rs");
 		return osoba;
 	}
 	
@@ -270,7 +270,6 @@ public class RADE extends DataHolder {
 		// TODO Napraviti sa realnim podacima i postaviti na public
 		int regija = mrRobot(10, 99);
 		if (regija > 59 && regija < 70) {
-			// https://www.w3schools.com/java/java_recursion.asp
 			return generisiPolitickuRegiju();
 		}
 		return String.format("%2s", regija).replace(" ", "0");

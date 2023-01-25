@@ -11,7 +11,7 @@ public class OsobaEntity {
 	private String jmbg;
 	private AdresaEntity adresaRodjenja;
 	private AdresaEntity adresaStanovanja;
-	private String username;
+	private String userName;
 	private String email;
 	
 	public OsobaEntity() {
@@ -19,7 +19,7 @@ public class OsobaEntity {
 	}
 
 	public OsobaEntity(String ime, String prezime, Integer pol, LocalDate datumRodjenja, String jmbg,
-			AdresaEntity adresaRodjenja, AdresaEntity adresaStanovanja, String username, String email) {
+			AdresaEntity adresaRodjenja, AdresaEntity adresaStanovanja, String userName, String email) {
 		super();
 		this.ime = ime;
 		this.prezime = prezime;
@@ -28,7 +28,7 @@ public class OsobaEntity {
 		this.jmbg = jmbg;
 		this.adresaRodjenja = adresaRodjenja;
 		this.adresaStanovanja = adresaStanovanja;
-		this.username = username;
+		this.userName = userName;
 		this.email = email;
 	}
 
@@ -88,12 +88,12 @@ public class OsobaEntity {
 		this.adresaStanovanja = adresaStanovanja;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getEmail() {

@@ -93,7 +93,7 @@ public class UserController {
 			UserEntity user = new UserEntity();
 			user.setFirstName(osoba.getIme());
 			user.setLastName(osoba.getPrezime());
-			user.setUserName(osoba.getUsername());
+			user.setUserName(osoba.getUserName());
 			user.setPassword("1234");
 			user.setEmail(osoba.getEmail());
 			user.setUserRole(roles[RADE.mrRobot(0, roles.length)]);

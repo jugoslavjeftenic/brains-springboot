@@ -36,7 +36,7 @@ public class UserEntity {
 	@Column(nullable=false, length=64)
     private String lastName;
 	@Column(nullable=false, unique = true, length=64)
-    private String username;
+    private String userName;
 	@Column(nullable=false, length=64)
     private String password;
 	@Column(nullable=false, length=128)
@@ -59,13 +59,13 @@ public class UserEntity {
 		super();
 	}
 
-	public UserEntity(Long id, String firstName, String lastName, String username, String password, String email,
+	public UserEntity(Long id, String firstName, String lastName, String userName, String password, String email,
 			EUserRole userRole, Integer version, boolean deleted, List<OfferEntity> offers, List<BillEntity> bills) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.username = username;
+		this.userName = userName;
 		this.password = password;
 		this.email = email;
 		this.userRole = userRole;
@@ -99,12 +99,12 @@ public class UserEntity {
 		this.lastName = lastName;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getPassword() {

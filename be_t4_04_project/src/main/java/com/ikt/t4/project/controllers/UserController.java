@@ -62,6 +62,6 @@ public class UserController {
 	// Generate
 	@RequestMapping(method = RequestMethod.POST, path = "/admin/populatetable/{count}")
 	public Iterable<UserEntity> populateTable(@PathVariable Integer count) {
-		return userRepository.saveAll(userService.generateListOfUsers(count));
+		return userService.generateListOfUsers(count);
 	}
 }

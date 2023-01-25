@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import com.ikt.t4.project.entities.UserEntity;
 
 public interface UserRepository extends CrudRepository<UserEntity, Long> {
-	Boolean existsByUsername(String username);
+	Boolean existsByUserName(String userName);
 }

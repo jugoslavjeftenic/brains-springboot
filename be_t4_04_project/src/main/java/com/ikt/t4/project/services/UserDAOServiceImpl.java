@@ -28,17 +28,17 @@ public class UserDAOServiceImpl implements UserDAOService {
 			UserEntity user = new UserEntity();
 			user.setFirstName(osoba.getIme());
 			user.setLastName(osoba.getPrezime());
-			user.setUsername(osoba.getUsername());
-			if (userRepository.existsByUsername(user.getUsername())) {
-				user.setUsername(checkAndChangeUsername(user.getUsername()));
+			user.setUserName(osoba.getUserName());
+			if (userRepository.existsByUserName(user.getUserName())) {
+				user.setUserName(checkAndChangeUsername(user.getUserName()));
 			}
 			user.setPassword("1234");
-			user.setEmail(user.getUsername() + "@ikt.rs");
+			user.setEmail(user.getUserName() + "@ikt.rs");
 			user.setUserRole(roles[RADE.mrRobot(0, roles.length)]);
 			userRepository.save(user);
 			users.add(user);
 
-			System.out.println("row:" + i + ", " + user.getUsername());
+			System.out.println("row:" + i + ", " + user.getUserName());
 		}
 		return users;
 	}
@@ -60,10 +60,10 @@ public class UserDAOServiceImpl implements UserDAOService {
 		if (userToCheck.getLastName() != null) {
 			userToReturn.setLastName(userToCheck.getLastName());
 		}
-		if (userToCheck.getUsername() != null) {
-			userToReturn.setUsername(userToCheck.getUsername());
-			if (userRepository.existsByUsername(userToReturn.getUsername())) {
-				userToReturn.setUsername(checkAndChangeUsername(userToReturn.getUsername()));
+		if (userToCheck.getUserName() != null) {
+			userToReturn.setUserName(userToCheck.getUserName());
+			if (userRepository.existsByUserName(userToReturn.getUserName())) {
+				userToReturn.setUserName(checkAndChangeUsername(userToReturn.getUserName()));
 			}
 		}
 		if (userToCheck.getPassword() != null) {
@@ -81,7 +81,7 @@ public class UserDAOServiceImpl implements UserDAOService {
 	private String checkAndChangeUsername(String user) {
 		int i = 1;
 		String userName = user + i;
-		while (userRepository.existsByUsername(userName)) {
+		while (userRepository.existsByUserName(userName)) {
 			i++;
 			userName = user + i;
 		}
