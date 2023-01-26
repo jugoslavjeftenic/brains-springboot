@@ -33,6 +33,15 @@ public class OfferController {
 	    return offerRepository.findById(id).orElse(null);
 	}
 
+	// Update
+	@RequestMapping(method = RequestMethod.PUT, value = {"/{id}", "/{id}/category/{categoryId}"})
+	public OfferEntity update(@PathVariable Long id, @PathVariable(required = false) Long categoryId,
+			@RequestBody OfferEntity offer) {
+	    offer.setId(id);
+		// TODO Vratiti odgovarajucu gresku kada id-a nema u bazi.
+	    return offerRepository.save(offerService.checkAndChangeOfferData(categoryId, null, offer));
+	}
+
 	// List all
 	@RequestMapping(method = RequestMethod.GET)
 	public Iterable<OfferEntity> list() {
