@@ -42,6 +42,16 @@ public class OfferController {
 	    return offerRepository.save(offerService.checkAndChangeOfferData(categoryId, null, offer));
 	}
 
+	// Soft Delete
+	@RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
+	public OfferEntity deleteSoft(@PathVariable Long id) {
+		OfferEntity offerToSoftDelete = offerRepository.findById(id).get();
+		// TODO Vratiti odgovarajucu gresku ako nema usera sa id-om (NoSuchElementException)
+		offerRepository.deleteById(id);
+		offerToSoftDelete.setDeleted(true);
+	    return offerToSoftDelete;
+	}
+
 	// List all
 	@RequestMapping(method = RequestMethod.GET)
 	public Iterable<OfferEntity> list() {

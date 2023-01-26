@@ -59,6 +59,7 @@ public class OfferEntity {
 	@Column(nullable=false)
 	private boolean deleted = Boolean.FALSE;
 
+	@JsonIgnore // TODO Dodato radi debaga
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
 	@JoinColumn(name = "category")
 	private CategoryEntity category;
