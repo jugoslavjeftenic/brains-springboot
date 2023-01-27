@@ -1,4 +1,4 @@
-package com.ikt.example_file_upload;
+package com.ikt.t4.example_file_upload;
 
 import org.apache.coyote.http11.AbstractHttp11Protocol;
 import org.springframework.boot.SpringApplication;
