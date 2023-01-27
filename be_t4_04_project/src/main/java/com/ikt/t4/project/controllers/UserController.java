@@ -40,7 +40,7 @@ public class UserController {
 	    return userRepository.save(userService.checkAndChangeUserData(user));
 	}
 
-	// Soft Delete
+	// Delete (soft)
 	// https://thorben-janssen.com/implement-soft-delete-hibernate/
 	// https://docs.jboss.org/hibernate/orm/6.2/javadocs/org/hibernate/annotations/SQLDelete.html#annotation.type.element.detail
 	// https://stackoverflow.com/questions/22477167/hibernate-softdelete-column-index-out-of-range-exception-while-soft-delete

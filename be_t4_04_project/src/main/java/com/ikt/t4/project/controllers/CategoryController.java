@@ -43,7 +43,7 @@ public class CategoryController {
 	    return categoryRepository.save(categoryService.checkAndChangeCategoryData(category));
 	}
 
-	// Soft Delete
+	// Delete (soft)
 	@RequestMapping(method = RequestMethod.DELETE, path = "/admin/{id}")
 	public CategoryEntity deleteSoft(@PathVariable Long id) {
 		CategoryEntity categoryToSoftDelete = categoryRepository.findById(id).get();

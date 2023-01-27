@@ -22,7 +22,7 @@ public class UserDAOServiceImpl implements UserDAOService {
 	@Override
 	public Iterable<UserEntity> generateListOfUsers(Integer count) {
 		List<UserEntity> users = new ArrayList<>();
-		EUserRole[] roles = EUserRole.values();
+		EUserRole[] userRole = EUserRole.values();
 		for (int i = 0; i < count; i++) {
 			OsobaEntity osoba = RADE.generisiOsobu();
 			UserEntity user = new UserEntity();
@@ -34,10 +34,9 @@ public class UserDAOServiceImpl implements UserDAOService {
 			}
 			user.setPassword("1234");
 			user.setEmail(user.getUserName() + "@ikt.rs");
-			user.setUserRole(roles[RADE.mrRobot(0, roles.length)]);
+			user.setUserRole(userRole[RADE.mrRobot(0, userRole.length)]);
 			userRepository.save(user);
 			users.add(user);
-
 			System.out.println("row:" + i + ", " + user.getUserName());
 		}
 		return users;

@@ -53,17 +53,16 @@ public class OfferEntity {
 	@Column(nullable=false)
 	private Integer boughtOffers;
 	@Column(nullable=false)
-	private EOfferEntity offerStatus;
+	private EOfferStatus offerStatus;
 	@Version
 	private Integer version;
 	@Column(nullable=false)
 	private boolean deleted = Boolean.FALSE;
 
-	@JsonIgnore // TODO Dodato radi debaga
-	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "category")
 	private CategoryEntity category;
-	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "user")
 	private UserEntity user;
 	@JsonIgnore
@@ -76,7 +75,7 @@ public class OfferEntity {
 
 	public OfferEntity(Long id, String offerName, String offerDesc, LocalDateTime offerCreated,
 			LocalDateTime offerExpires, Double regularPrice, Double actionPrice, String imagePath,
-			Integer availableOffers, Integer boughtOffers, EOfferEntity offerStatus, Integer version, boolean deleted,
+			Integer availableOffers, Integer boughtOffers, EOfferStatus offerStatus, Integer version, boolean deleted,
 			CategoryEntity category, UserEntity user, List<BillEntity> bills) {
 		super();
 		this.id = id;
@@ -177,11 +176,11 @@ public class OfferEntity {
 		this.boughtOffers = boughtOffers;
 	}
 
-	public EOfferEntity getOfferStatus() {
+	public EOfferStatus getOfferStatus() {
 		return offerStatus;
 	}
 
-	public void setOfferStatus(EOfferEntity offerStatus) {
+	public void setOfferStatus(EOfferStatus offerStatus) {
 		this.offerStatus = offerStatus;
 	}
 

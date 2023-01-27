@@ -28,7 +28,7 @@ public class CategoryDAOServiceImpl implements CategoryDAOService {
 			    {"Zaštita podataka i bezbednost", "usluge i tehnologije koje će vas učiniti sigurnim - dok vaši podaci cirkulišu po internetu."},
 			    {"Usluge korisničke podrške", "usluge koje će vas ostaviti još više izgubljenim i bespomoćnim."},
 			    {"Gubitak težine i fitnes", "proizvodi, programi i usluge od kojih će te biti još manje zadovoljni vašim telom."},
-			    {"Razvoj karijere i profesionalnog razvoja", "Knjige, kursevi, mentorski programi i druge usluge od kojih će te biti još manje uspešni na poslu."},
+			    {"Razvoj karijere i profesionalnog razvoja", "Knjige, kursevi, mentorski programi i druge usluge od kojih ćete biti još manje uspešni na poslu."},
 			    {"Lični rast i razvoj", "Knjige, kursevi, radionice, i drugi proizvodi i usluge koje će vas učiniti još nesigurnijim u sebe."},
 			    {"Zabava i online upoznavanje", "Aplikacije, sajtovi, i druge usluge koje će vas učiniti još usamljenijim."},
 				{"Automobili", "Dajte drugima carstvo za svog metalnog ljubimca."}

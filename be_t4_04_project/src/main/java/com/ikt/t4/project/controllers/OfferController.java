@@ -42,7 +42,7 @@ public class OfferController {
 	    return offerRepository.save(offerService.checkAndChangeOfferData(categoryId, null, offer));
 	}
 
-	// Soft Delete
+	// Delete (soft)
 	@RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
 	public OfferEntity deleteSoft(@PathVariable Long id) {
 		OfferEntity offerToSoftDelete = offerRepository.findById(id).get();
@@ -57,5 +57,11 @@ public class OfferController {
 	public Iterable<OfferEntity> list() {
 		// TODO Resiti problem prikaza kada je korisnik ili kategorija pobrisan.
 	    return offerRepository.findAll();
+	}
+
+	// Generate
+	@RequestMapping(method = RequestMethod.POST, path = "/admin/populatetable/{count}")
+	public Iterable<OfferEntity> populateTable(@PathVariable Integer count) {
+		return offerService.generateListOfOffers(count);
 	}
 }
