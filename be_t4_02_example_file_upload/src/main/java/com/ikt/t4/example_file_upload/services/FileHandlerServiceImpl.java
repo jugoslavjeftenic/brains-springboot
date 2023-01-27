@@ -31,7 +31,6 @@ public class FileHandlerServiceImpl implements FileHandlerService {
 			Files.write(path, bytes);
 			redirectAttributes.addFlashAttribute("message", "You have succesfully uploaded " + file.getOriginalFilename());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return "redirect:uploadStatus";
