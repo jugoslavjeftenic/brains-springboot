@@ -301,6 +301,10 @@ public class RADE extends DataHolder {
 		return (int) ((Math.random() * (max - min)) + min);
 	}
 	
+	public static long mrRobot(long min, long max) {
+		return (long) ((Math.random() * (max - min)) + min);
+	}
+	
 	public static double mrRobot(double min, double max) {
 		return ((Math.random() * (max - min)) + min);
 	}
