@@ -27,10 +27,11 @@ public class FileHandlerServiceImpl implements FileHandlerService {
 		try {
 			byte[] bytes = file.getBytes();
 			Path path = Paths.get(UPLOAD_DIRECTORY + file.getOriginalFilename());
-			// TODO Domaci: generisati naziv upload-ovane datoteke (timestamp, guid + ekstenzija substr, regex)
 			Files.write(path, bytes);
+			logger.info("File uploaded and stored succesfully");
 			redirectAttributes.addFlashAttribute("message", "You have succesfully uploaded " + file.getOriginalFilename());
 		} catch (IOException e) {
+			logger.error("An exception ocured while uploading a file");
 			e.printStackTrace();
 		}
 		return "redirect:uploadStatus";
