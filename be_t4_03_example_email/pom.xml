@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.7</version>
+		<version>2.7.8</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ikt.t4.03</groupId>
@@ -28,14 +28,12 @@
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-			<version>2.7.7</version> <!--$NO-MVN-MAN-VER$-->
+			<artifactId>spring-boot-starter-web</artifactId> <!--$NO-MVN-MAN-VER$-->
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-mail</artifactId>
-			<version>2.7.7</version> <!--$NO-MVN-MAN-VER$-->
+			<artifactId>spring-boot-starter-mail</artifactId> <!--$NO-MVN-MAN-VER$-->
 		</dependency>
 	</dependencies>
 

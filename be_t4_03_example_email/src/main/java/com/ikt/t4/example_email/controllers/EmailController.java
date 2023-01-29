@@ -1,9 +1,9 @@
 package com.ikt.t4.example_email.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ikt.t4.example_email.dto.EmailDTO;
@@ -16,7 +16,7 @@ public class EmailController {
 	@Autowired
 	private EmailService emailService;
 	
-	@RequestMapping(method = RequestMethod.POST, path = "/simple")
+	@PostMapping("/simple")
 	public String sendSimpleMailMessage(@RequestBody EmailDTO emailDTO) {
 		if (emailDTO.getTo() == null || emailDTO.getTo() == "") {
 			return "Please provide a value for TO";
@@ -31,7 +31,7 @@ public class EmailController {
 		return "Your email has been sent";
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, path = "/template")
+	@PostMapping("/template")
 	public String sendTemplateMailMessage(@RequestBody EmailDTO emailDTO) {
 		if (emailDTO.getTo() == null || emailDTO.getTo() == "") {
 			return "Please provide a value for TO";
@@ -46,7 +46,7 @@ public class EmailController {
 		return "Your email has been sent";
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, path = "/attachment")
+	@PostMapping("/attachment")
 	public String sendMessageWithAttachment(@RequestBody EmailDTO emailDTO) {
 		if (emailDTO.getTo() == null || emailDTO.getTo() == "") {
 			return "Please provide a value for TO";
