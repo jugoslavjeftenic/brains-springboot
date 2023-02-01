@@ -3,12 +3,21 @@ package com.ikt.t7.example_basic_auth.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@NoArgsConstructor @AllArgsConstructor @Getter @Setter
 public class RoleEntity {
 
 	private Integer id;
 	private String name;
+	@JsonIgnore
 	private List<UserEntity> users = new ArrayList<>();
-	
+
 	public RoleEntity() {
 		super();
 	}

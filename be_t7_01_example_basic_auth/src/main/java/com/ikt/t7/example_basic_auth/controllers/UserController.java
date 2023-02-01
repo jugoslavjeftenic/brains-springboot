@@ -18,30 +18,39 @@ public class UserController {
 
 	public List<UserEntity> getDummyDB() {
 		List<UserEntity> list = new ArrayList<>();
+		
 		RoleEntity re = new RoleEntity();
 		re.setId(1);
 		re.setName("admin");
-		UserEntity ue = new UserEntity();
-		ue.setId(1);
-		ue.setEmail("user@example.com");
-		ue.setName("Vladimir");
-		ue.setLastName("Dimitrieski");
-		ue.setPassword("password1234");
-		ue.setRole(re);
+
 		UserEntity ue1 = new UserEntity();
-		ue1.setId(2);
-		ue1.setEmail("user2@example.com");
-		ue1.setName("Milan");
-		ue1.setLastName("Celikovic");
-		ue1.setPassword("password4321");
+		ue1.setId(1);
+		ue1.setEmail("user@example.com");
+		ue1.setName("Vladimir");
+		ue1.setLastName("Dimitrieski");
+		ue1.setPassword("password1234");
 		ue1.setRole(re);
-		list.add(ue);
+
+		UserEntity ue2 = new UserEntity();
+		ue2.setId(2);
+		ue2.setEmail("user2@example.com");
+		ue2.setName("Milan");
+		ue2.setLastName("Celikovic");
+		ue2.setPassword("password4321");
+		ue2.setRole(re);
+		
 		list.add(ue1);
+		list.add(ue2);
 		return list;
 	}
 	
+	@GetMapping
+	public ResponseEntity<?> getAll() {
+		return new ResponseEntity<List<UserEntity>>(getDummyDB(), HttpStatus.OK);
+	}
+	
 	@GetMapping("/users")
-		public ResponseEntity<?> listUsers(){
+	public ResponseEntity<?> listUsers(){
 		return new ResponseEntity<List<UserEntity>>(getDummyDB(), HttpStatus.OK);
 	}
 }

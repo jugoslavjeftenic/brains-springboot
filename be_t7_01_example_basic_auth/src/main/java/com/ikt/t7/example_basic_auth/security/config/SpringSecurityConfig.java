@@ -20,12 +20,14 @@ public class SpringSecurityConfig {
 	
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeRequests().anyRequest().authenticated().and().httpBasic().authenticationEntryPoint(authenticationEntryPoint);
-		return null;
+		http
+			.csrf().disable()
+			.authorizeRequests().anyRequest().authenticated().and().httpBasic().authenticationEntryPoint(authenticationEntryPoint);
+		return http.build();
 	}
 	
 	@Bean
-	AuthenticationManager authenticationManagerBean(HttpSecurity http) {
+	AuthenticationManager authenticationManagerBean(HttpSecurity http) throws Exception {
 		AuthenticationManagerBuilder auth = http.getSharedObject(AuthenticationManagerBuilder.class);
 		auth.inMemoryAuthentication().withUser("testuser").password("{noop}testpass").roles("admin");
 		return auth.build();

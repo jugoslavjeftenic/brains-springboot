@@ -1,14 +1,23 @@
 package com.ikt.t7.example_basic_auth.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@NoArgsConstructor @AllArgsConstructor @Getter @Setter
 public class UserEntity {
 
 	private Integer id;
 	private String email;
+	@JsonIgnore
 	private String password;
 	private String name;
 	private String lastName;
 	private RoleEntity role;
-	
+
 	public UserEntity() {
 		super();
 	}
