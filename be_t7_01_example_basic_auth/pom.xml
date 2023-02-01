@@ -9,9 +9,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ikt.t7.01</groupId>
-	<artifactId>be_t7_01_example_security</artifactId>
+	<artifactId>be_t7_01_example_basic_auth</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>be_t7_01_example_security</name>
+	<name>be_t7_01_example_basic_auth</name>
 	<description>Security example</description>
 	<properties>
 		<java.version>1.8</java.version>
@@ -54,7 +54,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-			<version>2.7.8</version><!--$NO-MVN-MAN-VER$-->
+			<version>2.7.8</version> <!--$NO-MVN-MAN-VER$-->
 		</dependency>
 	</dependencies>
 	<build>

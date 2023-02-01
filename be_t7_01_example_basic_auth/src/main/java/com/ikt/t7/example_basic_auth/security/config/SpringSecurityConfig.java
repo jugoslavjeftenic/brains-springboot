@@ -1,4 +1,4 @@
-package com.ikt.t7.example_security.security.config;
+package com.ikt.t7.example_basic_auth.security.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

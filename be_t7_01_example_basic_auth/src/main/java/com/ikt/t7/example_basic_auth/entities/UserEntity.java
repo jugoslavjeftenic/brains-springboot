@@ -1,4 +1,4 @@
-package com.ikt.t7.example_security.entities;
+package com.ikt.t7.example_basic_auth.entities;
 
 public class UserEntity {
 
