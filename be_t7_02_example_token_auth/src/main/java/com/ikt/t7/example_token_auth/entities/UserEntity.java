@@ -1,4 +1,4 @@
-package com.ikt.t7.example_basic_auth.entities;
+package com.ikt.t7.example_token_auth.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
