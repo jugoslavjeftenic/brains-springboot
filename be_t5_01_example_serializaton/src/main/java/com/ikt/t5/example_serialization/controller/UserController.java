@@ -4,11 +4,15 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.ikt.t5.example_serialization.controller.util.RESTError;
 import com.ikt.t5.example_serialization.entities.AddressEntity;
 import com.ikt.t5.example_serialization.entities.UserEntity;
 import com.ikt.t5.example_serialization.security.Views;
@@ -67,5 +71,23 @@ public class UserController {
 	@JsonView(Views.Admin.class)
 	public List<UserEntity> getAllAdmin() {
 		return getDummyDB();
+	}
+	
+	@GetMapping(path = "/admin/{id}")
+	@JsonView(Views.Admin.class)
+	public ResponseEntity<?> getUserById(@PathVariable Integer id) {
+		try {
+			if (id < 0) {
+				return new ResponseEntity<RESTError>(new RESTError(1, "ID must be greater or equal to 0."), HttpStatus.BAD_REQUEST);
+			}
+			for (UserEntity user : getDummyDB()) {
+				if (user.getId().equals(id)) {
+					return new ResponseEntity<UserEntity>(user, HttpStatus.OK);
+				}
+			}
+			return new ResponseEntity<RESTError>(new RESTError(2, "User with provided ID is not found."), HttpStatus.NOT_FOUND);
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 }
