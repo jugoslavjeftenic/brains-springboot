@@ -8,11 +8,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.ikt.t5.example_serialization.controller.util.RESTError;
+import com.ikt.t5.example_serialization.dto.UserRegisterDTO;
 import com.ikt.t5.example_serialization.entities.AddressEntity;
 import com.ikt.t5.example_serialization.entities.UserEntity;
 import com.ikt.t5.example_serialization.security.Views;
@@ -89,5 +92,37 @@ public class UserController {
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+	}
+	
+	@PostMapping
+	@JsonView(Views.Private.class)
+	public ResponseEntity<?> registerUser(@RequestBody UserRegisterDTO registerDTO) {
+		if (registerDTO.getEmail() == null || registerDTO.getEmail().equals("")) {
+			return new ResponseEntity<RESTError>(new RESTError(1, "Please provide an email."), HttpStatus.BAD_REQUEST);
+		}
+		if (registerDTO.getPassword() == null || registerDTO.getPassword().equals("")) {
+			return new ResponseEntity<RESTError>(new RESTError(2, "Please provide a password."), HttpStatus.BAD_REQUEST);
+		}
+		if (registerDTO.getPassword().length() < 4) {
+			return new ResponseEntity<RESTError>(new RESTError(3, "Please provide a password with at least 4 characters."), HttpStatus.BAD_REQUEST);
+		}
+		if (registerDTO.getConfirmedPassword() == null || registerDTO.getConfirmedPassword().equals("")) {
+			return new ResponseEntity<RESTError>(new RESTError(4, "Please provide a confirmed password."), HttpStatus.BAD_REQUEST);
+		}
+		
+		// TODO Extract into service once we connext with a DB
+		if (!registerDTO.getPassword().equals(registerDTO.getConfirmedPassword())) {
+			return new ResponseEntity<RESTError>(new RESTError(5, "Password do not match."), HttpStatus.BAD_REQUEST);
+		}
+		for (UserEntity user : getDummyDB()) {
+			if (user.getEmail().equals(registerDTO.getEmail())) {
+				return new ResponseEntity<RESTError>(new RESTError(6, "Email already exist in DB."), HttpStatus.BAD_REQUEST);
+			}
+		}
+		UserEntity user = new UserEntity();
+		user.setEmail(registerDTO.getEmail());
+		user.setPassword(registerDTO.getPassword());
+		// TODO save to DB once it is implemented.
+		return new ResponseEntity<UserEntity>(user, HttpStatus.CREATED);
 	}
 }
