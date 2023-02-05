@@ -10,15 +10,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ikt.t6.example_validation.dtos.UserDTO;
 import com.ikt.t6.example_validation.entities.UserEntity;
 import com.ikt.t6.example_validation.repositories.UserRepository;
+import com.ikt.t6.example_validation.utils.UserCustomValidator;
 
 @RestController
 @RequestMapping(path = "api/v1/users")
@@ -26,6 +30,13 @@ public class UserControllers {
 
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private UserCustomValidator userCustomValidator;
+	
+	@InitBinder
+	protected void initBinder(final WebDataBinder binder) {
+		binder.addValidators(userCustomValidator);
+	}
 
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(MethodArgumentNotValidException.class)
@@ -33,21 +44,29 @@ public class UserControllers {
 		Map<String, String> errors = new HashMap<>();
 		ex.getBindingResult().getAllErrors().forEach((error) -> {
 			String fieldName = "";
-			String errorMessage = "";
 			if (error instanceof FieldError) {
 				fieldName = ((FieldError) error).getField();
-				errorMessage = error.getDefaultMessage();
 			}
-			errors.put(fieldName, errorMessage);
+			else {
+				fieldName = "object-level-error";
+			}
+			errors.put(fieldName, error.getDefaultMessage());
 		});
-		return null;
+		return errors;
 	}
 	
 	// Create
 	@PostMapping
-	public ResponseEntity<?> create(@Valid @RequestBody UserEntity user) {
-		userRepository.save(user);
-	    return new ResponseEntity<>(user, HttpStatus.CREATED);
+	public ResponseEntity<?> create(@Valid @RequestBody UserDTO user) {
+		UserEntity userEntity = new UserEntity();
+		userEntity.setFirstName(user.getFirstName());
+		userEntity.setLastName(user.getLastName());
+		userEntity.setEmail(user.getEmail());
+		userEntity.setUsername(user.getUsername());
+		userEntity.setPassword(user.getPassword());
+		userEntity.setAge(user.getAge());
+		userRepository.save(userEntity);
+	    return new ResponseEntity<>(userEntity, HttpStatus.CREATED);
 	}
 
 //	// Read

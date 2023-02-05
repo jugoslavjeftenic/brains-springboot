@@ -1,69 +1,53 @@
-package com.ikt.t6.example_validation.entities;
+package com.ikt.t6.example_validation.dtos;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.Version;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@Entity
-@Table(name = "users")
-public class UserEntity {
+public class UserDTO {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "users_generator")
-	@SequenceGenerator(name="users_generator", sequenceName = "users_sequence", allocationSize=1)
-	private Integer id;
 	@NotNull(message = "First name must be specified.")
 	@Size(min = 2, max = 30, message = "First name must be between {min} and {max} character long.")
 	private String firstName;
 	@NotNull(message = "Last name must be specified.")
 	@Size(min = 2, max = 30, message = "Last name must be between {min} and {max} character long.")
 	private String lastName;
-	@NotNull(message = "Email name must be specified.")
 	@Email(message = "Email is not valid")
 	private String email;
-	@NotNull(message = "User name must be specified.")
+	@NotNull(message = "Username must be specified.")
 	@Size(min = 5, max = 15, message = "Username must be between {min} and {max} character long.")
 	private String username;
-	@NotNull(message = "Password name must be specified.")
+	@NotNull(message = "Password must be specified.")
 	@Size(min = 5, max = 15, message = "Password must be between {min} and {max} character long.")
 	private String password;
 	@NotNull(message = "Age must be specified.")
 	@Min(value = 18, message = "You have to be at least 18 years old.")
 	private Integer age;
-	@Version
-	private Integer version;
+	@NotNull(message = "Confirmed password must be specified.")
+	@Size(min = 5, max = 15, message = "Confirmed password must be between {min} and {max} character long.")
+	private String confirmedPassword;
 
-	public UserEntity() {
+	public UserDTO() {
 		super();
 	}
 
-	public UserEntity(Integer id, String firstName, String lastName, String email, String username, String password,
-			Integer age, Integer version) {
+	public UserDTO(
+			@NotNull(message = "First name must be specified.") @Size(min = 2, max = 30, message = "First name must be between {min} and {max} character long.") String firstName,
+			@NotNull(message = "Last name must be specified.") @Size(min = 2, max = 30, message = "Last name must be between {min} and {max} character long.") String lastName,
+			@Email(message = "Email is not valid") String email,
+			@NotNull(message = "User name must be specified.") @Size(min = 5, max = 15, message = "User name must be between {min} and {max} character long.") String username,
+			@NotNull(message = "Password name must be specified.") @Size(min = 5, max = 15, message = "Password name must be between {min} and {max} character long.") String password,
+			@NotNull(message = "Age must be specified.") @Min(value = 18, message = "You have to be at least 18 years old.") Integer age,
+			@NotNull(message = "Confirmed password name must be specified.") @Size(min = 5, max = 15, message = "Confirmed password name must be between {min} and {max} character long.") String confirmedPassword) {
 		super();
-		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.username = username;
 		this.password = password;
 		this.age = age;
-		this.version = version;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
+		this.confirmedPassword = confirmedPassword;
 	}
 
 	public String getFirstName() {
@@ -114,11 +98,11 @@ public class UserEntity {
 		this.age = age;
 	}
 
-	public Integer getVersion() {
-		return version;
+	public String getConfirmedPassword() {
+		return confirmedPassword;
 	}
 
-	public void setVersion(Integer version) {
-		this.version = version;
+	public void setConfirmedPassword(String confirmedPassword) {
+		this.confirmedPassword = confirmedPassword;
 	}
 }
