@@ -7,6 +7,10 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -16,11 +20,23 @@ public class UserEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "users_generator")
 	@SequenceGenerator(name="users_generator", sequenceName = "users_sequence", allocationSize=1)
 	private Integer id;
+	@NotNull(message = "First name must be specified.")
+	@Size(min = 2, max = 30, message = "First name must be between {min} and {max} character long.")
 	private String firstName;
+	@NotNull(message = "Last name must be specified.")
+	@Size(min = 2, max = 30, message = "Last name must be between {min} and {max} character long.")
 	private String lastName;
+	@NotNull(message = "Email name must be specified.")
+	@Email(message = "Email is not valid")
 	private String email;
+	@NotNull(message = "User name must be specified.")
+	@Size(min = 5, max = 15, message = "User name must be between {min} and {max} character long.")
 	private String username;
+	@NotNull(message = "Password name must be specified.")
+	@Size(min = 5, max = 15, message = "Password name must be between {min} and {max} character long.")
 	private String password;
+	@NotNull(message = "Age must be specified.")
+	@Min(value = 18, message = "You have to be at least 18 years old.")
 	private Integer age;
 	@Version
 	private Integer version;
