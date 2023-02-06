@@ -29,6 +29,7 @@ public class RoleEntity {
 	private Integer id;
 	@Column(name = "role_name")
 	private String name;
+	
 	@JsonIgnore
 	@OneToMany(mappedBy = "role", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
 	private List<UserEntity> users = new ArrayList<>();
