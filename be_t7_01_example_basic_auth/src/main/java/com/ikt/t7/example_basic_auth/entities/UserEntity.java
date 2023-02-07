@@ -1,9 +1,12 @@
 package com.ikt.t7.example_basic_auth.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class UserEntity {
 
 	private Integer id;
 	private String email;
+	@JsonIgnore
 	private String password;
 	private String name;
 	private String lastName;
