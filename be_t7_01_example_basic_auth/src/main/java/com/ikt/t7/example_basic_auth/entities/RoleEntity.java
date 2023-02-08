@@ -3,13 +3,34 @@ package com.ikt.t7.example_basic_auth.entities;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@Entity
+@Table(name = "role")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class RoleEntity {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "role_generator")
+	@SequenceGenerator(name="role_generator", sequenceName = "role_sequence", allocationSize=1)
+	@Column(name = "role_id")
 	private Integer id;
+	@Column(name = "role_name")
 	private String name;
 	@JsonIgnore
+	@OneToMany(mappedBy = "role", fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
 	private List<UserEntity> users = new ArrayList<>();
 	
 	public RoleEntity() {
