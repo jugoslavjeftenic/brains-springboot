@@ -34,7 +34,7 @@ public class WebSecurityConfig {
 	SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity
 			.csrf().disable()
-			.addFilterAfter(new JWTAuthorizationFilter(secretKey), UsernamePasswordAuthenticationFilter.class)
+			.addFilterAfter(new JWSAuthorizationFilter(secretKey), UsernamePasswordAuthenticationFilter.class)
 			.authorizeRequests().antMatchers(HttpMethod.POST, "/api/v1/login").permitAll()
 			.anyRequest().authenticated();
 		return httpSecurity.build();

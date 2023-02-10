@@ -18,14 +18,14 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 
-public class JWTAuthorizationFilter extends OncePerRequestFilter {
+public class JWSAuthorizationFilter extends OncePerRequestFilter {
 
 	private final String HEADER = "Authorization";
 	private final String PREFIX = "Bearer ";
 	
 	private SecretKey secretKey;
 	
-	public JWTAuthorizationFilter(SecretKey secretKey) {
+	public JWSAuthorizationFilter(SecretKey secretKey) {
 		super();
 		this.secretKey = secretKey;
 	}
@@ -40,8 +40,8 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
 	}
 	
 	private Claims validateToken(HttpServletRequest request) {
-		String jwt = request.getHeader(HEADER).replace(PREFIX, "");
-		return Jwts.parserBuilder().setSigningKey(this.secretKey).build().parseClaimsJws(jwt).getBody();
+		String jwsToken = request.getHeader(HEADER).replace(PREFIX, "");
+		return Jwts.parserBuilder().setSigningKey(this.secretKey).build().parseClaimsJws(jwsToken).getBody();
 	}
 	
 	private void setUpSpringAuthentication(Claims claims) {

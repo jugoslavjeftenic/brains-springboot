@@ -11,12 +11,13 @@ public class Encryption {
 	
 	public static boolean validatePassword(String password, String encodedPassword) {
 		BCryptPasswordEncoder bce = new BCryptPasswordEncoder();
+		encodedPassword = encodedPassword.replace("{bcrypt}", "");
 		return bce.matches(password, encodedPassword);
 	}
 	
 	public static void main(String[] args) {
 		System.out.println(getEncodedPassword("lozinka"));
-		System.out.println(validatePassword("lozinka", "$2a$10$qBEgqy2ecxf28I2J48c5cu6Ln4xrrNH.7ihSfMQEwy9T68qcUSb36"));
+		System.out.println(validatePassword("lozinka", "{bcrypt}$2a$10$qBEgqy2ecxf28I2J48c5cu6Ln4xrrNH.7ihSfMQEwy9T68qcUSb36"));
 		// $2a$10$qBEgqy2ecxf28I2J48c5cu6Ln4xrrNH.7ihSfMQEwy9T68qcUSb36
 	}
 }
