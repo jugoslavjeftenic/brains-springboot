@@ -224,7 +224,7 @@ public class DataHolder {
 			"Vulkan",
 			"Vučko",
 			"Kobra",
-			"Ždrebec",
+			"Ždrebac",
 			"Pilot",
 			"Zmaj",
 			"Medo",
