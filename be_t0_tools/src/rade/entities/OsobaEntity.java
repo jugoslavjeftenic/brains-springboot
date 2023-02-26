@@ -6,6 +6,7 @@ public class OsobaEntity {
 
 	private String ime;
 	private String prezime;
+	private String nadimak;
 	private Integer pol;
 	private LocalDate datumRodjenja;
 	private String jmbg;
@@ -18,11 +19,12 @@ public class OsobaEntity {
 		super();
 	}
 
-	public OsobaEntity(String ime, String prezime, Integer pol, LocalDate datumRodjenja, String jmbg,
+	public OsobaEntity(String ime, String prezime, String nadimak, Integer pol, LocalDate datumRodjenja, String jmbg,
 			AdresaEntity adresaRodjenja, AdresaEntity adresaStanovanja, String userName, String email) {
 		super();
 		this.ime = ime;
 		this.prezime = prezime;
+		this.nadimak = nadimak;
 		this.pol = pol;
 		this.datumRodjenja = datumRodjenja;
 		this.jmbg = jmbg;
@@ -46,6 +48,14 @@ public class OsobaEntity {
 
 	public void setPrezime(String prezime) {
 		this.prezime = prezime;
+	}
+
+	public String getNadimak() {
+		return nadimak;
+	}
+
+	public void setNadimak(String nadimak) {
+		this.nadimak = nadimak;
 	}
 
 	public Integer getPol() {

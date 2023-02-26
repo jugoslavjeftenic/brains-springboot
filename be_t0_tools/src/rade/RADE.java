@@ -45,6 +45,7 @@ public class RADE extends DataHolder {
 		osoba.setDatumRodjenja(dob);
 		osoba.setIme(generisiIme(osoba.getPol()));
 		osoba.setPrezime(generisiPrezime());
+		osoba.setNadimak(generisiNadimak());
 		osoba.setJmbg(generisiJMBG(osoba.getDatumRodjenja(), osoba.getPol()));
 		osoba.setAdresaRodjenja(generisiAdresu());
 		osoba.setAdresaStanovanja(generisiAdresu());
@@ -98,6 +99,17 @@ public class RADE extends DataHolder {
 			i = 0;
 		}
 		return prezimena[i];
+	}
+
+	public static String generisiNadimak() {
+		return dobaviNadimak(mrRobot(1, nadimci.length));
+	}
+	
+	public static String dobaviNadimak(int i) {
+		if (i < 1 || i > nadimci.length) {
+			i = 0;
+		}
+		return nadimci[i];
 	}
 	
 	public static AdresaEntity generisiAdresu() {
