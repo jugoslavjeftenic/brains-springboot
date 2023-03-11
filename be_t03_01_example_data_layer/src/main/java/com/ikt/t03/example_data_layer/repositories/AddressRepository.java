@@ -1,11 +1,11 @@
-package com.ikt.t3.example_data_layer.repositories;
+package com.ikt.t03.example_data_layer.repositories;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.ikt.t3.example_data_layer.entities.AddressEntity;
-import com.ikt.t3.example_data_layer.entities.CityEntity;
+import com.ikt.t03.example_data_layer.entities.AddressEntity;
+import com.ikt.t03.example_data_layer.entities.CityEntity;
 
 public interface AddressRepository extends CrudRepository<AddressEntity, Integer> {
 	List<AddressEntity> findByStreet(String street);

@@ -1,4 +1,4 @@
-package com.ikt.t3.example_data_layer.entities;
+package com.ikt.t03.example_data_layer.entities;
 
 import java.util.ArrayList;
 import java.util.List;

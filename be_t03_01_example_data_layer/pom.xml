@@ -7,10 +7,10 @@
 		<version>2.7.6</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.ikt.t3.01</groupId>
-	<artifactId>be_t3_01_example_data_layer</artifactId>
+	<groupId>com.ikt.t03.01</groupId>
+	<artifactId>be_t03_01_example_data_layer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>be_t3_01_example_data_layer</name>
+	<name>be_t03_01_example_data_layer</name>
 	<description>Demo project for Spring Data layer</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

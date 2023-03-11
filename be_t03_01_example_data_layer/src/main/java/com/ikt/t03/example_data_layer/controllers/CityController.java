@@ -1,4 +1,4 @@
-package com.ikt.t3.example_data_layer.controllers;
+package com.ikt.t03.example_data_layer.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ikt.t3.example_data_layer.entities.CityEntity;
-import com.ikt.t3.example_data_layer.repositories.CityRepository;
-import com.ikt.t3.example_data_layer.repositories.CountryRepository;
+import com.ikt.t03.example_data_layer.entities.CityEntity;
+import com.ikt.t03.example_data_layer.repositories.CityRepository;
+import com.ikt.t03.example_data_layer.repositories.CountryRepository;
 
 import rade.RADE;
 
