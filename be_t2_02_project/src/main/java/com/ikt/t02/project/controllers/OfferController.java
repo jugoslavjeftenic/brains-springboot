@@ -1,4 +1,4 @@
-package com.ikt.t2.project.controllers;
+package com.ikt.t02.project.controllers;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ikt.t2.project.entities.EOfferEntity;
-import com.ikt.t2.project.entities.OfferEntity;
+import com.ikt.t02.project.entities.EOfferEntity;
+import com.ikt.t02.project.entities.OfferEntity;
 
 import rade.RADE;
 

@@ -7,10 +7,10 @@
 		<version>2.7.6</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.ikt.t2.02</groupId>
-	<artifactId>be_t2_02_project</artifactId>
+	<groupId>com.ikt.t02.02</groupId>
+	<artifactId>be_t02_02_project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>be_t2_02_project</name>
+	<name>be_t02_02_project</name>
 	<description>REST controller - project</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

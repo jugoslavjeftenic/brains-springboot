@@ -1,4 +1,4 @@
-package com.ikt.t2.project.entities;
+package com.ikt.t02.project.entities;
 
 public class UserEntity {
 
