@@ -10,5 +10,4 @@ public class BeT0201ProjectApplication {
 		SpringApplication.run(BeT0201ProjectApplication.class, args);
 	}
 
-	
 }
