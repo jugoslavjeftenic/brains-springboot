@@ -1,4 +1,4 @@
-package com.ikt.t2.example_rest.controllers;
+package com.ikt.t02.example_rest.controllers;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ikt.t2.example_rest.entities.BankClientEntity;
-import com.ikt.t2.example_rest.entities.BankClientsEntityNames;
+import com.ikt.t02.example_rest.entities.BankClientEntity;
+import com.ikt.t02.example_rest.entities.BankClientsEntityNames;
 
 import rade.*;
 

@@ -7,11 +7,11 @@
 		<version>2.7.6</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.ikt.t2.01</groupId>
-	<artifactId>be_t2_01_example_rest</artifactId>
+	<groupId>com.ikt.t02.01</groupId>
+	<artifactId>be_t02_01_example_rest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>be_t2_01_example_rest</name>
+	<name>be_t02_01_example_rest</name>
 	<description>Demo project for Spring REST</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
