@@ -8,10 +8,10 @@
 		<version>2.7.8</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.ikt.t5.01</groupId>
-	<artifactId>be_t5_01_example_serializaton</artifactId>
+	<groupId>com.ikt.t05.01</groupId>
+	<artifactId>be_t05_01_example_serializaton</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>be_t5_01_example_serializaton</name>
+	<name>be_t05_01_example_serializaton</name>
 	<description>Serialization example</description>
 	<properties>
 		<java.version>1.8</java.version>

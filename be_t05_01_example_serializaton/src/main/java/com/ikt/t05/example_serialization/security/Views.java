@@ -1,4 +1,4 @@
-package com.ikt.t5.example_serialization.security;
+package com.ikt.t05.example_serialization.security;
 
 public class Views {
 

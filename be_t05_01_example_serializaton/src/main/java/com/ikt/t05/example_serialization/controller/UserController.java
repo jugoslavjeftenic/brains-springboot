@@ -1,4 +1,4 @@
-package com.ikt.t5.example_serialization.controller;
+package com.ikt.t05.example_serialization.controller;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.ikt.t5.example_serialization.controller.util.RESTError;
-import com.ikt.t5.example_serialization.dto.UserRegisterDTO;
-import com.ikt.t5.example_serialization.entities.AddressEntity;
-import com.ikt.t5.example_serialization.entities.UserEntity;
-import com.ikt.t5.example_serialization.security.Views;
+import com.ikt.t05.example_serialization.controller.util.RESTError;
+import com.ikt.t05.example_serialization.dto.UserRegisterDTO;
+import com.ikt.t05.example_serialization.entities.AddressEntity;
+import com.ikt.t05.example_serialization.entities.UserEntity;
+import com.ikt.t05.example_serialization.security.Views;
 
 @RestController
 @RequestMapping(path = "api/v1/users")

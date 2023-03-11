@@ -1,7 +1,7 @@
-package com.ikt.t5.example_serialization.controller.util;
+package com.ikt.t05.example_serialization.controller.util;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.ikt.t5.example_serialization.security.Views;
+import com.ikt.t05.example_serialization.security.Views;
 
 public class RESTError {
 

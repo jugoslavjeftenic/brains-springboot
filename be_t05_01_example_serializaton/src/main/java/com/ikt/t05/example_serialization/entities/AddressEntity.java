@@ -1,11 +1,11 @@
-package com.ikt.t5.example_serialization.entities;
+package com.ikt.t05.example_serialization.entities;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonView;
-import com.ikt.t5.example_serialization.security.Views;
+import com.ikt.t05.example_serialization.security.Views;
 
 public class AddressEntity {
 
