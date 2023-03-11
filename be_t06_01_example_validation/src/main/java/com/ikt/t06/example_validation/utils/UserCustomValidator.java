@@ -1,10 +1,10 @@
-package com.ikt.t6.example_validation.utils;
+package com.ikt.t06.example_validation.utils;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import com.ikt.t6.example_validation.dtos.UserDTO;
+import com.ikt.t06.example_validation.dtos.UserDTO;
 
 @Component
 public class UserCustomValidator implements Validator {

@@ -1,4 +1,4 @@
-package com.ikt.t6.example_validation.dtos;
+package com.ikt.t06.example_validation.dtos;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;

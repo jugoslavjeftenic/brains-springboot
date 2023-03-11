@@ -1,4 +1,4 @@
-package com.ikt.t6.example_validation.entities;
+package com.ikt.t06.example_validation.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -8,10 +8,10 @@
 		<version>2.7.8</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.ikt.t6.01</groupId>
-	<artifactId>be_t6_01_example_validation</artifactId>
+	<groupId>com.ikt.t06.01</groupId>
+	<artifactId>be_t06_01_example_validation</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>be_t6_01_example_validation</name>
+	<name>be_t06_01_example_validation</name>
 	<description>Validation example</description>
 	<properties>
 		<java.version>1.8</java.version>

@@ -1,4 +1,4 @@
-package com.ikt.t6.example_validation.controllers;
+package com.ikt.t06.example_validation.controllers;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ikt.t6.example_validation.dtos.UserDTO;
-import com.ikt.t6.example_validation.entities.UserEntity;
-import com.ikt.t6.example_validation.repositories.UserRepository;
-import com.ikt.t6.example_validation.utils.UserCustomValidator;
+import com.ikt.t06.example_validation.dtos.UserDTO;
+import com.ikt.t06.example_validation.entities.UserEntity;
+import com.ikt.t06.example_validation.repositories.UserRepository;
+import com.ikt.t06.example_validation.utils.UserCustomValidator;
 
 @RestController
 @RequestMapping(path = "api/v1/users")
