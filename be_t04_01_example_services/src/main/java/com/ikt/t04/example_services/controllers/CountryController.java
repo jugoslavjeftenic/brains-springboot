@@ -1,4 +1,4 @@
-package com.ikt.t4.example_services.controllers;
+package com.ikt.t04.example_services.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ikt.t4.example_services.entities.CountryEntity;
-import com.ikt.t4.example_services.repositories.CountryRepository;
+import com.ikt.t04.example_services.entities.CountryEntity;
+import com.ikt.t04.example_services.repositories.CountryRepository;
 
 import rade.RADE;
 

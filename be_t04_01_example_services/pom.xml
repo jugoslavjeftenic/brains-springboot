@@ -7,10 +7,10 @@
 		<version>2.7.7</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.ikt.t4.01</groupId>
-	<artifactId>be_t4_01_example_services</artifactId>
+	<groupId>com.ikt.t04.01</groupId>
+	<artifactId>be_t04_01_example_services</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>be_t4_01_example_services</name>
+	<name>be_t04_01_example_services</name>
 	<description>Demo project for Spring Services layer</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -1,4 +1,4 @@
-package com.ikt.t4.example_services.services;
+package com.ikt.t04.example_services.services;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -6,7 +6,7 @@ import javax.persistence.Query;
 
 import org.springframework.stereotype.Service;
 
-import com.ikt.t4.example_services.entities.AddressEntity;
+import com.ikt.t04.example_services.entities.AddressEntity;
 
 @Service
 public class AddressDAOServiceImpl implements AddressDAOService {

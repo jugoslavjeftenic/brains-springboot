@@ -1,4 +1,4 @@
-package com.ikt.t4.example_services;
+package com.ikt.t04.example_services;
 
 import org.apache.coyote.http11.AbstractHttp11Protocol;
 import org.springframework.boot.SpringApplication;
@@ -8,10 +8,10 @@ import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactor
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class BeT401ExampleServicesApplication {
+public class BeT0401ExampleServicesApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BeT401ExampleServicesApplication.class, args);
+		SpringApplication.run(BeT0401ExampleServicesApplication.class, args);
 	}
 
 	@Bean
