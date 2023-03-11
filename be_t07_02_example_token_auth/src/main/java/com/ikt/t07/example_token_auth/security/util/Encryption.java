@@ -1,4 +1,4 @@
-package com.ikt.t7.example_token_auth.security.util;
+package com.ikt.t07.example_token_auth.security.util;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 

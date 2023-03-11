@@ -1,4 +1,4 @@
-package com.ikt.t7.example_token_auth.controllers;
+package com.ikt.t07.example_token_auth.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ikt.t7.example_token_auth.entities.UserEntity;
-import com.ikt.t7.example_token_auth.repositories.UserRepository;
+import com.ikt.t07.example_token_auth.entities.UserEntity;
+import com.ikt.t07.example_token_auth.repositories.UserRepository;
 
 @RestController
 @RequestMapping(path = "api/v1/users")

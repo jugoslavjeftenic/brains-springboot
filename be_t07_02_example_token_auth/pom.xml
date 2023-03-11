@@ -8,10 +8,10 @@
 		<version>2.7.8</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.ikt.t7.02</groupId>
-	<artifactId>be_t7_02_example_token_auth</artifactId>
+	<groupId>com.ikt.t07.02</groupId>
+	<artifactId>be_t07_02_example_token_auth</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>be_t7_02_example_token_auth</name>
+	<name>be_t07_02_example_token_auth</name>
 	<description>Token authentication example</description>
 	<properties>
 		<java.version>1.8</java.version>

@@ -1,8 +1,8 @@
-package com.ikt.t7.example_token_auth.repositories;
+package com.ikt.t07.example_token_auth.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.ikt.t7.example_token_auth.entities.UserEntity;
+import com.ikt.t07.example_token_auth.entities.UserEntity;
 
 public interface UserRepository extends CrudRepository<UserEntity, Integer> {
 

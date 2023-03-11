@@ -1,4 +1,4 @@
-package com.ikt.t7.example_token_auth.controllers;
+package com.ikt.t07.example_token_auth.controllers;
 
 import java.sql.Date;
 import java.time.LocalDateTime;
@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ikt.t7.example_token_auth.dtos.LoginDTO;
-import com.ikt.t7.example_token_auth.entities.UserEntity;
-import com.ikt.t7.example_token_auth.repositories.UserRepository;
-import com.ikt.t7.example_token_auth.security.util.Encryption;
+import com.ikt.t07.example_token_auth.dtos.LoginDTO;
+import com.ikt.t07.example_token_auth.entities.UserEntity;
+import com.ikt.t07.example_token_auth.repositories.UserRepository;
+import com.ikt.t07.example_token_auth.security.util.Encryption;
 
 import io.jsonwebtoken.Jwts;
 

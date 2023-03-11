@@ -1,4 +1,4 @@
-package com.ikt.t7.example_token_auth.security.config;
+package com.ikt.t07.example_token_auth.security.config;
 
 import java.io.IOException;
 import java.util.List;

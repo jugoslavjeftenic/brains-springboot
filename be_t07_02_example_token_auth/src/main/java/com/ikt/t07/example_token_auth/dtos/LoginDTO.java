@@ -1,4 +1,4 @@
-package com.ikt.t7.example_token_auth.dtos;
+package com.ikt.t07.example_token_auth.dtos;
 
 public class LoginDTO {
 

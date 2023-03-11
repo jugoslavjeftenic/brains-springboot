@@ -1,4 +1,4 @@
-package com.ikt.t7.example_token_auth.entities;
+package com.ikt.t07.example_token_auth.entities;
 
 import java.util.ArrayList;
 import java.util.List;
