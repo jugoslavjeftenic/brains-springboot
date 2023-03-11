@@ -1,4 +1,4 @@
-package com.ikt.t4.example_file_upload.advices;
+package com.ikt.t04.example_file_upload.advices;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

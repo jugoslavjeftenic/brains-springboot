@@ -7,10 +7,10 @@
 		<version>2.7.7</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.ikt.t4.02</groupId>
-	<artifactId>be_t4_02_example_file_upload</artifactId>
+	<groupId>com.ikt.t04.02</groupId>
+	<artifactId>be_t04_02_example_file_upload</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>be_t4_02_example_file_upload</name>
+	<name>be_t04_02_example_file_upload</name>
 	<description>Demo File Upload - Server Pages</description>
 	<properties>
 		<java.version>1.8</java.version>

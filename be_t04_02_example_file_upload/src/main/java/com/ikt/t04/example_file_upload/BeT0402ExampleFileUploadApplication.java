@@ -1,4 +1,4 @@
-package com.ikt.t4.example_file_upload;
+package com.ikt.t04.example_file_upload;
 
 import org.apache.coyote.http11.AbstractHttp11Protocol;
 import org.springframework.boot.SpringApplication;
@@ -8,10 +8,10 @@ import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactor
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class BeT402ExampleFileUploadApplication {
+public class BeT0402ExampleFileUploadApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BeT402ExampleFileUploadApplication.class, args);
+		SpringApplication.run(BeT0402ExampleFileUploadApplication.class, args);
 	}
 
 	// TODO Domaci zadatak: pogledati dizajn patern FactoryPattern

@@ -51,3 +51,14 @@
 2023-01-28 20:23:20.001  INFO 9652 --- [main] i.t.e.BeT402ExampleFileUploadApplication : Started BeT402ExampleFileUploadApplication in 5.871 seconds (JVM running for 8.38)
 2023-01-28 20:23:43.206  INFO 9652 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
 2023-01-28 20:23:43.227  INFO 9652 --- [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.StandardService                  : Stopping service [Tomcat]
+2023-03-11 11:21:31.815  INFO 10896 --- [main] .t.e.BeT0402ExampleFileUploadApplication : Starting BeT0402ExampleFileUploadApplication using Java 17.0.4.1 on DESKTOP-A6300-HOME with PID 10896 (E:\SDK-github\course-spring\brains\be_t04_02_example_file_upload\target\classes started by pvtBomba in E:\SDK-github\course-spring\brains\be_t04_02_example_file_upload)
+2023-03-11 11:21:31.826  INFO 10896 --- [main] .t.e.BeT0402ExampleFileUploadApplication : No active profile set, falling back to 1 default profile: "default"
+2023-03-11 11:21:32.867  INFO 10896 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2023-03-11 11:21:32.889  INFO 10896 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2023-03-11 11:21:32.890  INFO 10896 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.70]
+2023-03-11 11:21:33.048  INFO 10896 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2023-03-11 11:21:33.048  INFO 10896 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1163 ms
+2023-03-11 11:21:33.468  INFO 10896 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2023-03-11 11:21:33.481  INFO 10896 --- [main] .t.e.BeT0402ExampleFileUploadApplication : Started BeT0402ExampleFileUploadApplication in 2.212 seconds (JVM running for 3.47)
+2023-03-11 11:21:41.014  INFO 10896 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-03-11 11:21:41.034  INFO 10896 --- [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.StandardService                  : Stopping service [Tomcat]
