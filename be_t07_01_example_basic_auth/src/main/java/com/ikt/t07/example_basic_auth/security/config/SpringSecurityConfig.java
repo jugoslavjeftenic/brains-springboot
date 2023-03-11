@@ -1,4 +1,4 @@
-package com.ikt.t7.example_basic_auth.security.config;
+package com.ikt.t07.example_basic_auth.security.config;
 
 import javax.sql.DataSource;
 

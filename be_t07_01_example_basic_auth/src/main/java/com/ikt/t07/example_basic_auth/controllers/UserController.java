@@ -1,4 +1,4 @@
-package com.ikt.t7.example_basic_auth.controllers;
+package com.ikt.t07.example_basic_auth.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ikt.t7.example_basic_auth.entities.RoleEntity;
-import com.ikt.t7.example_basic_auth.entities.UserEntity;
+import com.ikt.t07.example_basic_auth.entities.RoleEntity;
+import com.ikt.t07.example_basic_auth.entities.UserEntity;
 
 @RestController
 @RequestMapping(path = "api/v1/users")

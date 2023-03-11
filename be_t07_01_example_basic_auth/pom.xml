@@ -8,10 +8,10 @@
 		<version>2.7.8</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.ikt.t7.01</groupId>
-	<artifactId>be_t7_01_example_basic_auth</artifactId>
+	<groupId>com.ikt.t07.01</groupId>
+	<artifactId>be_t07_01_example_basic_auth</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>be_t7_01_example_basic_auth</name>
+	<name>be_t07_01_example_basic_auth</name>
 	<description>Basic authentication example</description>
 	<properties>
 		<java.version>1.8</java.version>
