@@ -1,13 +1,13 @@
-package com.ikt.t1;
+package com.ikt.t01;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BeT1MyFirstProjectApplication {
+public class BeT01MyFirstProjectApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BeT1MyFirstProjectApplication.class, args);
+		SpringApplication.run(BeT01MyFirstProjectApplication.class, args);
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.ikt.t1.entities;
+package com.ikt.t01.entities;
 
 public class MinMax {
 
