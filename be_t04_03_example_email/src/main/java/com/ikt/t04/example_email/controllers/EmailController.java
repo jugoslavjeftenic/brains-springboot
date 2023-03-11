@@ -1,4 +1,4 @@
-package com.ikt.t4.example_email.controllers;
+package com.ikt.t04.example_email.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ikt.t4.example_email.dto.EmailDTO;
-import com.ikt.t4.example_email.services.EmailService;
+import com.ikt.t04.example_email.dto.EmailDTO;
+import com.ikt.t04.example_email.services.EmailService;
 
 @RestController
 @RequestMapping(path = "api/v1/email")

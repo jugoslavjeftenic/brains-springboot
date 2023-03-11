@@ -1,4 +1,4 @@
-package com.ikt.t4.example_email.dto;
+package com.ikt.t04.example_email.dto;
 
 public class EmailDTO {
 

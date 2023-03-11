@@ -1,4 +1,4 @@
-package com.ikt.t4.example_email.services;
+package com.ikt.t04.example_email.services;
 
 import java.io.File;
 
@@ -12,7 +12,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
-import com.ikt.t4.example_email.dto.EmailDTO;
+import com.ikt.t04.example_email.dto.EmailDTO;
 
 @Service
 public class EmailServiceImpl implements EmailService {

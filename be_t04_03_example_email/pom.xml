@@ -7,10 +7,10 @@
 		<version>2.7.8</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.ikt.t4.03</groupId>
-	<artifactId>be_t4_03_example_email</artifactId>
+	<groupId>com.ikt.t04.03</groupId>
+	<artifactId>be_t04_03_example_email</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>be_t4_03_example_email</name>
+	<name>be_t04_03_example_email</name>
 	<description>Demo Email - Server Pages</description>
 	<properties>
 		<java.version>1.8</java.version>
