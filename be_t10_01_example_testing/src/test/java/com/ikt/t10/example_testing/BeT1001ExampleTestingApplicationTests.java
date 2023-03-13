@@ -9,4 +9,5 @@ class BeT1001ExampleTestingApplicationTests {
 	@Test
 	void contextLoads() {
 	}
+	
 }
