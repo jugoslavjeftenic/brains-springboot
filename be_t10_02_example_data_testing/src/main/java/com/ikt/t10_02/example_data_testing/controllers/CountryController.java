@@ -1,12 +1,13 @@
-package com.ikt.t03.example_data_layer.controllers;
+package com.ikt.t10_02.example_data_testing.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.ikt.t03.example_data_layer.entities.CountryEntity;
-import com.ikt.t03.example_data_layer.repositories.CountryRepository;
+
+import com.ikt.t10_02.example_data_testing.entities.CountryEntity;
+import com.ikt.t10_02.example_data_testing.repositories.CountryRepository;
 
 import rade.RADE;
 

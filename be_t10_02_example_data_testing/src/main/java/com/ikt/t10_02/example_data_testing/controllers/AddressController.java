@@ -1,4 +1,4 @@
-package com.ikt.t03.example_data_layer.controllers;
+package com.ikt.t10_02.example_data_testing.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,13 +6,14 @@ import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.ikt.t03.example_data_layer.entities.AddressEntity;
-import com.ikt.t03.example_data_layer.entities.CityEntity;
-import com.ikt.t03.example_data_layer.entities.UserEntity;
-import com.ikt.t03.example_data_layer.repositories.AddressRepository;
-import com.ikt.t03.example_data_layer.repositories.CityRepository;
-import com.ikt.t03.example_data_layer.repositories.CountryRepository;
-import com.ikt.t03.example_data_layer.repositories.UserRepository;
+
+import com.ikt.t10_02.example_data_testing.entities.AddressEntity;
+import com.ikt.t10_02.example_data_testing.entities.CityEntity;
+import com.ikt.t10_02.example_data_testing.entities.UserEntity;
+import com.ikt.t10_02.example_data_testing.repositories.AddressRepository;
+import com.ikt.t10_02.example_data_testing.repositories.CityRepository;
+import com.ikt.t10_02.example_data_testing.repositories.CountryRepository;
+import com.ikt.t10_02.example_data_testing.repositories.UserRepository;
 
 import rade.RADE;
 import rade.entities.AdresaEntity;

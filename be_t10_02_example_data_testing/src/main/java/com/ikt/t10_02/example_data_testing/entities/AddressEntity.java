@@ -1,4 +1,4 @@
-package com.ikt.t03.example_data_layer.entities;
+package com.ikt.t10_02.example_data_testing.entities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +51,12 @@ public class AddressEntity {
 		super();
 	}
 	
+	public AddressEntity(String street, CityEntity city) {
+		super();
+		this.street = street;
+		this.city = city;
+	}
+
 	public AddressEntity(Integer id, String street, Integer version, CityEntity city, List<UserEntity> users) {
 		super();
 		this.id = id;

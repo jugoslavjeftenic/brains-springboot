@@ -1,4 +1,4 @@
-package com.ikt.t03.example_data_layer;
+package com.ikt.t10_02.example_data_testing;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

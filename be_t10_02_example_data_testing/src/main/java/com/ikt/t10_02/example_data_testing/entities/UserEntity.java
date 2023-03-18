@@ -1,4 +1,4 @@
-package com.ikt.t03.example_data_layer.entities;
+package com.ikt.t10_02.example_data_testing.entities;
 
 import java.time.LocalDate;
 
@@ -55,6 +55,18 @@ public class UserEntity {
 	
 	public UserEntity() {
 		super();
+	}
+
+	public UserEntity(String name, String email, LocalDate birthDate, String phoneNumber, String jmbg, String regBrLk,
+			AddressEntity address) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.birthDate = birthDate;
+		this.phoneNumber = phoneNumber;
+		this.jmbg = jmbg;
+		this.regBrLk = regBrLk;
+		this.address = address;
 	}
 
 	public UserEntity(Integer id, String name, String email, LocalDate birthDate, String phoneNumber, String jmbg,

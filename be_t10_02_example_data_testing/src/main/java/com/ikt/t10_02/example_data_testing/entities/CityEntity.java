@@ -1,4 +1,4 @@
-package com.ikt.t03.example_data_layer.entities;
+package com.ikt.t10_02.example_data_testing.entities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +40,12 @@ public class CityEntity {
 
 	public CityEntity() {
 		super();
+	}
+
+	public CityEntity(String city, CountryEntity country) {
+		super();
+		this.city = city;
+		this.country = country;
 	}
 
 	public CityEntity(Integer id, String city, Integer version, CountryEntity country,
