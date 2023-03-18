@@ -4,12 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.ikt.t03.example_data_layer.entities.CityEntity;
 import com.ikt.t03.example_data_layer.repositories.CityRepository;
 import com.ikt.t03.example_data_layer.repositories.CountryRepository;
@@ -25,12 +20,12 @@ public class CityController {
 	@Autowired
 	private CountryRepository countryRepository;
 
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping
 	public Iterable<CityEntity> getAll() {
 		return cityRepository.findAll();
 	}
 
-	@RequestMapping(method = RequestMethod.GET, path = "/{id}")
+	@GetMapping("/{id}")
 	public CityEntity getById(@PathVariable Integer id) {
 		try {
 			CityEntity city = cityRepository.findById(id).get();
@@ -40,7 +35,7 @@ public class CityController {
 		}
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, path = "/populatetable")
+	@PostMapping("/populatetable")
 	public Iterable<CityEntity> populateTable() {
 		List<CityEntity> cities = new ArrayList<>();
 		for (int i = 0; i < RADE.dobaviSveOpstine().size(); i++) {
@@ -57,7 +52,7 @@ public class CityController {
 		return cities;
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@PostMapping
 	public CityEntity addCity(@RequestParam String city, @RequestParam(required = false) Integer country) {
 		CityEntity newCity = new CityEntity();
 		newCity.setCity(city);
@@ -69,7 +64,7 @@ public class CityController {
 		return cityRepository.save(newCity);
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT, path = "/{id}")
+	@PutMapping("/{id}")
 	public CityEntity updateCountry(@PathVariable Integer id,
 			@RequestParam(required = false) String city, @RequestParam(required = false) Integer country) {
 		try {
@@ -88,7 +83,7 @@ public class CityController {
 		}
 	}
 
-	@RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
+	@DeleteMapping("/{id}")
 	public CityEntity deleteCity(@PathVariable Integer id) {
 		try {
 			CityEntity city = cityRepository.findById(id).get();

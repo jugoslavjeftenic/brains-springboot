@@ -5,12 +5,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.ikt.t03.example_data_layer.entities.AddressEntity;
 import com.ikt.t03.example_data_layer.entities.CityEntity;
 import com.ikt.t03.example_data_layer.entities.UserEntity;
@@ -41,12 +36,12 @@ public class AddressController {
 	 * • koji podržavaju standardne CRUD operacije
 	 */
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping
 	public Iterable<AddressEntity> getAll() {
 		return addressRepository.findAll();
 	}
 	
-	@RequestMapping(method = RequestMethod.POST)
+	@PostMapping
 	public AddressEntity addAddress(@RequestParam String street, @RequestParam(required = false) String city) {
 		AddressEntity address = new AddressEntity();
 		address.setStreet(street);
@@ -62,7 +57,7 @@ public class AddressController {
 	/*
 	 * Popuniti bazu podataka sa podacima o deset adresa
 	 */
-	@RequestMapping(method = RequestMethod.POST, path = "/populatetable/{count}")
+	@PostMapping("/populatetable/{count}")
 	public Iterable<AddressEntity> populateTable(@PathVariable Integer count) {
 		List<AddressEntity> addresses = new ArrayList<>();
 		for (int x = 0; x < count; x++) {
@@ -87,7 +82,7 @@ public class AddressController {
 	 * • ažuriranje adrese
 	 * • brisanje adrese
 	 */
-	@RequestMapping(method = RequestMethod.GET, path = "/{id}")
+	@GetMapping("/{id}")
 	public AddressEntity getById(@PathVariable Integer id) {
 		AddressEntity retVal;
 		try {
@@ -98,7 +93,7 @@ public class AddressController {
 		return retVal;
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT, path = "/{id}")
+	@PutMapping("/{id}")
 	public AddressEntity updateAddress(@PathVariable Integer id,
 			@RequestParam(required = false) String street, @RequestParam(required = false) String city) {
 		try {
@@ -119,7 +114,7 @@ public class AddressController {
 		}
 	}
 	
-	@RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
+	@DeleteMapping("/{id}")
 	public AddressEntity deleteAddress(@PathVariable Integer id) {
 		try {
 			AddressEntity address = addressRepository.findById(id).get();
@@ -135,7 +130,7 @@ public class AddressController {
 	 * Omogućiti pronalaženje adrese po gradu
 	 * • putanja /by-city
 	 */
-	@RequestMapping(method = RequestMethod.GET, path = "/by-city")
+	@GetMapping("/by-city")
 	public List<AddressEntity> getAllByCity(@RequestParam(required = false) String city) {
 		try {
 			CityEntity cityEntity = cityRepository.findByCity(city).get(0);
@@ -151,7 +146,7 @@ public class AddressController {
 	 * • vraćanje adresa sortiranih po rastućoj vrednosti države
 	 * • putanja /by-country
 	 */
-	@RequestMapping(method = RequestMethod.GET, path = "/by-country")
+	@GetMapping("/by-country")
 	public List<AddressEntity> getAllByCountriesSortAsc(@RequestParam(required = false) List<String> country) {
 		try {
 			return addressRepository.findByCityIn(cityRepository.findByCountryIn(countryRepository.findByCountryInOrderByCountryAsc(country)));
@@ -164,7 +159,7 @@ public class AddressController {
 	/*
 	 * U AddressController dodati REST endpoint-e za dodavanje i brisanje korisnika u adresama
 	 */
-	@RequestMapping(method = RequestMethod.PUT, path = "/{id}/add-users")
+	@PutMapping("/{id}/add-users")
 	public List<UserEntity> addUsersToAddress(@PathVariable Integer id, @RequestParam List<Integer> userid) {
 		try {
 			AddressEntity address = addressRepository.findById(id).get();
@@ -181,7 +176,7 @@ public class AddressController {
 		}
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT, path = "/{id}/remove-user/{userid}")
+	@PutMapping("/{id}/remove-user/{userid}")
 	public UserEntity removeUserFromAddress(@PathVariable Integer id, @PathVariable Integer userid) {
 		try {
 			UserEntity user = userRepository.findById(userid).get();
@@ -195,7 +190,7 @@ public class AddressController {
 		}
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT, path = "/{id}/remove-users")
+	@PutMapping("/{id}/remove-users")
 	public List<UserEntity> removeUsersFromAddress(@PathVariable Integer id, @RequestParam List<Integer> userid) {
 		try {
 			AddressEntity address = addressRepository.findById(id).get();
@@ -208,7 +203,7 @@ public class AddressController {
 		}
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT, path = "/{id}/remove-all-users")
+	@PutMapping("/{id}/remove-all-users")
 	public List<UserEntity> removeAllUsersFromAddress(@PathVariable Integer id) {
 		try {
 			AddressEntity address = addressRepository.findById(id).get();
