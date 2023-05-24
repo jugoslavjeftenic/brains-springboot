@@ -24,7 +24,7 @@ import com.ikt.t99.services.PredmetService;
 @RestController
 //@Secured("ULOGA_ADMINISTRATOR")
 @RequestMapping(value = "/api/v1/predmeti")
-@CrossOrigin(origins = "http://localhost:3000") 
+@CrossOrigin(origins = "*") 
 public class PredmetController {
 
 	private final Logger logger = LoggerFactory.getLogger(PredmetController.class);

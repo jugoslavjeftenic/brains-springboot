@@ -369,3 +369,988 @@ This generated password is for development use only. Your security configuration
 2023-05-06 13:16:07.895  INFO 16324 --- [RMI TCP Connection(4)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2023-05-06 13:16:07.896  INFO 16324 --- [RMI TCP Connection(4)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
 2023-05-06 13:16:07.907  INFO 16324 --- [RMI TCP Connection(4)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2023-05-08 10:48:13.689  INFO 15224 --- [main] c.i.t.BeT99BackToSchoolApplication       : Starting BeT99BackToSchoolApplication using Java 17.0.4.1 on DESKTOP-A6300-HOME with PID 15224 (E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school\target\classes started by pvtBomba in E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school)
+2023-05-08 10:48:13.701  INFO 15224 --- [main] c.i.t.BeT99BackToSchoolApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-05-08 10:48:14.877  INFO 15224 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-08 10:48:14.997  INFO 15224 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 102 ms. Found 8 JPA repository interfaces.
+2023-05-08 10:48:15.728  INFO 15224 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2023-05-08 10:48:15.761  INFO 15224 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2023-05-08 10:48:15.762  INFO 15224 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-08 10:48:15.968  INFO 15224 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2023-05-08 10:48:15.968  INFO 15224 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2209 ms
+2023-05-08 10:48:16.200  INFO 15224 --- [main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-08 10:48:16.265  INFO 15224 --- [main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-08 10:48:16.458  INFO 15224 --- [main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-08 10:48:16.588  INFO 15224 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2023-05-08 10:48:16.996  INFO 15224 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2023-05-08 10:48:17.035  INFO 15224 --- [main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-05-08 10:48:18.200  INFO 15224 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-08 10:48:18.215  INFO 15224 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-08 10:48:19.315  WARN 15224 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 72dfe1cb-8b87-430c-929d-da39a27a5259
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-05-08 10:48:19.480  INFO 15224 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@f3e6876, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@52c2d1e8, org.springframework.security.web.context.SecurityContextPersistenceFilter@3749c6ac, org.springframework.security.web.header.HeaderWriterFilter@69862a1, org.springframework.security.web.authentication.logout.LogoutFilter@6f2b608e, com.ikt.t99.security.config.JWTAuthorizationFilter@1a67bcaf, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3bede349, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@501956f9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4f4b7a2e, org.springframework.security.web.session.SessionManagementFilter@36e11b60, org.springframework.security.web.access.ExceptionTranslationFilter@7e8f97dd, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@48cbb4c5]
+2023-05-08 10:48:19.590  WARN 15224 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-08 10:48:20.188  INFO 15224 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-08 10:48:20.199  INFO 15224 --- [main] c.i.t.BeT99BackToSchoolApplication       : Started BeT99BackToSchoolApplication in 7.082 seconds (JVM running for 8.571)
+2023-05-08 11:15:05.141  INFO 15224 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-08 11:15:05.142  INFO 15224 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2023-05-08 11:15:05.143  INFO 15224 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 1 ms
+2023-05-08 11:15:05.192  INFO 15224 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 11:22:01.295  INFO 15224 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 11:22:01.794  INFO 15224 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 11:22:55.350  INFO 15224 --- [RMI TCP Connection(38)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-05-08 11:22:55.368  INFO 15224 --- [RMI TCP Connection(38)-127.0.0.1] o.a.c.c.StandardService                  : Stopping service [Tomcat]
+2023-05-08 11:22:55.371  INFO 15224 --- [RMI TCP Connection(38)-127.0.0.1] o.a.c.c.C.[.[.[/]                        : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-05-08 11:22:55.385  INFO 15224 --- [RMI TCP Connection(38)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-08 11:22:55.387  INFO 15224 --- [RMI TCP Connection(38)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2023-05-08 11:22:55.396  INFO 15224 --- [RMI TCP Connection(38)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2023-05-08 11:24:01.738  INFO 15924 --- [main] c.i.t.BeT99BackToSchoolApplication       : Starting BeT99BackToSchoolApplication using Java 17.0.4.1 on DESKTOP-A6300-HOME with PID 15924 (E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school\target\classes started by pvtBomba in E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school)
+2023-05-08 11:24:01.749  INFO 15924 --- [main] c.i.t.BeT99BackToSchoolApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-05-08 11:24:02.566  INFO 15924 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-08 11:24:02.679  INFO 15924 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 97 ms. Found 8 JPA repository interfaces.
+2023-05-08 11:24:03.392  INFO 15924 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2023-05-08 11:24:03.433  INFO 15924 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2023-05-08 11:24:03.433  INFO 15924 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-08 11:24:03.609  INFO 15924 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2023-05-08 11:24:03.610  INFO 15924 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1806 ms
+2023-05-08 11:24:03.817  INFO 15924 --- [main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-08 11:24:03.877  INFO 15924 --- [main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-08 11:24:04.073  INFO 15924 --- [main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-08 11:24:04.206  INFO 15924 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2023-05-08 11:24:04.622  INFO 15924 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2023-05-08 11:24:04.660  INFO 15924 --- [main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-05-08 11:24:05.838  INFO 15924 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-08 11:24:05.850  INFO 15924 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-08 11:24:06.935  WARN 15924 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 1f7a3367-0daa-4320-b015-f7a3bfddcb4f
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-05-08 11:24:07.109  INFO 15924 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@140fa482, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@78de0f6f, org.springframework.security.web.context.SecurityContextPersistenceFilter@7c4697fc, org.springframework.security.web.header.HeaderWriterFilter@299c86f0, org.springframework.security.web.authentication.logout.LogoutFilter@3f473daf, com.ikt.t99.security.config.JWTAuthorizationFilter@588614f9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@e6fbf82, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@55d776ac, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@16718e1b, org.springframework.security.web.session.SessionManagementFilter@5ce1ec7, org.springframework.security.web.access.ExceptionTranslationFilter@3bede349, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2e7dd504]
+2023-05-08 11:24:07.192  WARN 15924 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-08 11:24:07.783  INFO 15924 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-08 11:24:07.794  INFO 15924 --- [main] c.i.t.BeT99BackToSchoolApplication       : Started BeT99BackToSchoolApplication in 6.559 seconds (JVM running for 7.828)
+2023-05-08 11:24:13.059  INFO 15924 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-08 11:24:13.060  INFO 15924 --- [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2023-05-08 11:24:13.061  INFO 15924 --- [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Completed initialization in 1 ms
+2023-05-08 11:24:13.195  INFO 15924 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 11:24:13.195  INFO 15924 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 11:27:25.040  INFO 15924 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 11:27:25.801  INFO 15924 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 11:28:09.684  INFO 15924 --- [http-nio-8080-exec-7] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 11:28:09.788  INFO 15924 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 11:30:13.658  INFO 15924 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 11:30:14.798  INFO 15924 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 11:31:01.626  INFO 15924 --- [http-nio-8080-exec-3] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 11:31:01.628  INFO 15924 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 11:31:01.790  INFO 15924 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 11:31:06.605  INFO 15924 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 11:31:06.605  INFO 15924 --- [http-nio-8080-exec-7] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 11:33:46.534  INFO 15924 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 11:33:47.794  INFO 15924 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:02:02.905  INFO 15924 --- [RMI TCP Connection(40)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-05-08 12:02:02.925  INFO 15924 --- [RMI TCP Connection(40)-127.0.0.1] o.a.c.c.StandardService                  : Stopping service [Tomcat]
+2023-05-08 12:02:02.927  INFO 15924 --- [RMI TCP Connection(40)-127.0.0.1] o.a.c.c.C.[.[.[/]                        : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-05-08 12:02:02.941  INFO 15924 --- [RMI TCP Connection(40)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-08 12:02:02.943  INFO 15924 --- [RMI TCP Connection(40)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2023-05-08 12:02:02.952  INFO 15924 --- [RMI TCP Connection(40)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2023-05-08 12:07:14.272  INFO 17932 --- [main] c.i.t.BeT99BackToSchoolApplication       : Starting BeT99BackToSchoolApplication using Java 17.0.4.1 on DESKTOP-A6300-HOME with PID 17932 (E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school\target\classes started by pvtBomba in E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school)
+2023-05-08 12:07:14.282  INFO 17932 --- [main] c.i.t.BeT99BackToSchoolApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-05-08 12:07:15.112  INFO 17932 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-08 12:07:15.231  INFO 17932 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 102 ms. Found 8 JPA repository interfaces.
+2023-05-08 12:07:15.973  INFO 17932 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2023-05-08 12:07:16.010  INFO 17932 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2023-05-08 12:07:16.011  INFO 17932 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-08 12:07:16.190  INFO 17932 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2023-05-08 12:07:16.190  INFO 17932 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1853 ms
+2023-05-08 12:07:16.406  INFO 17932 --- [main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-08 12:07:16.469  INFO 17932 --- [main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-08 12:07:16.660  INFO 17932 --- [main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-08 12:07:16.786  INFO 17932 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2023-05-08 12:07:17.244  INFO 17932 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2023-05-08 12:07:17.288  INFO 17932 --- [main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-05-08 12:07:18.514  INFO 17932 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-08 12:07:18.527  INFO 17932 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-08 12:07:19.615  WARN 17932 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 297b90c5-c829-474d-b493-3a306255a579
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-05-08 12:07:19.777  INFO 17932 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@78de0f6f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@588614f9, org.springframework.security.web.context.SecurityContextPersistenceFilter@90b9695, org.springframework.security.web.header.HeaderWriterFilter@4fbed6fc, org.springframework.security.web.authentication.logout.LogoutFilter@390e814c, com.ikt.t99.security.config.JWTAuthorizationFilter@16718e1b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@55d776ac, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1de6f29d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7fb313e3, org.springframework.security.web.session.SessionManagementFilter@627cb3ed, org.springframework.security.web.access.ExceptionTranslationFilter@501956f9, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3e5febe9]
+2023-05-08 12:07:19.860  WARN 17932 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-08 12:07:20.451  INFO 17932 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-08 12:07:20.463  INFO 17932 --- [main] c.i.t.BeT99BackToSchoolApplication       : Started BeT99BackToSchoolApplication in 6.735 seconds (JVM running for 7.99)
+2023-05-08 12:07:23.747  INFO 17932 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-08 12:07:23.748  INFO 17932 --- [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2023-05-08 12:07:23.750  INFO 17932 --- [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Completed initialization in 2 ms
+2023-05-08 12:07:23.831  INFO 17932 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:07:23.831  INFO 17932 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:11:17.983  INFO 17932 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:11:17.984  INFO 17932 --- [http-nio-8080-exec-7] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:11:17.987  INFO 17932 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:11:18.790  INFO 17932 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:11:18.812  INFO 17932 --- [http-nio-8080-exec-9] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:11:18.830  INFO 17932 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:11:42.802  INFO 17932 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:11:42.855  INFO 17932 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:11:43.792  INFO 17932 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:11:43.809  INFO 17932 --- [http-nio-8080-exec-3] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:11:57.553  INFO 17932 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:11:57.553  INFO 17932 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:12:31.938  INFO 17932 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:12:32.791  INFO 17932 --- [http-nio-8080-exec-9] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:13:11.163  INFO 17932 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:13:11.796  INFO 17932 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:14:04.967  INFO 17932 --- [http-nio-8080-exec-3] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:14:04.970  INFO 17932 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:14:05.788  INFO 17932 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:14:08.547  INFO 17932 --- [http-nio-8080-exec-7] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:14:08.547  INFO 17932 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:17:35.134  INFO 17932 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:17:35.135  INFO 17932 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:18:44.058  INFO 17932 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:18:44.196  INFO 17932 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:19:05.876  INFO 17932 --- [http-nio-8080-exec-7] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:19:06.314  INFO 17932 --- [http-nio-8080-exec-9] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:19:06.316  INFO 17932 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:19:15.993  INFO 17932 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:19:16.252  INFO 17932 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:24:31.317  INFO 17932 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:25:46.585  INFO 17932 --- [http-nio-8080-exec-7] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:34:14.908  INFO 17932 --- [http-nio-8080-exec-9] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:35:35.853  INFO 17932 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:36:45.807  INFO 17932 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:38:07.809  INFO 17932 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 12:38:07.809  INFO 17932 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:03:36.100  INFO 17932 --- [http-nio-8080-exec-9] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:03:36.123  INFO 17932 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:03:36.899  INFO 17932 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:03:36.899  INFO 17932 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:03:39.881  INFO 17932 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:03:39.897  INFO 17932 --- [http-nio-8080-exec-3] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:04:31.892  INFO 17932 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:04:31.892  INFO 17932 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:05:39.217  INFO 17932 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:05:39.495  INFO 17932 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:09:25.102  INFO 17932 --- [http-nio-8080-exec-3] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:09:25.103  INFO 17932 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:09:25.286  INFO 17932 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:09:25.305  INFO 17932 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:09:31.032  INFO 17932 --- [http-nio-8080-exec-9] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:09:31.032  INFO 17932 --- [http-nio-8080-exec-7] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:11:22.761  INFO 17932 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:11:22.927  INFO 17932 --- [http-nio-8080-exec-3] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:11:51.098  INFO 17932 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:11:51.108  INFO 17932 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:11:54.833  INFO 17932 --- [http-nio-8080-exec-7] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:11:54.845  INFO 17932 --- [http-nio-8080-exec-9] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:13:00.731  INFO 17932 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:13:00.965  INFO 17932 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:14:43.803  INFO 17932 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:14:43.804  INFO 17932 --- [http-nio-8080-exec-7] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:18:18.605  INFO 17932 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:18:18.718  INFO 17932 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:18:24.430  INFO 17932 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:18:24.717  INFO 17932 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:20:32.258  INFO 17932 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:20:32.325  INFO 17932 --- [http-nio-8080-exec-7] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:20:34.227  INFO 17932 --- [http-nio-8080-exec-9] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:20:34.229  INFO 17932 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:21:13.318  INFO 17932 --- [RMI TCP Connection(77)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-05-08 13:21:13.335  INFO 17932 --- [RMI TCP Connection(77)-127.0.0.1] o.a.c.c.StandardService                  : Stopping service [Tomcat]
+2023-05-08 13:21:13.336  INFO 17932 --- [RMI TCP Connection(77)-127.0.0.1] o.a.c.c.C.[.[.[/]                        : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-05-08 13:21:13.349  INFO 17932 --- [RMI TCP Connection(77)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-08 13:21:13.350  INFO 17932 --- [RMI TCP Connection(77)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2023-05-08 13:21:13.359  INFO 17932 --- [RMI TCP Connection(77)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2023-05-08 13:29:17.551  INFO 14372 --- [main] c.i.t.BeT99BackToSchoolApplication       : Starting BeT99BackToSchoolApplication using Java 17.0.4.1 on DESKTOP-A6300-HOME with PID 14372 (E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school\target\classes started by pvtBomba in E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school)
+2023-05-08 13:29:17.563  INFO 14372 --- [main] c.i.t.BeT99BackToSchoolApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-05-08 13:29:18.444  INFO 14372 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-08 13:29:18.562  INFO 14372 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 101 ms. Found 8 JPA repository interfaces.
+2023-05-08 13:29:19.280  INFO 14372 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2023-05-08 13:29:19.301  INFO 14372 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2023-05-08 13:29:19.302  INFO 14372 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-08 13:29:19.480  INFO 14372 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2023-05-08 13:29:19.480  INFO 14372 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1857 ms
+2023-05-08 13:29:19.694  INFO 14372 --- [main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-08 13:29:19.753  INFO 14372 --- [main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-08 13:29:19.940  INFO 14372 --- [main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-08 13:29:20.064  INFO 14372 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2023-05-08 13:29:20.466  INFO 14372 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2023-05-08 13:29:20.508  INFO 14372 --- [main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-05-08 13:29:21.658  INFO 14372 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-08 13:29:21.671  INFO 14372 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-08 13:29:22.753  WARN 14372 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 9cd8f95c-8acb-4975-ab58-df36117ef134
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-05-08 13:29:22.914  INFO 14372 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@79169472, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@304cad3a, org.springframework.security.web.context.SecurityContextPersistenceFilter@711261c7, org.springframework.security.web.header.HeaderWriterFilter@7f38545a, org.springframework.security.web.authentication.logout.LogoutFilter@7bfedfb7, com.ikt.t99.security.config.JWTAuthorizationFilter@628cb8e0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@659565ed, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@481eb705, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@19f9404d, org.springframework.security.web.session.SessionManagementFilter@23243bc0, org.springframework.security.web.access.ExceptionTranslationFilter@3b6c55b6, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@45775a15]
+2023-05-08 13:29:22.988  WARN 14372 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-08 13:29:23.553  INFO 14372 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-08 13:29:23.564  INFO 14372 --- [main] c.i.t.BeT99BackToSchoolApplication       : Started BeT99BackToSchoolApplication in 6.533 seconds (JVM running for 8.056)
+2023-05-08 13:29:30.344  INFO 14372 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-08 13:29:30.344  INFO 14372 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2023-05-08 13:29:30.347  INFO 14372 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 2 ms
+2023-05-08 13:29:30.438  INFO 14372 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:29:30.438  INFO 14372 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:30:18.643  INFO 14372 --- [http-nio-8080-exec-3] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:30:18.867  INFO 14372 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:30:22.026  INFO 14372 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:30:22.027  INFO 14372 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:31:58.053  INFO 14372 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:31:58.293  INFO 14372 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:32:04.051  INFO 14372 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:32:04.059  INFO 14372 --- [http-nio-8080-exec-3] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:32:36.231  INFO 14372 --- [RMI TCP Connection(7)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-05-08 13:32:36.251  INFO 14372 --- [RMI TCP Connection(7)-127.0.0.1] o.a.c.c.StandardService                  : Stopping service [Tomcat]
+2023-05-08 13:32:36.253  INFO 14372 --- [RMI TCP Connection(7)-127.0.0.1] o.a.c.c.C.[.[.[/]                        : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-05-08 13:32:36.268  INFO 14372 --- [RMI TCP Connection(7)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-08 13:32:36.270  INFO 14372 --- [RMI TCP Connection(7)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2023-05-08 13:32:36.284  INFO 14372 --- [RMI TCP Connection(7)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2023-05-08 13:35:55.553  INFO 14912 --- [main] c.i.t.BeT99BackToSchoolApplication       : Starting BeT99BackToSchoolApplication using Java 17.0.4.1 on DESKTOP-A6300-HOME with PID 14912 (E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school\target\classes started by pvtBomba in E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school)
+2023-05-08 13:35:55.564  INFO 14912 --- [main] c.i.t.BeT99BackToSchoolApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-05-08 13:35:56.390  INFO 14912 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-08 13:35:56.506  INFO 14912 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 99 ms. Found 8 JPA repository interfaces.
+2023-05-08 13:35:57.221  INFO 14912 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2023-05-08 13:35:57.270  INFO 14912 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2023-05-08 13:35:57.272  INFO 14912 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-08 13:35:57.542  INFO 14912 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2023-05-08 13:35:57.543  INFO 14912 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1925 ms
+2023-05-08 13:35:57.762  INFO 14912 --- [main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-08 13:35:57.821  INFO 14912 --- [main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-08 13:35:58.005  INFO 14912 --- [main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-08 13:35:58.133  INFO 14912 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2023-05-08 13:35:58.524  INFO 14912 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2023-05-08 13:35:58.561  INFO 14912 --- [main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-05-08 13:35:59.713  INFO 14912 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-08 13:35:59.725  INFO 14912 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-08 13:36:00.880  WARN 14912 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 747756a8-2dcf-449e-8561-87a2a0358b24
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-05-08 13:36:01.038  INFO 14912 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@78de0f6f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@588614f9, org.springframework.security.web.context.SecurityContextPersistenceFilter@90b9695, org.springframework.security.web.header.HeaderWriterFilter@4fbed6fc, org.springframework.security.web.authentication.logout.LogoutFilter@390e814c, com.ikt.t99.security.config.JWTAuthorizationFilter@16718e1b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@55d776ac, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1de6f29d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7fb313e3, org.springframework.security.web.session.SessionManagementFilter@627cb3ed, org.springframework.security.web.access.ExceptionTranslationFilter@501956f9, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3e5febe9]
+2023-05-08 13:36:01.119  WARN 14912 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-08 13:36:01.691  INFO 14912 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-08 13:36:01.703  INFO 14912 --- [main] c.i.t.BeT99BackToSchoolApplication       : Started BeT99BackToSchoolApplication in 6.669 seconds (JVM running for 7.881)
+2023-05-08 13:36:06.518  INFO 14912 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-08 13:36:06.518  INFO 14912 --- [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2023-05-08 13:36:06.520  INFO 14912 --- [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Completed initialization in 1 ms
+2023-05-08 13:36:06.619  INFO 14912 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:36:06.619  INFO 14912 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:37:24.548  INFO 14912 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:37:24.592  INFO 14912 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:37:41.818  INFO 14912 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:37:41.855  INFO 14912 --- [http-nio-8080-exec-7] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:38:35.348  INFO 14912 --- [http-nio-8080-exec-9] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:38:35.375  INFO 14912 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:38:48.283  INFO 14912 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:38:48.505  INFO 14912 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:38:52.875  INFO 14912 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:38:52.900  INFO 14912 --- [http-nio-8080-exec-3] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:40:06.698  INFO 14912 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:40:06.700  INFO 14912 --- [http-nio-8080-exec-7] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:40:06.975  INFO 14912 --- [http-nio-8080-exec-9] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:40:06.989  INFO 14912 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:40:20.898  INFO 14912 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:40:20.944  INFO 14912 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:40:20.948  INFO 14912 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:40:20.962  INFO 14912 --- [http-nio-8080-exec-3] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:40:59.312  INFO 14912 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:40:59.472  INFO 14912 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:41:03.990  INFO 14912 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:41:04.135  INFO 14912 --- [http-nio-8080-exec-7] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:41:17.012  INFO 14912 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:41:17.178  INFO 14912 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:41:29.767  INFO 14912 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:41:29.768  INFO 14912 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:41:37.100  INFO 14912 --- [http-nio-8080-exec-3] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:41:37.117  INFO 14912 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 13:42:36.920  INFO 14912 --- [RMI TCP Connection(10)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-05-08 13:42:36.938  INFO 14912 --- [RMI TCP Connection(10)-127.0.0.1] o.a.c.c.StandardService                  : Stopping service [Tomcat]
+2023-05-08 13:42:36.939  INFO 14912 --- [RMI TCP Connection(10)-127.0.0.1] o.a.c.c.C.[.[.[/]                        : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-05-08 13:42:36.952  INFO 14912 --- [RMI TCP Connection(10)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-08 13:42:36.954  INFO 14912 --- [RMI TCP Connection(10)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2023-05-08 13:42:36.966  INFO 14912 --- [RMI TCP Connection(10)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2023-05-08 20:34:41.986  INFO 7616 --- [main] c.i.t.BeT99BackToSchoolApplication       : Starting BeT99BackToSchoolApplication using Java 17.0.4.1 on DESKTOP-A6300-HOME with PID 7616 (E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school\target\classes started by pvtBomba in E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school)
+2023-05-08 20:34:42.024  INFO 7616 --- [main] c.i.t.BeT99BackToSchoolApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-05-08 20:34:43.247  INFO 7616 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-08 20:34:43.378  INFO 7616 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 109 ms. Found 8 JPA repository interfaces.
+2023-05-08 20:34:44.208  INFO 7616 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2023-05-08 20:34:44.233  INFO 7616 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2023-05-08 20:34:44.234  INFO 7616 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-08 20:34:44.461  INFO 7616 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2023-05-08 20:34:44.461  INFO 7616 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2368 ms
+2023-05-08 20:34:44.717  INFO 7616 --- [main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-08 20:34:44.803  INFO 7616 --- [main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-08 20:34:45.040  INFO 7616 --- [main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-08 20:34:45.193  INFO 7616 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2023-05-08 20:34:45.678  INFO 7616 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2023-05-08 20:34:45.727  INFO 7616 --- [main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-05-08 20:34:47.071  INFO 7616 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-08 20:34:47.086  INFO 7616 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-08 20:34:48.283  WARN 7616 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 5def5cbc-54b1-46d2-95fe-967bbf6c47ab
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-05-08 20:34:48.554  INFO 7616 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5fdff4f1, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@117be84a, org.springframework.security.web.context.SecurityContextPersistenceFilter@627cb3ed, org.springframework.security.web.header.HeaderWriterFilter@3bede349, org.springframework.security.web.authentication.logout.LogoutFilter@7f33ad20, com.ikt.t99.security.config.JWTAuthorizationFilter@140fa482, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7c4697fc, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@90b9695, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@78de0f6f, org.springframework.security.web.session.SessionManagementFilter@276eafad, org.springframework.security.web.access.ExceptionTranslationFilter@3749c6ac, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2c989d82]
+2023-05-08 20:34:48.649  WARN 7616 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-08 20:34:49.300  INFO 7616 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-08 20:34:49.313  INFO 7616 --- [main] c.i.t.BeT99BackToSchoolApplication       : Started BeT99BackToSchoolApplication in 7.931 seconds (JVM running for 9.398)
+2023-05-08 20:35:32.422  INFO 7616 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-08 20:35:32.423  INFO 7616 --- [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2023-05-08 20:35:32.427  INFO 7616 --- [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Completed initialization in 4 ms
+2023-05-08 20:35:32.581  INFO 7616 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 20:35:32.581  INFO 7616 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 20:36:45.770  INFO 7616 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 20:37:08.147  INFO 7616 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 20:37:08.149  INFO 7616 --- [http-nio-8080-exec-7] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 20:38:25.687  INFO 7616 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 20:38:25.687  INFO 7616 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 20:39:43.802  INFO 7616 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 20:39:43.803  INFO 7616 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 20:41:26.059  INFO 7616 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 20:53:35.205  INFO 7616 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 20:53:35.205  INFO 7616 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 20:57:12.890  INFO 7616 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 20:57:12.890  INFO 7616 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:00:55.789  INFO 7616 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:00:55.790  INFO 7616 --- [http-nio-8080-exec-9] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:01:00.205  INFO 7616 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:01:00.206  INFO 7616 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:02:30.586  INFO 7616 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:03:12.581  INFO 7616 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:12:17.541  INFO 7616 --- [http-nio-8080-exec-7] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:12:17.541  INFO 7616 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:16:04.141  INFO 7616 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:16:13.008  INFO 7616 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:16:29.730  INFO 7616 --- [http-nio-8080-exec-3] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:19:13.739  INFO 7616 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:21:15.414  INFO 7616 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:21:15.427  INFO 7616 --- [http-nio-8080-exec-7] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:21:34.598  INFO 7616 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:21:34.601  INFO 7616 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:23:17.789  INFO 7616 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:23:20.249  INFO 7616 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:23:20.251  INFO 7616 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:24:29.451  INFO 7616 --- [http-nio-8080-exec-9] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:24:33.597  INFO 7616 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:24:33.599  INFO 7616 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:25:39.687  INFO 7616 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:27:13.666  INFO 7616 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:27:49.649  INFO 7616 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:27:49.654  INFO 7616 --- [http-nio-8080-exec-7] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:28:04.906  INFO 7616 --- [http-nio-8080-exec-9] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 21:28:04.935  INFO 7616 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 22:50:59.759  INFO 7616 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 22:50:59.759  INFO 7616 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 23:56:16.511  INFO 7616 --- [http-nio-8080-exec-9] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 23:56:16.511  INFO 7616 --- [http-nio-8080-exec-7] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-08 23:57:24.268  INFO 7616 --- [RMI TCP Connection(206)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-05-08 23:57:24.290  INFO 7616 --- [RMI TCP Connection(206)-127.0.0.1] o.a.c.c.StandardService                  : Stopping service [Tomcat]
+2023-05-08 23:57:24.291  INFO 7616 --- [RMI TCP Connection(206)-127.0.0.1] o.a.c.c.C.[.[.[/]                        : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-05-08 23:57:24.305  INFO 7616 --- [RMI TCP Connection(206)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-08 23:57:24.307  INFO 7616 --- [RMI TCP Connection(206)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2023-05-08 23:57:24.315  INFO 7616 --- [RMI TCP Connection(206)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2023-05-09 20:02:34.284  INFO 19196 --- [main] c.i.t.BeT99BackToSchoolApplication       : Starting BeT99BackToSchoolApplication using Java 17.0.4.1 on DESKTOP-A6300-HOME with PID 19196 (E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school\target\classes started by pvtBomba in E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school)
+2023-05-09 20:02:34.319  INFO 19196 --- [main] c.i.t.BeT99BackToSchoolApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-05-09 20:02:37.115  INFO 19196 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-09 20:02:37.420  INFO 19196 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 267 ms. Found 8 JPA repository interfaces.
+2023-05-09 20:02:39.221  INFO 19196 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2023-05-09 20:02:39.294  INFO 19196 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2023-05-09 20:02:39.294  INFO 19196 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-09 20:02:39.815  INFO 19196 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2023-05-09 20:02:39.815  INFO 19196 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5167 ms
+2023-05-09 20:02:40.362  INFO 19196 --- [main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-09 20:02:40.489  INFO 19196 --- [main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-09 20:02:40.859  INFO 19196 --- [main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-09 20:02:41.138  INFO 19196 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2023-05-09 20:02:42.042  INFO 19196 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2023-05-09 20:02:42.115  INFO 19196 --- [main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-05-09 20:02:44.303  INFO 19196 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-09 20:02:44.324  INFO 19196 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-09 20:02:46.467  WARN 19196 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 98383b55-27b4-4eb1-a88e-264d861c2f48
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-05-09 20:02:46.701  INFO 19196 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7fb28ed, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@536f389, org.springframework.security.web.context.SecurityContextPersistenceFilter@464017f5, org.springframework.security.web.header.HeaderWriterFilter@481eb705, org.springframework.security.web.authentication.logout.LogoutFilter@195d4780, com.ikt.t99.security.config.JWTAuthorizationFilter@2b33f7a0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@397f9672, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@72e4ffa2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@71b6edfb, org.springframework.security.web.session.SessionManagementFilter@3b48361e, org.springframework.security.web.access.ExceptionTranslationFilter@73eaae1e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1784fcab]
+2023-05-09 20:02:46.806  WARN 19196 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-09 20:02:47.709  INFO 19196 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-09 20:02:47.728  INFO 19196 --- [main] c.i.t.BeT99BackToSchoolApplication       : Started BeT99BackToSchoolApplication in 15.967 seconds (JVM running for 18.865)
+2023-05-09 20:03:26.409  INFO 19196 --- [RMI TCP Connection(4)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-05-09 20:03:26.441  INFO 19196 --- [RMI TCP Connection(4)-127.0.0.1] o.a.c.c.StandardService                  : Stopping service [Tomcat]
+2023-05-09 20:03:26.471  INFO 19196 --- [RMI TCP Connection(4)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-09 20:03:26.473  INFO 19196 --- [RMI TCP Connection(4)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2023-05-09 20:03:26.491  INFO 19196 --- [RMI TCP Connection(4)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2023-05-10 10:10:15.932  INFO 16532 --- [main] c.i.t.BeT99BackToSchoolApplication       : Starting BeT99BackToSchoolApplication using Java 17.0.4.1 on DESKTOP-A6300-HOME with PID 16532 (E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school\target\classes started by pvtBomba in E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school)
+2023-05-10 10:10:15.972  INFO 16532 --- [main] c.i.t.BeT99BackToSchoolApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-05-10 10:10:17.657  INFO 16532 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-10 10:10:17.890  INFO 16532 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 172 ms. Found 8 JPA repository interfaces.
+2023-05-10 10:10:19.209  INFO 16532 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2023-05-10 10:10:19.246  INFO 16532 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2023-05-10 10:10:19.247  INFO 16532 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-10 10:10:19.598  INFO 16532 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2023-05-10 10:10:19.599  INFO 16532 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3514 ms
+2023-05-10 10:10:19.973  INFO 16532 --- [main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-10 10:10:20.132  INFO 16532 --- [main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-10 10:10:20.500  INFO 16532 --- [main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-10 10:10:20.750  INFO 16532 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2023-05-10 10:10:21.401  INFO 16532 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2023-05-10 10:10:21.458  INFO 16532 --- [main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-05-10 10:10:23.537  INFO 16532 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-10 10:10:23.556  INFO 16532 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-10 10:10:25.279  WARN 16532 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 56401a5e-5a6d-489f-becf-8ba384929bc4
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-05-10 10:10:25.509  INFO 16532 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3b9c386d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7fb28ed, org.springframework.security.web.context.SecurityContextPersistenceFilter@5ae22651, org.springframework.security.web.header.HeaderWriterFilter@659565ed, org.springframework.security.web.authentication.logout.LogoutFilter@58dea0a7, com.ikt.t99.security.config.JWTAuthorizationFilter@536f389, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3c4231e5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@397f9672, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2b33f7a0, org.springframework.security.web.session.SessionManagementFilter@5319e4fc, org.springframework.security.web.access.ExceptionTranslationFilter@711261c7, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6e68ccc9]
+2023-05-10 10:10:25.660  WARN 16532 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-10 10:10:26.466  INFO 16532 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-10 10:10:26.481  INFO 16532 --- [main] c.i.t.BeT99BackToSchoolApplication       : Started BeT99BackToSchoolApplication in 11.626 seconds (JVM running for 14.646)
+2023-05-10 10:10:44.873  INFO 16532 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-10 10:10:44.873  INFO 16532 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2023-05-10 10:10:44.876  INFO 16532 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 2 ms
+2023-05-10 10:10:44.958  INFO 16532 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 10:10:45.136  INFO 16532 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 10:13:10.475  INFO 16532 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 10:13:10.476  INFO 16532 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 10:17:17.665  INFO 16532 --- [http-nio-8080-exec-9] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 10:17:17.693  INFO 16532 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 10:18:31.705  INFO 16532 --- [http-nio-8080-exec-3] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 10:18:31.706  INFO 16532 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 10:45:45.382  INFO 16532 --- [http-nio-8080-exec-7] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 10:45:45.654  INFO 16532 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 10:52:09.408  INFO 16532 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 10:52:09.618  INFO 16532 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 10:52:28.178  INFO 16532 --- [http-nio-8080-exec-3] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 10:52:28.207  INFO 16532 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 10:54:16.180  INFO 16532 --- [http-nio-8080-exec-7] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 10:54:16.226  INFO 16532 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 10:59:44.423  INFO 16532 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 10:59:44.450  INFO 16532 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 11:00:53.746  INFO 16532 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 11:00:54.039  INFO 16532 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 11:01:59.424  INFO 16532 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 11:01:59.428  INFO 16532 --- [http-nio-8080-exec-9] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 11:01:59.699  INFO 16532 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 11:01:59.724  INFO 16532 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 11:08:39.061  INFO 16532 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 11:08:39.091  INFO 16532 --- [http-nio-8080-exec-7] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 11:08:39.100  INFO 16532 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 11:08:39.119  INFO 16532 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 11:08:50.225  INFO 16532 --- [http-nio-8080-exec-9] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 11:08:50.527  INFO 16532 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 11:14:18.431  INFO 16532 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 11:14:18.608  INFO 16532 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 11:15:01.457  INFO 16532 --- [http-nio-8080-exec-7] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 11:15:01.716  INFO 16532 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 11:21:48.638  INFO 16532 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 11:21:48.884  INFO 16532 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 11:23:38.371  INFO 16532 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 11:23:38.598  INFO 16532 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 11:42:22.522  INFO 16532 --- [http-nio-8080-exec-9] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 11:42:22.546  INFO 16532 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 11:43:19.855  INFO 16532 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 11:43:20.085  INFO 16532 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 11:43:29.313  INFO 16532 --- [http-nio-8080-exec-3] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 11:43:29.364  INFO 16532 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 12:05:36.736  INFO 16532 --- [http-nio-8080-exec-7] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 12:05:36.988  INFO 16532 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 12:07:57.703  INFO 16532 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 12:07:57.779  INFO 16532 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 12:08:16.099  INFO 16532 --- [http-nio-8080-exec-3] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 12:08:16.421  INFO 16532 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 12:08:26.679  INFO 16532 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 12:08:26.733  INFO 16532 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 12:11:06.350  INFO 16532 --- [http-nio-8080-exec-9] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 12:11:06.402  INFO 16532 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 12:11:29.962  INFO 16532 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 12:11:30.285  INFO 16532 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 12:16:33.955  INFO 16532 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 12:16:33.980  INFO 16532 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 12:21:16.041  INFO 16532 --- [http-nio-8080-exec-9] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 12:21:16.303  INFO 16532 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 12:27:55.179  INFO 16532 --- [http-nio-8080-exec-3] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 12:27:55.436  INFO 16532 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 12:28:07.273  INFO 16532 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 12:28:07.322  INFO 16532 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 13:25:53.030  INFO 16532 --- [http-nio-8080-exec-9] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 13:25:53.058  INFO 16532 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 14:01:30.252  INFO 16532 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 14:01:30.569  INFO 16532 --- [http-nio-8080-exec-3] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 14:02:01.405  INFO 16532 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 14:02:01.488  INFO 16532 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 14:08:53.026  INFO 16532 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 14:08:53.027  INFO 16532 --- [http-nio-8080-exec-9] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 14:09:12.780  INFO 16532 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 14:09:12.780  INFO 16532 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 14:09:22.006  INFO 16532 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 14:09:22.027  INFO 16532 --- [http-nio-8080-exec-3] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 14:10:38.518  INFO 16532 --- [http-nio-8080-exec-7] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 14:10:38.841  INFO 16532 --- [http-nio-8080-exec-9] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 14:12:37.986  INFO 16532 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 14:12:38.050  INFO 16532 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 15:00:34.958  INFO 16532 --- [RMI TCP Connection(292)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-05-10 15:00:34.985  INFO 16532 --- [RMI TCP Connection(292)-127.0.0.1] o.a.c.c.StandardService                  : Stopping service [Tomcat]
+2023-05-10 15:00:34.987  INFO 16532 --- [RMI TCP Connection(292)-127.0.0.1] o.a.c.c.C.[.[.[/]                        : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-05-10 15:00:35.004  INFO 16532 --- [RMI TCP Connection(292)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-10 15:00:35.006  INFO 16532 --- [RMI TCP Connection(292)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2023-05-10 15:00:35.017  INFO 16532 --- [RMI TCP Connection(292)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2023-05-10 21:31:50.603  INFO 6940 --- [main] c.i.t.BeT99BackToSchoolApplication       : Starting BeT99BackToSchoolApplication using Java 17.0.4.1 on DESKTOP-A6300-HOME with PID 6940 (E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school\target\classes started by pvtBomba in E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school)
+2023-05-10 21:31:50.614  INFO 6940 --- [main] c.i.t.BeT99BackToSchoolApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-05-10 21:31:51.929  INFO 6940 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-10 21:31:52.041  INFO 6940 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 95 ms. Found 8 JPA repository interfaces.
+2023-05-10 21:31:52.737  INFO 6940 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2023-05-10 21:31:52.769  INFO 6940 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2023-05-10 21:31:52.770  INFO 6940 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-10 21:31:52.958  INFO 6940 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2023-05-10 21:31:52.958  INFO 6940 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2290 ms
+2023-05-10 21:31:53.176  INFO 6940 --- [main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-10 21:31:53.235  INFO 6940 --- [main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-10 21:31:53.424  INFO 6940 --- [main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-10 21:31:53.555  INFO 6940 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2023-05-10 21:31:53.957  INFO 6940 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2023-05-10 21:31:53.995  INFO 6940 --- [main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-05-10 21:31:55.117  INFO 6940 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-10 21:31:55.129  INFO 6940 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-10 21:31:56.242  WARN 6940 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 7fe45017-ab84-46d3-8050-40b5d27d425e
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-05-10 21:31:56.471  INFO 6940 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2e7dd504, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3e5febe9, org.springframework.security.web.context.SecurityContextPersistenceFilter@7afac89a, org.springframework.security.web.header.HeaderWriterFilter@36e11b60, org.springframework.security.web.authentication.logout.LogoutFilter@659565ed, com.ikt.t99.security.config.JWTAuthorizationFilter@5643052d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@276eafad, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@29dcad7e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5e0b7f58, org.springframework.security.web.session.SessionManagementFilter@75ff2b6d, org.springframework.security.web.access.ExceptionTranslationFilter@7bbc11ed, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@77430c79]
+2023-05-10 21:31:56.557  WARN 6940 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-10 21:31:57.160  INFO 6940 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-10 21:31:57.172  INFO 6940 --- [main] c.i.t.BeT99BackToSchoolApplication       : Started BeT99BackToSchoolApplication in 7.095 seconds (JVM running for 8.421)
+2023-05-10 21:32:18.469  INFO 6940 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-10 21:32:18.469  INFO 6940 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2023-05-10 21:32:18.472  INFO 6940 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 3 ms
+2023-05-10 21:32:18.584  INFO 6940 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 21:32:18.770  INFO 6940 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 21:35:24.721  INFO 6940 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 21:35:24.757  INFO 6940 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 21:43:38.642  INFO 6940 --- [RMI TCP Connection(14)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-05-10 21:43:38.664  INFO 6940 --- [RMI TCP Connection(14)-127.0.0.1] o.a.c.c.StandardService                  : Stopping service [Tomcat]
+2023-05-10 21:43:38.665  INFO 6940 --- [RMI TCP Connection(14)-127.0.0.1] o.a.c.c.C.[.[.[/]                        : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-05-10 21:43:38.682  INFO 6940 --- [RMI TCP Connection(14)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-10 21:43:38.685  INFO 6940 --- [RMI TCP Connection(14)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2023-05-10 21:43:38.703  INFO 6940 --- [RMI TCP Connection(14)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2023-05-10 22:07:11.007  INFO 18344 --- [main] c.i.t.BeT99BackToSchoolApplication       : Starting BeT99BackToSchoolApplication using Java 17.0.4.1 on DESKTOP-A6300-HOME with PID 18344 (E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school\target\classes started by pvtBomba in E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school)
+2023-05-10 22:07:11.018  INFO 18344 --- [main] c.i.t.BeT99BackToSchoolApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-05-10 22:07:11.887  INFO 18344 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-10 22:07:12.006  INFO 18344 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 101 ms. Found 8 JPA repository interfaces.
+2023-05-10 22:07:12.728  INFO 18344 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2023-05-10 22:07:12.767  INFO 18344 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2023-05-10 22:07:12.768  INFO 18344 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-10 22:07:12.950  INFO 18344 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2023-05-10 22:07:12.951  INFO 18344 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1874 ms
+2023-05-10 22:07:13.176  INFO 18344 --- [main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-10 22:07:13.239  INFO 18344 --- [main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-10 22:07:13.434  INFO 18344 --- [main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-10 22:07:13.566  INFO 18344 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2023-05-10 22:07:13.977  INFO 18344 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2023-05-10 22:07:14.017  INFO 18344 --- [main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-05-10 22:07:15.212  INFO 18344 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-10 22:07:15.226  INFO 18344 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-10 22:07:16.428  WARN 18344 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 25b15425-d424-4a75-981b-66e04b7b29d2
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-05-10 22:07:16.609  INFO 18344 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@588614f9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@16718e1b, org.springframework.security.web.context.SecurityContextPersistenceFilter@e6fbf82, org.springframework.security.web.header.HeaderWriterFilter@1b1d93e9, org.springframework.security.web.authentication.logout.LogoutFilter@5bb661e0, com.ikt.t99.security.config.JWTAuthorizationFilter@7fb313e3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1de6f29d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@488c608a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@771ede0d, org.springframework.security.web.session.SessionManagementFilter@30bd6bc8, org.springframework.security.web.access.ExceptionTranslationFilter@299c86f0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5643052d]
+2023-05-10 22:07:16.706  WARN 18344 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-10 22:07:17.313  INFO 18344 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-10 22:07:17.327  INFO 18344 --- [main] c.i.t.BeT99BackToSchoolApplication       : Started BeT99BackToSchoolApplication in 6.852 seconds (JVM running for 8.084)
+2023-05-10 22:07:31.761  INFO 18344 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-10 22:07:31.762  INFO 18344 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2023-05-10 22:07:31.763  INFO 18344 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 1 ms
+2023-05-10 22:07:31.914  INFO 18344 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 22:07:32.112  INFO 18344 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 22:07:46.365  INFO 18344 --- [http-nio-8080-exec-3] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 22:07:47.059  INFO 18344 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 22:09:03.261  INFO 18344 --- [RMI TCP Connection(5)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-05-10 22:09:03.279  INFO 18344 --- [RMI TCP Connection(5)-127.0.0.1] o.a.c.c.StandardService                  : Stopping service [Tomcat]
+2023-05-10 22:09:03.280  INFO 18344 --- [RMI TCP Connection(5)-127.0.0.1] o.a.c.c.C.[.[.[/]                        : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-05-10 22:09:03.295  INFO 18344 --- [RMI TCP Connection(5)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-10 22:09:03.296  INFO 18344 --- [RMI TCP Connection(5)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2023-05-10 22:09:03.310  INFO 18344 --- [RMI TCP Connection(5)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2023-05-10 22:28:35.148  INFO 18676 --- [main] c.i.t.BeT99BackToSchoolApplication       : Starting BeT99BackToSchoolApplication using Java 17.0.4.1 on DESKTOP-A6300-HOME with PID 18676 (E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school\target\classes started by pvtBomba in E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school)
+2023-05-10 22:28:35.160  INFO 18676 --- [main] c.i.t.BeT99BackToSchoolApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-05-10 22:28:36.032  INFO 18676 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-10 22:28:36.159  INFO 18676 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 110 ms. Found 8 JPA repository interfaces.
+2023-05-10 22:28:36.888  INFO 18676 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2023-05-10 22:28:36.927  INFO 18676 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2023-05-10 22:28:36.929  INFO 18676 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-10 22:28:37.112  INFO 18676 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2023-05-10 22:28:37.113  INFO 18676 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1895 ms
+2023-05-10 22:28:37.329  INFO 18676 --- [main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-10 22:28:37.391  INFO 18676 --- [main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-10 22:28:37.587  INFO 18676 --- [main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-10 22:28:37.721  INFO 18676 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2023-05-10 22:28:38.136  INFO 18676 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2023-05-10 22:28:38.183  INFO 18676 --- [main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-05-10 22:28:39.452  INFO 18676 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-10 22:28:39.465  INFO 18676 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-10 22:28:40.586  WARN 18676 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 5d8c4663-002a-47d5-b3e9-fac5af671c9f
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-05-10 22:28:40.769  INFO 18676 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@55159007, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@edf4973, org.springframework.security.web.context.SecurityContextPersistenceFilter@7f33ad20, org.springframework.security.web.header.HeaderWriterFilter@420068a, org.springframework.security.web.authentication.logout.LogoutFilter@542c6165, com.ikt.t99.security.config.JWTAuthorizationFilter@2a49753, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3f473daf, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@390e814c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6e68ccc9, org.springframework.security.web.session.SessionManagementFilter@2ae0eb98, org.springframework.security.web.access.ExceptionTranslationFilter@6f2b608e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@79169472]
+2023-05-10 22:28:40.855  WARN 18676 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-10 22:28:41.457  INFO 18676 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-10 22:28:41.468  INFO 18676 --- [main] c.i.t.BeT99BackToSchoolApplication       : Started BeT99BackToSchoolApplication in 6.852 seconds (JVM running for 8.157)
+2023-05-10 22:28:50.688  INFO 18676 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-10 22:28:50.688  INFO 18676 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2023-05-10 22:28:50.691  INFO 18676 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 2 ms
+2023-05-10 22:28:50.795  INFO 18676 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 22:28:50.989  INFO 18676 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 22:29:09.193  INFO 18676 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 22:29:09.193  INFO 18676 --- [http-nio-8080-exec-3] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 22:31:49.694  INFO 18676 --- [http-nio-8080-exec-9] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 22:31:50.472  INFO 18676 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 22:31:56.421  INFO 18676 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 22:31:56.446  INFO 18676 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 22:32:15.627  INFO 18676 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 22:32:16.301  INFO 18676 --- [http-nio-8080-exec-3] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 22:32:28.556  INFO 18676 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 22:32:29.583  INFO 18676 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 22:32:31.978  INFO 18676 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 22:32:32.974  INFO 18676 --- [http-nio-8080-exec-7] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 22:48:59.710  INFO 18676 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 22:49:00.517  INFO 18676 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 22:49:05.057  INFO 18676 --- [RMI TCP Connection(24)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-05-10 22:49:05.076  INFO 18676 --- [RMI TCP Connection(24)-127.0.0.1] o.a.c.c.StandardService                  : Stopping service [Tomcat]
+2023-05-10 22:49:05.078  INFO 18676 --- [RMI TCP Connection(24)-127.0.0.1] o.a.c.c.C.[.[.[/]                        : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-05-10 22:49:05.093  INFO 18676 --- [RMI TCP Connection(24)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-10 22:49:05.095  INFO 18676 --- [RMI TCP Connection(24)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2023-05-10 22:49:05.108  INFO 18676 --- [RMI TCP Connection(24)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2023-05-10 23:11:58.800  INFO 3604 --- [main] c.i.t.BeT99BackToSchoolApplication       : Starting BeT99BackToSchoolApplication using Java 17.0.4.1 on DESKTOP-A6300-HOME with PID 3604 (E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school\target\classes started by pvtBomba in E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school)
+2023-05-10 23:11:58.812  INFO 3604 --- [main] c.i.t.BeT99BackToSchoolApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-05-10 23:11:59.726  INFO 3604 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-10 23:11:59.850  INFO 3604 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 107 ms. Found 8 JPA repository interfaces.
+2023-05-10 23:12:00.771  INFO 3604 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2023-05-10 23:12:00.819  INFO 3604 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2023-05-10 23:12:00.820  INFO 3604 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-10 23:12:01.030  INFO 3604 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2023-05-10 23:12:01.031  INFO 3604 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2152 ms
+2023-05-10 23:12:01.273  INFO 3604 --- [main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-10 23:12:01.338  INFO 3604 --- [main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-10 23:12:01.547  INFO 3604 --- [main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-10 23:12:01.685  INFO 3604 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2023-05-10 23:12:02.182  INFO 3604 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2023-05-10 23:12:02.236  INFO 3604 --- [main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-05-10 23:12:03.689  INFO 3604 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-10 23:12:03.702  INFO 3604 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-10 23:12:04.942  WARN 3604 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: a35f99fd-b85c-4010-9894-7b47b816cd69
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-05-10 23:12:05.133  INFO 3604 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@62075e3d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@63e81ac6, org.springframework.security.web.context.SecurityContextPersistenceFilter@7c55e559, org.springframework.security.web.header.HeaderWriterFilter@30bd6bc8, org.springframework.security.web.authentication.logout.LogoutFilter@193d73d3, com.ikt.t99.security.config.JWTAuthorizationFilter@45775a15, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@79d8075c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4d4337f9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2396dc4e, org.springframework.security.web.session.SessionManagementFilter@59043128, org.springframework.security.web.access.ExceptionTranslationFilter@5ce1ec7, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@78de0f6f]
+2023-05-10 23:12:05.228  WARN 3604 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-10 23:12:05.935  INFO 3604 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-10 23:12:05.948  INFO 3604 --- [main] c.i.t.BeT99BackToSchoolApplication       : Started BeT99BackToSchoolApplication in 7.745 seconds (JVM running for 9.429)
+2023-05-10 23:12:09.527  INFO 3604 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-10 23:12:09.527  INFO 3604 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2023-05-10 23:12:09.530  INFO 3604 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 2 ms
+2023-05-10 23:12:09.639  INFO 3604 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 23:12:09.639  INFO 3604 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 23:12:27.452  INFO 3604 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 23:14:29.566  INFO 3604 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 23:14:29.791  INFO 3604 --- [http-nio-8080-exec-9] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 23:15:02.174  INFO 3604 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 23:15:02.205  INFO 3604 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 23:15:30.986  INFO 3604 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 23:15:30.988  INFO 3604 --- [http-nio-8080-exec-3] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 23:15:36.643  INFO 3604 --- [RMI TCP Connection(7)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-05-10 23:15:36.661  INFO 3604 --- [RMI TCP Connection(7)-127.0.0.1] o.a.c.c.StandardService                  : Stopping service [Tomcat]
+2023-05-10 23:15:36.663  INFO 3604 --- [RMI TCP Connection(7)-127.0.0.1] o.a.c.c.C.[.[.[/]                        : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-05-10 23:15:36.678  INFO 3604 --- [RMI TCP Connection(7)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-10 23:15:36.682  INFO 3604 --- [RMI TCP Connection(7)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2023-05-10 23:15:36.693  INFO 3604 --- [RMI TCP Connection(7)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2023-05-10 23:32:29.734  INFO 6580 --- [main] c.i.t.BeT99BackToSchoolApplication       : Starting BeT99BackToSchoolApplication using Java 17.0.4.1 on DESKTOP-A6300-HOME with PID 6580 (E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school\target\classes started by pvtBomba in E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school)
+2023-05-10 23:32:29.746  INFO 6580 --- [main] c.i.t.BeT99BackToSchoolApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-05-10 23:32:31.004  INFO 6580 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-10 23:32:31.132  INFO 6580 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 108 ms. Found 8 JPA repository interfaces.
+2023-05-10 23:32:31.907  INFO 6580 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2023-05-10 23:32:31.931  INFO 6580 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2023-05-10 23:32:31.932  INFO 6580 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-10 23:32:32.146  INFO 6580 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2023-05-10 23:32:32.147  INFO 6580 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2334 ms
+2023-05-10 23:32:32.385  INFO 6580 --- [main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-10 23:32:32.451  INFO 6580 --- [main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-10 23:32:32.658  INFO 6580 --- [main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-10 23:32:32.802  INFO 6580 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2023-05-10 23:32:33.233  INFO 6580 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2023-05-10 23:32:33.273  INFO 6580 --- [main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-05-10 23:32:34.521  INFO 6580 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-10 23:32:34.534  INFO 6580 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-10 23:32:35.736  WARN 6580 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 11579a9a-92ee-4dd5-8130-cac6c74a6b80
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-05-10 23:32:35.921  INFO 6580 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2396dc4e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7bb888b7, org.springframework.security.web.context.SecurityContextPersistenceFilter@4d4337f9, org.springframework.security.web.header.HeaderWriterFilter@e6fbf82, org.springframework.security.web.authentication.logout.LogoutFilter@507187c1, com.ikt.t99.security.config.JWTAuthorizationFilter@5825932c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1a7f2d34, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@23243bc0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@277dddcf, org.springframework.security.web.session.SessionManagementFilter@7c55e559, org.springframework.security.web.access.ExceptionTranslationFilter@7c4697fc, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7fb313e3]
+2023-05-10 23:32:36.003  WARN 6580 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-10 23:32:36.661  INFO 6580 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-10 23:32:36.674  INFO 6580 --- [main] c.i.t.BeT99BackToSchoolApplication       : Started BeT99BackToSchoolApplication in 7.512 seconds (JVM running for 8.888)
+2023-05-10 23:32:41.926  INFO 6580 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-10 23:32:41.927  INFO 6580 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2023-05-10 23:32:41.931  INFO 6580 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 4 ms
+2023-05-10 23:32:42.048  INFO 6580 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 23:32:42.048  INFO 6580 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 23:32:49.499  INFO 6580 --- [http-nio-8080-exec-3] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 23:32:49.558  INFO 6580 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 23:34:13.692  INFO 6580 --- [RMI TCP Connection(5)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-05-10 23:34:13.712  INFO 6580 --- [RMI TCP Connection(5)-127.0.0.1] o.a.c.c.StandardService                  : Stopping service [Tomcat]
+2023-05-10 23:34:13.714  INFO 6580 --- [RMI TCP Connection(5)-127.0.0.1] o.a.c.c.C.[.[.[/]                        : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-05-10 23:34:13.728  INFO 6580 --- [RMI TCP Connection(5)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-10 23:34:13.729  INFO 6580 --- [RMI TCP Connection(5)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2023-05-10 23:34:13.744  INFO 6580 --- [RMI TCP Connection(5)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2023-05-10 23:49:12.386  INFO 11820 --- [main] c.i.t.BeT99BackToSchoolApplication       : Starting BeT99BackToSchoolApplication using Java 17.0.4.1 on DESKTOP-A6300-HOME with PID 11820 (E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school\target\classes started by pvtBomba in E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school)
+2023-05-10 23:49:12.397  INFO 11820 --- [main] c.i.t.BeT99BackToSchoolApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-05-10 23:49:13.292  INFO 11820 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-10 23:49:13.425  INFO 11820 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 113 ms. Found 8 JPA repository interfaces.
+2023-05-10 23:49:14.224  INFO 11820 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2023-05-10 23:49:14.265  INFO 11820 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2023-05-10 23:49:14.265  INFO 11820 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-10 23:49:14.453  INFO 11820 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2023-05-10 23:49:14.454  INFO 11820 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2001 ms
+2023-05-10 23:49:14.683  INFO 11820 --- [main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-10 23:49:14.748  INFO 11820 --- [main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-10 23:49:14.941  INFO 11820 --- [main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-10 23:49:15.069  INFO 11820 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2023-05-10 23:49:15.494  INFO 11820 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2023-05-10 23:49:15.541  INFO 11820 --- [main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-05-10 23:49:16.874  INFO 11820 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-10 23:49:16.887  INFO 11820 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-10 23:49:18.055  WARN 11820 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 71de4b0f-8521-4e9b-ac29-4d3a37cc985b
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-05-10 23:49:18.224  INFO 11820 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@55159007, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@edf4973, org.springframework.security.web.context.SecurityContextPersistenceFilter@7f33ad20, org.springframework.security.web.header.HeaderWriterFilter@420068a, org.springframework.security.web.authentication.logout.LogoutFilter@542c6165, com.ikt.t99.security.config.JWTAuthorizationFilter@2a49753, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3f473daf, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@390e814c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6e68ccc9, org.springframework.security.web.session.SessionManagementFilter@2ae0eb98, org.springframework.security.web.access.ExceptionTranslationFilter@6f2b608e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@79169472]
+2023-05-10 23:49:18.302  WARN 11820 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-10 23:49:18.924  INFO 11820 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-10 23:49:18.937  INFO 11820 --- [main] c.i.t.BeT99BackToSchoolApplication       : Started BeT99BackToSchoolApplication in 7.09 seconds (JVM running for 8.366)
+2023-05-10 23:49:31.859  INFO 11820 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-10 23:49:31.860  INFO 11820 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2023-05-10 23:49:31.863  INFO 11820 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 3 ms
+2023-05-10 23:49:31.959  INFO 11820 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 23:49:32.145  INFO 11820 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-10 23:57:01.556  INFO 11820 --- [RMI TCP Connection(11)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-05-10 23:57:01.574  INFO 11820 --- [RMI TCP Connection(11)-127.0.0.1] o.a.c.c.StandardService                  : Stopping service [Tomcat]
+2023-05-10 23:57:01.577  INFO 11820 --- [RMI TCP Connection(11)-127.0.0.1] o.a.c.c.C.[.[.[/]                        : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-05-10 23:57:01.592  INFO 11820 --- [RMI TCP Connection(11)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-10 23:57:01.595  INFO 11820 --- [RMI TCP Connection(11)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2023-05-10 23:57:01.606  INFO 11820 --- [RMI TCP Connection(11)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2023-05-13 11:21:05.749  INFO 2232 --- [main] c.i.t.BeT99BackToSchoolApplication       : Starting BeT99BackToSchoolApplication using Java 17.0.4.1 on DESKTOP-A6300-HOME with PID 2232 (E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school\target\classes started by pvtBomba in E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school)
+2023-05-13 11:21:05.763  INFO 2232 --- [main] c.i.t.BeT99BackToSchoolApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-05-13 11:21:06.742  INFO 2232 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-13 11:21:06.871  INFO 2232 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 107 ms. Found 8 JPA repository interfaces.
+2023-05-13 11:21:07.736  INFO 2232 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2023-05-13 11:21:07.788  INFO 2232 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2023-05-13 11:21:07.789  INFO 2232 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-13 11:21:08.085  INFO 2232 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2023-05-13 11:21:08.085  INFO 2232 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2250 ms
+2023-05-13 11:21:08.389  INFO 2232 --- [main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-13 11:21:08.485  INFO 2232 --- [main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-13 11:21:08.785  INFO 2232 --- [main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-13 11:21:08.961  INFO 2232 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2023-05-13 11:21:09.559  INFO 2232 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2023-05-13 11:21:09.618  INFO 2232 --- [main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-05-13 11:21:11.347  INFO 2232 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-13 11:21:11.360  INFO 2232 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-13 11:21:12.979  WARN 2232 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 4ae54a34-920c-4d72-babe-ad683123ddc7
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-05-13 11:21:13.216  INFO 2232 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@334ac669, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@77430c79, org.springframework.security.web.context.SecurityContextPersistenceFilter@299c86f0, org.springframework.security.web.header.HeaderWriterFilter@268f126f, org.springframework.security.web.authentication.logout.LogoutFilter@4d4337f9, com.ikt.t99.security.config.JWTAuthorizationFilter@506654fa, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1b1d93e9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@129b0ed, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4468ced2, org.springframework.security.web.session.SessionManagementFilter@9cdf13e, org.springframework.security.web.access.ExceptionTranslationFilter@5a644d75, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2d6e09f0]
+2023-05-13 11:21:13.342  WARN 2232 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-13 11:21:14.240  INFO 2232 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-13 11:21:14.267  INFO 2232 --- [main] c.i.t.BeT99BackToSchoolApplication       : Started BeT99BackToSchoolApplication in 9.279 seconds (JVM running for 11.289)
+2023-05-13 11:23:02.317  INFO 2232 --- [http-nio-8080-exec-4] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-13 11:23:02.317  INFO 2232 --- [http-nio-8080-exec-4] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2023-05-13 11:23:02.319  INFO 2232 --- [http-nio-8080-exec-4] o.s.w.s.DispatcherServlet                : Completed initialization in 2 ms
+2023-05-13 11:23:02.386  INFO 2232 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-13 11:23:02.386  INFO 2232 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-13 11:24:07.200  INFO 2232 --- [RMI TCP Connection(5)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-05-13 11:24:07.217  INFO 2232 --- [RMI TCP Connection(5)-127.0.0.1] o.a.c.c.StandardService                  : Stopping service [Tomcat]
+2023-05-13 11:24:07.218  INFO 2232 --- [RMI TCP Connection(5)-127.0.0.1] o.a.c.c.C.[.[.[/]                        : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-05-13 11:24:07.231  INFO 2232 --- [RMI TCP Connection(5)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-13 11:24:07.233  INFO 2232 --- [RMI TCP Connection(5)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2023-05-13 11:24:07.246  INFO 2232 --- [RMI TCP Connection(5)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2023-05-24 09:22:39.813  INFO 2880 --- [main] c.i.t.BeT99BackToSchoolApplication       : Starting BeT99BackToSchoolApplication using Java 17.0.4.1 on DESKTOP-A6300-HOME with PID 2880 (E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school\target\classes started by pvtBomba in E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school)
+2023-05-24 09:22:39.859  INFO 2880 --- [main] c.i.t.BeT99BackToSchoolApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-05-24 09:22:41.354  INFO 2880 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-24 09:22:41.515  INFO 2880 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 137 ms. Found 8 JPA repository interfaces.
+2023-05-24 09:22:42.629  INFO 2880 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2023-05-24 09:22:42.664  INFO 2880 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2023-05-24 09:22:42.664  INFO 2880 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-24 09:22:42.996  INFO 2880 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2023-05-24 09:22:42.997  INFO 2880 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3045 ms
+2023-05-24 09:22:43.338  INFO 2880 --- [main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-24 09:22:43.456  INFO 2880 --- [main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-24 09:22:43.832  INFO 2880 --- [main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-24 09:22:44.023  INFO 2880 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2023-05-24 09:22:44.585  INFO 2880 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2023-05-24 09:22:44.654  INFO 2880 --- [main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-05-24 09:22:46.449  INFO 2880 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-24 09:22:46.469  INFO 2880 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-24 09:22:48.172  WARN 2880 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 14a2b0f2-51f1-4aaf-95ad-2052d8d9699c
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-05-24 09:22:48.404  INFO 2880 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5481f204, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@171b0d3, org.springframework.security.web.context.SecurityContextPersistenceFilter@2ae0eb98, org.springframework.security.web.header.HeaderWriterFilter@642334d6, org.springframework.security.web.authentication.logout.LogoutFilter@1f3310fc, com.ikt.t99.security.config.JWTAuthorizationFilter@63d43a5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@42a89cef, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7f33ad20, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@55159007, org.springframework.security.web.session.SessionManagementFilter@73eaae1e, org.springframework.security.web.access.ExceptionTranslationFilter@d03cdc7, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@277dddcf]
+2023-05-24 09:22:48.527  WARN 2880 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-24 09:22:49.359  INFO 2880 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-24 09:22:49.376  INFO 2880 --- [main] c.i.t.BeT99BackToSchoolApplication       : Started BeT99BackToSchoolApplication in 10.484 seconds (JVM running for 12.679)
+2023-05-24 09:26:47.343  INFO 2880 --- [RMI TCP Connection(6)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-05-24 09:26:47.375  INFO 2880 --- [RMI TCP Connection(6)-127.0.0.1] o.a.c.c.StandardService                  : Stopping service [Tomcat]
+2023-05-24 09:26:47.391  INFO 2880 --- [RMI TCP Connection(6)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-24 09:26:47.393  INFO 2880 --- [RMI TCP Connection(6)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2023-05-24 09:26:47.406  INFO 2880 --- [RMI TCP Connection(6)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2023-05-24 09:41:32.830  INFO 4364 --- [main] c.i.t.BeT99BackToSchoolApplication       : Starting BeT99BackToSchoolApplication using Java 17.0.4.1 on DESKTOP-A6300-HOME with PID 4364 (E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school\target\classes started by pvtBomba in E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school)
+2023-05-24 09:41:32.842  INFO 4364 --- [main] c.i.t.BeT99BackToSchoolApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-05-24 09:41:33.638  INFO 4364 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-24 09:41:33.748  INFO 4364 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 94 ms. Found 8 JPA repository interfaces.
+2023-05-24 09:41:34.449  INFO 4364 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2023-05-24 09:41:34.469  INFO 4364 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2023-05-24 09:41:34.469  INFO 4364 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-24 09:41:34.642  INFO 4364 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2023-05-24 09:41:34.643  INFO 4364 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1748 ms
+2023-05-24 09:41:34.853  INFO 4364 --- [main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-24 09:41:34.911  INFO 4364 --- [main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-24 09:41:35.099  INFO 4364 --- [main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-24 09:41:35.223  INFO 4364 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2023-05-24 09:41:35.603  INFO 4364 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2023-05-24 09:41:35.639  INFO 4364 --- [main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-05-24 09:41:36.757  INFO 4364 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-24 09:41:36.769  INFO 4364 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-24 09:41:37.856  WARN 4364 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 7775cf2c-d897-4deb-8485-d4ee57e61e4b
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-05-24 09:41:38.011  INFO 4364 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@63e4bbf9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@455cb6d9, org.springframework.security.web.context.SecurityContextPersistenceFilter@18fcfe7e, org.springframework.security.web.header.HeaderWriterFilter@23243bc0, org.springframework.security.web.authentication.logout.LogoutFilter@601ca994, com.ikt.t99.security.config.JWTAuthorizationFilter@6d7a343f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5319e4fc, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3b48361e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5d2bfc9f, org.springframework.security.web.session.SessionManagementFilter@3f473daf, org.springframework.security.web.access.ExceptionTranslationFilter@1e6f7c25, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@171b0d3]
+2023-05-24 09:41:38.083  WARN 4364 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-24 09:41:38.681  INFO 4364 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-24 09:41:38.692  INFO 4364 --- [main] c.i.t.BeT99BackToSchoolApplication       : Started BeT99BackToSchoolApplication in 6.356 seconds (JVM running for 7.514)
+2023-05-24 09:45:49.166  INFO 4364 --- [RMI TCP Connection(8)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-05-24 09:45:49.212  INFO 4364 --- [RMI TCP Connection(8)-127.0.0.1] o.a.c.c.StandardService                  : Stopping service [Tomcat]
+2023-05-24 09:45:49.242  INFO 4364 --- [RMI TCP Connection(8)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-24 09:45:49.245  INFO 4364 --- [RMI TCP Connection(8)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2023-05-24 09:45:49.276  INFO 4364 --- [RMI TCP Connection(8)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2023-05-24 09:47:28.448  INFO 9224 --- [main] c.i.t.BeT99BackToSchoolApplication       : Starting BeT99BackToSchoolApplication using Java 17.0.4.1 on DESKTOP-A6300-HOME with PID 9224 (E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school\target\classes started by pvtBomba in E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school)
+2023-05-24 09:47:28.462  INFO 9224 --- [main] c.i.t.BeT99BackToSchoolApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-05-24 09:47:29.444  INFO 9224 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-24 09:47:29.586  INFO 9224 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 121 ms. Found 8 JPA repository interfaces.
+2023-05-24 09:47:30.405  INFO 9224 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2023-05-24 09:47:30.451  INFO 9224 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2023-05-24 09:47:30.452  INFO 9224 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-24 09:47:30.660  INFO 9224 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2023-05-24 09:47:30.660  INFO 9224 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2132 ms
+2023-05-24 09:47:30.905  INFO 9224 --- [main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-24 09:47:30.979  INFO 9224 --- [main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-24 09:47:31.201  INFO 9224 --- [main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-24 09:47:31.347  INFO 9224 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2023-05-24 09:47:31.801  INFO 9224 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2023-05-24 09:47:31.844  INFO 9224 --- [main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-05-24 09:47:33.205  INFO 9224 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-24 09:47:33.221  INFO 9224 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-24 09:47:34.504  WARN 9224 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 01b8649a-c8e7-470a-bc0f-9f9bb7ec4f2e
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-05-24 09:47:34.696  INFO 9224 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@63d43a5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@55159007, org.springframework.security.web.context.SecurityContextPersistenceFilter@42a89cef, org.springframework.security.web.header.HeaderWriterFilter@7c55e559, org.springframework.security.web.authentication.logout.LogoutFilter@2d5b549b, com.ikt.t99.security.config.JWTAuthorizationFilter@edf4973, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@52a23575, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3f473daf, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2a49753, org.springframework.security.web.session.SessionManagementFilter@481eb705, org.springframework.security.web.access.ExceptionTranslationFilter@642334d6, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@d5eca06]
+2023-05-24 09:47:34.790  WARN 9224 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-24 09:47:35.483  INFO 9224 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-24 09:47:35.498  INFO 9224 --- [main] c.i.t.BeT99BackToSchoolApplication       : Started BeT99BackToSchoolApplication in 7.684 seconds (JVM running for 9.148)
+2023-05-24 09:48:10.158  INFO 9224 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-24 09:48:10.159  INFO 9224 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2023-05-24 09:48:10.160  INFO 9224 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 1 ms
+2023-05-24 09:48:10.238  INFO 9224 --- [http-nio-8080-exec-2] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-24 09:48:10.238  INFO 9224 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-24 09:48:25.685  INFO 9224 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-24 09:48:25.686  INFO 9224 --- [http-nio-8080-exec-3] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-24 09:49:02.170  INFO 9224 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-24 09:49:02.197  INFO 9224 --- [http-nio-8080-exec-6] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-24 09:50:06.995  INFO 9224 --- [http-nio-8080-exec-10] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-24 09:50:07.022  INFO 9224 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-24 09:55:38.027  INFO 9224 --- [http-nio-8080-exec-3] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-24 09:55:38.044  INFO 9224 --- [http-nio-8080-exec-4] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-24 09:56:29.736  INFO 9224 --- [http-nio-8080-exec-5] c.i.t.c.PredmetController                : Pozvana metoda dummy()
+2023-05-24 09:56:29.736  INFO 9224 --- [http-nio-8080-exec-5] c.i.t.s.PredmetServiceImpl               : Pozvana metoda dummy()
+2023-05-24 09:56:41.951  INFO 9224 --- [http-nio-8080-exec-8] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-24 09:56:41.982  INFO 9224 --- [http-nio-8080-exec-9] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-24 09:58:54.585  INFO 9224 --- [RMI TCP Connection(15)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-05-24 09:58:54.603  INFO 9224 --- [RMI TCP Connection(15)-127.0.0.1] o.a.c.c.StandardService                  : Stopping service [Tomcat]
+2023-05-24 09:58:54.605  INFO 9224 --- [RMI TCP Connection(15)-127.0.0.1] o.a.c.c.C.[.[.[/]                        : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-05-24 09:58:54.619  INFO 9224 --- [RMI TCP Connection(15)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-24 09:58:54.621  INFO 9224 --- [RMI TCP Connection(15)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2023-05-24 09:58:54.631  INFO 9224 --- [RMI TCP Connection(15)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2023-05-24 10:07:23.908  INFO 11928 --- [main] c.i.t.BeT99BackToSchoolApplication       : Starting BeT99BackToSchoolApplication using Java 17.0.4.1 on DESKTOP-A6300-HOME with PID 11928 (E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school\target\classes started by pvtBomba in E:\SDK-github\course-brains\brains-springboot\be_t99_back_to_school)
+2023-05-24 10:07:23.920  INFO 11928 --- [main] c.i.t.BeT99BackToSchoolApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-05-24 10:07:24.817  INFO 11928 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-24 10:07:24.929  INFO 11928 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 93 ms. Found 8 JPA repository interfaces.
+2023-05-24 10:07:25.705  INFO 11928 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2023-05-24 10:07:25.727  INFO 11928 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2023-05-24 10:07:25.727  INFO 11928 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-05-24 10:07:25.915  INFO 11928 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2023-05-24 10:07:25.915  INFO 11928 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1933 ms
+2023-05-24 10:07:26.141  INFO 11928 --- [main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-24 10:07:26.208  INFO 11928 --- [main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-24 10:07:26.411  INFO 11928 --- [main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-24 10:07:26.547  INFO 11928 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2023-05-24 10:07:26.947  INFO 11928 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2023-05-24 10:07:26.984  INFO 11928 --- [main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-05-24 10:07:28.104  INFO 11928 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-24 10:07:28.116  INFO 11928 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-24 10:07:29.105  WARN 11928 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: a1bd5590-802d-42a0-8787-f56d6069e59f
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-05-24 10:07:29.266  INFO 11928 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3811464b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5f0a5848, org.springframework.security.web.context.SecurityContextPersistenceFilter@6768dc74, org.springframework.security.web.header.HeaderWriterFilter@3b3dc752, org.springframework.security.web.authentication.logout.LogoutFilter@86e8469, com.ikt.t99.security.config.JWTAuthorizationFilter@c6db00d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@40c92dfa, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@16b713dd, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@732fa176, org.springframework.security.web.session.SessionManagementFilter@17d837ab, org.springframework.security.web.access.ExceptionTranslationFilter@6f09cb98, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@69d9d322]
+2023-05-24 10:07:29.347  WARN 11928 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-24 10:07:29.924  INFO 11928 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-24 10:07:29.936  INFO 11928 --- [main] c.i.t.BeT99BackToSchoolApplication       : Started BeT99BackToSchoolApplication in 6.544 seconds (JVM running for 7.849)
+2023-05-24 10:07:58.936  INFO 11928 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-24 10:07:58.936  INFO 11928 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2023-05-24 10:07:58.938  INFO 11928 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 2 ms
+2023-05-24 10:07:58.985  INFO 11928 --- [http-nio-8080-exec-1] c.i.t.c.PredmetController                : Pozvana metoda list()
+2023-05-24 10:08:10.602  INFO 11928 --- [RMI TCP Connection(4)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-05-24 10:08:10.643  INFO 11928 --- [RMI TCP Connection(4)-127.0.0.1] o.a.c.c.StandardService                  : Stopping service [Tomcat]
+2023-05-24 10:08:10.645  INFO 11928 --- [RMI TCP Connection(4)-127.0.0.1] o.a.c.c.C.[.[.[/]                        : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-05-24 10:08:10.659  INFO 11928 --- [RMI TCP Connection(4)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-24 10:08:10.661  INFO 11928 --- [RMI TCP Connection(4)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2023-05-24 10:08:10.672  INFO 11928 --- [RMI TCP Connection(4)-127.0.0.1] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.

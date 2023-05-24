@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,8 +22,9 @@ import com.ikt.t99.repositories.RoditeljRepository;
 import com.ikt.t99.services.RoditeljService;
 
 @RestController
-@Secured("ULOGA_ADMINISTRATOR")
+//@Secured("ULOGA_ADMINISTRATOR")
 @RequestMapping(value = "/api/v1/roditelji")
+@CrossOrigin(origins = "*") 
 public class RoditeljController {
 
 	private final Logger logger = LoggerFactory.getLogger(RoditeljController.class);
