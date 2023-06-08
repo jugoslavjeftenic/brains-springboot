@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +24,7 @@ import com.ikt.t99.dtos.DnevnikDTONastavnik;
 import com.ikt.t99.services.DnevnikServiceNastavnik;
 
 @RestController
-//@Secured("ULOGA_NASTAVNIK")
+@Secured("ULOGA_NASTAVNIK")
 @RequestMapping(value = "/api/v1/dnevnici/nastavnik")
 @CrossOrigin(origins = "*") 
 public class DnevnikNastavnikController {

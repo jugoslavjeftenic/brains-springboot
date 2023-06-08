@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +23,8 @@ import com.ikt.t99.repositories.PredmetRepository;
 import com.ikt.t99.services.PredmetService;
 
 @RestController
-//@Secured("ULOGA_ADMINISTRATOR")
+@Secured("ULOGA_ADMINISTRATOR")
+//@Secured({"ULOGA_ADMINISTRATOR", "ULOGA_NASTAVNIK", "ULOGA_RODITELJ", "ULOGA_UCENIK"})
 @RequestMapping(value = "/api/v1/predmeti")
 @CrossOrigin(origins = "*") 
 public class PredmetController {

@@ -33,13 +33,13 @@ public class WebSecurityConfig {
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity
-			.csrf().disable()
+			.cors().and().csrf().disable()
 			.addFilterAfter(new JWTAuthorizationFilter(secretKey), UsernamePasswordAuthenticationFilter.class)
 			.authorizeRequests()
 				.antMatchers(HttpMethod.POST, "/api/v1/login").permitAll()
 				.antMatchers(HttpMethod.POST, "/api/v1/zeleni").permitAll()
 //				Po potrebi od/komentarisati liniju ispod radi testiranja.
-				.antMatchers("/api/v1/**").permitAll()
+//				.antMatchers("/api/v1/**").permitAll()
 				.anyRequest().authenticated();
 		return httpSecurity.build();
 	}

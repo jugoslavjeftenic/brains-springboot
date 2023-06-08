@@ -89,6 +89,6 @@ public class GlobalExceptionHandler {
 		logger.error("Uhvacena greska: ", e);
 		Map<String, String> errors = new HashMap<>();
 		errors.put("object level", "Nemate pravo pristupa resursu.");
-		return ResponseEntity.badRequest().body(errors);
+		return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errors);
 	}
 }
