@@ -56,7 +56,7 @@ public class PredajeServiceImpl implements PredajeService {
 		// Ispitujem da li nastavnik vec predaje predmet.
 		if (predajeRepository.existsByNastavnikAndPredmet(nastavnikEntity, predmetEntity)) {
 			return ResponseEntity
-					.status(HttpStatus.BAD_REQUEST)
+					.status(HttpStatus.EXPECTATION_FAILED)
 					.body("Nastavnik je već registrovan za prosleđeni predmet.");
 		}
 		
