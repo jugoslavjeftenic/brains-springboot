@@ -116,7 +116,7 @@ public class PredajeServiceImpl implements PredajeService {
 		if (nastavnikId != null && predmetId != null) {
 			if (predajeRepository.existsByNastavnikAndPredmet(predajeEntity.getNastavnik(), predajeEntity.getPredmet())) {
 				return ResponseEntity
-						.status(HttpStatus.BAD_REQUEST)
+						.status(HttpStatus.EXPECTATION_FAILED)
 						.body("Nastavnik je već registrovan za prosleđeni predmet.");
 			}
 		}
